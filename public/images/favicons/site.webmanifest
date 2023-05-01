@@ -1,0 +1,30 @@
+{
+    "name": "Talking Teens",
+    "short_name": "Talking Teens",
+    "description": "", 
+    "start_url": "https://talkingteens.it",
+    "icons": [
+        {
+            "src": "assets/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#fff02a",
+    "background_color": "#fff02a",
+    "display": "standalone",
+    "categories": ["education","utilities"],
+    "orientation": "portrait-primary",
+    "prefer_related_applications": true,
+    "related_applications": [
+        {
+          "platform": "play",
+          "url": "https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens",
+          "id": "digital.diapason.echo.talkingteens"
+        },
+        {
+          "platform": "itunes",
+          "url": "https://itunes.apple.com/app/talking-teens/id1459498571"
+        }
+      ]
+}
