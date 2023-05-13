@@ -1,6 +1,6 @@
 @props(['target' => 'self', 'href'])
 
-<a href="{{ $href }}" target="_{{ $target }}" class="bg-primary inline-block rounded-xl relative py-2 px-4 font-semibold group">
+<a href="{{ $href }}" target="_{{ $target }}" class="bg-st inline-block rounded-xl relative py-2 px-4 font-semibold group">
     <p class="text-center group-hover:opacity-0 transition-opacity">
         {{ $slot }}
     </p> 

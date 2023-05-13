@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schools', function (Blueprint $table) {
-            $table->char('miur_code', 10)->primary();
-            $table->text('name');
-            //
+        Schema::create('regions', function (Blueprint $table) {
+            $table->id();
+            $table->tinyText('name');
+            $table->decimal('latitude', $precision = 9, $scale = 6);
+            $table->decimal('longitude', $precision = 9, $scale = 6);
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('regions');
     }
 };

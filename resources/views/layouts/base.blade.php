@@ -22,12 +22,16 @@
 
         @stack('meta')
 
+        @foreach (LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+            <link rel="alternate" href="{{ LaravelLocalization::getLocalizedURL($lang) }}" hreflang="{{ $lang }}">
+        @endforeach
+
         @include('layouts._favicons')
         @include('layouts._social')
 
         @livewireStyles
     </head>
-    <body>
+    <body class="dark:bg-neutral-950 select-none font-poppins">
         @include('layouts._nav')
 
         @yield('body')

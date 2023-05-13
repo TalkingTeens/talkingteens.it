@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('curators', function (Blueprint $table) {
+        Schema::create('schools', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('surname');
             $table->tinyText('name');
+            $table->char('code', 4);
+            $table->decimal('latitude', $precision = 9, $scale = 6);
+            $table->decimal('longitude', $precision = 9, $scale = 6);
+            $table->integer('province_id');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('curators');
+        Schema::dropIfExists('schools');
     }
 };

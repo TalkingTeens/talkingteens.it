@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('title');
+            $table->text('title');
             $table->enum('category', ['project', 'statues', 'activity', 'exercises']);
-            $table->tinyText('image'); // ->default(''); image placeholder
+            $table->tinyText('picture'); // ->default(''); image placeholder
             $table->tinyText('resource');
-            $table->integer('clicks')->default(0);
+            $table->tinyText('filename');
+            $table->boolean('visible');
+            $table->integer('opened')->default(0);
+            $table->integer('downloads')->default(0);
+            $table->timestamps();
         });
     }
 

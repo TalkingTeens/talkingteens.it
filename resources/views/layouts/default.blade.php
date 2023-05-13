@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="bg-gray-100">
+    <div>
         @yield('content')
     </div>
 @endsection

@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('provinces', function (Blueprint $table) {
-            $table->integer('istat_code')->primary();
-            $table->char('iso_code', 2);
+            $table->id();
             $table->tinyText('name');
-            $table->decimal('latitude', $precision = 8, $scale = 6);
+            $table->char('code', 2);
+            $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
+            $table->integer('region_id');
         });
     }
 
