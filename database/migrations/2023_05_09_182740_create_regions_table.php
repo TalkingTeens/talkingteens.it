@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('name');
+            $table->string('name');
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
         });

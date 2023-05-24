@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
+            $table->string('title');
             $table->enum('category', ['project', 'statues', 'activity', 'exercises']);
-            $table->tinyText('picture'); // ->default(''); image placeholder
-            $table->tinyText('resource');
-            $table->tinyText('filename');
-            $table->boolean('visible');
-            $table->integer('opened')->default(0);
-            $table->integer('downloads')->default(0);
+            $table->string('picture')->nullable();
+            $table->string('resource');
+            $table->string('filename');
+            $table->boolean('visible')->default(1);
+            $table->unsignedBigInteger('opened')->default(0);
+            $table->unsignedBigInteger('downloads')->default(0);
             $table->timestamps();
         });
     }

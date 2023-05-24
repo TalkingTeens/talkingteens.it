@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('municipalities', function (Blueprint $table) {
-            $table->id();
-            $table->tinyText('name');
             $table->char('code', 4);
-            $table->decimal('latitude', $precision = 9, $scale = 6);
-            $table->decimal('longitude', $precision = 9, $scale = 6);
-            $table->integer('province_id');
+            $table->unsignedInteger('istat_code');
+            $table->string('name');
+            $table->decimal('latitude', $precision = 9, $scale = 6)->nullable();
+            $table->decimal('longitude', $precision = 9, $scale = 6)->nullable();
+            $table->unsignedBigInteger('province_id');
+
+            $table->primary('code');
+            $table->foreign('province_id')->references('id')->on('provinces');
         });
     }
 

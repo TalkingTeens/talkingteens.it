@@ -12,12 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('schools', function (Blueprint $table) {
-            $table->id();
-            $table->tinyText('name');
-            $table->char('code', 4);
-            $table->decimal('latitude', $precision = 9, $scale = 6);
-            $table->decimal('longitude', $precision = 9, $scale = 6);
-            $table->integer('province_id');
+            $table->string('miur_code');
+            $table->string('name');
+            $table->string('main_miur_code');
+            $table->string('main_name');
+            $table->string('address')->nullable();
+            $table->unsignedInteger('cap')->nullable();
+            $table->char('municipality_code', 4);
+            $table->string('characteristics');
+            $table->string('type');
+            $table->string('email')->nullable();
+            $table->string('pec')->nullable();
+            $table->string('website')->nullable();
+
+            $table->primary('miur_code');
+            $table->foreign('municipality_code')->references('code')->on('municipalities');
         });
     }
 

@@ -18,4 +18,8 @@
     <x-button.cta :href="route('docs')">
         Didattica
     </x-button.cta>
+
+    <x-button.cta :href="route('statues.index')">
+        Statue
+    </x-button.cta>
 @endsection

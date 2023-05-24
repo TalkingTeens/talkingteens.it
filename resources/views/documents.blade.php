@@ -1,11 +1,13 @@
+@title('Didattica')
+
 @extends('layouts.base')
 
 @push('meta')
 @endpush
 
 @section('body')
-    <section class="max-w-7xl w-11/12 mx-auto my-16 grid gap-4">
-        <h1 class="font-bold text-5xl mb-12">
+    <section class="max-w-7xl w-11/12 mx-auto my-16">
+        <h1 class="title-lg">
             Didattica
         </h1>
         {{-- <h2 class="font-semibold">

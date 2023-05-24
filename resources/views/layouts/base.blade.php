@@ -18,7 +18,7 @@
 
         {{-- <link rel="canonical" href="{{ $canonical ?? Request::url() }}" /> --}}
 
-        @vite(['resources/css/app.css'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @stack('meta')
 
@@ -32,9 +32,12 @@
         @livewireStyles
     </head>
     <body class="dark:bg-neutral-950 select-none font-poppins">
+        @include('layouts._ads._banner')
         @include('layouts._nav')
 
-        @yield('body')
+        <main>
+            @yield('body')
+        </main>
 
         @include('layouts._footer')
 

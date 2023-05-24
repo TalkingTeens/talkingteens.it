@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('name');
+            $table->string('name');
             $table->char('code', 2);
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
-            $table->integer('region_id');
+            $table->unsignedBigInteger('region_id');
+
+            $table->foreign('region_id')->references('id')->on('regions');
         });
     }
 
