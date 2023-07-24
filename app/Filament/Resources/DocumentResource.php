@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\DocumentResource\Widgets\DocumentStats;
 use Closure;
 use App\Filament\Resources\DocumentResource\Pages;
 use App\Filament\Resources\DocumentResource\RelationManagers;
 use App\Models\Document;
 use Filament\Forms;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -15,11 +17,13 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
@@ -28,26 +32,30 @@ use Filament\Tables\Columns\BadgeColumn;
 
 class DocumentResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Document::class;
 
     protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Grid::make(3)->schema([
-                    Card::make()->schema([
+                Group::make()
+                    ->schema([
+                    Card::make()
+                        ->schema([
                         TextInput::make('title')
                             ->required()
                             ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
-                                $set('filename', Str::slug($state));
-                            }),
+                            ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('filename', Str::slug($state)) : null),
+
                         TextInput::make('filename')
                             ->required(),
+
                         Select::make('category')
                             ->required()
                             ->options([
@@ -56,22 +64,46 @@ class DocumentResource extends Resource
                                 'activity' => 'Activity',
                                 'exercises' => 'Exercises',
                             ]),
+
                         FileUpload::make('resource')
                             ->directory('documents')
                             ->required(),
-                        FileUpload::make('picture')
-                            ->image()
-                            ->directory('images/documents')
-                            ->nullable(),
-                    ])->columns(2)->columnSpan(2),
-                Section::make('Heading')
-                    ->schema([
-                        Toggle::make('visible')
-                            ->default(1)
-                            ->onIcon('heroicon-s-eye'),
-                    ])->columnSpan(1),
+                    ])
+                    ->columns(2),
+
+                    Section::make('Cover')
+                        ->schema([
+                            FileUpload::make('picture')
+                                ->image()
+                                ->directory('images/documents')
+                                ->nullable()
+                                ->disableLabel(),
+                        ])
+                        ->collapsible(),
                 ])
-            ]);
+                ->columnSpan(['lg' => 2]),
+
+                Group::make()->schema([
+                    Card::make()
+                        ->schema([
+                            Placeholder::make('created_at')
+                                ->content(fn (Document $record): ?string => $record->created_at?->diffForHumans()),
+
+                            Placeholder::make('updated_at')
+                                ->content(fn (Document $record): ?string => $record->updated_at?->diffForHumans()),
+                        ])
+                        ->hidden(fn (?Document $record) => $record === null),
+
+                    Section::make('Status')
+                        ->schema([
+                            Toggle::make('visible')
+                                ->helperText('This document will be hidden.')
+                                ->default(true),
+                        ])
+                ])
+                ->columnSpan(['lg' => 1]),
+            ])
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -79,14 +111,19 @@ class DocumentResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('picture'),
+
                 TextColumn::make('title')
                     ->sortable()
                     ->searchable(),
+
                 BadgeColumn::make('category'),
+
                 TextColumn::make('opened')
                     ->sortable(),
+
                 TextColumn::make('downloads')
                     ->sortable(),
+
                 IconColumn::make('visible')
                     ->sortable()
                     ->boolean()
@@ -103,14 +140,27 @@ class DocumentResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
+    public static function getWidgets(): array
+    {
+        return [
+            DocumentStats::class,
+        ];
+    }
+
+
     public static function getPages(): array
     {
         return [
@@ -118,5 +168,5 @@ class DocumentResource extends Resource
             'create' => Pages\CreateDocument::route('/create'),
             'edit' => Pages\EditDocument::route('/{record}/edit'),
         ];
-    }    
+    }
 }

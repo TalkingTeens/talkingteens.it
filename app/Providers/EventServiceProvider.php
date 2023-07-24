@@ -7,10 +7,28 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Models\Document;
+use App\Models\Classe;
+use App\Models\Sponsor;
+use App\Models\Monument;
 use App\Observers\DocumentObserver;
+use App\Observers\SponsorObserver;
+use App\Observers\MonumentObserver;
+use App\Observers\ClasseObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
+    /**
+     * The model observers for your application.
+     *
+     * @var array
+     */
+    protected $observers = [
+        Document::class => [DocumentObserver::class],
+        Monument::class => [MonumentObserver::class],
+        Sponsor::class => [SponsorObserver::class],
+        Classe::class => [ClasseObserver::class],
+    ];
+
     /**
      * The event to listener mappings for the application.
      *
@@ -27,7 +45,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Document::observe(DocumentObserver::class);
+        //
     }
 
     /**

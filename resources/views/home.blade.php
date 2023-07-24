@@ -15,11 +15,17 @@
         Le statue
     </h1>
 
-    <x-button.cta :href="route('docs')">
+    <x-button.primary :href="route('docs')">
         Didattica
-    </x-button.cta>
+    </x-button.primary>
 
-    <x-button.cta :href="route('statues.index')">
-        Statue
-    </x-button.cta>
+    <x-button.primary :href="route('monuments.index')">
+        Monumenti
+    </x-button.primary>
+
+    <section>
+        @foreach($sponsors as $sponsor)
+
+        @endforeach
+    </section>
 @endsection

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('pec')->nullable();
             $table->string('website')->nullable();
+            $table->timestamps();
 
             $table->primary('miur_code');
             $table->foreign('municipality_code')->references('code')->on('municipalities');

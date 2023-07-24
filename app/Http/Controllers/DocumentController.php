@@ -9,7 +9,7 @@ class DocumentController extends Controller
 {
     public function __invoke(): View
     {
-        $documents = Document::active()->get()
+        $documents = Document::all()
             ->groupBy('category');
 
         return view('documents',

@@ -8,8 +8,6 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditSponsor extends EditRecord
 {
-//    use EditRecord\Concerns\Translatable;
-
     protected static string $resource = SponsorResource::class;
 
     protected function getRedirectUrl(): string
@@ -21,7 +19,6 @@ class EditSponsor extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
-//            Actions\LocaleSwitcher::make(),
         ];
     }
 }

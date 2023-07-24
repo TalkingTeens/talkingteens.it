@@ -17,9 +17,7 @@ return new class extends Migration
             $table->char('code', 2);
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
-            $table->unsignedBigInteger('region_id');
-
-            $table->foreign('region_id')->references('id')->on('regions');
+            $table->foreignId('region_id')->constrained();
         });
     }
 

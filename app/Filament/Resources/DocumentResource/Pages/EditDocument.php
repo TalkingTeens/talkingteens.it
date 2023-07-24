@@ -8,6 +8,8 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditDocument extends EditRecord
 {
+    use EditRecord\Concerns\Translatable;
+
     protected static string $resource = DocumentResource::class;
 
     protected function getRedirectUrl(): string
@@ -19,6 +21,7 @@ class EditDocument extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\LocaleSwitcher::make(),
         ];
     }
 }

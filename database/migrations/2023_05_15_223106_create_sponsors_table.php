@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('logo');
             $table->string('resource')->nullable();
-            $table->enum('type', ['normal', 'technical']); // default
             $table->boolean('visible')->default(1);
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }

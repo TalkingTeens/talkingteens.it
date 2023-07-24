@@ -17,10 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('latitude', $precision = 9, $scale = 6)->nullable();
             $table->decimal('longitude', $precision = 9, $scale = 6)->nullable();
-            $table->unsignedBigInteger('province_id');
+            $table->foreignId('province_id')->constrained();
 
             $table->primary('code');
-            $table->foreign('province_id')->references('id')->on('provinces');
         });
     }
 

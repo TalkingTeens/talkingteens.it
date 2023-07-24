@@ -2,19 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Document extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'title',
         'category',
@@ -24,8 +21,12 @@ class Document extends Model
         'filename',
     ];
 
-    public function scopeActive(Builder $query): void
+    public $translatable = [
+        'title',
+    ];
+
+    protected static function booted(): void
     {
-        $query->where('visible', 1);
+        static::addGlobalScope(new ActiveScope);
     }
 }

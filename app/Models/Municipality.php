@@ -11,13 +11,13 @@ class Municipality extends Model
 {
     use HasFactory;
 
-/*    public function statues(): HasMany
-    {
-        return $this->hasMany(Statue::class);
-    }
-
-    public function municipality(): BelongsTo
+    public function province(): BelongsTo
     {
         return $this->belongsTo(Province::class);
-    }*/
+    }
+
+    public function monuments(): HasMany
+    {
+        return $this->hasMany(Monument::class, 'municipality_code', 'code');
+    }
 }

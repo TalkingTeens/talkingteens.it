@@ -18,17 +18,14 @@
                 </p>
             </div>
         </div>
-        <div class="flex gap-10">
+        <div class="flex gap-10 justify-between">
             <livewire:newsletter />
-            <div class="gap-10 grid grid-cols-3 w-1/2">
+            <div class="gap-10 grid grid-cols-3 grow max-w-xl">
                 <div>
                     <h4 class="text-base pb-1">
                         Talking Teens
                     </h4>
-                    <a href="{{ route('docs') }}" class="link-footer">
-                        Mappa
-                    </a>
-                    <a href="{{ route('statues.index') }}" class="link-footer">
+                    <a href="{{ route('monuments.index') }}" class="link-footer">
                         Statue
                     </a>
                     <a href="{{ route('docs') }}" class="link-footer">
@@ -51,13 +48,10 @@
                         Contributi
                     </h4>
                     <a href="{{ route('donate') }}" class="link-footer">
-                        Dona
+                        Dona ora
                     </a>
-                    <a href="{{ route('statues.index') }}" class="link-footer">
-                        Sponsor
-                    </a>
-                    <a href="{{ route('docs') }}" class="link-footer">
-                        Sostenitori
+                    <a href="{{ route('contributes') }}" class="link-footer">
+                        Contributi
                     </a>
                 </div>
             </div>
@@ -78,6 +72,12 @@
                 <a href="https://youtube.com/@talkingteens" target="_blank" class="hover:text-red-600 transition-colors">
                     <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path d="M508.64 148.79c0-45-33.1-81.2-74-81.2C379.24 65 322.74 64 265 64h-18c-57.6 0-114.2 1-169.6 3.6C36.6 67.6 3.5 104 3.5 149 1 184.59-.06 220.19 0 255.79q-.15 53.4 3.4 106.9c0 45 33.1 81.5 73.9 81.5 58.2 2.7 117.9 3.9 178.6 3.8q91.2.3 178.6-3.8c40.9 0 74-36.5 74-81.5 2.4-35.7 3.5-71.3 3.4-107q.34-53.4-3.26-106.9zM207 353.89v-196.5l145 98.2z"/>
+                    </svg>
+                </a>
+                <a href="mailto:info@talkingteens.it" class="transition-colors">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <rect x="48" y="96" width="416" height="320" rx="40" ry="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M112 160l144 112 144-112"/>
                     </svg>
                 </a>
             </div>

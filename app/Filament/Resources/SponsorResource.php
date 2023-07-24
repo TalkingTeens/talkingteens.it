@@ -6,6 +6,10 @@ use App\Filament\Resources\SponsorResource\Pages;
 use App\Filament\Resources\SponsorResource\RelationManagers;
 use App\Models\Sponsor;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -27,28 +31,50 @@ class SponsorResource extends Resource
 
     protected static ?string $navigationGroup = 'Contributions';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-                FileUpload::make('logo')
-                    ->directory('images/sponsors')
-                    ->required(),
-                TextInput::make('resource'),
-                Select::make('type')
-                ->required()
-                ->options([
-                    'normal' => 'Normal',
-                    'technical' => 'Technical',
-                ])->default('normal'),
-                Toggle::make('visible')
-                    ->default(1)
-                    ->onIcon('heroicon-s-eye'),
-            ]);
+                Group::make()
+                    ->schema([
+                        Card::make()
+                            ->schema([
+                                TextInput::make('name')
+                                    ->required(),
+                                TextInput::make('resource')
+                                    ->url(),
+                                FileUpload::make('logo')
+                                    ->directory('images/sponsors')
+                                    ->columnSpan(2)
+                                    ->required(),
+                            ])
+                            ->columns(2),
+                    ])
+                    ->columnSpan(['lg' => 2]),
+
+                Group::make()->schema([
+                    Card::make()
+                        ->schema([
+                            Placeholder::make('created_at')
+                                ->content(fn (Sponsor $record): ?string => $record->created_at?->diffForHumans()),
+
+                            Placeholder::make('updated_at')
+                                ->content(fn (Sponsor $record): ?string => $record->updated_at?->diffForHumans()),
+                        ])
+                        ->hidden(fn (?Sponsor $record) => $record === null),
+
+                    Section::make('Status')
+                        ->schema([
+                            Toggle::make('visible')
+                                ->helperText('This document will be hidden.')
+                                ->default(true),
+                        ])
+                ])
+                ->columnSpan(['lg' => 1]),
+            ])
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -59,7 +85,6 @@ class SponsorResource extends Resource
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
-                BadgeColumn::make('category'),
                 IconColumn::make('visible')
                     ->sortable()
                     ->boolean()
@@ -74,16 +99,23 @@ class SponsorResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            // ->defaultSort('order') to fix.
+            ->reorderable('order');
     }
-    
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -91,5 +123,5 @@ class SponsorResource extends Resource
             'create' => Pages\CreateSponsor::route('/create'),
             'edit' => Pages\EditSponsor::route('/{record}/edit'),
         ];
-    }    
+    }
 }

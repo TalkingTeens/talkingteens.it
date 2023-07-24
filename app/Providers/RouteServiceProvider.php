@@ -26,6 +26,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        /*Route::bind('statue', function (string $value) {
+            return Statue::where('slug', $value)
+                ->orWhere('old_slug', $value)
+                ->firstOrFail();
+        });*/
+
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')

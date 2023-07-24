@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Storage;
 
 class DocumentObserver
 {
-    /**
-     * Handle the Document "updated" event.
-     */
     public function updated(Document $document): void
     {
         if ($document->isDirty('resource')) {
@@ -21,9 +18,6 @@ class DocumentObserver
         }
     }
 
-    /**
-     * Handle the Document "deleted" event.
-     */
     public function deleted(Document $document): void
     {
         Storage::disk('public')->delete($document->resource);

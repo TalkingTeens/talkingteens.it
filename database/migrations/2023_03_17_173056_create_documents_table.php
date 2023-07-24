@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->json('title');
             $table->enum('category', ['project', 'statues', 'activity', 'exercises']);
             $table->string('picture')->nullable();
             $table->string('resource');
