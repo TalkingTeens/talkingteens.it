@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'logo',
@@ -15,5 +18,8 @@ class Article extends Model
         'order',
     ];
 
-    use HasFactory;
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new ActiveScope);
+    }
 }

@@ -1,10 +1,10 @@
 @title('Contributi')
 
-@extends('layouts.base')
+@extends('layouts.default')
 
 @push('meta')
 @endpush
 
-@section('body')
+@section('content')
 
 @endsection

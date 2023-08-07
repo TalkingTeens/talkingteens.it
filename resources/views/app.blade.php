@@ -1,10 +1,10 @@
 @title('App')
 
-@extends('layouts.base')
+@extends('layouts.default')
 
 @push('meta')
 @endpush
 
-@section('body')
+@section('content')
     app
 @endsection

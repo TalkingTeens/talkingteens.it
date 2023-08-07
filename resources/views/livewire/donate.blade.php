@@ -13,11 +13,11 @@
         </p>
         <div class="flex gap-10">
             <x-button.rounded
-                icon="{{ asset('svg/credit-card.svg') }}"
+                icon="svg/credit-card.svg"
                 action="setMethod('card')"
             />
             <x-button.rounded
-                icon="{{ asset('svg/bank.svg') }}"
+                icon="svg/bank.svg"
                 action="setMethod('iban')"
             />
         </div>

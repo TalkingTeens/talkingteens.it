@@ -1,9 +1,9 @@
-@extends('layouts.base')
+@extends('layouts.default')
 
 @push('meta')
 @endpush
 
-@section('body')
+@section('content')
     <section class="h-screen">
         <video autoplay muted loop poster="{{ asset('images/welcome.jpg') }}" class="h-full w-full object-cover">
             <source src="{{ asset('videos/welcome.mp4') }}" type="video/mp4">

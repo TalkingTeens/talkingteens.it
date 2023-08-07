@@ -7,14 +7,14 @@ use App\Models\Monument;
 
 class Webcall extends Component
 {
-    public $monument;
+    public Monument $monument;
     public $webcall;
-//    public $supportedLangs;
-    public $lang = '';
-    public $state;
+    public $langs;
+    public string $activeLang = '';
+    public int $state;
 
     protected $queryString = [
-        'lang' => ['except' => '', 'as' => 'l'],
+        'activeLang' => ['except' => '', 'as' => 'l'],
     ];
 
     public function mount(Monument $monument): void
@@ -23,9 +23,8 @@ class Webcall extends Component
 
         $this->webcall = $this->monument->webcall;
 
-//        dd($this->webcall->resources);
-
-//        $this->supportedLangs = $this->webcall->resources->pluck('resource', 'language');
+        $this->langs = collect(array_column($this->webcall->resources, 'data'))
+            ->pluck('resource', 'language');
 
         $this->check();
     }
@@ -37,10 +36,9 @@ class Webcall extends Component
             abort(404);
         }
 
-
         $this->checkExternal();
 
-        if (in_array($this->lang, $this->supportedLangs->keys()->all()))
+        if (in_array($this->activeLang, $this->langs->keys()->all()))
         {
             $this->setState(1);
         }
@@ -52,7 +50,7 @@ class Webcall extends Component
 
     public function setLang($lang): void
     {
-        $this->lang = $lang;
+        $this->activeLang = $lang;
 
         $this->checkExternal();
 
@@ -61,10 +59,10 @@ class Webcall extends Component
 
     public function checkExternal()
     {
-        if (in_array($this->lang, ["lis"]))
+        if (in_array($this->activeLang, ["lis"]))
         {
             $this->setState(3);
-            return redirect()->away($this->supportedLangs[$this->lang]);
+            return redirect()->away($this->langs[$this->activeLang]);
         }
     }
 
@@ -84,7 +82,7 @@ class Webcall extends Component
 
     public function replay(): void
     {
-        $this->reset(['lang']);
+        $this->reset(['activeLang']);
 
         $this->setState(0);
     }
@@ -96,6 +94,8 @@ class Webcall extends Component
 
     public function render()
     {
-        return view('livewire.webcall');
+        return view('livewire.webcall')
+            ->extends('layouts.base')
+            ->section('body');
     }
 }

@@ -17,19 +17,14 @@ Route::group(
 ],
 function() {
 
-    // Home
     Route::get('/', HomeController::class)->name('home');
     Route::get('app', AppController::class)->name('app');
-    Route::get('didactics', DocumentController::class)->name('docs');
-    Route::get('contributes', ContributesController::class)->name('contributes');
-    Route::get('donate', Donate::class)->name('donate');
-
+    Route::get('didattica', DocumentController::class)->name('docs');
+    Route::get('sostenitori', ContributesController::class)->name('contributes');
+    Route::get('dona', Donate::class)->name('donate');
     Route::view('privacy-policy', 'privacy')->name('privacy');
-
     Route::get('webcall/{monument}', Webcall::class)->name('call');
-
-    Route::get('monuments/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
-
-    Route::get('monuments', Monuments\Index::class)->name('monuments.index');
+    Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
+    Route::get('statue', Monuments\Index::class)->name('monuments.index');
 
 });

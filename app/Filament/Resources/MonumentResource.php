@@ -19,6 +19,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Tabs;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -46,139 +47,151 @@ class MonumentResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()
-                    ->schema([
-                        Card::make()
+                Tabs::make('Heading')
+                    ->tabs([
+                        Tabs\Tab::make('Data')
                             ->schema([
-                                TextInput::make('name')
-                                    ->required()
-                                    ->reactive()
-                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
-
-                                TextInput::make('slug')
-                                    ->disabledOn('edit')
-                                    ->required()
-                                    ->helperText('Una volta impostato, questo campo non può essere più modificato.')
-                                    ->unique(Monument::class, 'slug', ignoreRecord: true),
-
-                                TextInput::make('phone_number')
-                                    ->mask(fn (TextInput\Mask $mask) => $mask->pattern('+{39} 0000 000 000'))
-                                    ->tel(),
-
-                                Select::make('municipality_code')
-                                    ->searchable()
-                                    ->relationship('municipality', 'name')
-                                    ->required(),
-
-                                FileUpload::make('monument_image')
-                                    ->image()
-                                    ->directory('images/monuments')
-                                    ->required(),
-
-                                Select::make('character_id')
-                                    ->multiple()
-                                    ->relationship('characters', 'name')
-                            ])
-                            ->columns(2),
-
-                        Section::make('Webcall')
-                            ->relationship('webcall')
-                            ->schema([
-                                WebcallBuilder::make('resources')
-                                    ->blocks([
-                                        WebcallBuilder\Block::make('audio')
+                                Group::make()
+                                    ->schema([
+                                        Card::make()
                                             ->schema([
-                                                Select::make('language')
-                                                    ->options([
-                                                        'it' => 'Italiano',
-                                                        'en' => 'Inglese',
-                                                        'pr' => 'Dialetto parmigiano',
-                                                    ])
-                                                    ->reactive()
-                                                    ->required(),
-                                                FileUpload::make('resource')
-                                                    ->directory('audio/webcalls')
+                                                TextInput::make('name')
                                                     ->required()
-                                                    ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
-                                            ])
-                                            ->columns(2),
-                                        WebcallBuilder\Block::make('link')
-                                            ->schema([
-                                                Select::make('language')
-                                                    ->options([
-                                                        'lis' => 'Lingua dei Segni Italiana',
-                                                    ])
+                                                    ->reactive()
+                                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+
+                                                TextInput::make('slug')
+                                                    ->disabledOn('edit')
+                                                    ->required()
+                                                    ->helperText('Una volta impostato, questo campo non può essere più modificato.')
+                                                    ->unique(Monument::class, 'slug', ignoreRecord: true),
+
+                                                TextInput::make('phone_number')
+                                                    ->mask(fn (TextInput\Mask $mask) => $mask->pattern('+{39} 0000 000 000'))
+                                                    ->tel(),
+
+                                                Select::make('municipality_code')
+                                                    ->searchable()
+                                                    ->relationship('municipality', 'name')
                                                     ->required(),
 
-                                                TextInput::make('resource')
-                                                    ->url(),
+                                                FileUpload::make('monument_image')
+                                                    ->image()
+                                                    ->directory('images/monuments')
+                                                    ->required(),
+
+                                                Select::make('character_id')
+                                                    ->multiple()
+                                                    ->relationship('characters', 'name')
                                             ])
                                             ->columns(2),
-                                    ]),
-                            ])
-                            ->collapsible(),
 
-                        RichEditor::make('description')
-                            ->columnSpan(2)
-                            ->disableToolbarButtons([
-                                'codeBlock',
+                                        RichEditor::make('description')
+                                            ->columnSpan(2)
+                                            ->disableToolbarButtons([
+                                                'codeBlock',
+                                            ]),
+                                    ])
+                            ]),
+                        Tabs\Tab::make('Map')
+                            ->schema([
+                                TextInput::make('latitude')
+                                    ->numeric()
+                                    /*->mask(fn (TextInput\Mask $mask) => $mask
+                                        ->numeric()
+                                        ->decimalSeparator(',')
+                                        ->decimalPlaces(6)
+                                        ->mapToDecimalSeparator(['.'])
+                                        ->minValue(-90)
+                                        ->maxValue(90)
+                                        ->padFractionalZeros()
+                                    )*/
+                                    ->required(),
+                                TextInput::make('longitude')
+                                    ->numeric()
+                                    /*->mask(fn (TextInput\Mask $mask) => $mask
+                                        ->numeric()
+                                        ->decimalPlaces(6)
+                                        ->decimalSeparator(',')
+                                        ->mapToDecimalSeparator(['.'])
+                                        ->minValue(-180)
+                                        ->maxValue(180)
+                                        ->padFractionalZeros()
+                                    )*/
+                                    ->required(),
+                                FileUpload::make('pin_image')
+                                    ->nullable()
+                                    ->columnSpan('full')
+                                    ->image()
+                                    ->directory('images/pins'),
+                            ])->columns(2),
+                        Tabs\Tab::make('Webcall')
+                            ->schema([
+                                FileUpload::make('background_image')
+                                    ->nullable()
+                                    ->columnSpan('full')
+                                    ->image()
+                                    ->directory('images/monuments/background'),
+                                Group::make()
+                                    ->relationship('webcall')
+                                    ->schema([
+                                        WebcallBuilder::make('resources')
+                                            ->blocks([
+                                                WebcallBuilder\Block::make('audio')
+                                                    ->schema([
+                                                        Select::make('language')
+                                                            ->options([
+                                                                'it' => 'Italiano',
+                                                                'en' => 'Inglese',
+                                                                'pr' => 'Dialetto parmigiano',
+                                                            ])
+                                                            ->reactive()
+                                                            ->required(),
+                                                        FileUpload::make('resource')
+                                                            ->directory('audio/webcalls')
+                                                            ->required()
+                                                            ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
+                                                    ])
+                                                    ->columns(2),
+                                                WebcallBuilder\Block::make('link')
+                                                    ->schema([
+                                                        Select::make('language')
+                                                            ->options([
+                                                                'lis' => 'Lingua dei Segni Italiana',
+                                                            ])
+                                                            ->required(),
+
+                                                        TextInput::make('resource')
+                                                            ->url(),
+                                                    ])
+                                                    ->columns(2),
+                                            ]),
+                                    ]),
                             ]),
                     ])
                     ->columnSpan(['lg' => 2]),
+                    Group::make()->schema([
+                        Card::make()
+                            ->schema([
+                                Placeholder::make('created_at')
+                                    ->content(fn (Monument $record): ?string => $record->created_at?->diffForHumans()),
 
-                Group::make()->schema([
-                    Card::make()
-                        ->schema([
-                            Placeholder::make('created_at')
-                                ->content(fn (Monument $record): ?string => $record->created_at?->diffForHumans()),
+                                Placeholder::make('updated_at')
+                                    ->content(fn (Monument $record): ?string => $record->updated_at?->diffForHumans()),
+                            ])
+                            ->hidden(fn (?Monument $record) => $record === null),
 
-                            Placeholder::make('updated_at')
-                                ->content(fn (Monument $record): ?string => $record->updated_at?->diffForHumans()),
-                        ])
-                        ->hidden(fn (?Monument $record) => $record === null),
+                        Section::make('Status')
+                            ->schema([
+                                Select::make('category_id')
+                                    ->multiple()
+                                    ->relationship('categories', 'name'),
 
-                    Section::make('Status')
-                        ->schema([
-                            Select::make('category_id')
-                                ->multiple()
-                                ->relationship('categories', 'name'),
-
-                            Toggle::make('visible')
-                                ->helperText('This statue will be hidden.')
-                                ->default(true),
-                        ]),
-
-                    Section::make('Map')
-                        ->schema([
-                            TextInput::make('latitude')
-                                ->numeric()
-                                /*->mask(fn (TextInput\Mask $mask) => $mask
-                                    ->numeric()
-                                    ->decimalSeparator(',')
-                                    ->decimalPlaces(6)
-                                    ->mapToDecimalSeparator(['.'])
-                                    ->minValue(-90)
-                                    ->maxValue(90)
-                                    ->padFractionalZeros()
-                                )*/
-                                ->required(),
-                            TextInput::make('longitude')
-                                ->numeric()
-                                /*->mask(fn (TextInput\Mask $mask) => $mask
-                                    ->numeric()
-                                    ->decimalPlaces(6)
-                                    ->decimalSeparator(',')
-                                    ->mapToDecimalSeparator(['.'])
-                                    ->minValue(-180)
-                                    ->maxValue(180)
-                                    ->padFractionalZeros()
-                                )*/
-                                ->required(),
-                            FileUpload::make('pin_image')
-                                ->image()
-                                ->directory('images/pins') ,
-                        ]),
-                ])
+                                Toggle::make('visible')
+                                    ->helperText('This statue will be hidden.')
+                                    ->default(true),
+                            ]),
+                    ])
                     ->columnSpan(['lg' => 1]),
             ])
             ->columns(3);

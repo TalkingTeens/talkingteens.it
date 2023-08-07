@@ -18,6 +18,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -43,14 +44,11 @@ class CharacterResource extends Resource
                                 TextInput::make('name')
                                     ->required(),
 
-                                TextInput::make('role'),
-
                                 FileUpload::make('picture')
                                     ->image()
                                     ->directory('images/characters')
                                     ->nullable()
-                                    ->disableLabel()
-                                    ->columnSpan(2),
+                                    ->disableLabel(),
                             ])
                             ->columns(2),
 
@@ -93,11 +91,8 @@ class CharacterResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('picture'),
                 TextColumn::make('name')
-                    ->sortable()
-                    ->searchable(),
-
-                TextColumn::make('role')
                     ->sortable()
                     ->searchable(),
             ])

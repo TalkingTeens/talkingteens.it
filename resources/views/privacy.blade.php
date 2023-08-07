@@ -1,11 +1,11 @@
 @title('Privacy Policy')
 
-@extends('layouts.base')
+@extends('layouts.default')
 
 @push('meta')
 @endpush
 
-@section('body')
+@section('content')
     <section class="max-w-7xl w-11/12 mx-auto my-16 grid gap-y-4">
         <h1 class="title-lg">
             Privacy Policy

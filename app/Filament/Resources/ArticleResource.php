@@ -31,12 +31,15 @@ class ArticleResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required(),
+
                 FileUpload::make('logo')
                     ->directory('images/articles')
                     ->required(),
+
                 TextInput::make('resource')
                     ->url()
                     ->columnSpan(2),
+
                 Toggle::make('visible')
                     ->default(true),
             ]);
@@ -47,9 +50,11 @@ class ArticleResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('logo'),
+
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
+
                 IconColumn::make('visible')
                     ->sortable()
                     ->boolean()
@@ -67,6 +72,11 @@ class ArticleResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ])
             ->reorderable('order');
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 
     public static function getPages(): array

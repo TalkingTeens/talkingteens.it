@@ -12,7 +12,6 @@ class Character extends Model
 
     protected $fillable = [
         'name',
-        'role',
         'picture',
         'birth_year',
         'death_year',
@@ -21,7 +20,6 @@ class Character extends Model
 
     public $translatable = [
 //        'name',
-        'role',
         'description',
     ];
 }

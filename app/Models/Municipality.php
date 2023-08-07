@@ -11,6 +11,9 @@ class Municipality extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'code';
+    public $incrementing = false;
+
     public function province(): BelongsTo
     {
         return $this->belongsTo(Province::class);
@@ -18,6 +21,6 @@ class Municipality extends Model
 
     public function monuments(): HasMany
     {
-        return $this->hasMany(Monument::class, 'municipality_code', 'code');
+        return $this->hasMany(Monument::class);
     }
 }

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Donate extends Component
 {
-    public $method = '';
+    public string $method = '';
 
     protected $queryString = [
         'method' => ['except' => '', 'as' => 'm'],

@@ -1,2 +1,5 @@
 @import "./components/link/footer.css";
+@import "./components/link/webcall.css";
+@import "./components/link/search.css";
+
 @import "./components/title/lg.css";

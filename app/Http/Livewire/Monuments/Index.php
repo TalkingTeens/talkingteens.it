@@ -19,14 +19,21 @@ class Index extends Component
         'municipality' => ['as' => 'm'],
     ];
 
+    protected $listeners = ['changeMunicipality', 'toggleView', 'changeCategory'];
+
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
     }
 
-    public function setCategory($category = null): void
+    public function changeCategory($category = null): void
     {
         $this->category = $category;
+    }
+
+    public function changeMunicipality($code)
+    {
+        $this->municipality = $code;
     }
 
     public function render(): View
@@ -39,15 +46,13 @@ class Index extends Component
                     return $q->where('istat_code', $this->municipality);
                 });
             })
-            /*->when($this->municipality, function ($q) {
-                return $q->whereIn('country', $this->filters['country']);
-            })*/
-
             ->when($this->category, function ($q) {
                 return $q->whereHas('categories', function($q) {
                     return $q->where('slug', $this->category);
                 });
-            })->get();
+            })
+            ->orderBy('slug')
+            ->get();
 
         return view('livewire.monuments.index',
             compact(['monuments', 'categories'])

@@ -1,11 +1,11 @@
 @title('Didattica')
 
-@extends('layouts.base')
+@extends('layouts.default')
 
 @push('meta')
 @endpush
 
-@section('body')
+@section('content')
     <section class="max-w-7xl w-11/12 mx-auto my-16 grid gap-y-4">
         <h1 class="title-lg">
             DidaTTica
@@ -15,7 +15,7 @@
             Cartelle
         </h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
---}}{{--            <livewire:document.file />--}}{{--
+--}}{{--            <x-document.folder />--}}{{--
         </div>--}}
         @foreach ($documents as $key => $category)
             <h2 class="font-semibold">

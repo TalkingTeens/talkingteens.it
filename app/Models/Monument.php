@@ -19,6 +19,7 @@ class Monument extends Model
         'slug',
         'description',
         'monument_image',
+        'background_image',
         'pin_image',
         'latitude',
         'longitude',
@@ -44,7 +45,7 @@ class Monument extends Model
 
     public function municipality(): BelongsTo
     {
-        return $this->belongsTo(Municipality::class, 'municipality_code', 'code');
+        return $this->belongsTo(Municipality::class);
     }
 
     public function webcall(): HasOne
