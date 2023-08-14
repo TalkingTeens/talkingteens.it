@@ -2,14 +2,14 @@
     wire:click="open"
     target="_blank"
     href="{{ asset(Storage::url($document->resource)) }}"
-    class="sm:p-2 sm:bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
+    class="p-2 bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
 >
     <div class="flex items-center px-2 py-3 gap-3">
-        <img
+        {{--<img
             class="h-6 w-6"
             src="{{ asset('svg/document/file.svg') }}"
             alt=""
-        >
+        >--}}
         <div class="grow sm:overflow-hidden">
             <h3 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
                 {{ $document->title }}

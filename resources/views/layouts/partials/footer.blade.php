@@ -74,12 +74,17 @@
                             d="M508.64 148.79c0-45-33.1-81.2-74-81.2C379.24 65 322.74 64 265 64h-18c-57.6 0-114.2 1-169.6 3.6C36.6 67.6 3.5 104 3.5 149 1 184.59-.06 220.19 0 255.79q-.15 53.4 3.4 106.9c0 45 33.1 81.5 73.9 81.5 58.2 2.7 117.9 3.9 178.6 3.8q91.2.3 178.6-3.8c40.9 0 74-36.5 74-81.5 2.4-35.7 3.5-71.3 3.4-107q.34-53.4-3.26-106.9zM207 353.89v-196.5l145 98.2z"/>
                     </svg>
                 </a>
-                <a href="mailto:info@talkingteens.it" class="transition-colors">
-                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <a href="mailto:info@talkingteens.it" class="transition-colors group">
+                    <svg class="h-5 w-5 group-hover:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <rect x="48" y="96" width="416" height="320" rx="40" ry="40" fill="none" stroke="currentColor"
                               stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                               stroke-width="32" d="M112 160l144 112 144-112"/>
+                    </svg>
+
+                    <svg class="h-5 w-5 hidden group-hover:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M441.6 171.61L266.87 85.37a24.57 24.57 0 00-21.74 0L70.4 171.61A40 40 0 0048 207.39V392c0 22.09 18.14 40 40.52 40h335c22.38 0 40.52-17.91 40.52-40V207.39a40 40 0 00-22.44-35.78z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+                        <path d="M397.33 368L268.07 267.46a24 24 0 00-29.47 0L109.33 368M309.33 295l136-103M61.33 192l139 105" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
                     </svg>
                 </a>
             </div>

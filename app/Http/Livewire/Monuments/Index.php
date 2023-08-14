@@ -19,7 +19,7 @@ class Index extends Component
         'municipality' => ['as' => 'm'],
     ];
 
-    protected $listeners = ['changeMunicipality', 'toggleView', 'changeCategory'];
+    protected $listeners = ['changeMunicipality', 'changeCategory'];
 
     public function toggleView(): void
     {
@@ -29,6 +29,7 @@ class Index extends Component
     public function changeCategory($category = null): void
     {
         $this->category = $category;
+        $this->dispatchBrowserEvent('name-updated');
     }
 
     public function changeMunicipality($code)

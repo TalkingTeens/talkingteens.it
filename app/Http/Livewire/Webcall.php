@@ -23,6 +23,11 @@ class Webcall extends Component
 
         $this->webcall = $this->monument->webcall;
 
+        if (empty($this->webcall?->resources))
+        {
+            abort(404);
+        }
+
         $this->langs = collect(array_column($this->webcall->resources, 'data'))
             ->pluck('resource', 'language');
 
@@ -31,11 +36,6 @@ class Webcall extends Component
 
     public function check(): void
     {
-        if (!$this->webcall || empty($this->webcall->resources))
-        {
-            abort(404);
-        }
-
         $this->checkExternal();
 
         if (in_array($this->activeLang, $this->langs->keys()->all()))

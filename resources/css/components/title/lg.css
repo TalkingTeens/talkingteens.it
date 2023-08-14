@@ -1,3 +1,3 @@
 .title-lg {
-    @apply font-bold text-8xl mb-12 py-10 text-center;
+    @apply font-bold text-8xl mb-16 py-10 text-center;
 }

@@ -32,6 +32,13 @@
 
     @yield('body')
 
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3GJ7WZTD6J');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GJ7WZTD6J"></script>
     @stack('scripts')
     @livewireScripts
 </body>

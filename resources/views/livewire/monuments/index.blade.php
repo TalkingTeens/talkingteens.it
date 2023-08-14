@@ -14,14 +14,14 @@
             </div>
         </div>
     @else
-        <x-map />
+        <x-map :$monuments />
     @endif
 
     <x-button.monuments.view />
 </section>
 
 @section('subheader')
-    <div x-data="{ active : '{{ request('c') }}' }" class="pb-3 pt-4 no-scrollbar overflow-x-auto max-w-6xl flex gap-x-5 sm:gap-x-8 lg:gap-x-10">
+    <div x-data="{ active : '{{ request('c') }}' }" class="h-[var(--subheader-height)] no-scrollbar overflow-x-auto max-w-6xl flex items-center gap-x-5 sm:gap-x-8 lg:gap-x-10">
         <x-button.monuments.category title="Tutto" icon="svg/grid.svg" alt="Icona" />
         @foreach($categories as $category)
             <x-button.monuments.category :title="$category->name"
@@ -34,7 +34,4 @@
 
 @pushonce('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr1D4oqR_NQYcN50-xynP9_-rOnWSa9w"></script>
-    <script>
-        console.log(@js($monuments));
-    </script>
 @endpushonce

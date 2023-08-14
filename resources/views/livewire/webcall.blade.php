@@ -16,7 +16,7 @@
                         <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
                     </a>
                 </div>
-                <div class="grid gap-2 w-full">
+                <div class="grid gap-2 w-full [&>a]:hidden">
                     @if ($state == 0)
                         @foreach ($langs->keys() as $language)
                             <x-button.webcall.action action="setLang('{{ $language }}')" :$language>

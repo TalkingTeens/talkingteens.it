@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <section class="relative bg-nd h-screen text-white overflow-hidden">
+    <section class="relative bg-nd h-fill text-white overflow-hidden">
         <div class="absolute top-1/4 left-[10%] z-10 max-w-xs text-white/50">
                 <a href="{{ URL::previous() }}" class="group relative hidden sm:block">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute top-1/2 -translate-y-1/2 rotate-180 pointer-events-none -translate-x-8 group-hover:-translate-x-10 transition-transform">
@@ -35,9 +35,11 @@
         >
     </section>
 
-    <button>
-
-    </button>
+    @if($monument->webcall?->resources)
+        <button x-data @click="$store.sidebar.toggle()">
+            ciao
+        </button>
+    @endif
 
     @unless($monument->classes->isEmpty())
         <section class="mx-auto max-w-5xl w-11/12 grid gap-20 py-20">
@@ -82,6 +84,8 @@
     {!! $monument->monument_history !!}
 @endsection
 
-@section('sidebar')
-    ciao
-@endsection
+@if($monument->webcall?->resources)
+    @section('sidebar')
+        <object class="w-full h-full" type="text/html" data="{{ route('call', $monument) }}"></object>
+    @endsection
+@endif

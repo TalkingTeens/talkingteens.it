@@ -1,0 +1,9 @@
+:root {
+    @apply [--nav-height:4.5rem]
+    [--banner-height:2.25rem]
+    [--subheader-height:4.2rem]
+}
+
+.h-fill {
+    @apply h-[calc(100vh-var(--nav-height)-var(--banner-height))]
+}

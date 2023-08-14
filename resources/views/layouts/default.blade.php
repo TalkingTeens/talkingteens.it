@@ -2,11 +2,14 @@
 
 @section('body')
     @hasSection('sidebar')
-        <div class="print:hidden fixed top-0 right-0 h-screen bg-st shrink-0 -translate-x-full transform-gpu transition-transform duration-200 ease-in">
+        <aside x-data :class="$store.sidebar.open ? 'translate-x-0' : 'translate-x-full'"
+            class="print:hidden fixed top-0 right-0 h-screen bg-st shrink-0 w-1/4 transform-gpu transition-transform ease-in-out"
+        >
             @yield('sidebar')
-        </div>
+        </aside>
+    <div x-data :class="$store.sidebar.open ? 'w-3/4' : 'w-full'" class="transition-all ease-in-out">
     @endif
-    <div>
+
         @include('layouts.partials.ads.banner')
         @include('layouts.partials.nav')
 
@@ -15,5 +18,21 @@
         </main>
 
         @include('layouts.partials.footer')
+
+    @hasSection('sidebar')
     </div>
+        @pushonce('scripts')
+            <script>
+                document.addEventListener('alpine:init', () => {
+                    Alpine.store('sidebar', {
+                        open: false,
+
+                        toggle() {
+                            this.open = ! this.open
+                        }
+                    })
+                })
+            </script>
+        @endpushonce
+    @endif
 @endsection

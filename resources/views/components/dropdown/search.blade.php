@@ -11,7 +11,7 @@
     @keydown.escape.prevent.stop="close()"
     @focusin.window="! $refs.panel.contains($event.target) && close()"
     x-id="['dropdown']"
-    class="relative w-11/12 max-w-lg"
+    class="relative w-full max-w-lg"
 >
     <button
         type="button"
