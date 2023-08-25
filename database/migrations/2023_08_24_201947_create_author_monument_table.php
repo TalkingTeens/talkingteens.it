@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('treaters', function (Blueprint $table) {
-            $table->id();
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('full_name')->virtualAs('concat(first_name, \' \', last_name)');
-            $table->timestamps();
+        Schema::create('author_monument', function (Blueprint $table) {
+            $table->foreignId('author_id')->constrained();
+            $table->foreignId('monument_id')->constrained();
+
+            $table->primary(['author_id', 'monument_id']);
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('treaters');
+        Schema::dropIfExists('author_monument');
     }
 };

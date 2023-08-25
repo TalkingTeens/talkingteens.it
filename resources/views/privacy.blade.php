@@ -7,7 +7,7 @@
 
 @section('content')
     <section class="max-w-7xl w-11/12 mx-auto my-16">
-        <h1 class="title-lg">
+        <h1 class="title-2xl">
             Privacy Policy
         </h1>
         <div class="grid md:grid-cols-3 gap-16">

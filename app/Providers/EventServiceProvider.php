@@ -2,15 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Author;
+use App\Models\Category;
+use App\Observers\AuthorObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use App\Models\Document;
 use App\Models\Classe;
 use App\Models\Sponsor;
 use App\Models\Monument;
 use App\Observers\DocumentObserver;
+use App\Observers\CategoryObserver;
 use App\Observers\SponsorObserver;
 use App\Observers\MonumentObserver;
 use App\Observers\ClasseObserver;
@@ -24,6 +27,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $observers = [
         Document::class => [DocumentObserver::class],
+        Author::class => [AuthorObserver::class],
+        Category::class => [CategoryObserver::class],
         Monument::class => [MonumentObserver::class],
         Sponsor::class => [SponsorObserver::class],
         Classe::class => [ClasseObserver::class],

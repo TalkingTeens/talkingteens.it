@@ -1,0 +1,16 @@
+.checkbox,
+.checkbox::before {
+    @apply transition-all duration-200 ease-in-out;
+}
+
+.checkbox {
+    --tw-thumb: url("data:image/svg+xml,%3csvg viewBox='0 0 512 512' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='60' d='M416 128L192 384l-96-96'/%3e%3c/svg%3e");
+
+    @apply h-5 w-5 rounded-full relative shrink-0 appearance-none cursor-pointer disabled:cursor-auto select-none outline-none focus:outline-none focus:border-st
+    border-2 border-slate-400/70 checked:border-st checked:bg-st hover:border-st bg-origin-border
+    before:[background-size:55%_55%] before:[background-image:var(--tw-thumb)];
+}
+
+.checkbox::before {
+    @apply origin-bottom absolute inset-0 h-full w-full scale-0 checked:scale-100 bg-center bg-no-repeat;
+}

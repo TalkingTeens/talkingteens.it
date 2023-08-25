@@ -1,4 +1,4 @@
-<div id="map" class="h-[60vh]"></div>
+<div id="map" {{ $attributes->class(['']) }}></div>
 
 @push('scripts')
     <script>

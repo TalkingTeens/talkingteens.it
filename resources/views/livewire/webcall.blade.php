@@ -16,7 +16,7 @@
                         <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
                     </a>
                 </div>
-                <div class="grid gap-2 w-full [&>a]:hidden">
+                <div class="grid gap-2 w-full ">{{--[&>a]:hidden--}}
                     @if ($state == 0)
                         @foreach ($langs->keys() as $language)
                             <x-button.webcall.action action="setLang('{{ $language }}')" :$language>
@@ -67,15 +67,15 @@
                     "justify-center" => $state == 2
                 ])>
                     <x-button.rounded
+                        wire:click="hangUp"
                         icon="svg/hang-up.svg"
-                        action="hangUp"
                         bg="bg-red-500"
                     />
 
                     @if ($state == 1)
                         <x-button.rounded
+                            wire:click="answer"
                             icon="svg/call.svg"
-                            action="answer"
                             bg="bg-green-500"
                         />
                     @endif

@@ -2,16 +2,14 @@
 
 <section>
     @if($view === 'list')
-        <div class="max-w-7xl w-11/12 mx-auto my-16 grid gap-4">
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                @forelse($monuments as $monument)
-                    <x-card.monument :$monument />
-                @empty
-                    <p>
-                        Nessun risultato trovato.
-                    </p>
-                @endforelse
-            </div>
+        <div class="max-w-7xl w-11/12 mx-auto my-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+            @forelse($monuments as $monument)
+                <x-card.monument :$monument />
+            @empty
+                <p class="col-span-full">
+                    Nessun risultato trovato.
+                </p>
+            @endforelse
         </div>
     @else
         <x-map :$monuments />

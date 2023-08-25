@@ -2,8 +2,8 @@
 
 @section('body')
     @hasSection('sidebar')
-        <aside x-data :class="$store.sidebar.open ? 'translate-x-0' : 'translate-x-full'"
-            class="print:hidden fixed top-0 right-0 h-screen bg-st shrink-0 w-1/4 transform-gpu transition-transform ease-in-out"
+        <aside x-data :class="$store.sidebar.open && '!translate-x-0'"
+            class="print:hidden fixed top-0 right-0 h-screen bg-st shrink-0 w-1/4 translate-x-full transform-gpu transition-transform ease-in-out"
         >
             @yield('sidebar')
         </aside>

@@ -48,6 +48,11 @@ class Monument extends Model
         return $this->belongsTo(Municipality::class);
     }
 
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class);
+    }
+
     public function webcall(): HasOne
     {
         return $this->hasOne(Webcall::class);

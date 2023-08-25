@@ -75,12 +75,18 @@ class MonumentResource extends Resource
                                                     ->relationship('municipality', 'name')
                                                     ->required(),
 
+                                                Select::make('author_id')
+                                                    ->searchable()
+                                                    ->multiple()
+                                                    ->relationship('authors', 'full_name'),
+
                                                 FileUpload::make('monument_image')
                                                     ->image()
                                                     ->directory('images/monuments')
                                                     ->required(),
 
                                                 Select::make('character_id')
+                                                    ->searchable()
                                                     ->multiple()
                                                     ->relationship('characters', 'name')
                                             ])
@@ -137,7 +143,7 @@ class MonumentResource extends Resource
                                     ->schema([
                                         WebcallBuilder::make('resources')
                                             ->blocks([
-                                                WebcallBuilder\Block::make('audio')
+                                                WebcallBuilder\Block::make('audio')->icon('heroicon-o-microphone')
                                                     ->schema([
                                                         Select::make('language')
                                                             ->options([
@@ -151,9 +157,21 @@ class MonumentResource extends Resource
                                                             ->directory('audio/webcalls')
                                                             ->required()
                                                             ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
+                                                        Select::make('voice_id')
+                                                            ->multiple()
+                                                            ->relationship('voices', 'full_name')
+                                                            ->createOptionForm([
+                                                                Forms\Components\Grid::make(2)
+                                                                    ->schema([
+                                                                        Forms\Components\TextInput::make('first_name')
+                                                                            ->required(),
+                                                                        Forms\Components\TextInput::make('last_name')
+                                                                            ->required(),
+                                                                    ])
+                                                            ])
                                                     ])
                                                     ->columns(2),
-                                                WebcallBuilder\Block::make('link')
+                                                WebcallBuilder\Block::make('link')->icon('heroicon-o-link')
                                                     ->schema([
                                                         Select::make('language')
                                                             ->options([
@@ -184,6 +202,7 @@ class MonumentResource extends Resource
                         Section::make('Status')
                             ->schema([
                                 Select::make('category_id')
+                                    ->searchable()
                                     ->multiple()
                                     ->relationship('categories', 'name'),
 

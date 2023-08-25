@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <section class="relative bg-nd h-fill text-white overflow-hidden">
+    <header class="relative bg-nd h-fill text-white overflow-hidden">
         <div class="absolute top-1/4 left-[10%] z-10 max-w-xs text-white/50">
                 <a href="{{ URL::previous() }}" class="group relative hidden sm:block">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute top-1/2 -translate-y-1/2 rotate-180 pointer-events-none -translate-x-8 group-hover:-translate-x-10 transition-transform">
@@ -33,15 +33,71 @@
             src="{{ asset(Storage::url($monument->monument_image)) }}"
             alt=""
         >
-    </section>
+    </header>
+    <div class="w-11/12 max-w-7xl mx-auto my-16">
+        <div class="flex flex-col md:flex-row items-start gap-16">
+            @unless($monument->authors->isEmpty())
+                <div class="space-y-5 md:sticky md:top-[calc(var(--nav-height)+var(--subheader-height))] md:order-1">
+                    <section>
+                        <h2 class="title-lg">
+                            Realizzato da
+                        </h2>
+                        @foreach($monument->authors as $author)
+                            <a href="{{ route('authors.show', ['author' => $author]) }}" class="group flex gap-3 rounded-2xl">
+                                @isset($author->picture)
+                                    <img src="{{ asset(Storage::url($author->picture)) }}" alt="" class="shrink-0 object-cover rounded-full h-16 w-16">
+                                @endisset
+                                <div class="flex flex-col justify-center">
+                                    <h3 class="group-hover:underline">
+                                        {{ $author->full_name }}
+                                    </h3>
+                                    <p class="text-sm opacity-60 italic">
+                                        @if(isset($author->death_year))
+                                            {{ $author->birth_year . ' - ' . $author->death_year }}
+                                        @else
+                                            Nato nel {{ $author->birth_year }}
+                                        @endif
+                                    </p>
+                                </div>
+                            </a>
+                        @endforeach
+                    </section>
+                    <section>
+                        <h2 class="title-lg">
+                            Materiali
+                        </h2>
+                        <p>
+                            Bronzo e Granito
+                        </p>
+                    </section>
+                </div>
+            @endunless
+            <div class="space-y-5 text-justify flex-1">
+                <section>
+                    <h2 class="title-lg">
+                        Monumento inaugurato nel 1907
+                    </h2>
+                    {!! $monument->description !!}
+                </section>
+                <section>
+                    <h2 class="title-lg">
+                        Dove mi trovo
+                    </h2>
+                    <x-map.show :$monument class="h-96" />
+                </section>
+            </div>
+        </div>
+        <section>
+            <h2 class="title-lg">
+                Chi era Arturo Toscanini
+            </h2>
+        </section>
+        <div>
 
-    @if($monument->webcall?->resources)
-        <button x-data @click="$store.sidebar.toggle()">
-            ciao
-        </button>
-    @endif
+        </div>
+    </div>
 
-    @unless($monument->classes->isEmpty())
+{{--    @unless($monument->classes->isEmpty())
         <section class="mx-auto max-w-5xl w-11/12 grid gap-20 py-20">
             @foreach($monument->classes as $class)
                 <div class="flex justify-around">
@@ -76,16 +132,28 @@
                 @endisset
             @endforeach
         </section>
-    @endunless
+    @endunless--}}
 
-    <x-map.show :$monument />
+    @if($monument->webcall?->resources)
+        <div class="sticky bottom-0">
+            <div x-data="{ show : window.pageYOffset < 10, open : false }" class="absolute right-14 bottom-10 flex flex-col items-end gap-6">
+                <p class="max-w-[180px] text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
+                   @scroll.window="show = window.pageYOffset < 10"
+                   x-show="show" x-transition
+                >
+                    Ascolta la statua chiamando il <a href="tel:+" class="whitespace-nowrap text-green-500">{{ $monument->phone_number }}</a>,<br>
+                    oppure clicca il bottone qui sotto
+                </p>
+                <x-button.rounded
+                    @click="$store.sidebar.toggle(); open = !open"
+                    icon="svg/call.svg"
+                    bg="bg-green-500"
+                />
+            </div>
+        </div>
 
-    {!! $monument->character_history !!}
-    {!! $monument->monument_history !!}
+        @section('sidebar')
+            <object class="w-full h-full" type="text/html" data="{{ route('call', $monument) }}"></object>
+        @endsection
+    @endif
 @endsection
-
-@if($monument->webcall?->resources)
-    @section('sidebar')
-        <object class="w-full h-full" type="text/html" data="{{ route('call', $monument) }}"></object>
-    @endsection
-@endif

@@ -15,14 +15,6 @@
         Le statue
     </h1>
 
-    <x-button.primary :href="route('docs')">
-        Didattica
-    </x-button.primary>
-
-    <x-button.primary :href="route('monuments.index')">
-        Monumenti
-    </x-button.primary>
-
     <section>
         @foreach($sponsors as $sponsor)
 

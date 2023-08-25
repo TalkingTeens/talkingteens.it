@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('treaters', function (Blueprint $table) {
-            $table->id();
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('full_name')->virtualAs('concat(first_name, \' \', last_name)');
-            $table->timestamps();
+        Schema::create('voice_webcall', function (Blueprint $table) {
+//            $table->id();
+            $table->foreignId('voice_id')->constrained();
+            $table->foreignId('webcall_id')->constrained();
+
+            $table->primary(['voice_id', 'webcall_id']);
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('treaters');
+        Schema::dropIfExists('voice_webcall');
     }
 };

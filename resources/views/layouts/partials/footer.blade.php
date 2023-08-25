@@ -97,9 +97,9 @@
             <a href="{{ route("privacy") }}" class="hover:text-white transition-colors">
                 Privacy Policy
             </a>
-            <a href="{{ route("privacy") }}" class="hover:text-white transition-colors">
+            <button type="button" x-data @click="Livewire.emitTo('cookie', 'manageCookies')" class="hover:text-white transition-colors">
                 Cookie Policy
-            </a>
+            </button>
         </div>
     </div>
 </footer>

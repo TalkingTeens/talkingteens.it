@@ -13,9 +13,9 @@
         <div class="flex items-center gap-x-2">
             <x-dropdown.lang />
 
-            <x-button.secondary :href="route('app')" class="shrink-0 hidden lg:block">
+            <a href="{{ route('app') }}" class="btn secondary shrink-0 hidden lg:block text-sm rounded-full py-3">
                 Scarica l'app
-            </x-button.secondary>
+            </a>
         </div>
     </div>
 

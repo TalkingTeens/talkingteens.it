@@ -7,7 +7,7 @@
 
 @section('content')
     <section class="max-w-7xl w-11/12 mx-auto my-16 grid gap-y-4">
-        <h1 class="title-lg">
+        <h1 class="title-2xl">
             DidaTTica
         </h1>
 

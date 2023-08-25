@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Webcall extends Model
 {
@@ -16,4 +17,9 @@ class Webcall extends Model
     protected $fillable = [
         'resources',
     ];
+
+    public function voices(): BelongsToMany
+    {
+        return $this->belongsToMany(Voice::class);
+    }
 }

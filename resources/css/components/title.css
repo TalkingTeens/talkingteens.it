@@ -1,0 +1,11 @@
+.title-lg {
+    @apply text-xl font-semibold mb-6;
+}
+
+.title-xl {
+    @apply text-5xl font-bold;
+}
+
+.title-2xl {
+    @apply text-8xl font-bold mb-16 py-10 text-center;
+}
