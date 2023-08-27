@@ -1,5 +1,3 @@
-@title('Statue')
-
 <section>
     @if($view === 'list')
         <div class="max-w-7xl w-11/12 mx-auto my-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -15,7 +13,7 @@
         <x-map :$monuments />
     @endif
 
-    <x-button.monuments.view />
+    <x-button.monuments.view :$view />
 </section>
 
 @section('subheader')

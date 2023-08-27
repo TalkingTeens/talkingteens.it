@@ -5,18 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SchoolResource\Pages;
 use App\Filament\Resources\SchoolResource\RelationManagers;
 use App\Models\School;
-use Filament\Forms;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,7 +22,7 @@ class SchoolResource extends Resource
 {
     protected static ?string $model = School::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -35,7 +30,7 @@ class SchoolResource extends Resource
             ->schema([
                 Group::make()
                     ->schema([
-                        Card::make()
+                        Section::make()
                             ->schema([
                                 TextInput::make('miur_code')
                                     ->required()
@@ -73,7 +68,7 @@ class SchoolResource extends Resource
 
                             TextInput::make('cap')
                                 ->numeric()
-                                ->mask(fn (TextInput\Mask $mask) => $mask->pattern('00000'))
+                                ->mask('99999')
                                 ->required(),
 
                             TextInput::make('address')
@@ -98,7 +93,7 @@ class SchoolResource extends Resource
                 TextColumn::make('municipality.name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\BadgeColumn::make('website')
+                TextColumn::make('website')
                     ->copyable()
                     ->copyMessage('Website copied')
                     ->copyMessageDuration(1500)

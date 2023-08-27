@@ -10,7 +10,7 @@ class ManageSupporters extends ManageRecords
 {
     protected static string $resource = SupporterResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),

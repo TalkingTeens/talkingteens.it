@@ -9,7 +9,6 @@ use App\Filament\Resources\MonumentResource\RelationManagers\TreatersRelationMan
 use App\Models\Monument;
 use Closure;
 use Filament\Forms;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -21,11 +20,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Tabs;
 use Filament\Resources\Concerns\Translatable;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -53,7 +51,7 @@ class MonumentResource extends Resource
                             ->schema([
                                 Group::make()
                                     ->schema([
-                                        Card::make()
+                                        Section::make()
                                             ->schema([
                                                 TextInput::make('name')
                                                     ->required()
@@ -67,7 +65,8 @@ class MonumentResource extends Resource
                                                     ->unique(Monument::class, 'slug', ignoreRecord: true),
 
                                                 TextInput::make('phone_number')
-                                                    ->mask(fn (TextInput\Mask $mask) => $mask->pattern('+{39} 0000 000 000'))
+                                                    ->prefix('+39')
+                                                    ->mask('9999 999 9999')
                                                     ->tel(),
 
                                                 Select::make('municipality_code')
@@ -189,7 +188,7 @@ class MonumentResource extends Resource
                     ])
                     ->columnSpan(['lg' => 2]),
                     Group::make()->schema([
-                        Card::make()
+                        Section::make()
                             ->schema([
                                 Placeholder::make('created_at')
                                     ->content(fn (Monument $record): ?string => $record->created_at?->diffForHumans()),
@@ -226,7 +225,7 @@ class MonumentResource extends Resource
                 TextColumn::make('municipality.name')
                     ->sortable()
                     ->searchable(),
-                BadgeColumn::make('phone_number')
+                TextColumn::make('phone_number')
                     ->copyable()
                     ->sortable(),
                 IconColumn::make('visible')
@@ -235,6 +234,7 @@ class MonumentResource extends Resource
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
             ])
+            ->defaultGroup('municipality.name')
             ->filters([
                 //
             ])

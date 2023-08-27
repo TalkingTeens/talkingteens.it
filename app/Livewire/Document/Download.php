@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Document;
+namespace App\Livewire\Document;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;

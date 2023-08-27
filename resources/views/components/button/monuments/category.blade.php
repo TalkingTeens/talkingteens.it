@@ -1,7 +1,7 @@
-@props(['category' => null, 'title', 'icon' => 'svg/collection.svg', 'alt'])
+@props(['category' => '', 'title', 'icon' => 'svg/collection.svg', 'alt'])
 
 <div
-    @click="Livewire.emit('changeCategory', '{{ $category }}');
+    @click="$dispatch('change-category', { category: '{{ $category }}'});
             active = '{{ $category }}'"
     :class="active === '{{ $category }}' ? '' : 'opacity-70 hover:opacity-100'"
     class="cursor-pointer flex flex-col gap-1 text-center"

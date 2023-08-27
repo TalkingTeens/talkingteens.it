@@ -9,17 +9,15 @@ use App\Filament\Resources\DocumentResource\RelationManagers;
 use App\Models\Document;
 use Filament\Forms;
 use Filament\Resources\Concerns\Translatable;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
@@ -28,7 +26,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\Summarizers\Sum;
 
 class DocumentResource extends Resource
 {
@@ -38,6 +36,8 @@ class DocumentResource extends Resource
 
     protected static ?string $navigationGroup = 'Settings';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
@@ -46,7 +46,7 @@ class DocumentResource extends Resource
             ->schema([
                 Group::make()
                     ->schema([
-                    Card::make()
+                        Section::make()
                         ->schema([
                         TextInput::make('title')
                             ->required()
@@ -84,7 +84,7 @@ class DocumentResource extends Resource
                 ->columnSpan(['lg' => 2]),
 
                 Group::make()->schema([
-                    Card::make()
+                    Section::make()
                         ->schema([
                             Placeholder::make('created_at')
                                 ->content(fn (Document $record): ?string => $record->created_at?->diffForHumans()),
@@ -116,13 +116,22 @@ class DocumentResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                BadgeColumn::make('category'),
+                TextColumn::make('category')
+                    ->badge(),
 
                 TextColumn::make('opened')
-                    ->sortable(),
+                    ->sortable()
+                    ->numeric()
+                    ->summarize([
+                        Sum::make(),
+                    ]),
 
                 TextColumn::make('downloads')
-                    ->sortable(),
+                    ->sortable()
+                    ->numeric()
+                    ->summarize([
+                        Sum::make(),
+                    ]),
 
                 IconColumn::make('visible')
                     ->sortable()
@@ -144,6 +153,11 @@ class DocumentResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['filename'];
     }
 
     public static function getRelations(): array

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 
@@ -8,8 +8,6 @@ class Cookie extends Component
 {
     public int $state;
     public bool $analytics;
-
-    protected $listeners = ['manageCookies'];
 
     public function mount()
     {
@@ -44,11 +42,6 @@ class Cookie extends Component
     {
         \Cookie::queue('cookie_consent', $value, 60 * 24 * 365);
         $this->state = 0;
-    }
-
-    public function manageCookies(): void
-    {
-        $this->state = 2;
     }
 
     public function render()

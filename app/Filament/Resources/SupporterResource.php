@@ -9,11 +9,10 @@ use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
@@ -54,7 +53,7 @@ class SupporterResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                BadgeColumn::make('type'),
+                TextColumn::make('type'),
 
                 IconColumn::make('visible')
                     ->sortable()

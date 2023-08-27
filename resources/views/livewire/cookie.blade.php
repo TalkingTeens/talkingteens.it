@@ -1,7 +1,8 @@
 <div
     x-cloak
-    x-data="{ state : @entangle('state') }"
+    x-data="{ state : @entangle('state').live }"
     x-show="state"
+    @open-manager.window="state = 2"
     class="fixed top-0 h-full w-full bg-black/60 backdrop-blur z-50 [&>*]:space-y-5 [&>*]:cursor-auto [&>*]:absolute [&>*]:w-full [&>*]:bottom-0 [&>*]:bg-white [&>*]:p-9 [&>*]:sm:max-w-lg [&>*]:sm:right-5 [&>*]:sm:bottom-5 [&>*]:lg:right-8 [&>*]:lg:bottom-8 [&>*]:sm:rounded-3xl"
 >
     @if($state == 1)
@@ -25,7 +26,7 @@
     <form x-show="state == 2"
           @click.outside="state = 0"
           x-transition.origin.bottom
-          wire:submit.prevent="save"
+          wire:submit="save"
     >
         <div class="flex justify-between items-center">
             <h3 class="text-lg font-semibold">

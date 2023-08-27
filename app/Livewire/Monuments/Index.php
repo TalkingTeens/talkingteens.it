@@ -1,37 +1,37 @@
 <?php
 
-namespace App\Http\Livewire\Monuments;
+namespace App\Livewire\Monuments;
 
 use App\Models\Category;
 use App\Models\Monument;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class Index extends Component
 {
+    #[Url(as: 'v')]
     public string $view = 'list';
+
+    #[Url(as: 'c')]
     public string $category = '';
-    public ?string $municipality = null;
 
-    protected $queryString = [
-        'view' => ['except' => 'list', 'as' => 'v'],
-        'category' => ['except' => '', 'as' => 'c'],
-        'municipality' => ['as' => 'm'],
-    ];
-
-    protected $listeners = ['changeMunicipality', 'changeCategory'];
+    #[Url(as: 'm')]
+    public ?string $municipality = '';
 
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
     }
 
-    public function changeCategory($category = null): void
+    #[On('change-category')]
+    public function changeCategory($category): void
     {
         $this->category = $category;
-        $this->dispatchBrowserEvent('name-updated');
     }
 
+    #[On('change-municipality')]
     public function changeMunicipality($code)
     {
         $this->municipality = $code;
@@ -57,6 +57,6 @@ class Index extends Component
 
         return view('livewire.monuments.index',
             compact(['monuments', 'categories'])
-        );
+        )->title('Statue');
     }
 }

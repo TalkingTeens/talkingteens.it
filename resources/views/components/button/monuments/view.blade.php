@@ -1,5 +1,5 @@
 <div
-    x-data="{view : '{{ request('v') ?? 'list' }}'}"
+    x-data="{view : '{{ $view }}'}"
     wire:click="toggleView"
     class="sticky bottom-10 left-1/2 -translate-x-1/2 rounded-full bg-st cursor-pointer inline-block z-20 py-3 px-4"
 >

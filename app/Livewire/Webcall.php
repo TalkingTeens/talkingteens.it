@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Monument;
+use Livewire\Attributes\Url;
 
 class Webcall extends Component
 {
     public Monument $monument;
     public $webcall;
     public $langs;
+    #[Url(as: 'l')]
     public string $activeLang = '';
     public int $state;
-
-    protected $queryString = [
-        'activeLang' => ['except' => '', 'as' => 'l'],
-    ];
 
     public function mount(Monument $monument): void
     {
@@ -95,6 +93,7 @@ class Webcall extends Component
     public function render()
     {
         return view('livewire.webcall')
+            ->title($this->monument->name)
             ->extends('layouts.base')
             ->section('body');
     }

@@ -20,7 +20,7 @@
                     <a href="{{ route('monuments.index') }}" class="link-footer">
                         Statue
                     </a>
-                    <a href="{{ route('docs') }}" class="link-footer">
+                    <a href="#" class="link-footer">
                         Progetto
                     </a>
                     <a href="{{ route('docs') }}" class="link-footer">
@@ -31,7 +31,7 @@
                     <h4 class="text-base pb-1">
                         Dietro il vetro
                     </h4>
-                    <a href="{{ route('docs') }}" class="link-footer">
+                    <a href="#" class="link-footer">
                         Tutto
                     </a>
                 </div>
@@ -97,7 +97,7 @@
             <a href="{{ route("privacy") }}" class="hover:text-white transition-colors">
                 Privacy Policy
             </a>
-            <button type="button" x-data @click="Livewire.emitTo('cookie', 'manageCookies')" class="hover:text-white transition-colors">
+            <button type="button" x-data @click="$dispatch('open-manager')" class="hover:text-white transition-colors">
                 Cookie Policy
             </button>
         </div>

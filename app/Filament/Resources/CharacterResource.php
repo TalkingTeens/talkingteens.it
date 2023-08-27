@@ -5,8 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CharacterResource\Pages;
 use App\Filament\Resources\CharacterResource\RelationManagers;
 use App\Models\Character;
-use Filament\Forms;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
@@ -14,9 +12,9 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Components\Placeholder;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -39,7 +37,7 @@ class CharacterResource extends Resource
             ->schema([
                 Group::make()
                     ->schema([
-                        Card::make()
+                        Section::make()
                             ->schema([
                                 TextInput::make('name')
                                     ->required(),
@@ -60,7 +58,7 @@ class CharacterResource extends Resource
                     ->columnSpan(['lg' => 2]),
 
                 Group::make()->schema([
-                    Card::make()
+                    Section::make()
                         ->schema([
                             Placeholder::make('created_at')
                                 ->content(fn (Character $record): ?string => $record->created_at?->diffForHumans()),

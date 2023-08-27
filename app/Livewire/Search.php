@@ -1,30 +1,17 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Municipality;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Search extends Component
 {
-    public ?string $municipality = null;
     public ?string $label = null;
 
-    public function syncMunicipality($code = null)
-    {
-        $this->emitTo('monuments.index','changeMunicipality', $code);
-
-        $this->setMunicipality($code);
-    }
-
-    public function setMunicipality($code = null)
-    {
-        $this->municipality = $code;
-
-        $this->setLabel($code);
-    }
-
+    #[On('change-municipality')]
     public function setLabel($code)
     {
         $municipality = Municipality::where('istat_code', $code)

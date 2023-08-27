@@ -1,7 +1,7 @@
 @props(['municipalities', 'label' => null])
 
 <div
-    wire:init="setMunicipality('{{ request('m') }}')" {{-- to check --}}
+    wire:init="$dispatchTo('search', 'change-municipality', { code: '{{ request('m') }}' })"
     x-data="{
         open : false,
         close() {
@@ -28,7 +28,7 @@
         </p>
 
         @if($label)
-            <div @click.stop="$wire.syncMunicipality()" class="bg-st rounded-full p-1.5">
+            <div wire:click.stop="$dispatch('change-municipality', { code : '' })" class="bg-st rounded-full p-1.5">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-5 w-5 transition-transform duration-200">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="38" d="M368 368L144 144M368 144L144 368"/>
                 </svg>

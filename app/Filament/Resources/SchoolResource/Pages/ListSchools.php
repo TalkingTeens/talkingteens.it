@@ -10,7 +10,7 @@ class ListSchools extends ListRecords
 {
     protected static string $resource = SchoolResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),

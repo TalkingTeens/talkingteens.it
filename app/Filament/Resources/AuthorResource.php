@@ -7,16 +7,15 @@ use App\Filament\Resources\AuthorResource\RelationManagers;
 use App\Filament\Resources\AuthorResource\RelationManagers\MonumentsRelationManager;
 use App\Models\Author;
 use Filament\Forms;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -31,7 +30,9 @@ class AuthorResource extends Resource
 
     protected static ?string $model = Author::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $recordTitleAttribute = 'full_name';
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -39,7 +40,7 @@ class AuthorResource extends Resource
             ->schema([
                 Group::make()
                     ->schema([
-                        Card::make()
+                        Section::make()
                             ->schema([
                                 TextInput::make('last_name')
                                     ->required()
@@ -72,7 +73,7 @@ class AuthorResource extends Resource
                     ->columnSpan(['lg' => 2]),
 
                 Group::make()->schema([
-                    Card::make()
+                    Section::make()
                         ->schema([
                             Placeholder::make('created_at')
                                 ->content(fn (Author $record): ?string => $record->created_at?->diffForHumans()),

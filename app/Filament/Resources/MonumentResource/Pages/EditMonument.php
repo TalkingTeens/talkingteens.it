@@ -17,7 +17,7 @@ class EditMonument extends EditRecord
         return $this->getResource()::getUrl('index');
     }
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),

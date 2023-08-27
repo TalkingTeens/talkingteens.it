@@ -2,8 +2,8 @@
     @foreach($municipalities as $municipality)
         <button
             type="button"
-            @click="close()"
-            wire:click=syncMunicipality('{{ $municipality->istat_code }}')"
+            wire:key="{{ $municipality->istat_code }}"
+            @click="$dispatch('change-municipality', { code: '{{ $municipality->istat_code }}' }); close()"
             class="btn-result cursor-pointer"
         >
             {{ $municipality->name . ', ' .  $municipality->province->region->name}}

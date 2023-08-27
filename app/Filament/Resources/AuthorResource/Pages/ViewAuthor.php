@@ -12,7 +12,7 @@ class ViewAuthor extends ViewRecord
 
     protected static string $resource = AuthorResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\EditAction::make(),

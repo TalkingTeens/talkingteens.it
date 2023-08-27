@@ -7,8 +7,19 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MonumentController;
 use App\Http\Controllers\ContributesController;
-use App\Http\Livewire\Webcall;
-use App\Http\Livewire\Monuments;
+use App\Livewire\Webcall;
+use App\Livewire\Monuments;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
 Route::group(
 [
@@ -28,4 +39,7 @@ function() {
     Route::get('statue', Monuments\Index::class)->name('monuments.index');
     Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
 
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle);
+    });
 });

@@ -15,7 +15,7 @@
 
     {{-- <link rel="canonical" href="{{ $canonical ?? Request::url() }}" /> --}}
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
 
     @stack('meta')
 
@@ -34,6 +34,7 @@
 
     <livewire:cookie />
 
+    @vite(['resources/js/app.js'])
     @stack('scripts')
     @livewireScripts
 </body>

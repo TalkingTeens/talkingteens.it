@@ -5,9 +5,9 @@ namespace App\Filament\Resources\MonumentResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 
 class ClassesRelationManager extends RelationManager
@@ -16,7 +16,7 @@ class ClassesRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'grade';
 
-    public static function form(Form $form): Form
+    public function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -65,7 +65,7 @@ class ClassesRelationManager extends RelationManager
             ]);
     }
 
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
             ->columns([
