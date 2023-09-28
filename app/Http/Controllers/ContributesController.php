@@ -11,10 +11,11 @@ class ContributesController extends Controller
 {
     public function __invoke(): View
     {
-        $sponsors = Sponsor::all();
+        $sponsors = Sponsor::all()
+            ->sortBy('order');
 
         $supporters = Supporter::all()
-            ->groupBy('type');
+            ->sortBy('full_name');
 
         return view('contributes',
             compact('sponsors', 'supporters')

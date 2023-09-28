@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Character;
+use App\Observers\CharacterObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -28,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $observers = [
         Document::class => [DocumentObserver::class],
+        Character::class => [CharacterObserver::class],
         Author::class => [AuthorObserver::class],
         Category::class => [CategoryObserver::class],
         Monument::class => [MonumentObserver::class],

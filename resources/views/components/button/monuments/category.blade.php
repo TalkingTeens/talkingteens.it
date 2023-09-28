@@ -2,6 +2,7 @@
 
 <div
     @click="$dispatch('change-category', { category: '{{ $category }}'});
+            window.scrollTo({top: 0})
             active = '{{ $category }}'"
     :class="active === '{{ $category }}' ? '' : 'opacity-70 hover:opacity-100'"
     class="cursor-pointer flex flex-col gap-1 text-center"

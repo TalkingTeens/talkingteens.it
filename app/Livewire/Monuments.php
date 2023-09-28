@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Monuments;
+namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Monument;
@@ -9,7 +9,7 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
-class Index extends Component
+class Monuments extends Component
 {
     #[Url(as: 'v')]
     public string $view = 'list';
@@ -20,9 +20,19 @@ class Index extends Component
     #[Url(as: 'm')]
     public ?string $municipality = '';
 
+    public function mount(): void
+    {
+        $this->dispatch('change-municipality', code : $this->municipality)
+            ->to(Search::class);
+    }
+
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
+
+        if ($this->view == 'map') {
+            $this->dispatch('load-map');
+        }
     }
 
     #[On('change-category')]
@@ -55,7 +65,7 @@ class Index extends Component
             ->orderBy('slug')
             ->get();
 
-        return view('livewire.monuments.index',
+        return view('livewire.monuments',
             compact(['monuments', 'categories'])
         )->title('Statue');
     }

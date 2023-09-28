@@ -1,14 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\MonumentController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ContributesController;
-use App\Livewire\Webcall;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MonumentController;
 use App\Livewire\Monuments;
+use App\Livewire\Webcall;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +33,11 @@ function() {
     Route::get('didattica', DocumentController::class)->name('docs');
     Route::get('sostenitori', ContributesController::class)->name('contributes');
     Route::view('dona', 'donate')->name('donate');
+    Route::view('echo', 'echo')->name('echo');
     Route::view('privacy-policy', 'privacy')->name('privacy');
     Route::get('webcall/{monument}', Webcall::class)->name('call');
     Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
-    Route::get('statue', Monuments\Index::class)->name('monuments.index');
+    Route::get('statue', Monuments::class)->name('monuments.index');
     Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
 
     Livewire::setUpdateRoute(function ($handle) {

@@ -93,7 +93,7 @@ class Webcall extends Component
     public function render()
     {
         return view('livewire.webcall')
-            ->title($this->monument->name)
+            ->title($this->monument->name . ' Webcall')
             ->extends('layouts.base')
             ->section('body');
     }

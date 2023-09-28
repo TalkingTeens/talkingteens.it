@@ -17,7 +17,7 @@ class Search extends Component
         $municipality = Municipality::where('istat_code', $code)
             ->first();
 
-        $this->label = $municipality ? $municipality->name . ', ' . $municipality->province->region->name : null;
+        $this->label = $municipality ? $municipality->getDisplayName() : null;
     }
 
     public function render(): View

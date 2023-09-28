@@ -67,6 +67,7 @@ class DocumentResource extends Resource
 
                         FileUpload::make('resource')
                             ->directory('documents')
+                            ->openable()
                             ->required(),
                     ])
                     ->columns(2),

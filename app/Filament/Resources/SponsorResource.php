@@ -87,7 +87,6 @@ class SponsorResource extends Resource
                     ->sortable()
                     ->searchable(),
                 IconColumn::make('visible')
-                    ->sortable()
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
@@ -101,7 +100,7 @@ class SponsorResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ])
-            // ->defaultSort('order') to fix.
+            ->defaultSort('order')
             ->reorderable('order');
     }
 

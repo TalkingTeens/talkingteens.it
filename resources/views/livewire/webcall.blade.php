@@ -4,6 +4,7 @@
 
 <main class="bg-st h-screen">
     <div
+        x-data="{state: @entangle('state') }"
         class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full py-11"
         @style([
             "background-image: url('".asset(Storage::url($monument->background_image))."')" => in_array($state, [1, 2])
@@ -44,20 +45,24 @@
             </section>
         @endif
 
-        @if (in_array($state, [1, 2]))
+        <template x-if="[1, 2].includes(state)">
             <section class="p-8 h-full w-5/6 mx-auto flex-col justify-between gap-8 flex">
                 <div class="text-center text-white">
                     <h1 class="font-bold text-4xl">
                         {{ $monument->name }}
                     </h1>
                     <div class="opacity-70 font-semibold mt-2 text-lg">
-                        @if ($state == 1)
-                            <p class="animate-pulse">
-                                Chiamata in arrivo
-                            </p>
-                        @else
-                            <p>00:00</p>
-                        @endif
+                            <template x-if="state === 1">
+                                <p  class="animate-pulse">
+                                    Chiamata in arrivo
+                                </p>
+                            </template>
+
+                            <template x-if="state === 2">
+                                <p x-text="$refs.player.currentTime">
+                                    00:00
+                                </p>
+                            </template>
                     </div>
                 </div>
 
@@ -82,15 +87,8 @@
                 </div>
             </section>
 
-            @if ($state == 1)
-                <audio autoplay loop preload="auto" src="{{ asset('audio/ringtone.mp3') }}">
-                </audio>
-            @else
-                <audio autoplay loop preload="auto" src="{{ asset(Storage::url($langs[$activeLang])) }}">
-                    <!--fallback-->
-                </audio>
-            @endif
-
-        @endif
+                <audio autoplay loop preload="auto" src="{{ asset('audio/ringtone.mp3') }}"></audio>
+                {{--                <audio autoplay loop preload="auto" x-ref="player" src="{{ asset(Storage::url($langs[$activeLang])) }}"></audio>--}}
+        </template>
     </div>
 </main>

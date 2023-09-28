@@ -1,14 +1,19 @@
 <footer class="bg-nd text-white py-16">
-    <div class="max-w-7xl w-11/12 mx-auto text-sm grid gap-16">
-        <div class="flex justify-between items-center gap-10">
-            <a href="{{ route('home') }}">
+    <div class="max-w-7xl w-11/12 mx-auto text-sm space-y-16">
+        <div class="flex items-center gap-5 pb-16 border-b border-white/10">
+            <a wire:navigate href="{{ route('home') }}" class="shrink-0">
                 <img
                     class="h-16 w-16"
                     src="{{ asset('svg/logo/small.svg') }}"
                     alt=""
                 >
             </a>
-            <!-- fix style -->
+            <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
+                <span class="font-medium">
+                    Un progetto di
+                </span>
+                <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo" class="group-hover:opacity-75 transition-opacity">
+            </a>
         </div>
         <div class="flex gap-10 justify-between">
             <livewire:newsletter/>
@@ -17,13 +22,13 @@
                     <h4 class="text-base pb-1">
                         Talking Teens
                     </h4>
-                    <a href="{{ route('monuments.index') }}" class="link-footer">
+                    <a wire:navigate href="{{ route('monuments.index') }}" class="link-footer">
                         Statue
                     </a>
-                    <a href="#" class="link-footer">
+                    <a wire:navigate href="#" class="link-footer">
                         Progetto
                     </a>
-                    <a href="{{ route('docs') }}" class="link-footer">
+                    <a wire:navigate href="{{ route('docs') }}" class="link-footer">
                         Didattica
                     </a>
                 </div>
@@ -31,7 +36,7 @@
                     <h4 class="text-base pb-1">
                         Dietro il vetro
                     </h4>
-                    <a href="#" class="link-footer">
+                    <a wire:navigate href="#" class="link-footer">
                         Tutto
                     </a>
                 </div>
@@ -39,10 +44,10 @@
                     <h4 class="text-base pb-1">
                         Contributi
                     </h4>
-                    <a href="{{ route('donate') }}" class="link-footer">
+                    <a wire:navigate href="{{ route('donate') }}" class="link-footer">
                         Dona ora
                     </a>
-                    <a href="{{ route('contributes') }}" class="link-footer">
+                    <a wire:navigate href="{{ route('contributes') }}" class="link-footer">
                         Sostenitori
                     </a>
                 </div>
@@ -94,11 +99,11 @@
             <p class="grow">
                 &copy; {{ date('Y') . " " . config('app.name') . ". All Rights Reserved." }}
             </p>
-            <a href="{{ route("privacy") }}" class="hover:text-white transition-colors">
+            <a wire:navigate href="{{ route("privacy") }}" class="hover:text-white transition-colors">
                 Privacy Policy
             </a>
             <button type="button" x-data @click="$dispatch('open-manager')" class="hover:text-white transition-colors">
-                Cookie Policy
+                Cookie Settings
             </button>
         </div>
     </div>

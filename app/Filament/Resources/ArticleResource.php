@@ -81,18 +81,6 @@ class ArticleResource extends Resource
         return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 
-    public static function getGlobalSearchResultDetails(Model $record): array
-    {
-        return [
-            'Link' => $record->resource,
-        ];
-    }
-
-    public static function getGlobalSearchResultUrl(Model $record): string
-    {
-        return $record->resource;
-    }
-
     public static function getPages(): array
     {
         return [

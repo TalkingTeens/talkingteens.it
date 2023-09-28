@@ -15,6 +15,7 @@ return new class extends Migration
             $table->char('code', 4);
             $table->unsignedInteger('istat_code');
             $table->string('name');
+            $table->json('description')->nullable();
             $table->decimal('latitude', $precision = 9, $scale = 6)->nullable();
             $table->decimal('longitude', $precision = 9, $scale = 6)->nullable();
             $table->foreignId('province_id')->constrained();

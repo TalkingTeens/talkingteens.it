@@ -1,6 +1,6 @@
 <a
     wire:loading.class.remove="hover:scale-98"
-    class="group p-14 bg-nd h-72 text-white rounded-3xl hover:scale-98 transition-transform duration-300 relative overflow-hidden text-right flex items-center justify-end"
+    class="group z-0 p-14 bg-nd h-72 text-white rounded-3xl hover:scale-98 transition-transform duration-300 relative overflow-hidden text-right flex items-center justify-end"
     href="{{ route('monuments.show', ['monument' => $monument]) }}"
 >
     <img

@@ -1,7 +1,6 @@
 @props(['municipalities', 'label' => null])
 
 <div
-    wire:init="$dispatchTo('search', 'change-municipality', { code: '{{ request('m') }}' })"
     x-data="{
         open : false,
         close() {
@@ -52,12 +51,12 @@
         @if($slot->isNotEmpty())
             {{ $slot }}
         @else
-            <a href="{{ route('monuments.index') }}" class="btn-result">
+            <a wire:navigate href="{{ route('monuments.index') }}" class="btn-result">
                 Tutte
             </a>
             @foreach($municipalities as $municipality)
-                <a href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}" class="btn-result">
-                    {{ $municipality->name . ', ' .  $municipality->province->region->name}}
+                <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}" class="btn-result">
+                    {{ $municipality->getDisplayName() }}
                 </a>
             @endforeach
         @endif

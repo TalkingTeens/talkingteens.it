@@ -1,6 +1,6 @@
-<section>
+<section class="relative">
     @if($view === 'list')
-        <div class="max-w-7xl w-11/12 mx-auto my-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="max-w-7xl w-11/12 mx-auto my-16 pb-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             @forelse($monuments as $monument)
                 <x-card.monument :$monument />
             @empty

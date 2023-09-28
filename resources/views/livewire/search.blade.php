@@ -6,7 +6,7 @@
             @click="$dispatch('change-municipality', { code: '{{ $municipality->istat_code }}' }); close()"
             class="btn-result cursor-pointer"
         >
-            {{ $municipality->name . ', ' .  $municipality->province->region->name}}
+            {{ $municipality->getDisplayName() }}
         </button>
     @endforeach
 </x-dropdown.search>

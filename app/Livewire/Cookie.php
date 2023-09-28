@@ -40,7 +40,7 @@ class Cookie extends Component
 
     public function store($value): void
     {
-        \Cookie::queue('cookie_consent', $value, 60 * 24 * 365);
+        \Cookie::queue('cookie_consent', $value, 60 * 60 * 24 * 365);
         $this->state = 0;
     }
 

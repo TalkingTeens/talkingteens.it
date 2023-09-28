@@ -5,5 +5,5 @@
 }
 
 .h-fill {
-    @apply h-[calc(100vh-var(--nav-height)-var(--banner-height))]
+    @apply h-[70vh] sm:h-[calc(100vh-var(--nav-height)-var(--banner-height))]
 }
