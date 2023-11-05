@@ -1,17 +1,20 @@
 <section class="relative">
-    @if($view === 'list')
-        <div class="max-w-7xl w-11/12 mx-auto my-16 pb-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-            @forelse($monuments as $monument)
-                <x-card.monument :$monument />
-            @empty
-                <p class="col-span-full">
-                    Nessun risultato trovato.
-                </p>
-            @endforelse
-        </div>
-    @else
+    <div @class([
+        'max-w-7xl w-11/12 mx-auto my-16 pb-16 grid md:grid-cols-2 xl:grid-cols-3 gap-4',
+        'hidden' => $view === 'map'
+    ])>
+        @forelse($monuments as $monument)
+            <x-card.monument :$monument />
+        @empty
+            <p class="col-span-full">
+                Nessun risultato trovato.
+            </p>
+        @endforelse
+    </div>
+
+    <div @class(['hidden' => $view === 'list'])>
         <x-map :$monuments />
-    @endif
+    </div>
 
     <x-button.monuments.view :$view />
 </section>

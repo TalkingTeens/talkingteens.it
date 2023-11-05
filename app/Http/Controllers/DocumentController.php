@@ -9,11 +9,12 @@ class DocumentController extends Controller
 {
     public function __invoke(): View
     {
-        $documents = Document::all()
+
+        $categories = Document::all('id', 'title', 'category', 'resource', 'picture', 'filename')
             ->groupBy('category');
 
         return view('documents',
-            compact('documents')
+            compact('categories')
         );
     }
 }

@@ -2,24 +2,17 @@
     {{--    <aside class="w-1/5">
 
         </aside>--}}
-    <div wire:ignore id="map" class="flex-1 isolate"></div>
+    <div wire:ignore id="map" x-init="$dispatch('load-map')" class="flex-1 isolate"></div>
 </div>
 
-<script>
+<script wire:ignore>
 
     let map;
-    let monuments = @json($monuments); // to clear
+    let markers = [];
 
-    function initMap() {
-        let bounds = new google.maps.LatLngBounds();
-
-        monuments.forEach((monument) => {
-            bounds.extend(new google.maps.LatLng(monument.latitude, monument.longitude));
-        });
-
+    function initMap(monuments) {
         map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15,
-            center: bounds.getCenter(),
             minZoom: 3,
             restriction: {
                 latLngBounds: { north: 85, south: -85, west: -180, east: 180 }
@@ -27,17 +20,29 @@
             mapTypeId: 'roadmap'
         });
 
+        setMapCenter(monuments);
+        drawMarkers(monuments);
+    }
+
+    function setMapCenter(monuments) {
+        let bounds = new google.maps.LatLngBounds();
+
+        monuments.forEach((monument) => {
+            bounds.extend(new google.maps.LatLng(monument.latitude, monument.longitude));
+        });
+
+        map.setCenter(bounds.getCenter());
+
         google.maps.event.addListenerOnce(map, 'bounds_changed', () => {
-            if(map.getZoom() > 15)
-                map.setZoom(15);
+            if(map.getZoom() > 15) map.setZoom(15);
         });
 
         map.fitBounds(bounds);
     }
 
-    function drawMarkers() {
+    function drawMarkers(monuments) {
         monuments.forEach((monument) => {
-            new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 position: {
                     lat: +monument.latitude,
                     lng: +monument.longitude
@@ -49,14 +54,28 @@
                 },
                 title: monument.name, // to fix
             });
+            markers.push(marker);
         });
     }
 
+    function clearMarkers() {
+        markers.forEach(marker => {
+            marker.setMap(null);
+        })
+        markers = [];
+    }
+
+    document.addEventListener('load-map', () => {
+        const monuments = @json($monuments);
+        initMap(monuments);
+    })
+
     document.addEventListener('livewire:initialized', () => {
-        @this.on('load-map', () => {
-            initMap();
-            drawMarkers();
+        @this.on('reload-map', (event) => {
+            const monuments = event.monuments;
+            clearMarkers();
+            drawMarkers(monuments);
+            setMapCenter(monuments);
         });
     });
-
 </script>

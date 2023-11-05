@@ -1,24 +1,29 @@
 <a
+    wire:key="{{ $document->id }}"
     wire:click="open"
     target="_blank"
     href="{{ asset(Storage::url($document->resource)) }}"
     class="p-2 bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
 >
     <div class="flex items-center px-2 py-3 gap-3">
-        {{--<img
+        <img
             class="h-6 w-6"
-            src="{{ asset('svg/document/file.svg') }}"
+            src='{{ asset("svg/document/{$type}.svg") }}'
             alt=""
-        >--}}
+        >
         <div class="grow sm:overflow-hidden">
             <h3 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
-                {{ $document->title }}
+                {{ $document->title ?: $document->filename }}
             </h3>
             <p class="text-xs">
                 {{ $size }}
             </p>
         </div>
-        <livewire:document.download :document="$document" />
+        <button type="button" wire:click.stop.prevent="download" class="hover:bg-st p-2 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+        </button>
     </div>
 
     <div class="overflow-hidden rounded-xl md:h-48 relative bg-white">
@@ -31,7 +36,7 @@
         @else
             <img
                 class="hidden md:block h-16 w-16 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                src="{{ asset('svg/document/file.svg') }}"
+                src='{{ asset("svg/document/{$type}.svg") }}'
                 alt=""
             >
         @endif

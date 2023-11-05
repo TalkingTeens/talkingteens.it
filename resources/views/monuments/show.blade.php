@@ -35,8 +35,8 @@
         >
     </header>
     <div class="relative w-11/12 max-w-7xl mx-auto my-16 flex flex-col sm:flex-row items-start sm:gap-10 md:gap-16">
-        <div class="sticky z-10 top-[--nav-height] sm:top-[calc(var(--nav-height)+var(--subheader-height))] border-b sm:border-0 bg-white w-full sm:w-auto flex items-center justify-end sm:gap-3 sm:flex-col py-1 sm:py-0">
-            <span class="text-xs flex-1">
+        <div class="flex items-center justify-end w-full sm:sticky sm:z-10 sm:top-[calc(var(--nav-height)+var(--subheader-height))] sm:w-auto sm:gap-3 sm:flex-col">
+            <span class="text-xs grow">
                 Condividi
             </span>
             <button type="button" @click="navigator.share({ title:`{{ '' }}`, url:'{{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}'})" class="p-3 hover:bg-gray-100 rounded-full sm:border">
@@ -58,10 +58,10 @@
                 </svg>
             </a>
         </div>
-        <div class="space-y-10 md:space-y-16 divide-y flex-1">
+        <div class="space-y-10 md:space-y-16 divide-y w-full">
             <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
                 @unless($monument->authors->isEmpty())
-                    <div class="space-y-10 lg:sticky lg:top-[calc(var(--nav-height)+var(--subheader-height))] lg:order-1">
+                    <div class="space-y-10 shrink-0 lg:sticky lg:top-[calc(var(--nav-height)+var(--subheader-height))] lg:order-1">
                         <section class="space-y-4">
                             <h2 class="title-lg">
                                 Realizzato da
@@ -78,7 +78,7 @@
                         </section>
                     </div>
                 @endunless
-                <div class="space-y-10 flex-1">
+                <div class="space-y-10 w-full">
                     @unless(empty($monument->description))
                         <section class="text-justify">
                             <h2 class="title-lg">

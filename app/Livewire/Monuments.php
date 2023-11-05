@@ -22,17 +22,13 @@ class Monuments extends Component
 
     public function mount(): void
     {
-        $this->dispatch('change-municipality', code : $this->municipality)
+        $this->dispatch('change-municipality', code: $this->municipality)
             ->to(Search::class);
     }
 
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
-
-        if ($this->view == 'map') {
-            $this->dispatch('load-map');
-        }
     }
 
     #[On('change-category')]
@@ -64,6 +60,10 @@ class Monuments extends Component
             })
             ->orderBy('slug')
             ->get();
+
+        if ($this->view == 'map') {
+            $this->dispatch('reload-map', monuments: $monuments);
+        }
 
         return view('livewire.monuments',
             compact(['monuments', 'categories'])

@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "mcamara/laravel-localization": "^1.8",
+        "spatie/laravel-data": "^3.9",
         "spatie/laravel-translatable": "^6.5"
     },
     "require-dev": {
