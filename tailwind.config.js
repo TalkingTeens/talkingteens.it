@@ -3,7 +3,6 @@ module.exports = {
   content: [
       "./resources/**/*.blade.php",
       "./resources/**/*.js",
-      "./resources/**/*.vue",
   ],
   theme: {
     extend: {
@@ -18,6 +17,15 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      animation: {
+        'infinite-scroll': 'infinite-scroll 35s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
+      }
     },
   },
   darkMode: 'class',

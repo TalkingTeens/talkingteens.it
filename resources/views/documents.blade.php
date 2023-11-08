@@ -27,8 +27,9 @@
                 @endforeach
             </div>
         @endforeach
+        <p class="text-sm text-center mt-12">
+            {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
+        </p>
     </section>
-    <p class="max-w-7xl w-11/12 mx-auto text-sm text-center mb-16">
-        {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
-    </p>
+
 @endsection

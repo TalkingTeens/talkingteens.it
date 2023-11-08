@@ -24,7 +24,7 @@
         </div>
     </header>
     <div class="max-w-7xl mx-auto w-11/12 py-16 space-y-32">
-        <x-grid.logos :collection="$sponsors" class="mt-6"/>
+        <x-slider.logos :collection="$sponsors"/>
         @unless($supporters->isEmpty())
             <section class="grid sm:grid-cols-2 gap-16 sm:items-start">
                 <h3 class="text-3xl md:text-5xl md:leading-tight sm:sticky sm:top-[calc(var(--nav-height)+4rem)]">

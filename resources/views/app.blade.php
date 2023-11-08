@@ -6,5 +6,7 @@
 @endpush
 
 @section('content')
-    app
+    <section class="h-fill border-b bg-nd">
+
+    </section>
 @endsection

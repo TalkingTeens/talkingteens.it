@@ -58,14 +58,14 @@
                 </svg>
             </a>
         </div>
-        <div class="space-y-10 md:space-y-16 divide-y w-full">
+        <div class="space-y-10 [&>*:not(:first-child)]:pt-10 divide-y w-full md:space-y-16">
             <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
                 @unless($monument->authors->isEmpty())
                     <div class="space-y-10 shrink-0 lg:sticky lg:top-[calc(var(--nav-height)+var(--subheader-height))] lg:order-1">
                         <section class="space-y-4">
-                            <h2 class="title-lg">
+                            <p class="title-lg">
                                 Realizzato da
-                            </h2>
+                            </p>
                             @foreach($monument->authors as $author)
                                 <a wire:navigate href="{{ route('authors.show', ['author' => $author]) }}" class="group flex gap-3 rounded-2xl">
                                     <x-card.person :person="$author">
@@ -81,27 +81,27 @@
                 <div class="space-y-10 w-full">
                     @unless(empty($monument->description))
                         <section class="text-justify">
-                            <h2 class="title-lg">
+                            <p class="title-lg">
                                 Storia del monumento
-                            </h2>
+                            </p>
                             {!! $monument->description !!}
                         </section>
                     @endunless
                     <section>
-                        <h2 class="title-lg">
+                        <h3 class="title-lg">
                             A <a wire:navigate href="{{ route('monuments.index', ['m' => $monument->municipality->istat_code]) }}" class="underline">
                                 {{ $monument->municipality->getDisplayName() }}
                             </a>
-                        </h2>
+                        </h3>
                         <x-map.show :$monument />
                     </section>
                 </div>
             </div>
-            @unless($monument->characters->isEmpty())
-                <div class="grid lg:grid-cols-2 pt-10 gap-10 lg:gap-16">
-                    @foreach($monument->characters as $character)
+            @unless($characters->isEmpty())
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                    @foreach($characters as $character)
                         <section class="last:odd:col-span-full text-justify">
-                            <x-card.person :person="$character" size="h-20 w-20" class="mb-5">
+                            <x-card.person :person="$character" size="w-20" class="mb-5">
                                 <h2 class="title-lg mb-0">
                                     {{ $character->name }}
                                 </h2>
@@ -112,6 +112,12 @@
                     @endforeach
                 </div>
             @endunless
+            <div>
+                <p class="title-lg">
+                    A cura di
+                </p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus accusantium, adipisci asperiores at consectetur dignissimos doloribus eligendi est excepturi illum ipsa minima minus necessitatibus officia optio provident quae quisquam repellat repellendus saepe similique voluptates? Animi culpa earum non odit!
+            </div>
         </div>
     </div>
 

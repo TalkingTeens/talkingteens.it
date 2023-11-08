@@ -1,11 +1,9 @@
-@props(['person', 'size' => 'h-16 w-16'])
+@props(['person', 'size' => 'w-16', 'avatar' => true])
 
 <div {{ $attributes->class(['flex items-center gap-4']) }}>
-    @isset($person->picture)
-        <img src="{{ asset(Storage::url($person->picture)) }}" alt="" @class([
-            'shrink-0 object-cover rounded-full', $size
-        ])>
-    @endisset
+    @if(isset($person->picture) && $avatar)
+        <x-avatar :src="$person->picture" :alt="$person->full_name" :$size />
+    @endif
     <div>
         {{ $slot }}
         @unless(!isset($person->death_year) && !isset($person->birth_year))

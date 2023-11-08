@@ -7,7 +7,7 @@
             <x-card.monument :$monument />
         @empty
             <p class="col-span-full">
-                Nessun risultato trovato.
+                {{ __('monuments.empty') }}
             </p>
         @endforelse
     </div>

@@ -11,7 +11,7 @@
             class="flex justify-center items-center gap-x-2"
         >
             <p class="text-sm font-medium">
-                Mappa
+                {{ __('monuments.map') }}
             </p>
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6">
@@ -26,7 +26,7 @@
             class="flex justify-center items-center gap-x-2"
         >
             <p class="text-sm font-medium">
-                Elenco
+                {{ __('monuments.list') }}
             </p>
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6">

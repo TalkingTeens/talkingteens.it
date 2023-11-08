@@ -6,20 +6,31 @@
 @endpush
 
 @section('content')
-    <div class="max-w-7xl w-11/12 mx-auto flex flex-col sm:flex-row my-16 gap-16">
-        <div class="mx-auto sm:mx-0 sm:sticky sm:top-[calc(var(--nav-height)+4rem)] h-fit text-center">
-            <img src="{{ asset(Storage::url($author->picture)) }}" alt="" class="shrink-0 rounded-full object-cover h-52 w-52">
-            <h1 class="">
-                {{ $author->full_name }}
-            </h1>
+    <section x-data class="w-11/12 max-w-screen-lg mx-auto grid grid-cols-4 gap-16 my-16">
+        <div class="justify-self-end">
+            <x-avatar
+                :src="$author->picture"
+                :alt="$author->full_name"
+                size="w-full"
+            />
         </div>
-        <div class="flex-1">
-            <section>
-                <h2 class="title-lg">
-                    Vita
-                </h2>
-                {!! $author->description !!}
-            </section>
+        <div class="col-span-3">
+            <x-card.person :person="$author" :avatar="false">
+                <h1 class="title-xl"
+                    x-intersect:enter="$dispatch('toggle', { shown: false })"
+                    x-intersect:leave="$dispatch('toggle', { shown: true })"
+                >
+                    {{ $author->full_name }}
+                </h1>
+            </x-card.person>
+            @unless(empty($author->description))
+                <section>
+                    <h2 class="title-lg">
+                        Vita
+                    </h2>
+                    {!! $author->description !!}
+                </section>
+            @endunless
             <section>
                 <h2 class="title-lg">
                     Alcune opere
@@ -31,6 +42,21 @@
                 </div>
             </section>
         </div>
-    </div>
+    </section>
+@endsection
 
+@section('subheader')
+    <div
+        x-data="{ shown: false }"
+        x-show="shown" x-cloak
+        @toggle.window="shown = $event.detail.shown"
+        x-transition
+        class="max-w-screen-lg mx-auto py-1 grid-cols-3"
+    >
+        <x-card.person :person="$author" :avatar="false">
+            <p class="title-lg mb-0">
+                {{ $author->full_name }}
+            </p>
+        </x-card.person>
+    </div>
 @endsection

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sponsor;
-use Illuminate\Http\Request;
+use App\Models\Article;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $sponsors = Sponsor::all();
+        $articles = Article::all();
 
         return view('home',
-            compact('sponsors')
+            compact('articles')
         );
     }
 }
