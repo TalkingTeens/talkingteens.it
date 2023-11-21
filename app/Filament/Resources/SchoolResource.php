@@ -22,6 +22,8 @@ class SchoolResource extends Resource
 {
     protected static ?string $model = School::class;
 
+    protected static ?string $navigationGroup = 'Students';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

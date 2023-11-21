@@ -14,7 +14,7 @@
             <x-dropdown.lang />
 
             <a wire:navigate href="{{ route('app') }}" class="btn secondary shrink-0 hidden lg:block text-sm rounded-full py-3">
-                Scarica l'app
+                {{ __('common.nav.app') }}
             </a>
         </div>
     </div>

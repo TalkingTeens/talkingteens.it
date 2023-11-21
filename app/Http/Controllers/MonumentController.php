@@ -10,16 +10,29 @@ class MonumentController extends Controller
 {
     public function show(Monument $monument)
     {
-//        $monument = $monument
-//            ->with(['characters', 'municipality', 'authors', 'categories'])
-//            ->get();
-
         // to fix: maybe create a local scope in character model
         $characters = $monument->characters
             ->filter(fn ($c) => !empty($c->description));
 
-        return view('monuments.show',
-            compact('monument', 'characters')
-        );
+        $city_monuments = Monument::ofMunicipality($monument->municipality_code)
+            ->get()
+            ->except($monument->id);
+
+        $next = $city_monuments
+            ->where('id', '>', $monument->id)
+            ->sortBy('id')
+            ->first();
+
+        $previous = $city_monuments
+            ->where('id', '<', $monument->id)
+            ->sortByDesc('id')
+            ->first();
+
+        return view('monuments.show', [
+            'monument' => $monument,
+            'characters' => $characters,
+            'next' => $next ?? $city_monuments->first(),
+            'previous' => $previous ?? $city_monuments->last()
+        ]);
     }
 }

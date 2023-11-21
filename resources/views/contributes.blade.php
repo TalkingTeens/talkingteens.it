@@ -8,8 +8,8 @@
 @section('content')
     <header class="h-fill bg-[url('/public/images/sponsor.jpg')] bg-center bg-no-repeat bg-cover">
         <div class="h-full backdrop-brightness-50 py-16">
-            <div class="max-w-7xl mx-auto w-11/12 h-full flex flex-col justify-between text-white">
-                <h1>
+            <div class="max-w-7xl mx-auto w-11/12 h-full flex flex-col justify-between items-start text-white">
+                <h1 class="badge">
                     Sponsor e Sostenitori
                 </h1>
                 <div>

@@ -6,57 +6,56 @@
 @endpush
 
 @section('content')
-    <section x-data class="w-11/12 max-w-screen-lg mx-auto grid grid-cols-4 gap-16 my-16">
-        <div class="justify-self-end">
-            <x-avatar
-                :src="$author->picture"
-                :alt="$author->full_name"
-                size="w-full"
-            />
-        </div>
-        <div class="col-span-3">
-            <x-card.person :person="$author" :avatar="false">
-                <h1 class="title-xl"
-                    x-intersect:enter="$dispatch('toggle', { shown: false })"
-                    x-intersect:leave="$dispatch('toggle', { shown: true })"
-                >
-                    {{ $author->full_name }}
-                </h1>
-            </x-card.person>
+    <div x-data class="w-11/12 max-w-screen-xl mx-auto my-16">
+        <x-card.person :person="$author" size="w-24 sm:w-36">
+            <h1 class="title-xl"
+                x-intersect:enter="$dispatch('toggle', { shown: false })"
+                x-intersect:leave="$dispatch('toggle', { shown: true })"
+            >
+                {{ $author->full_name }}
+            </h1>
+        </x-card.person>
+        <div class="divide-y mt-14 space-y-10 [&>*:not(:first-child)]:pt-10 md:space-y-16">
             @unless(empty($author->description))
+                <div class="max-w-5xl">
+                    {!! $author->description !!}
+                </div>
+            @endunless
+            @unless($author->monuments->isEmpty())
                 <section>
                     <h2 class="title-lg">
-                        Vita
+                        {{ __('author.works') }}
                     </h2>
-                    {!! $author->description !!}
+                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+                        @foreach($author->monuments as $monument)
+                            <x-card.monument :$monument />
+                        @endforeach
+                    </div>
                 </section>
             @endunless
-            <section>
-                <h2 class="title-lg">
-                    Alcune opere
-                </h2>
-                <div class="grid lg:grid-cols-2 gap-4">
-                    @foreach($author->monuments as $monument)
-                        <x-card.monument :$monument />
-                    @endforeach
-                </div>
-            </section>
         </div>
-    </section>
+    </div>
 @endsection
 
 @section('subheader')
     <div
         x-data="{ shown: false }"
-        x-show="shown" x-cloak
         @toggle.window="shown = $event.detail.shown"
-        x-transition
-        class="max-w-screen-lg mx-auto py-1 grid-cols-3"
+        class="mx-auto flex justify-between items-center h-[var(--subheader-height)]"
     >
-        <x-card.person :person="$author" :avatar="false">
-            <p class="title-lg mb-0">
-                {{ $author->full_name }}
-            </p>
-        </x-card.person>
+        <x-button.arrow :href="URL::previous()">
+            {{ __('common.back') }}
+        </x-button.arrow>
+        <a href="#" x-show="shown" x-cloak x-transition>
+            <x-card.person
+                :person="$author"
+                :reverse="true"
+                size="w-12 sm:w-14"
+            >
+                <p class="title-lg mb-0">
+                    {{ $author->full_name }}
+                </p>
+            </x-card.person>
+        </a>
     </div>
 @endsection

@@ -34,4 +34,10 @@ class Classe extends Model
     {
         return $this->morphToMany(Monument::class, 'treatable');
     }
+
+    public function getDisplayName(): string
+    {
+        return "{$this->grade}°{$this->section}";
+//        $class->grade . "°" . $class->section . (!empty($class->discipline) ? " " . $class->discipline : "") . ", A.S. " . $class->year
+    }
 }

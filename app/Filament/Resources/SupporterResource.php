@@ -22,7 +22,7 @@ class SupporterResource extends Resource
 {
     protected static ?string $model = Supporter::class;
 
-    protected static ?string $navigationGroup = 'contributions';
+    protected static ?string $navigationGroup = 'Contributions';
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 

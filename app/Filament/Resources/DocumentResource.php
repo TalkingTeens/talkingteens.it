@@ -34,9 +34,11 @@ class DocumentResource extends Resource
 
     protected static ?string $model = Document::class;
 
-    protected static ?string $navigationGroup = 'Settings';
-
     protected static ?string $recordTitleAttribute = 'title';
+
+    protected static ?string $navigationGroup = 'Students';
+
+    protected static ?string $navigationLabel = 'Didattica';
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 

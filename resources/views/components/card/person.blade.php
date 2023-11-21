@@ -1,6 +1,6 @@
-@props(['person', 'size' => 'w-16', 'avatar' => true])
+@props(['person', 'size' => 'w-16', 'avatar' => true, 'reverse' => false])
 
-<div {{ $attributes->class(['flex items-center gap-4']) }}>
+<div {{ $attributes->class(['flex items-center gap-4', 'flex-row-reverse text-right' => $reverse]) }}>
     @if(isset($person->picture) && $avatar)
         <x-avatar :src="$person->picture" :alt="$person->full_name" :$size />
     @endif

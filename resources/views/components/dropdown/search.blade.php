@@ -23,7 +23,7 @@
             'mx-3 text-ellipsis overflow-hidden whitespace-nowrap',
             'opacity-50' => !$label,
         ])>
-            {{ $label ?? 'Seleziona una città' }}
+            {{ $label ?? __('common.nav.search.label') }}
         </p>
 
         @if($label)
@@ -52,7 +52,7 @@
             {{ $slot }}
         @else
             <a wire:navigate href="{{ route('monuments.index') }}" class="btn-result">
-                Tutte
+                {{ __('common.nav.search.default') }}
             </a>
             @foreach($municipalities as $municipality)
                 <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}" class="btn-result">

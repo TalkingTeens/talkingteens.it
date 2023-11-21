@@ -8,12 +8,18 @@
                     alt=""
                 >
             </a>
-            <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
+{{--            <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                 <span class="font-medium">
                     Un progetto di
                 </span>
                 <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo" class="group-hover:opacity-75 transition-opacity">
-            </a>
+            </a>--}}
+            <div class="max-w-sm space-y-1.5">
+                <span class="font-medium">
+                    Un progetto di
+                </span>
+                <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo">
+            </div>
         </div>
         <div class="flex gap-10 justify-between">
             <livewire:newsletter/>

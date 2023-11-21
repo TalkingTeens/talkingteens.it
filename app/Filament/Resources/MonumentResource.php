@@ -37,7 +37,7 @@ class MonumentResource extends Resource
 
     protected static ?string $model = Monument::class;
 
-    protected static ?string $navigationGroup = 'statues';
+    protected static ?string $navigationGroup = 'Statues';
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 

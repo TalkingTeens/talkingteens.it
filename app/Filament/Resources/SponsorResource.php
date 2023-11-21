@@ -28,7 +28,7 @@ class SponsorResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'contributions';
+    protected static ?string $navigationGroup = 'Contributions';
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 

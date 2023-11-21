@@ -32,6 +32,8 @@ class AuthorResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'full_name';
 
+    protected static ?string $navigationGroup = 'Statues';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

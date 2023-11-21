@@ -28,7 +28,7 @@
 
     @livewireStyles
 </head>
-<body class="dark:bg-neutral-950 select-none font-poppins">
+<body class="dark:bg-neutral-950 select-none font-poppins antialiased">
 
     @yield('body')
 

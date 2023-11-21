@@ -27,7 +27,7 @@ class CharacterResource extends Resource
 
     protected static ?string $model = Character::class;
 
-    protected static ?string $navigationGroup = 'statues';
+    protected static ?string $navigationGroup = 'Statues';
 
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 

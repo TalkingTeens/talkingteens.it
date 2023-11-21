@@ -47,7 +47,7 @@ class Monuments extends Component
     {
         $categories = Category::has('monuments')->get();
 
-        $monuments = Monument::with('municipality')
+        $monuments = Monument::query()
             ->when($this->municipality, function ($q) {
                 return $q->whereHas('municipality', function($q) {
                     return $q->where('istat_code', $this->municipality);

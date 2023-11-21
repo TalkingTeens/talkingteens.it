@@ -9,3 +9,7 @@
 .btn.secondary {
     @apply hover:bg-gray-100 border;
 }
+
+.badge {
+    @apply inline-block font-semibold px-8 py-1 bg-st text-black rounded-3xl;
+}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -79,5 +80,10 @@ class Monument extends Model
     {
         return $this->morphedByMany(Treater::class, 'treatable')
             ->withPivot('photo', 'description');
+    }
+
+    public function scopeOfMunicipality(Builder $query, string $code): void
+    {
+        $query->where('municipality_code', $code);
     }
 }

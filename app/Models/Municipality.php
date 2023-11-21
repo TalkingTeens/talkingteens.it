@@ -35,6 +35,6 @@ class Municipality extends Model
 
     public function getDisplayName(): string
     {
-        return $this->name . ', ' . $this->province->region->name;
+        return "{$this->name}, {$this->province->region->name}";
     }
 }

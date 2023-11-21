@@ -3,7 +3,7 @@
 }
 
 .title-xl {
-    @apply text-5xl font-bold;
+    @apply text-4xl sm:text-5xl font-bold;
 }
 
 .title-2xl {
