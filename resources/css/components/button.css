@@ -11,5 +11,5 @@
 }
 
 .badge {
-    @apply inline-block font-semibold px-8 py-1 bg-st text-black rounded-3xl;
+    @apply inline-block font-semibold px-4 py-1 bg-st text-black rounded-3xl sm:px-8;
 }

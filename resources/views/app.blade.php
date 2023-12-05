@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <section class="min-h-[calc(100vh-var(--nav-height)-var(--banner-height))] sm:min-h-0 max-w-screen-xl w-11/12 mx-auto text-center flex flex-col items-center justify-center py-16 gap-y-4 sm:gap-y-16">
+    <section class="min-h-[calc(100vh-var(--nav-height)-var(--banner-height))] sm:min-h-0 max-w-screen-xl w-11/12 mx-auto text-center flex flex-col items-center justify-center py-16 gap-y-16">
         <div class="w-11/12 max-w-screen-md mx-auto sm:w-full sm:py-4">
             <h1 class="badge">
                 {{ __('app.title') }}
@@ -23,7 +23,7 @@
                 <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/quiz.jpg') }}" alt="" class="rounded-xl shadow-xl opacity-50">
             </div>
             <div class="flex-[1.3] flex items-center justify-center sm:aspect-[9/16] sm:rounded-3xl sm:shadow-xl sm:bg-st">
-                <svg viewBox="0 0 230 230" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3/4 sm:w-1/2">
+                <svg viewBox="0 0 230 230" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-1/2">
                     <path d="M110.647 4.26709C110.647 2.05795 112.438 0.26709 114.647 0.26709H115.826C118.035 0.26709 119.826 2.05795 119.826 4.26709V5.44571C119.826 7.65485 118.035 9.44571 115.826 9.44571H114.647C112.438 9.44571 110.647 7.65485 110.647 5.44571V4.26709Z" fill="currentColor"/>
                     <path d="M73.9329 13.4457C73.9329 11.2366 75.7237 9.44571 77.9329 9.44571H79.1115C81.3206 9.44571 83.1115 11.2366 83.1115 13.4457V14.6243C83.1115 16.8335 81.3206 18.6243 79.1115 18.6243H77.9329C75.7237 18.6243 73.9329 16.8335 73.9329 14.6243V13.4457Z" fill="currentColor"/>
                     <path d="M147.362 36.9816H152.54C154.75 36.9816 156.54 38.7724 156.54 40.9816V42.1602C156.54 44.3693 154.75 46.1602 152.54 46.1602H147.362V36.9816Z" fill="currentColor"/>
@@ -79,7 +79,7 @@
             </div>
         </div>
     </section>
-    <ul class="hidden sm:grid max-w-screen-xl w-11/12 mx-auto grid-cols-3 gap-x-4 gap-y-8 py-16 lg:grid-cols-6">
+    <ul class="hidden max-w-screen-xl w-11/12 mx-auto grid-cols-3 gap-x-4 gap-y-8 pt-8 pb-16 sm:grid lg:grid-cols-6">
         <x-card.feature
             icon="locate"
             :title="__('app.features.call.subtitle')"
@@ -110,5 +110,4 @@
             :title="__('app.features.qr.subtitle')"
             :description="__('app.features.qr.description')" />
     </ul>
-
 @endsection
