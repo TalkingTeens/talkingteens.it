@@ -9,7 +9,6 @@ class CharacterObserver
 {
     public function updated(Character $character): void
     {
-
         if ($character->isDirty('picture') && !is_null($character->getOriginal('picture'))) {
             Storage::disk('public')->delete($character->getOriginal('picture'));
         }

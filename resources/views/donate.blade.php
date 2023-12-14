@@ -9,8 +9,7 @@
     <div x-data="{ active : 1, method: '' }" class="md:flex lg:grid lg:grid-cols-4">
         <div class="pb-3 pt-8 border-b md:sticky md:top-[--nav-height] md:h-[calc(100vh-var(--nav-height))] md:p-16 md:border-b-0 md:border-l md:flex md:flex-col md:justify-between md:gap-y-20 md:overflow-y-auto md:no-scrollbar">
             <ol class="relative w-11/12 max-w-sm mx-auto flex justify-between border-t md:max-w-none md:w-auto md:mx-0 md:h-1/2 md:flex-col md:border-l md:border-t-0">
-                {{-- to fix if not available in language --}}
-                @foreach(Lang::get('donate.steps') as $step)
+                @foreach((is_array(Lang::get('donate.steps')) ? Lang::get('donate.steps') : []) as $step)
                     <li
                         @click="active = {{ $loop->index }}"
                         class="group mr-10 last:mb-0 mt-6 md:mr-0 md:mb-10 md:mt-0 md:ml-6"

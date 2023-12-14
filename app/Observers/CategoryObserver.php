@@ -9,7 +9,6 @@ class CategoryObserver
 {
     public function updated(Category $category): void
     {
-
         if ($category->isDirty('icon') && !is_null($category->getOriginal('icon'))) {
             Storage::disk('public')->delete($category->getOriginal('icon'));
         }

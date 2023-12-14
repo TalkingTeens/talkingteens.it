@@ -12,10 +12,10 @@
                 {{ __('documents.title') }}
             </h1>
             <h2 class="title-xl">
-                Del testo ancora da decidere sulla didattica
+                {{ __('documents.subtitle') }}
             </h2>
             <p class="text-sm">
-                {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
+                {!! __('documents.description', ['name' => 'Maria Chiara Cavazzoni']) !!}
             </p>
         </div>
 {{--        <h2 class="font-semibold">

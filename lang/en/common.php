@@ -8,7 +8,7 @@ return [
         'app' => 'Download our app',
         'search' => [
             'label' => 'Select a city',
-            'default' => 'All'
+            'default' => 'All the statues'
         ]
     ]
 ];
