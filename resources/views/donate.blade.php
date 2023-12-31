@@ -6,30 +6,12 @@
 @endpush
 
 @section('content')
-    <div x-data="{ active : 1, method: '' }" class="md:flex lg:grid lg:grid-cols-4">
-        <div class="pb-3 pt-8 border-b md:sticky md:top-[--nav-height] md:h-[calc(100vh-var(--nav-height))] md:p-16 md:border-b-0 md:border-l md:flex md:flex-col md:justify-between md:gap-y-20 md:overflow-y-auto md:no-scrollbar">
+    <div x-data="{ active : 1, method: '', max : 0 }" x-init="$watch('active', value => max = active > max ? active : max)" class="md:flex lg:grid lg:grid-cols-4">
+        <div class="hidden pb-3 pt-8 border-b md:sticky md:top-[--nav-height] md:h-[calc(100vh-var(--nav-height))] md:p-16 md:border-b-0 md:border-l md:flex md:flex-col md:justify-between md:gap-y-20 md:overflow-y-auto md:no-scrollbar">
             <ol class="relative w-11/12 max-w-sm mx-auto flex justify-between border-t md:max-w-none md:w-auto md:mx-0 md:h-1/2 md:flex-col md:border-l md:border-t-0">
-                @foreach((is_array(Lang::get('donate.steps')) ? Lang::get('donate.steps') : []) as $step)
-                    <li
-                        @click="active = {{ $loop->index }}"
-                        class="group mr-10 last:mb-0 mt-6 md:mr-0 md:mb-10 md:mt-0 md:ml-6"
-                        :class="active < {{ $loop->index }} ? 'pointer-events-none [&>span]:text-gray-300' : 'cursor-pointer [&>span]:border-black [&>span]:text-black [&>span]:dark:border-st [&>span]:dark:text-st'"
-                    >
-                        <span class="absolute flex items-center justify-center w-8 h-8 bg-white border rounded-full -top-4 group-hover:bg-gray-100 ring-4 ring-white dark:border-2 md:top-auto md:-left-4">
-                            {{ $loop->iteration }}
-                        </span>
-                        <div class="hidden lg:block" :class="active < {{ $loop->index }} && 'opacity-50'">
-                            <h2 class="font-medium">
-                                {{ $step['title'] }}
-                            </h2>
-                            @if($step['description'])
-                                <p class="text-sm opacity-60 mt-1">
-                                    {{ $step['description'] }}
-                                </p>
-                            @endif
-                        </div>
-                    </li>
-                @endforeach
+                <x-step :index="0" :title="__('donate.steps.intro.title')" :description="__('donate.steps.intro.description')" />
+                <x-step :index="1" :title="__('donate.steps.method.title')" :description="__('donate.steps.method.description')" />
+                <x-step :index="2" :title="__('donate.steps.checkout.title')" :description="__('donate.steps.checkout.description')" />
             </ol>
             <div class="hidden lg:block">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-6 w-6">
@@ -46,12 +28,15 @@
             </div>
         </div>
         <div class="bg-gray-50 md:grow md:-order-1 lg:col-span-3">
-            <div x-cloak x-show="active !== 0" class="hidden md:block bg-white border-b">
-                <p @click="active -= 1">
-                    {{ __('common.back') }}
-                </p>
+            <div x-cloak x-show="max > 1" class="bg-white border-b flex items-center justify-between py-4 px-[calc(100vw/24)] xl:pl-[calc((100vw-80rem)/2)]">
+                <button type="button" x-show="active !== 0" @click="active -= 1">
+                    {{ __('donate.previous') }}
+                </button>
+                <button type="button" x-show="active !== 2 && max > active" @click="active += 1" class="ml-auto">
+                    {{ __('donate.next') }}
+                </button>
             </div>
-            <div x-show="active === 0" class="p-4 overflow-hidden h-[calc(100vh-var(--nav-height))]" x-transition>
+            <div x-show="active === 0" class="p-4 overflow-hidden h-[calc(100svh-var(--nav-height))]" x-transition>
                 <div class="columns-4 gap-4 space-y-4">
 {{--                    @foreach()--}}
 {{--                        <img src="{{ asset('images/') }}" alt="">--}}
@@ -67,22 +52,25 @@
                     <img class="w-full aspect-square" src="https://picsum.photos/500/300?random=9" />
                 </div>
             </div>
-            <div x-cloak x-show="active === 1" class="flex flex-col gap-y-4 lg:items-center justify-center h-full py-16 md:px-16" x-transition>
-                <p class="title-xl lg:text-center">
-                    Come preferisci procedere?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, velit.
-                </p>
-                <div class="flex gap-8 w-full max-w-md mt-4">
-                    <x-button.payment method="card" label="Credit Card" />
-                    <x-button.payment method="bank" label="Bank transfer" />
+            <div x-cloak x-show="active === 1" class="grid content-center h-full py-16 md:py-0 px-[calc(100vw/24)] xl:pl-[calc((100vw-80rem)/2)]" x-transition>
+                <div class="space-y-4">
+                    <p class="title-xl">
+                        Come preferisci procedere?
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, velit.
+                    </p>
+                    <div class="max-w-lg space-y-2 py-4">
+                        <x-button.payment method="card" label="Credit Card" />
+                        <x-button.payment method="bank" label="Bank transfer" />
+                    </div>
                 </div>
             </div>
             <div x-cloak x-show="active === 2 && method === 'bank'" x-transition>
                 bank
             </div>
             <div x-cloak x-show="active === 2 && method === 'card'" x-transition>
+                card
             </div>
         </div>
     </div>

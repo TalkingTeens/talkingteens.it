@@ -29,8 +29,8 @@
             alt=""
         >
     </header>
-    <div class="relative w-11/12 max-w-7xl mx-auto my-16 space-y-10 [&>*:not(:first-child)]:pt-10 divide-y md:space-y-16">
-        <div class="flex flex-col sm:flex-row items-start sm:gap-10 md:gap-16">
+    <div class="relative w-11/12 max-w-7xl mx-auto mb-16 mt-8 sm:my-16 space-y-10 [&>*:not(:first-child)]:pt-10 divide-y md:space-y-16">
+        <div class="flex flex-col sm:flex-row items-start gap-8 md:gap-16">
             <div class="flex items-center justify-end w-full sm:sticky sm:z-10 sm:top-[calc(var(--nav-height)+var(--subheader-height))] sm:w-auto sm:gap-3 sm:flex-col">
                 <p class="text-xs grow">
                     {{ __('common.share') }}
@@ -43,7 +43,7 @@
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M169.83 279.53l172.34 96.94M342.17 135.53l-172.34 96.94"/>
                     </svg>
                 </button>
-                <a href="https://twitter.com/intent/tweet?text={{ __('monument.share') }}&url={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}" target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}" target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
                     <svg viewBox="0 0 13 27" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 fill-[#4267b2]">
                         <path d="M8.10155 26.1115V13.0542H11.7059L12.1836 8.5546H8.10155L8.10768 6.30251C8.10768 5.12894 8.21918 4.50012 9.90476 4.50012H12.1581V0H8.55319C4.22314 0 2.69907 2.18279 2.69907 5.85357V8.55511H0V13.0547H2.69907V26.1115H8.10155Z" />
                     </svg>
@@ -113,7 +113,7 @@
                         @endforeach
                     </div>
                 @endunless
-                @unless($monument->classes->isEmpty() && $monument->treaters->isEmpty())
+{{--                @unless($monument->classes->isEmpty() && $monument->treaters->isEmpty())
                     <section>
                         <p class="title-lg">
                             {{ __('monument.curators') }}
@@ -136,7 +136,7 @@
                             @endforeach
                         </ul>
                     </section>
-                @endunless
+                @endunless--}}
             </div>
         </div>
         @if(isset($previous) && isset($next))

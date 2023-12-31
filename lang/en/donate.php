@@ -2,8 +2,8 @@
 
 return [
     'title' => 'Sponsor e Sostenitori',
-    'previous' => 'Precedente',
-    'next' => 'Successivo',
+    'previous' => 'Previous',
+    'next' => 'Next',
     'steps' => [
         'intro' => [
             'title' => 'Intro',

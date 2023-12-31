@@ -2,7 +2,7 @@
     <link rel="preload" as="image" href="{{ asset(Storage::url($monument->background_image)) }}">
 @endpush
 
-<main class="bg-st h-screen">
+<main class="bg-st h-svh">
     <div
         x-data="{state: @entangle('state') }"
         class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full py-11"

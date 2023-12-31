@@ -15,7 +15,9 @@ class ContributesController extends Controller
             ->sortBy('order');
 
         $supporters = Supporter::all()
-            ->sortBy('full_name');
+            ->sortBy('full_name')
+            ->groupBy('type')
+            ->sortKeysDesc();
 
         return view('contributes',
             compact('sponsors', 'supporters')

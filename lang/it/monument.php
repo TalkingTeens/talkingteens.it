@@ -5,7 +5,7 @@ return [
     'history' => 'Storia del monumento',
     'place' => 'A',
     'curators' => 'A cura di',
-    'share' => '',
+    'share' => 'testo condivisione',
     'call' => [
         'traditional' => 'Ascolta la statua chiamando il',
         'online' => 'oppure clicca il bottone qui sotto'

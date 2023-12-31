@@ -24,18 +24,24 @@
         </div>
     </header>
     <div class="max-w-7xl mx-auto w-11/12 py-16 space-y-16 lg:space-y-24">
-        <x-slider.logos :collection="$sponsors"/>
-        @unless($supporters->isEmpty())
-            <section class="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:items-start">
-                <h3 class="title-xl max-w-screen-sm lg:sticky lg:top-[calc(var(--nav-height)+4rem)]">
-                    {{ __('contributes.thanks') }}:
-                </h3>
+        <x-slider.logos :collection="$sponsors" />
+        <x-half-section title="Donatori del Crowfunding">
+            <a
+                href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html#tab_sostenitori"
+                class="underline"
+                target="_blank"
+            >
+                www.ideaginger.it
+            </a>
+        </x-half-section>
+        @foreach($supporters as $type => $group)
+            <x-half-section :title='__("contributes.thanks.{$type}")'>
                 <p>
-                    @foreach($supporters as $supporter)
+                    @foreach($group as $supporter)
                         {{ $supporter->full_name }} <br>
                     @endforeach
                 </p>
-            </section>
-        @endunless
+            </x-half-section>
+        @endforeach
     </div>
 @endsection

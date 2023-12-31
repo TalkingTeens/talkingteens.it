@@ -1,12 +1,17 @@
 @props(['method', 'label'])
 
-<button
-    type="button"
+<div
+    role="button"
     @click="active = 2; method = '{{ $method }}'"
-    class="cursor-pointer aspect-square rounded-3xl flex-1 grid gap-1 border hover:ring-2 hover:ring-st"
+    class="w-full cursor-pointer rounded-3xl flex items-center gap-5 border hover:ring-2 hover:ring-st px-8 py-6"
 >
-    <img src="{{ asset("svg/{$method}.svg") }}" alt="" class="h-1/2 mx-auto">
-    <span>
-        {{ $label }}
-    </span>
-</button>
+    <img src="{{ asset("svg/{$method}.svg") }}" alt="" class="size-10">
+    <div>
+        <p>
+            {{ $label }}
+        </p>
+        <p class="text-xs">
+            {{ $label }}
+        </p>
+    </div>
+</div>
