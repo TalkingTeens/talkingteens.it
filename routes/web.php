@@ -34,6 +34,7 @@ function() {
     Route::get('didattica', DocumentController::class)->name('docs');
     Route::get('sostenitori', ContributesController::class)->name('contributes');
     Route::view('dona', 'donate')->name('donate');
+    Route::view('progetto', 'project')->name('project');
     Route::view('echo', 'echo')->name('echo');
     Route::view('privacy-policy', 'privacy')->name('privacy');
     Route::get('webcall/{monument}', Webcall::class)->name('call');

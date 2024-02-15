@@ -1,4 +1,4 @@
-<x-dropdown.search :$label>
+<x-ui.dropdown.search :$label>
     @foreach($municipalities as $municipality)
         <button
             type="button"
@@ -9,4 +9,4 @@
             {{ $municipality->getDisplayName() }}
         </button>
     @endforeach
-</x-dropdown.search>
+</x-ui.dropdown.search>

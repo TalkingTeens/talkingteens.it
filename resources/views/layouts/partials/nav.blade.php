@@ -7,11 +7,11 @@
         @if(Request::routeIs('monuments.index'))
             <livewire:search />
         @else
-            <x-dropdown.search />
+            <x-ui.dropdown.search />
         @endif
 
         <div class="flex items-center gap-x-2">
-            <x-dropdown.lang />
+            <x-ui.dropdown.lang />
 
             <a wire:navigate href="{{ route('app') }}" class="btn secondary shrink-0 hidden lg:block text-sm rounded-full py-3">
                 {{ __('common.nav.app') }}

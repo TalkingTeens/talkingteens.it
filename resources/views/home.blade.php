@@ -13,7 +13,7 @@
             <div class="mx-auto w-11/12 max-w-7xl space-y-4">
                 @if($municipalities->count())
                     <p class="text-st font-semibold">
-                        {{ __('monument.place') . ' ' . $municipalities->join(', ', ' e ') }}
+                        {{ $municipalities->join(', ', ' e ') }}
                     </p>
                 @endif
                 <h1 class="title-xl font-black text-white">
@@ -22,7 +22,7 @@
                 <p class="text-sm text-white max-w-xl pb-1">
                     {{ __('home.description') }}
                 </p>
-                <x-button href="#" class="primary text-sm">
+                <x-button :href="route('project')" class="primary text-sm">
                     {{ __('home.cta') }}
                 </x-button>
             </div>

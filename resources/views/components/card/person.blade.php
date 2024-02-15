@@ -2,7 +2,7 @@
 
 <div {{ $attributes->class(['flex items-center gap-4', 'flex-row-reverse text-right' => $reverse]) }}>
     @if(isset($person->picture) && $avatar)
-        <x-avatar :src="$person->picture" :alt="$person->full_name" :$size />
+        <x-ui.avatar :src="$person->picture" :alt="$person->full_name" :$size />
     @endif
     <div>
         {{ $slot }}

@@ -7,3 +7,7 @@
 .h-fill {
     @apply h-[70vh] sm:h-[calc(100svh-var(--nav-height)-var(--banner-height))]
 }
+
+.donate-window {
+    @apply grid content-center grow py-16 md:py-0 px-[calc(100vw/24)] xl:pl-[calc((100vw-80rem)/2)];
+}
