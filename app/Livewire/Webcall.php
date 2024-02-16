@@ -21,10 +21,7 @@ class Webcall extends Component
 
         $this->webcall = $this->monument->webcall;
 
-        if (empty($this->webcall?->resources))
-        {
-            abort(404);
-        }
+        if (empty($this->webcall?->resources)) abort(404);
 
         $this->langs = collect(array_column($this->webcall->resources, 'data'))
             ->pluck('resource', 'language');

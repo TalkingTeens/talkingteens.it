@@ -28,7 +28,6 @@ Route::group(
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ],
 function() {
-
     Route::get('/', HomeController::class)->name('home');
     Route::get('app', AppController::class)->name('app');
     Route::get('didattica', DocumentController::class)->name('docs');
@@ -37,6 +36,7 @@ function() {
     Route::view('progetto', 'project')->name('project');
     Route::view('echo', 'echo')->name('echo');
     Route::view('privacy-policy', 'privacy')->name('privacy');
+    Route::view('cookie-policy', 'cookie')->name('cookie');
     Route::get('webcall/{monument}', Webcall::class)->name('call');
     Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
     Route::get('statue', Monuments::class)->name('monuments.index');
