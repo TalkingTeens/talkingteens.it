@@ -206,6 +206,7 @@
                     @click="$store.sidebar.toggle(); open = !open"
                     icon="svg/call.svg"
                     bg="bg-green-500"
+                    :ping="true"
                 />
             </div>
         </div>

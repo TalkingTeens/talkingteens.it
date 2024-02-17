@@ -3,7 +3,7 @@
 <button
     @click="{{ $action }}"
     @class([
-        "btn-webcall cursor-pointer",
+        "btn-webcall",
         "order-first" => $language == app()->getLocale()
     ])
 >

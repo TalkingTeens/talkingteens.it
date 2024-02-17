@@ -6,7 +6,7 @@
     <div
         x-data="webcall"
         class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full py-11"
-{{--        x-bind:style="[1, 2].includes(state) ? 'background-image: url("{{ asset(Storage::url($monument->background_image)) }}") }'--}}
+        x-bind:style="[1, 2].includes(state) && 'background-image: url(\'{{ asset(Storage::url($monument->background_image)) }}\' '"
     >
         <template x-if="[0, 3].includes(state)">
             <section class="flex-col w-5/6 mx-auto items-center h-full gap-8 flex">
@@ -15,7 +15,7 @@
                         <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
                     </a>
                 </div>
-                <template x-if="state === 0">{{--[&>a]:hidden--}}
+                <template x-if="state === 0">
                     <div class="grid gap-2 w-full">
                         @foreach($langs as $language => $resource)
                             <x-button.webcall.action action="call('{{ $resource }}')" :$language>
@@ -25,7 +25,8 @@
                     </div>
                 </template>
                 <template x-if="state === 3">
-                    <div class="grid gap-2 w-full">
+                    <div class="grid gap-2 w-full"
+                         :class="isEmbedded && '[&>a]:hidden'">
                         <x-button.webcall.link :href="route('app')" src="svg/app.svg" alt="">
                             Scarica l'app
                         </x-button.webcall.link>
@@ -62,7 +63,7 @@
                             </p>
                         </template>
                         <template x-if="state === 2">
-                            <p x-text="$refs.player.currentTime">
+                            <p x-text="currentTime">
                                 00:00
                             </p>
                         </template>
@@ -72,16 +73,17 @@
                 <div class="flex items-center"
                      :class='{ "justify-between": state === 1, "justify-center": state === 2 }'>
                     <x-button.rounded
-                        wire:click="hangUp"
+                        @click="close"
                         icon="svg/hang-up.svg"
                         bg="bg-red-500"
                     />
 
                     <template x-if="state === 1">
                         <x-button.rounded
-                            wire:click="answer"
+                            @click="answer"
                             icon="svg/call.svg"
                             bg="bg-green-500"
+                            :ping="true"
                         />
                     </template>
                 </div>
@@ -95,6 +97,10 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('webcall', () => ({
                 state: 0,
+
+                ringtone: new Audio("/audio/ringtone.mp3"),
+
+                currentTime: "00:00",
 
                 get isEmbedded() {
                     try {
@@ -115,17 +121,16 @@
 
                     if (url.host !== window.location.host) {
                         window.open(resource).focus();
-
+                        this.started();
                         this.end();
                         return;
                     }
 
-                    this.ringtone = new Audio("/audio/ringtone.mp3");
                     this.audio = new Audio(url);
 
                     this.ringtone.play();
                     this.ringtone.loop = true;
-                    //this.toggleVibration();
+                    // this.toggleVibration();
 
                     this.state = 1;
                 },
@@ -139,36 +144,50 @@
                 //     }
                 // },
 
-                // start()
-                // {
-                //     this.ringtone.pause();
-                //
-                //     //this.toggleVibration();
-                //     if (Boolean(window.navigator.vibrate))
-                //         clearInterval(this.vibrationInterval);
-                //
-                //     incomingCallElem.className = "started";
-                //
-                //     this.audio.play();
-                //
-                //     clearInterval(this.timerInterval);
-                //     this.timerInterval = setInterval(() => this.stopwatch(), 1000);
-                //
-                //     postReq('/api/webcall-started', {
-                //         id: this.id
-                //     });
-                // },
-                //
-                // completed()
-                // {
-                //     postReq('/api/webcall-completed', {
-                //         id: this.id
-                //     });
-                //
-                //     this.end();
-                // },
+                answer() {
+                    this.ringtone.pause();
+
+                    // this.toggleVibration();
+                    // if (Boolean(window.navigator.vibrate))
+                    //     clearInterval(this.vibrationInterval);
+
+                    this.currentTime = "00:00";
+                    this.audio.play();
+
+                    this.audio.addEventListener("ended", () => this.completed());
+
+                    this.audio.addEventListener('timeupdate', () => {
+                        const time = this.audio.currentTime;
+                        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+                        const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+                        this.currentTime = `${minutes}:${seconds}`;
+                    });
+
+                    this.state = 2;
+                    this.started();
+                },
+
+                started() {
+                    this.$wire.started();
+                },
+
+                completed() {
+                    this.$wire.completed();
+                    this.end();
+                },
+
+                close() {
+                    this.$wire.closed();
+                    this.end();
+                },
 
                 end() {
+                    // clearInterval(this.vibrationInterval);
+
+                    this.ringtone.pause();
+                    this.ringtone.currentTime = 0;
+
+                    this.audio?.pause();
                     this.state = 3;
                 },
 

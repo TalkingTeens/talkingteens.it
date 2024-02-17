@@ -37,10 +37,6 @@ class Webcall extends Component
         {
             $this->setState(1);
         }
-        else
-        {
-            $this->replay();
-        }
     }
 
     public function setLang($lang): void
@@ -61,30 +57,25 @@ class Webcall extends Component
         }
     }
 
-    public function answer(): void
-    {
-        $this->setState(2);
 
+
+
+
+
+
+    public function started(): void
+    {
         $this->webcall->increment("started");
     }
 
-    public function hangUp(): void
+    public function completed(): void
     {
-        $this->setState(3);
+        $this->webcall->increment("completed");
+    }
 
+    public function closed(): void
+    {
         $this->webcall->increment("closed");
-    }
-
-    public function replay(): void
-    {
-        $this->reset(['activeLang']);
-
-        $this->setState(0);
-    }
-
-    public function setState($state): void
-    {
-        $this->state = $state;
     }
 
     public function render()
