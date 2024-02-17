@@ -14,9 +14,8 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Filters\SelectFilter;
 
 class SchoolResource extends Resource
 {
@@ -24,7 +23,7 @@ class SchoolResource extends Resource
 
     protected static ?string $navigationGroup = 'Students';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     public static function form(Form $form): Form
     {
@@ -87,7 +86,8 @@ class SchoolResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('miur_code')
-                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('type')
                     ->searchable(),
                 TextColumn::make('name')
                     ->sortable()
@@ -99,9 +99,12 @@ class SchoolResource extends Resource
                     ->copyable()
                     ->copyMessage('Website copied')
                     ->copyMessageDuration(1500)
+                    ->searchable()
             ])
             ->filters([
-                //
+                SelectFilter::make('municipality')
+                    ->searchable()
+                    ->relationship('municipality', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

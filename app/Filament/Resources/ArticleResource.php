@@ -11,6 +11,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\GlobalSearch\Actions\Action;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
@@ -58,13 +59,12 @@ class ArticleResource extends Resource
                     ->searchable(),
 
                 IconColumn::make('visible')
-                    ->sortable()
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
-                //
+                TernaryFilter::make('visible'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

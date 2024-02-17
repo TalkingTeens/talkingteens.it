@@ -10,6 +10,7 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
@@ -92,10 +93,11 @@ class SponsorResource extends Resource
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
-                //
+                TernaryFilter::make('visible'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

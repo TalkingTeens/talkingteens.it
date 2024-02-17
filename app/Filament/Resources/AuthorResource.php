@@ -34,7 +34,7 @@ class AuthorResource extends Resource
 
     protected static ?string $navigationGroup = 'Statues';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-paint-brush';
 
     public static function form(Form $form): Form
     {

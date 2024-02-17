@@ -22,6 +22,8 @@ use Filament\Forms\Components\Tabs;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
@@ -226,17 +228,18 @@ class MonumentResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('phone_number')
-                    ->copyable()
-                    ->sortable(),
+                    ->copyable(),
                 IconColumn::make('visible')
-                    ->sortable()
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->defaultGroup('municipality.name')
             ->filters([
-                //
+                SelectFilter::make('municipality')
+                    ->searchable()
+                    ->relationship('municipality', 'name'),
+                TernaryFilter::make('visible'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

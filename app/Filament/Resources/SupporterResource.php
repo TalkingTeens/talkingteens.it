@@ -3,9 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SupporterResource\Pages;
-use App\Filament\Resources\SupporterResource\RelationManagers;
+use Filament\Tables\Filters\TernaryFilter;
 use App\Models\Supporter;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -16,7 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SupporterResource extends Resource
 {
@@ -53,16 +51,16 @@ class SupporterResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('type'),
+                TextColumn::make('type')
+                    ->badge(),
 
                 IconColumn::make('visible')
-                    ->sortable()
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
-                //
+                TernaryFilter::make('visible')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

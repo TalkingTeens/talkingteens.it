@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Support\Str;
@@ -137,16 +138,16 @@ class DocumentResource extends Resource
                     ]),
 
                 IconColumn::make('visible')
-                    ->sortable()
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
-                //
+                TernaryFilter::make('visible'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
