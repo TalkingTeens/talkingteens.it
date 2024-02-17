@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\AuthorResource\Pages;
 
 use App\Filament\Resources\AuthorResource;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditAuthor extends EditRecord

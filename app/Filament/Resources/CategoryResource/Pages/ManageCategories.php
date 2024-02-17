@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\CategoryResource\Pages;
 
 use App\Filament\Resources\CategoryResource;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 
 class ManageCategories extends ManageRecords

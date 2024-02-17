@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\SponsorResource\Pages;
 
 use App\Filament\Resources\SponsorResource;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditSponsor extends EditRecord

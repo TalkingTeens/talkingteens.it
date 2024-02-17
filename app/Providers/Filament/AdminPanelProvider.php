@@ -8,9 +8,9 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
-use Filament\SpatieLaravelTranslatablePlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -43,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugin(
                 SpatieLaravelTranslatablePlugin::make()
-                    ->defaultLocales(['it', 'en'])
+                    ->defaultLocales(array_keys(config('laravellocalization.supportedLocales')))
             )
             ->middleware([
                 EncryptCookies::class,

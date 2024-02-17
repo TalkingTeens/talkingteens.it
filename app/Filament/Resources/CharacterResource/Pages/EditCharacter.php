@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\CharacterResource\Pages;
 
 use App\Filament\Resources\CharacterResource;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class EditCharacter extends EditRecord

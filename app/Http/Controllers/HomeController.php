@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $articles = Article::all();
+        $articles = Article::all()->sortBy('order');
         $municipalities = Municipality::has('monuments')
             ->pluck('name');
 

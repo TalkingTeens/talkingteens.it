@@ -25,7 +25,7 @@ class ArticleResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
@@ -73,6 +73,7 @@ class ArticleResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ])
+            ->defaultSort('order')
             ->reorderable('order');
     }
 
