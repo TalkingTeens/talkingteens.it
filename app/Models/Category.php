@@ -22,7 +22,7 @@ class Category extends Tag
         'slug',
         'type',
         'order_column',
-//        'icon',
+        'icon',
     ];
 
     public function monuments(): MorphToMany

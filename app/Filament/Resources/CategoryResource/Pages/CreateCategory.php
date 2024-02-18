@@ -23,4 +23,11 @@ class CreateCategory extends CreateRecord
             Actions\LocaleSwitcher::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['type'] = 'category';
+
+        return $data;
+    }
 }

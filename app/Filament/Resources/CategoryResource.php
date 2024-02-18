@@ -30,15 +30,9 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->hint('Translatable')
+                    ->hintIcon('heroicon-o-language')
                     ->required(),
-//                    ->reactive()
-//                    ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-//                        $set('slug', Str::slug($state));
-//                    }),
-//
-//                TextInput::make('slug')
-//                    ->required()
-//                    ->unique(Category::class, 'slug', ignoreRecord: true),
 
                 FileUpload::make('icon')
                     ->image()
@@ -63,7 +57,9 @@ class CategoryResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('order_column')
+            ->reorderable('order_column');
     }
 
     public static function getPages(): array

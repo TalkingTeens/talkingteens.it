@@ -51,6 +51,8 @@ class CharacterResource extends Resource
 
                         RichEditor::make('description')
                             ->columnSpan(2)
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language')
                             ->disableToolbarButtons([
                                 'codeBlock',
                             ]),

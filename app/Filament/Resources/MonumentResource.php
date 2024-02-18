@@ -5,29 +5,30 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MonumentResource\Pages;
 use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
 use App\Filament\Resources\MonumentResource\RelationManagers\TreatersRelationManager;
+use App\Models\Category;
 use App\Models\Monument;
-use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms;
+use Filament\Forms\Components\Builder as WebcallBuilder;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Builder as WebcallBuilder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Tabs;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
@@ -55,8 +56,10 @@ class MonumentResource extends Resource
                                             ->schema([
                                                 TextInput::make('name')
                                                     ->required()
+                                                    ->hint('Translatable')
+                                                    ->hintIcon('heroicon-o-language')
                                                     ->reactive()
-                                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
                                                 TextInput::make('slug')
                                                     ->disabledOn('edit')
@@ -93,6 +96,8 @@ class MonumentResource extends Resource
 
                                         RichEditor::make('description')
                                             ->columnSpan(2)
+                                            ->hint('Translatable')
+                                            ->hintIcon('heroicon-o-language')
                                             ->disableToolbarButtons([
                                                 'codeBlock',
                                             ]),
@@ -167,7 +172,7 @@ class MonumentResource extends Resource
                                                                         Forms\Components\TextInput::make('last_name')
                                                                             ->required(),
                                                                     ])
-                                                            ])
+                                                            ]),
                                                     ])
                                                     ->columns(2),
                                                 WebcallBuilder\Block::make('link')->icon('heroicon-o-link')
@@ -187,27 +192,29 @@ class MonumentResource extends Resource
                             ]),
                     ])
                     ->columnSpan(['lg' => 2]),
-                    Group::make()->schema([
-                        Section::make()
-                            ->schema([
-                                Placeholder::make('created_at')
-                                    ->content(fn (Monument $record): ?string => $record->created_at?->diffForHumans()),
+                Group::make()->schema([
+                    Section::make()
+                        ->schema([
+                            Placeholder::make('created_at')
+                                ->content(fn(Monument $record): ?string => $record->created_at?->diffForHumans()),
 
-                                Placeholder::make('updated_at')
-                                    ->content(fn (Monument $record): ?string => $record->updated_at?->diffForHumans()),
-                            ])
-                            ->hidden(fn (?Monument $record) => $record === null),
+                            Placeholder::make('updated_at')
+                                ->content(fn(Monument $record): ?string => $record->updated_at?->diffForHumans()),
+                        ])
+                        ->hidden(fn(?Monument $record) => $record === null),
 
-                        Section::make('Status')
-                            ->schema([
-                                SpatieTagsInput::make('tags')
-                                    ->type('category'),
+                    Section::make('Status')
+                        ->schema([
+                            SpatieTagsInput::make('tags')
+                                ->suggestions(Category::getWithType('category')->pluck('name'))
+                                ->type('category'),
+//                                    ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->getTranslation('name', $livewire->activeLocale)),
 
-                                Toggle::make('visible')
-                                    ->helperText('This statue will be hidden.')
-                                    ->default(true),
-                            ]),
-                    ])
+                            Toggle::make('visible')
+                                ->helperText('This statue will be hidden.')
+                                ->default(true),
+                        ]),
+                ])
                     ->columnSpan(['lg' => 1]),
             ])
             ->columns(3);

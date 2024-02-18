@@ -15,8 +15,7 @@
                 {{ $monument->name }}
             </h1>
             <div class="flex gap-2 max-w-xs w-11/12 flex-wrap">
-                @foreach($monument->categories as $category)
-                    @continue(!$category->slug || !$category->name)
+                @foreach($tags as $category)
                     <a wire:navigate href="{{ route('monuments.index', ['c' => $category->slug]) }}"
                        class="text-sm bg-white/20 rounded-lg py-0.5 px-2 hover:text-white hover:bg-white/30 transition-colors">
                         {{ $category->name }}

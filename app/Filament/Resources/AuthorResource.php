@@ -68,6 +68,8 @@ class AuthorResource extends Resource
                         RichEditor::make('description')
                             ->columnSpan(2)
                             ->required()
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language')
                             ->disableToolbarButtons([
                                 'codeBlock',
                             ]),
