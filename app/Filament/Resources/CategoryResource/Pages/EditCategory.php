@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\SponsorResource\Pages;
+namespace App\Filament\Resources\CategoryResource\Pages;
 
-use App\Filament\Resources\SponsorResource;
+use App\Filament\Resources\CategoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditSponsor extends EditRecord
+class EditCategory extends EditRecord
 {
-    protected static string $resource = SponsorResource::class;
+    use EditRecord\Concerns\Translatable;
+
+    protected static string $resource = CategoryResource::class;
 
     protected function getRedirectUrl(): string
     {
@@ -19,6 +21,7 @@ class EditSponsor extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\LocaleSwitcher::make(),
         ];
     }
 }

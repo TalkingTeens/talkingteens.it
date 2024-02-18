@@ -3,25 +3,19 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SponsorResource\Pages;
-use App\Filament\Resources\SponsorResource\RelationManagers;
 use App\Models\Sponsor;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Section;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
-use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Toggle;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\IconColumn;
 
 class SponsorResource extends Resource
 {
@@ -37,46 +31,21 @@ class SponsorResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()
-                    ->schema([
-                        Section::make()
-                            ->schema([
-                                TextInput::make('name')
-                                    ->required(),
+                TextInput::make('name')
+                    ->required(),
 
-                                TextInput::make('resource')
-                                    ->url(),
+                TextInput::make('resource')
+                    ->url(),
 
-                                FileUpload::make('logo')
-                                    ->directory('images/sponsors')
-                                    ->columnSpan(2)
-                                    ->required(),
-                            ])
-                            ->columns(2),
-                    ])
-                    ->columnSpan(['lg' => 2]),
+                FileUpload::make('logo')
+                    ->directory('images/sponsors')
+                    ->columnSpan(2)
+                    ->required(),
 
-                Group::make()->schema([
-                    Section::make()
-                        ->schema([
-                            Placeholder::make('created_at')
-                                ->content(fn (Sponsor $record): ?string => $record->created_at?->diffForHumans()),
-
-                            Placeholder::make('updated_at')
-                                ->content(fn (Sponsor $record): ?string => $record->updated_at?->diffForHumans()),
-                        ])
-                        ->hidden(fn (?Sponsor $record) => $record === null),
-
-                    Section::make('Status')
-                        ->schema([
-                            Toggle::make('visible')
-                                ->helperText('This document will be hidden.')
-                                ->default(true),
-                        ])
-                ])
-                ->columnSpan(['lg' => 1]),
-            ])
-            ->columns(3);
+                Toggle::make('visible')
+                    ->helperText('This document will be hidden.')
+                    ->default(true),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -84,9 +53,11 @@ class SponsorResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('logo'),
+
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
+
                 IconColumn::make('visible')
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
@@ -111,19 +82,10 @@ class SponsorResource extends Resource
         return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSponsors::route('/'),
-            'create' => Pages\CreateSponsor::route('/create'),
-            'edit' => Pages\EditSponsor::route('/{record}/edit'),
+            'index' => Pages\ManageSponsors::route('/'),
         ];
     }
 }

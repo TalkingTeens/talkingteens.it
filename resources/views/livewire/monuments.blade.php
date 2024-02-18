@@ -23,6 +23,7 @@
     <div x-data="{ active : '{{ request('c') }}' }" class="h-[var(--subheader-height)] no-scrollbar overflow-x-auto max-w-6xl flex items-center gap-x-5 sm:gap-x-8 lg:gap-x-10">
         <x-button.monuments.category title="Tutto" icon="svg/grid.svg" alt="Icona" />
         @foreach($categories as $category)
+            @continue(!$category->slug || !$category->name)
             <x-button.monuments.category :title="$category->name"
                                          :category="$category->slug"
                                          :icon="isset($category->icon) ? Storage::url($category->icon) : null"

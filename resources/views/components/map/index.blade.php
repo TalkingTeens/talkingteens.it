@@ -1,7 +1,5 @@
 <div x-data class="flex h-[calc(100vh-var(--nav-height)-var(--banner-height)-var(--subheader-height))]">
-    {{--    <aside class="w-1/5">
-
-        </aside>--}}
+    {{--    <aside class="w-1/5"></aside>--}}
     <div wire:ignore id="map" x-init="$dispatch('load-map')" class="flex-1 isolate"></div>
 </div>
 
@@ -70,7 +68,7 @@
         initMap(monuments);
     })
 
-    document.addEventListener('livewire:initialized', () => {
+    document.addEventListener('livewire:load', () => {
         @this.on('reload-map', (event) => {
             const monuments = event.monuments;
             clearMarkers();

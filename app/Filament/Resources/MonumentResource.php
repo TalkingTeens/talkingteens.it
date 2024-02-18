@@ -3,11 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MonumentResource\Pages;
-use App\Filament\Resources\MonumentResource\RelationManagers;
 use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
 use App\Filament\Resources\MonumentResource\RelationManagers\TreatersRelationManager;
 use App\Models\Monument;
-use Closure;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
@@ -30,7 +29,6 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class MonumentResource extends Resource
@@ -202,10 +200,8 @@ class MonumentResource extends Resource
 
                         Section::make('Status')
                             ->schema([
-                                Select::make('category_id')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->relationship('categories', 'name'),
+                                SpatieTagsInput::make('tags')
+                                    ->type('category'),
 
                                 Toggle::make('visible')
                                     ->helperText('This statue will be hidden.')

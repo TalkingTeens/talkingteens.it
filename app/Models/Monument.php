@@ -3,17 +3,19 @@
 namespace App\Models;
 
 use App\Models\Scopes\ActiveScope;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 class Monument extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations, HasTags;
 
     protected $fillable = [
         'name',
@@ -44,6 +46,11 @@ class Monument extends Model
         return 'slug';
     }
 
+    public static function getTagClassName(): string
+    {
+        return Category::class;
+    }
+
     public function municipality(): BelongsTo
     {
         return $this->belongsTo(Municipality::class);
@@ -65,9 +72,16 @@ class Monument extends Model
             ->withPivot('description');
     }
 
-    public function categories(): BelongsToMany
+    public function tags(): MorphToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this
+            ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
+            ->orderBy('order_column');
+    }
+
+    public function categories(): MorphToMany
+    {
+        return $this->morphToMany(Category::class, 'taggable', 'taggables', null, 'tag_id');
     }
 
     public function classes()

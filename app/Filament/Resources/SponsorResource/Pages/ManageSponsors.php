@@ -4,9 +4,9 @@ namespace App\Filament\Resources\SponsorResource\Pages;
 
 use App\Filament\Resources\SponsorResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ManageRecords;
 
-class ListSponsors extends ListRecords
+class ManageSponsors extends ManageRecords
 {
     protected static string $resource = SponsorResource::class;
 

@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Spatie\Tags\Tag;
 
 class Monuments extends Component
 {
@@ -45,7 +46,7 @@ class Monuments extends Component
 
     public function render(): View
     {
-        $categories = Category::has('monuments')->get();
+        $categories = Category::has('monuments')->withType('category')->get();
 
         $monuments = Monument::query()
             ->when($this->municipality, function ($q) {
@@ -55,7 +56,7 @@ class Monuments extends Component
             })
             ->when($this->category, function ($q) {
                 return $q->whereHas('categories', function($q) {
-                    return $q->where('slug', $this->category);
+                    return $q->withType('category')->containing($this->category);
                 });
             })
             ->orderBy('slug')

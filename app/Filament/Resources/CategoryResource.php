@@ -3,24 +3,22 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
-use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationGroup = 'Statues';
@@ -32,15 +30,15 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->required()
-                    ->reactive()
-                    ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-
-                TextInput::make('slug')
-                    ->required()
-                    ->unique(Category::class, 'slug', ignoreRecord: true),
+                    ->required(),
+//                    ->reactive()
+//                    ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
+//                        $set('slug', Str::slug($state));
+//                    }),
+//
+//                TextInput::make('slug')
+//                    ->required()
+//                    ->unique(Category::class, 'slug', ignoreRecord: true),
 
                 FileUpload::make('icon')
                     ->image()
@@ -71,7 +69,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCategories::route('/'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }

@@ -3,21 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\Tags\Tag;
 
-class Category extends Model
+class Category extends Tag
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'tags';
 
     protected $fillable = [
         'name',
         'slug',
-        'icon',
+        'type',
+        'order_column',
+//        'icon',
     ];
 
-    public function monuments(): BelongsToMany
+    public function monuments(): MorphToMany
     {
-        return $this->belongsToMany(Monument::class);
+        return $this->morphedByMany(Monument::class, 'taggable', 'taggables', 'tag_id');
     }
 }

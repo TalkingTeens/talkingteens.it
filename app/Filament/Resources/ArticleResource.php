@@ -3,13 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArticleResource\Pages;
-use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\GlobalSearch\Actions\Action;
 use Filament\Resources\Resource;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
@@ -18,7 +16,6 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 class ArticleResource extends Resource
 {
@@ -35,13 +32,13 @@ class ArticleResource extends Resource
                 TextInput::make('name')
                     ->required(),
 
+                TextInput::make('resource')
+                    ->url(),
+
                 FileUpload::make('logo')
                     ->directory('images/articles')
+                    ->columnSpan(2)
                     ->required(),
-
-                TextInput::make('resource')
-                    ->url()
-                    ->columnSpan(2),
 
                 Toggle::make('visible')
                     ->default(true),

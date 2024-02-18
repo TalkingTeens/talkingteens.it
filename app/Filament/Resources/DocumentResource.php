@@ -3,11 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\DocumentResource\Widgets\DocumentStats;
-use Closure;
 use App\Filament\Resources\DocumentResource\Pages;
-use App\Filament\Resources\DocumentResource\RelationManagers;
 use App\Models\Document;
-use Filament\Forms;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +13,6 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
