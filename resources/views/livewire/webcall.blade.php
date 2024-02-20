@@ -5,11 +5,11 @@
 <main class="bg-st h-svh">
     <div
         x-data="webcall"
-        class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full py-11"
+        class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full"
         x-bind:style="[1, 2].includes(state) && 'background-image: url(\'{{ asset(Storage::url($monument->background_image)) }}\' '"
     >
         <template x-if="[0, 3].includes(state)">
-            <section class="flex-col w-5/6 mx-auto items-center h-full gap-8 flex">
+            <section class="flex-col p-11 mx-auto items-center h-full gap-8 flex">
                 <div class="flex-1 flex items-center w-3/5">
                     <a href="{{ route('home') }}" class="w-full">
                         <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
@@ -51,7 +51,7 @@
         </template>
 
         <template x-if="[1, 2].includes(state)">
-            <section class="p-8 h-full w-5/6 mx-auto flex-col justify-between gap-8 flex">
+            <section class="p-11 h-full mx-auto flex-col justify-between gap-8 flex bg-gradient-to-b from-nd/60 to-transparent">
                 <div class="text-center text-white">
                     <h1 class="font-bold text-4xl">
                         {{ $monument->name }}

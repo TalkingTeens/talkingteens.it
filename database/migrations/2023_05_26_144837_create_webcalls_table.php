@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('webcalls', function (Blueprint $table) {
             $table->id();
             $table->json('resources');
-            $table->unsignedInteger('opened')->default(0);
             $table->unsignedInteger('started')->default(0);
             $table->unsignedInteger('closed')->default(0);
             $table->unsignedInteger('completed')->default(0);

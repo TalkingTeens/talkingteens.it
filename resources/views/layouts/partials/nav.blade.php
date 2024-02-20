@@ -18,12 +18,4 @@
             </a>
         </div>
     </div>
-
-    @hasSection('subheader')
-        <div class="border-t bg-white">
-            <div class="mx-auto max-w-7xl w-11/12">
-                @yield('subheader')
-            </div>
-        </div>
-    @endif
 </nav>

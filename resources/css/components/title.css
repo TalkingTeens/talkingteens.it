@@ -5,7 +5,3 @@
 .title-xl {
     @apply text-4xl sm:text-5xl font-bold;
 }
-
-.title-2xl {
-    @apply text-8xl font-bold mb-16 py-10 text-center;
-}
