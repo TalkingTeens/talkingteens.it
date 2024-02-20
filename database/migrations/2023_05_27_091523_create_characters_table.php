@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
             $table->json('description')->nullable();
             $table->string('picture')->nullable();
             $table->unsignedInteger('birth_year')->nullable();

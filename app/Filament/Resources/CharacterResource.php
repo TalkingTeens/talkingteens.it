@@ -40,7 +40,9 @@ class CharacterResource extends Resource
                         Section::make()
                             ->schema([
                                 TextInput::make('name')
-                                    ->required(),
+                                    ->required()
+                                    ->hint('Translatable')
+                                    ->hintIcon('heroicon-o-language'),
 
                                 FileUpload::make('picture')
                                     ->image()

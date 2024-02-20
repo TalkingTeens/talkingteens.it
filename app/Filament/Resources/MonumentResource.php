@@ -6,6 +6,7 @@ use App\Filament\Resources\MonumentResource\Pages;
 use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
 use App\Filament\Resources\MonumentResource\RelationManagers\TreatersRelationManager;
 use App\Models\Category;
+use App\Models\Character;
 use App\Models\Monument;
 use Filament\Forms;
 use Filament\Forms\Components\Builder as WebcallBuilder;
@@ -91,6 +92,8 @@ class MonumentResource extends Resource
                                                     ->searchable()
                                                     ->multiple()
                                                     ->relationship('characters', 'name')
+//                                                    ->getOptionLabelFromRecordUsing(fn (Character $record) => $record->name)
+//                                                    ->getSearchResultsUsing(fn (string $search): array => Character::where('name->it', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
                                             ])
                                             ->columns(2),
 

@@ -19,7 +19,7 @@ class Character extends Model
     ];
 
     public $translatable = [
-//        'name',
+        'name',
         'description',
     ];
 }
