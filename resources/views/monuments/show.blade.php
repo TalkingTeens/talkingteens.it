@@ -24,7 +24,7 @@
             </div>
         </div>
         <img
-            class="absolute h-[95%] w-auto bottom-0 min-w-fit left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
+            class="absolute h-[95%] bottom-0 w-auto left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2 object-contain"
             src="{{ asset(Storage::url($monument->monument_image)) }}"
             alt=""
         >
