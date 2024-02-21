@@ -40,10 +40,8 @@ function() {
     Route::get('statue', Monuments::class)->name('monuments.index');
     Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
 
-    Route::prefix('legal')->group(function () {
-        Route::view('privacy-policy', 'privacy')->name('privacy');
-        Route::view('cookie-policy', 'cookie')->name('cookie');
-    });
+    Route::view('privacy-policy', 'privacy')->name('privacy');
+    Route::view('cookie-policy', 'cookie')->name('cookie');
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);

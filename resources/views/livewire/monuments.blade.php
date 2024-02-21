@@ -13,26 +13,23 @@
         </div>
     </x-ui.subheader>
 
-    <div @class([
-        'max-w-7xl w-11/12 mx-auto mt-16 mb-32 grid md:grid-cols-2 xl:grid-cols-3 gap-4',
-        'hidden' => $view === 'map'
-    ])>
-        @forelse($monuments as $monument)
-            <x-card.monument :$monument/>
-        @empty
-            <p class="col-span-full">
-                {{ __('monuments.empty') }}
-            </p>
-        @endforelse
-    </div>
-
-    <div @class(['hidden' => $view === 'list'])>
+    @if($view === 'list')
+        <div class='max-w-7xl w-11/12 mx-auto mt-6 md:mt-16 mb-32 grid md:grid-cols-2 xl:grid-cols-3 gap-4'>
+            @forelse($monuments as $monument)
+                <x-card.monument :$monument/>
+            @empty
+                <p class="col-span-full">
+                    {{ __('monuments.empty') }}
+                </p>
+            @endforelse
+        </div>
+    @else
         <x-map :$monuments/>
-    </div>
+    @endif
 
     <x-button.monuments.view :$view/>
 </section>
 
-@pushonce('scripts')
+@pushOnce('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr1D4oqR_NQYcN50-xynP9_-rOnWSa9w"></script>
-@endpushonce
+@endPushOnce

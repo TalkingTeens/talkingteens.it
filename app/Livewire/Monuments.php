@@ -21,6 +21,8 @@ class Monuments extends Component
     #[Url(as: 'm')]
     public ?string $municipality = '';
 
+    public $monuments;
+
     public function mount(): void
     {
         $this->dispatch('change-municipality', code: $this->municipality)
@@ -48,7 +50,7 @@ class Monuments extends Component
     {
         $categories = Category::has('monuments')->withType('category')->get();
 
-        $monuments = Monument::query()
+        $this->monuments = Monument::query()
             ->when($this->municipality, function ($q) {
                 return $q->whereHas('municipality', function($q) {
                     return $q->where('istat_code', $this->municipality);
@@ -62,12 +64,12 @@ class Monuments extends Component
             ->orderBy('slug')
             ->get();
 
-        if ($this->view == 'map') {
-            $this->dispatch('reload-map', monuments: $monuments);
+        if ($this->view === 'map') {
+            $this->dispatch('reload-map', monuments: $this->monuments);
         }
 
         return view('livewire.monuments',
-            compact(['monuments', 'categories'])
+            compact(['categories'])
         )->title('Statue');
     }
 }

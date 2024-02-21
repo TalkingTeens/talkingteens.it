@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-    <p class="max-w-screen-xl w-11/12 mx-auto mt-8 mb-4 title-xl">
+    <p class="max-w-screen-xl w-11/12 mx-auto mt-10 mb-6 title-xl">
         Menzioni Legali
     </p>
     <x-ui.subheader>
