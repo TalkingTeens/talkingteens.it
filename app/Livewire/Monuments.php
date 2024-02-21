@@ -4,11 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Monument;
+use App\Models\Municipality;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
-use Spatie\Tags\Tag;
 
 class Monuments extends Component
 {
@@ -23,6 +23,8 @@ class Monuments extends Component
 
     public $monuments;
 
+    public $city;
+
     public function mount(): void
     {
         $this->dispatch('change-municipality', code: $this->municipality)
@@ -32,7 +34,6 @@ class Monuments extends Component
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
-
         $this->reloadMap();
     }
 
@@ -40,7 +41,10 @@ class Monuments extends Component
     {
         if ($this->view !== 'map') return;
 
-        $this->dispatch('reload-map', monuments: $this->monuments);
+        if(!$this->monuments->count() && $this->municipality)
+            $this->city = Municipality::where('istat_code', $this->municipality)->first();
+
+        $this->dispatch('reload-map', monuments: $this->monuments, city: $this->city);
     }
 
     #[On('change-category')]
@@ -61,12 +65,12 @@ class Monuments extends Component
 
         $this->monuments = Monument::query()
             ->when($this->municipality, function ($q) {
-                return $q->whereHas('municipality', function($q) {
+                return $q->whereHas('municipality', function ($q) {
                     return $q->where('istat_code', $this->municipality);
                 });
             })
             ->when($this->category, function ($q) {
-                return $q->whereHas('categories', function($q) {
+                return $q->whereHas('categories', function ($q) {
                     return $q->withType('category')->containing($this->category);
                 });
             })

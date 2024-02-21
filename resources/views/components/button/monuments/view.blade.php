@@ -1,5 +1,6 @@
 <div
     wire:click="toggleView"
+    @click="window.scrollTo({ top: 0 })"
     class="sticky bottom-0"
 >
     {{-- outline button component --}}

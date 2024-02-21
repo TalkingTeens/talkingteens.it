@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-    <section class="min-h-[calc(100vh-var(--nav-height)-var(--banner-height))] sm:min-h-0 max-w-screen-xl w-11/12 mx-auto text-center flex flex-col items-center justify-center py-16 gap-y-16">
+    <section class="min-h-[calc(100vh-var(--nav-height))] sm:min-h-0 max-w-screen-xl w-11/12 mx-auto text-center flex flex-col items-center justify-center py-16 gap-y-16">
         <div class="w-11/12 max-w-screen-md mx-auto sm:w-full sm:py-4">
             <h1 class="badge">
                 {{ __('app.title') }}

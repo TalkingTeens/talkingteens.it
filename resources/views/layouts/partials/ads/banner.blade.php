@@ -1,10 +1,8 @@
 @unless(Request::routeIs('donate'))
     <a wire:navigate
        href="{{ route('donate') }}"
-       class="bg-st h-[var(--banner-height)] text-center flex items-center gap-1 justify-center text-sm"
+       class="hidden sm:flex bg-st h-[var(--banner-height)] text-center items-center gap-1 justify-center text-sm"
     >
-        <p class="max-w-sm">
-            {{ __('common.nav.donate') }}
-        </p>
+        {{ __('common.nav.donate') }}
     </a>
 @endunless

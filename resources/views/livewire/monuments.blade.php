@@ -14,7 +14,7 @@
     </x-ui.subheader>
 
     @if($view === 'list')
-        <div class='max-w-7xl w-11/12 mx-auto mt-6 md:mt-16 mb-32 grid md:grid-cols-2 xl:grid-cols-3 gap-4'>
+        <div class='max-w-7xl w-11/12 mx-auto mt-6 md:mt-16 pb-32 grid md:grid-cols-2 xl:grid-cols-3 gap-4'>
             @forelse($monuments as $monument)
                 <x-card.monument :$monument/>
             @empty
@@ -28,6 +28,8 @@
     @endif
 
     <x-button.monuments.view :$view/>
+
+    <div wire:loading.delay class="absolute z-10 inset-0 bg-white/50"></div>
 </section>
 
 @pushOnce('scripts')

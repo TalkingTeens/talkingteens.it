@@ -13,7 +13,7 @@
         <div class="flex items-center gap-x-2">
             <x-ui.dropdown.lang />
 
-            <a wire:navigate href="{{ route('app') }}" class="btn secondary shrink-0 hidden lg:block text-sm rounded-full py-3">
+            <a wire:navigate href="{{ route('app') }}" class="btn secondary hidden lg:block text-sm rounded-full py-3">
                 {{ __('common.nav.app') }}
             </a>
         </div>

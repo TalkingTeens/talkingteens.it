@@ -10,7 +10,7 @@
     @keydown.escape.prevent.stop="close()"
     @focusin.window="! $refs.panel.contains($event.target) && close()"
     x-id="['dropdown']"
-    class="relative w-full max-w-lg"
+    class="relative grow max-w-lg"
 >
     <button
         type="button"
@@ -20,26 +20,30 @@
         class="flex items-center w-full justify-between gap-x-2 rounded-full border p-2 shadow hover:shadow-md cursor-pointer"
     >
         <p @class([
-            'mx-3 text-ellipsis overflow-hidden whitespace-nowrap',
+            'mx-3 text-ellipsis overflow-hidden whitespace-nowrap min-w-0',
             'opacity-50' => !$label,
         ])>
             {{ $label ?? __('common.nav.search.label') }}
         </p>
 
         @if($label)
-            <div wire:click.stop="$dispatch('change-municipality', { code : '' })" class="bg-st rounded-full p-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-5 w-5 transition-transform duration-200">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="38" d="M368 368L144 144M368 144L144 368"/>
+            <div wire:click.stop="$dispatch('change-municipality', { code : '' })" @click="close()"
+                 class="bg-st rounded-full p-1.5 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                     class="h-5 w-5 transition-transform duration-200">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="38" d="M368 368L144 144M368 144L144 368"/>
                 </svg>
             </div>
         @else
-            <div class="bg-st rounded-full p-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-5 w-5 transition-transform duration-200" :class="open ? 'rotate-180' : ''">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="38" d="M112 184l144 144 144-144"/>
+            <div class="bg-st rounded-full p-1.5 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                     class="h-5 w-5 transition-transform duration-200" :class="open ? 'rotate-180' : ''">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="38" d="M112 184l144 144 144-144"/>
                 </svg>
             </div>
         @endif
-
     </button>
 
     <div
@@ -57,7 +61,8 @@
                 </a>
             @endif
             @foreach($municipalities as $municipality)
-                <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}" class="btn-result">
+                <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}"
+                   class="btn-result">
                     {{ $municipality->getDisplayName() }}
                 </a>
             @endforeach
