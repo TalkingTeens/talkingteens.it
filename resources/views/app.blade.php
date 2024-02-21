@@ -5,11 +5,11 @@
 
 @section('content')
     <section class="min-h-[calc(100vh-var(--nav-height))] sm:min-h-0 max-w-screen-xl w-11/12 mx-auto text-center flex flex-col items-center justify-center py-16 gap-y-16">
-        <div class="w-11/12 max-w-screen-md mx-auto sm:w-full sm:py-4">
+        <div class="w-11/12 max-w-screen-md mx-auto space-y-4 sm:w-full sm:py-4">
             <h1 class="badge">
                 {{ __('app.title') }}
             </h1>
-            <h2 class="title-xl mt-4">
+            <h2 class="title-xl">
                 {{ __('app.subtitle') }}
             </h2>
         </div>

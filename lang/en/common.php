@@ -5,7 +5,7 @@ return [
     'share' => 'Share',
     'nav' => [
         'donate' => 'Support the project with a small donation',
-        'app' => 'Download our app',
+        'app' => 'Download now',
         'search' => [
             'label' => 'Select a city',
             'default' => 'All the statues'

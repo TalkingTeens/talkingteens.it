@@ -40,14 +40,16 @@
                         Didattica
                     </a>
                 </div>
-                <div>
-                    <h4 class="text-base pb-1">
-                        Dietro il vetro
-                    </h4>
-                    <a wire:navigate href="#" class="link-footer">
-                        Tutto
-                    </a>
-                </div>
+                {{--
+                    <div>
+                        <h4 class="text-base pb-1">
+                            Dietro il vetro
+                        </h4>
+                        <a wire:navigate href="#" class="link-footer">
+                            Tutto
+                        </a>
+                    </div>
+                 --}}
                 <div>
                     <h4 class="text-base pb-1">
                         Contributi
@@ -57,6 +59,17 @@
                     </a>
                     <a wire:navigate href="{{ route('contributes') }}" class="link-footer">
                         Sostenitori
+                    </a>
+                </div>
+                <div>
+                    <h4 class="text-base pb-1">
+                        Menzioni Legali
+                    </h4>
+                    <a wire:navigate href="{{ route('privacy') }}" class="link-footer">
+                        Privacy Policy
+                    </a>
+                    <a wire:navigate href="{{ route('cookie') }}" class="link-footer">
+                        Cookie
                     </a>
                 </div>
             </div>
@@ -108,11 +121,6 @@
                     </svg>
                 </a>
             </div>
-            <div class="lg:hidden">
-                <x-button.submit class="text-black">
-                    {{ __("common.nav.app") }}
-                </x-button.submit>
-            </div>
         </div>
         <div
             class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-x-10 gap-y-5 font-extralight text-xs text-white/50">
@@ -120,11 +128,8 @@
                 &copy; {{ date('Y') . " " . config('app.name') . ". All Rights Reserved." }}
             </p>
             <div class="flex items-center gap-5">
-                <a wire:navigate href="{{ route("privacy") }}" class="hover:text-white transition-colors">
-                    Privacy Policy
-                </a>
-                <a wire:navigate href="{{ route("cookie") }}" class="hover:text-white transition-colors">
-                    Cookie Policy
+                <a href="https://liutcanov.github.io/" target="_blank" class="hover:text-white transition-colors">
+                    Sito web realizzato da
                 </a>
             </div>
         </div>
