@@ -1,6 +1,4 @@
-@title($monument->name)
-
-@extends('layouts.default')
+@extends('layouts.default', ['title' => $monument->name])
 
 @push('meta')
 @endpush

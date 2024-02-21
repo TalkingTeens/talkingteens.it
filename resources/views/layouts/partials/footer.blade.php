@@ -126,10 +126,6 @@
                 <a wire:navigate href="{{ route("cookie") }}" class="hover:text-white transition-colors">
                     Cookie Policy
                 </a>
-                <button type="button" x-data @click="$dispatch('open-manager')"
-                        class="hover:text-white transition-colors">
-                    Cookie Settings
-                </button>
             </div>
         </div>
     </div>

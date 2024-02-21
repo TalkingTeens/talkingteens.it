@@ -1,6 +1,4 @@
-@title('Sostenitori')
-
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'Sostenitori'])
 
 @push('meta')
 @endpush

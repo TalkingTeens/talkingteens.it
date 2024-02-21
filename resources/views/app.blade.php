@@ -1,6 +1,4 @@
-@title('App')
-
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'App'])
 
 @push('meta')
 @endpush

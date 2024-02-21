@@ -1,11 +1,31 @@
-@title($author->full_name)
-
-@extends('layouts.default')
+@extends('layouts.default', ['title' => $author->full_name])
 
 @push('meta')
 @endpush
 
 @section('content')
+    <x-ui.subheader>
+        <div
+            x-data="{ shown: false }"
+            @toggle.window="shown = $event.detail.shown"
+            class="mx-auto flex justify-between items-center h-[var(--subheader-height)]"
+        >
+            <x-button.arrow :href="URL::previous()">
+                {{ __('common.back') }}
+            </x-button.arrow>
+            <a href="#" x-show="shown" x-cloak x-transition>
+                <x-card.person
+                    :person="$author"
+                    :reverse="true"
+                    size="w-12 sm:w-14"
+                >
+                    <p class="title-lg mb-0">
+                        {{ $author->full_name }}
+                    </p>
+                </x-card.person>
+            </a>
+        </div>
+    </x-ui.subheader>
     <div x-data class="w-11/12 max-w-screen-xl mx-auto my-16">
         <x-card.person :person="$author" size="w-24 sm:w-36">
             <h1 class="title-xl"
@@ -28,34 +48,11 @@
                     </h2>
                     <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
                         @foreach($author->monuments as $monument)
-                            <x-card.monument :$monument />
+                            <x-card.monument :$monument/>
                         @endforeach
                     </div>
                 </section>
             @endunless
         </div>
-    </div>
-@endsection
-
-@section('subheader')
-    <div
-        x-data="{ shown: false }"
-        @toggle.window="shown = $event.detail.shown"
-        class="mx-auto flex justify-between items-center h-[var(--subheader-height)]"
-    >
-        <x-button.arrow :href="URL::previous()">
-            {{ __('common.back') }}
-        </x-button.arrow>
-        <a href="#" x-show="shown" x-cloak x-transition>
-            <x-card.person
-                :person="$author"
-                :reverse="true"
-                size="w-12 sm:w-14"
-            >
-                <p class="title-lg mb-0">
-                    {{ $author->full_name }}
-                </p>
-            </x-card.person>
-        </a>
     </div>
 @endsection

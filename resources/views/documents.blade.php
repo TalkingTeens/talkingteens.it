@@ -1,6 +1,4 @@
-@title('Didattica')
-
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'Didattica'])
 
 @push('meta')
 @endpush

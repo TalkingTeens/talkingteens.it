@@ -20,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('title', function ($expression) {
-            return "<?php \$title = $expression ?>";
-        });
+        //
     }
 }

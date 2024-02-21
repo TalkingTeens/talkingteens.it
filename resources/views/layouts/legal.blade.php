@@ -8,10 +8,13 @@
         Menzioni Legali
     </p>
     <x-ui.subheader>
-        <div class="flex">
-            <a href="" class="border-b-2 border-black font-semibold px-4 py-2 -mb-px">
-                Privacy
-            </a>
+        <div class="flex overflow-x-auto gap-8">
+            <x-legal.tab route="privacy">
+                Informativa sulla privacy
+            </x-legal.tab>
+            <x-legal.tab route="cookie">
+                Cookie Policy
+            </x-legal.tab>
         </div>
     </x-ui.subheader>
     <div class="max-w-screen-xl w-11/12 mx-auto">
