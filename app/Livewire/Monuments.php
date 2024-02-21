@@ -32,6 +32,15 @@ class Monuments extends Component
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
+
+        $this->reloadMap();
+    }
+
+    public function reloadMap(): void
+    {
+        if ($this->view !== 'map') return;
+
+        $this->dispatch('reload-map', monuments: $this->monuments);
     }
 
     #[On('change-category')]
@@ -64,9 +73,7 @@ class Monuments extends Component
             ->orderBy('slug')
             ->get();
 
-        if ($this->view === 'map') {
-            $this->dispatch('reload-map', monuments: $this->monuments);
-        }
+        $this->reloadMap();
 
         return view('livewire.monuments',
             compact(['categories'])

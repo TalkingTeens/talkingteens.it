@@ -1,14 +1,25 @@
 <div x-data="map" class="flex h-[calc(100vh-var(--nav-height)-var(--banner-height)-var(--subheader-height))]">
     {{--    <aside class="w-1/5"></aside>--}}
-    <div wire:ignore x-ref="map" x-init="initMap" class="flex-1 isolate"></div>
+    <div wire:ignore x-ref="map" x-init="setup" class="flex-1 isolate"></div>
 </div>
 
 @script
 <script>
     Alpine.data('map', () => ({
-        monuments: @json($monuments),
+        map: {},
+
+        monuments: {},
 
         markers: {},
+
+        setup() {
+            $wire.$on('reload-map', (event) => {
+                this.monuments = event.monuments;
+                this.initMap();
+            });
+
+            $wire.reloadMap();
+        },
 
         initMap() {
             this.map = new google.maps.Map(this.$refs.map, {
@@ -19,11 +30,6 @@
                 },
                 mapTypeId: 'roadmap'
             });
-
-            $wire.$on('reload-map', (event) => {
-                this.monuments = event.monuments;
-                this.initMap();
-            })
 
             this.drawMarkers();
             this.setCenter();
