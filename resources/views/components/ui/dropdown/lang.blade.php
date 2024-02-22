@@ -35,7 +35,7 @@
         class="absolute right-0 bg-white rounded-lg border shadow overflow-hidden p-1 space-y-1"
     >
         @foreach (LaravelLocalization::getSupportedLocales() as $locale => $lang)
-            <a href="{{ LaravelLocalization::getLocalizedURL($locale) }}" @class([
+            <a wire:navigate href="{{ LaravelLocalization::getLocalizedURL($locale) }}" @class([
                 "block py-2 px-4 rounded-lg hover:bg-gray-100"
             ])>
                 {{ $lang["native"] }}

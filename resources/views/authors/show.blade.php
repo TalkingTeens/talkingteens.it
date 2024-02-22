@@ -8,7 +8,7 @@
         <div
             x-data="{ shown: false }"
             @toggle.window="shown = $event.detail.shown"
-            class="mx-auto flex justify-between items-center h-[var(--subheader-height)]"
+            class="mx-auto flex justify-between items-center h-[--subheader-height]"
         >
             <x-button.arrow :href="URL::previous()">
                 {{ __('common.back') }}

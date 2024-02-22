@@ -1,7 +1,7 @@
-<footer class="bg-nd text-white py-16">
+<footer class="bg-nd text-white py-12 sm:py-16">
     <div class="max-w-7xl w-11/12 mx-auto text-sm space-y-16">
-        <div class="flex items-center gap-5 pb-16 border-b border-white/10">
-            <a wire:navigate href="{{ route('home') }}" class="shrink-0">
+        <div class="flex items-center gap-5 pb-12 sm:pb-16 border-b border-white/10">
+            <a wire:navigate href="{{ route('home') }}" class="shrink-0 max-sm:hidden">
                 <img
                     class="h-16 w-16"
                     src="{{ asset('svg/logo/small.svg') }}"
@@ -9,7 +9,7 @@
                 >
             </a>
             {{--
-                <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
+                <a wire:navigate href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                     <span class="font-medium">
                         Un progetto di
                     </span>

@@ -27,7 +27,7 @@
                     <x-button :href="route('monuments.index')" class="primary text-sm text-nd">
                         Scopri le statue
                     </x-button>
-                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold">
+                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold max-sm:text-sm">
                         {{ __('home.cta') }}
                     </x-button.arrow>
                 </div>

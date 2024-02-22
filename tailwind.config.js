@@ -15,10 +15,10 @@ module.exports = {
                 poppins: ["Poppins", "sans-serif"],
             },
             animation: {
-                "infinite-scroll": "infinite-scroll 35s linear infinite",
+                marquee: "marquee 35s linear infinite",
             },
             keyframes: {
-                "infinite-scroll": {
+                marquee: {
                     from: { transform: "translateX(0)" },
                     to: { transform: "translateX(-100%)" },
                 },

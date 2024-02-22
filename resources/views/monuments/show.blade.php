@@ -62,16 +62,19 @@
                             </section>
                         @endunless
                         <section>
-                            <h3 class="title-lg">
-                                {{ __('monument.place') }}
+                            <div class="mb-6 flex items-center justify-between">
+                                <h3 class="title-lg mb-0">
+                                    {{ __('monument.place') }}
+                                    {{ $monument->municipality->getDisplayName() }}
+                                </h3>
                                 <x-button.arrow
                                     :back="false"
+                                    :transform="false"
                                     :href="route('monuments.index', ['m' => $monument->municipality->istat_code])"
-                                    class="underline"
                                 >
-                                    {{ $monument->municipality->getDisplayName() }}
+                                    altro
                                 </x-button.arrow>
-                            </h3>
+                            </div>
                             <x-map.show :$monument/>
                         </section>
                     </div>

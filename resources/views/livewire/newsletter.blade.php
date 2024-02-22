@@ -1,4 +1,4 @@
-<div class="max-w-md" @subscribed="console.log('ca')">
+<div class="max-w-md" @subscribed="console.log('subscribed successfully')">
     <h3 class="font-extrabold text-3xl">
         Tieniti aggiornato!
     </h3>
