@@ -22,7 +22,7 @@
             </div>
         </div>
         <img
-            class="absolute h-[95%] min-w-min bottom-0 left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
+            class="absolute h-[95%] object-contain bottom-0 left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
             src="{{ asset(Storage::url($monument->monument_image)) }}"
             alt=""
         >
@@ -206,29 +206,39 @@
         @endunless--}}
 
     @if($monument->webcall?->resources)
-        <div class="hidden lg:block sticky bottom-0 z-20">
+        <div class="sticky bottom-0 z-20">
             <div x-data="{ show : window.pageYOffset < 10, open : false }"
                  class="absolute right-14 bottom-10 flex flex-col items-end gap-6">
                 <p class="max-w-[180px] hidden md:block text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
                    @scroll.window="show = window.pageYOffset < 10"
-                   x-show="show" x-transition
+                   x-show="show && !$store.sidebar.open" x-transition
                 >
                     {{ __('monument.call.traditional') }}
                     <a href="tel:+39{{ str_replace(' ', '', $monument->phone_number) }}"
                        class="whitespace-nowrap text-green-500 hover:underline">+39 {{ $monument->phone_number }}</a>,<br>
                     {{ __('monument.call.online') }}
                 </p>
-                <x-button.rounded
-                    @click="$store.sidebar.toggle(); open = !open"
-                    icon="svg/call.svg"
-                    bg="bg-green-500"
-                    :ping="true"
-                />
+                <template x-if="open">
+                    <x-button.rounded
+                        @click="open = false; $store.sidebar.open = open"
+                        icon="svg/close.svg"
+                    />
+                </template>
+                <template x-if="!open">
+                    <x-button.rounded
+                        @click="open = true; $store.sidebar.open = open"
+                        icon="svg/call.svg"
+                        bg="bg-green-500"
+                        :ping="true"
+                    />
+                </template>
             </div>
         </div>
-
-        @section('sidebar')
-            <object class="hidden lg:block w-full h-full" type="text/html" data="{{ route('call', $monument) }}"></object>
-        @endsection
     @endif
 @endsection
+
+@if($monument->webcall?->resources)
+    @section('sidebar')
+        <object class="w-full h-full" type="text/html" data="{{ route('call', $monument) }}"></object>
+    @endsection
+@endif
