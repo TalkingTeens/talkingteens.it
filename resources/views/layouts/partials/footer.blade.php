@@ -59,6 +59,9 @@
                     <a wire:navigate href="{{ route('donate') }}" class="link-footer">
                         Dona ora
                     </a>
+                    <a wire:navigate href="{{ route('sponsors') }}" class="link-footer">
+                        Sponsor
+                    </a>
                     <a wire:navigate href="{{ route('contributes') }}" class="link-footer">
                         Sostenitori
                     </a>

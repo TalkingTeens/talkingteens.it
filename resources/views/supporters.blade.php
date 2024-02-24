@@ -17,8 +17,6 @@
             </p>
         </div>
 
-        <x-slider.logos :collection="$sponsors"/>
-
         <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full rounded-3xl" alt="">
 
         {{--        <x-half-section title="Donatori del Crowfunding">--}}
