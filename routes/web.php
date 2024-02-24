@@ -31,7 +31,7 @@ Route::group(
         Route::get('/', HomeController::class)->name('home');
         Route::get('app', AppController::class)->name('app');
         Route::get('didattica', DocumentController::class)->name('docs');
-        Route::get('sostenitori', SupporterController::class)->name('contributes');
+        Route::get('sostenitori', SupporterController::class)->name('supporters');
         Route::get('sponsor', SponsorController::class)->name('sponsors');
         Route::view('dona', 'donate')->name('donate');
         // Route::view('progetto', 'project')->name('project');

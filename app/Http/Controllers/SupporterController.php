@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use App\Models\Supporter;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Sponsor;
 
 class SupporterController extends Controller
 {
@@ -16,8 +15,12 @@ class SupporterController extends Controller
             ->groupBy('type')
             ->sortKeysDesc();
 
+        $schools = School::has('classes.monuments')
+            ->with('municipality')
+            ->get();
+
         return view('supporters',
-            compact('supporters')
+            compact('supporters', 'schools')
         );
     }
 }

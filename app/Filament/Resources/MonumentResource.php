@@ -270,7 +270,7 @@ class MonumentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // ClassesRelationManager::class,
+             ClassesRelationManager::class,
             // TreatersRelationManager::class,
         ];
     }

@@ -17,7 +17,11 @@
             </p>
         </div>
 
-        <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full rounded-3xl" alt="">
+        @foreach($schools as $school)
+            {{ $school->name }}
+        @endforeach
+
+{{--        <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full rounded-3xl" alt="">--}}
 
         {{--        <x-half-section title="Donatori del Crowfunding">--}}
         {{--            <a--}}

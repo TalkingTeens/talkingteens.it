@@ -62,7 +62,7 @@
                     <a wire:navigate href="{{ route('sponsors') }}" class="link-footer">
                         Sponsor
                     </a>
-                    <a wire:navigate href="{{ route('contributes') }}" class="link-footer">
+                    <a wire:navigate href="{{ route('supporters') }}" class="link-footer">
                         Sostenitori
                     </a>
                 </div>
