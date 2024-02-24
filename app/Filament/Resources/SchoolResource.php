@@ -38,8 +38,9 @@ class SchoolResource extends Resource
                                     ->disabled(),
 
                                 TextInput::make('website')
-                                    // ->url()
-                                    ->nullable(),
+                                    ->activeUrl()
+                                    ->placeholder('https://...')
+                                    ->suffixIcon('heroicon-o-globe-alt'),
 
                                 TextInput::make('type')
                                     ->required(),

@@ -10,6 +10,8 @@ class Newsletter extends Component
 {
     public string $email = '';
 
+    public bool $subscribed = false;
+
     public function rules(): array
     {
         return [
@@ -25,7 +27,7 @@ class Newsletter extends Component
             Mailchimp::subscribe($this->email);
         }
 
-        $this->dispatch('subscribed', email: $this->email);
+        $this->subscribed = true;
     }
 
     public function render()

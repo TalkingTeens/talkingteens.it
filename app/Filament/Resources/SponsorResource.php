@@ -35,7 +35,9 @@ class SponsorResource extends Resource
                     ->required(),
 
                 TextInput::make('resource')
-                    ->url(),
+                    ->activeUrl()
+                    ->placeholder('https://...')
+                    ->suffixIcon('heroicon-o-globe-alt'),
 
                 FileUpload::make('logo')
                     ->directory('images/sponsors')
@@ -60,8 +62,6 @@ class SponsorResource extends Resource
 
                 IconColumn::make('visible')
                     ->boolean()
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
                 TernaryFilter::make('visible'),

@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-x-10 gap-y-5">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-10">
             <div class="flex items-center gap-10">
                 <a href="https://www.facebook.com/talkingteensparma/" target="_blank"
                    class="hover:text-[#4267b2] transition-colors">
@@ -119,6 +119,17 @@
                             fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="32"/>
                     </svg>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://apps.apple.com/it/app/talking-teens/id1459498571">
+                    <img src="{{ asset('svg/download/' . LaravelLocalization::getCurrentLocale() . '/app-store.svg') }}"
+                         alt="" class="h-9 sm:h-10">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens">
+                    <img
+                        src="{{ asset('images/download/' . LaravelLocalization::getCurrentLocale() . '/google-play.png') }}"
+                        alt="Disponibile su Google Play" class="h-9 sm:h-10">
                 </a>
             </div>
         </div>

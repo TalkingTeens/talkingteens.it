@@ -187,7 +187,9 @@ class MonumentResource extends Resource
                                                             ->required(),
 
                                                         TextInput::make('resource')
-                                                            ->url(),
+                                                            ->activeUrl()
+                                                            ->placeholder('https://...')
+                                                            ->suffixIcon('heroicon-o-globe-alt'),
                                                     ])
                                                     ->columns(2),
                                             ]),
@@ -228,17 +230,22 @@ class MonumentResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('monument_image'),
+
                 TextColumn::make('name')
                     ->searchable(),
+
                 TextColumn::make('municipality.name')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('phone_number')
-                    ->copyable(),
+
+                ImageColumn::make('authors.picture')
+                    ->circular()
+                    ->stacked()
+                    ->limit(2)
+                    ->limitedRemainingText(),
+
                 IconColumn::make('visible')
-                    ->boolean()
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle'),
+                    ->boolean(),
             ])
             ->defaultGroup('municipality.name')
             ->filters([

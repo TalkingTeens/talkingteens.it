@@ -33,7 +33,9 @@ class ArticleResource extends Resource
                     ->required(),
 
                 TextInput::make('resource')
-                    ->url(),
+                    ->activeUrl()
+                    ->placeholder('https://...')
+                    ->suffixIcon('heroicon-o-globe-alt'),
 
                 FileUpload::make('logo')
                     ->directory('images/articles')
@@ -56,9 +58,7 @@ class ArticleResource extends Resource
                     ->searchable(),
 
                 IconColumn::make('visible')
-                    ->boolean()
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle'),
+                    ->boolean(),
             ])
             ->filters([
                 TernaryFilter::make('visible'),

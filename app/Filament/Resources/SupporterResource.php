@@ -55,9 +55,7 @@ class SupporterResource extends Resource
                     ->badge(),
 
                 IconColumn::make('visible')
-                    ->boolean()
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle'),
+                    ->boolean(),
             ])
             ->filters([
                 TernaryFilter::make('visible')

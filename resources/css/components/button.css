@@ -3,7 +3,7 @@
 }
 
 .btn.primary {
-    @apply bg-st focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-st;
+    @apply bg-st text-nd focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-st;
 }
 
 .btn.secondary {

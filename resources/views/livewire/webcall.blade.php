@@ -51,7 +51,8 @@
         </template>
 
         <template x-if="[1, 2].includes(state)">
-            <section class="py-12 h-full mx-auto flex-col justify-between gap-8 flex bg-gradient-to-b from-nd/60 to-transparent">
+            <section
+                class="py-12 h-full mx-auto flex-col justify-between gap-8 flex bg-gradient-to-b from-nd/60 to-transparent">
                 <div class="text-center text-white">
                     <h1 class="font-bold text-4xl">
                         {{ $monument->name }}
@@ -92,109 +93,116 @@
     </div>
 </main>
 
-@pushonce('scripts')
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('webcall', () => ({
-                state: 0,
+@script
+<script>
+    Alpine.data('webcall', () => ({
+        state: 0,
 
-                ringtone: new Audio("/audio/ringtone.mp3"),
+        ringtone: new Audio("/audio/ringtone.mp3"),
 
-                currentTime: "00:00",
+        currentTime: "00:00",
 
-                get isEmbedded() {
-                    try {
-                        return window.self !== window.top;
-                    } catch (e) {
-                        return true;
-                    }
-                },
+        get isEmbedded() {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        },
 
-                call(resource) {
-                    let url;
+        init() {
+            const query = new URLSearchParams(location.search).get('l');
+            const langs = @js($langs);
 
-                    try {
-                        url = new URL(resource);
-                    } catch (e) {
-                        url = new URL(`storage/${resource}`, "{{ config('app.url') }}");
-                    }
+            if (query in langs) this.call(langs[query]);
+        },
 
-                    if (url.host !== window.location.host) {
-                        window.open(resource).focus();
-                        this.started();
-                        this.end();
-                        return;
-                    }
+        call(resource) {
+            let url;
 
-                    this.audio = new Audio(url);
+            try {
+                url = new URL(resource);
+            } catch (e) {
+                url = new URL(`storage/${resource}`, "{{ config('app.url') }}");
+            }
 
-                    this.ringtone.play();
-                    this.ringtone.loop = true;
-                    // this.toggleVibration();
+            console.log('dsada', url);
 
-                    this.state = 1;
-                },
+            if (url.host !== window.location.host) {
+                window.open(resource).focus(); // catch if blocked
+                this.started();
+                this.end();
+                return;
+            }
 
-                // toggleVibration()
-                // {
-                //     if (Boolean(window.navigator.vibrate))
-                //     {
-                //         window.navigator.vibrate(1000);
-                //         this.vibrationInterval = setInterval(() => window.navigator.vibrate(1000), 2000);
-                //     }
-                // },
+            this.audio = new Audio(url);
 
-                answer() {
-                    this.ringtone.pause();
+            this.ringtone.play();
+            this.ringtone.loop = true;
+            // this.toggleVibration();
 
-                    // this.toggleVibration();
-                    // if (Boolean(window.navigator.vibrate))
-                    //     clearInterval(this.vibrationInterval);
+            this.state = 1;
+        },
 
-                    this.currentTime = "00:00";
-                    this.audio.play();
+        // toggleVibration()
+        // {
+        //     if (Boolean(window.navigator.vibrate))
+        //     {
+        //         window.navigator.vibrate(1000);
+        //         this.vibrationInterval = setInterval(() => window.navigator.vibrate(1000), 2000);
+        //     }
+        // },
 
-                    this.audio.addEventListener("ended", () => this.completed());
+        answer() {
+            this.ringtone.pause();
 
-                    this.audio.addEventListener('timeupdate', () => {
-                        const time = this.audio.currentTime;
-                        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
-                        const seconds = Math.floor(time % 60).toString().padStart(2, '0');
-                        this.currentTime = `${minutes}:${seconds}`;
-                    });
+            // this.toggleVibration();
+            // if (Boolean(window.navigator.vibrate))
+            //     clearInterval(this.vibrationInterval);
 
-                    this.state = 2;
-                    this.started();
-                },
+            this.currentTime = "00:00";
+            this.audio.play();
 
-                started() {
-                    this.$wire.started();
-                },
+            this.audio.addEventListener("ended", () => this.completed());
 
-                completed() {
-                    this.$wire.completed();
-                    this.end();
-                },
+            this.audio.addEventListener('timeupdate', () => {
+                const time = this.audio.currentTime;
+                const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+                const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+                this.currentTime = `${minutes}:${seconds}`;
+            });
 
-                close() {
-                    this.$wire.closed();
-                    this.end();
-                },
+            this.state = 2;
+            this.started();
+        },
 
-                end() {
-                    // clearInterval(this.vibrationInterval);
+        started() {
+            $wire.started();
+        },
 
-                    this.ringtone.pause();
-                    this.ringtone.currentTime = 0;
+        completed() {
+            $wire.completed();
+            this.end();
+        },
 
-                    this.audio?.pause();
-                    this.state = 3;
-                },
+        close() {
+            $wire.closed();
+            this.end();
+        },
 
-                replay() {
-                    this.state = 0;
-                }
-            }))
-        })
-    </script>
-@endpushonce
+        end() {
+            // clearInterval(this.vibrationInterval);
+
+            this.ringtone.pause();
+            this.ringtone.currentTime = 0;
+
+            this.audio?.pause();
+            this.state = 3;
+        },
+
+        replay() {
+            this.state = 0;
+        }
+    }))
+</script>
+@endscript

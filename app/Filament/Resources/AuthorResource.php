@@ -44,24 +44,24 @@ class AuthorResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
+                                TextInput::make('first_name')
+                                    ->required(),
+
                                 TextInput::make('last_name')
                                     ->required()
                                     ->reactive()
                                     ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                TextInput::make('first_name')
-                                    ->required(),
+                                FileUpload::make('picture')
+                                    ->image()
+                                    ->directory('images/authors')
+                                    ->nullable(),
 
                                 TextInput::make('slug')
                                     ->disabledOn('edit')
                                     ->required()
                                     ->helperText('Una volta impostato, questo campo non può essere più modificato.')
                                     ->unique(Author::class, 'slug', ignoreRecord: true),
-
-                                FileUpload::make('picture')
-                                    ->image()
-                                    ->directory('images/authors')
-                                    ->nullable(),
                             ])
                             ->columns(2),
 

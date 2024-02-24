@@ -5,9 +5,24 @@
     <p class="text-white/50 font-light mt-4 mb-8">
         Iscriviti alla newsletter per restare informato sui nostri progetti e prossimi sviluppi!
     </p>
-    <form wire:submit="save">
-        <label for="email" class="sr-only">Email address</label>
-        <input wire:model="email" id="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-st sm:text-sm sm:leading-6" placeholder="Enter your email">
-        <x-form.error name="email" />
-    </form>
+    @if($subscribed)
+        <p>
+            Grazie {{ $email }}!
+            Iscrizione avvenuta con successo.
+        </p>
+    @else
+        <form wire:submit="save">
+            <label for="email" class="sr-only">Email address</label>
+            <div
+                class="flex items-center rounded-l-xl rounded-r-2xl bg-white/5 p-1 border border-white/10 shadow-sm w-full sm:w-3/4">
+                <input wire:model="email" id="email" type="email" autocomplete="email" required
+                       class="border-0 bg-transparent mx-2 w-full"
+                       placeholder="Enter your email">
+                <x-button type="submit" class="primary">
+                    Subscribe
+                </x-button>
+            </div>
+            <x-form.error name="email"/>
+        </form>
+    @endif
 </div>

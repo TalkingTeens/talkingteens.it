@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\DocumentResource\Pages;
-use App\Filament\Resources\DocumentResource\Widgets\DocumentStats;
 use App\Models\Document;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
@@ -136,9 +135,7 @@ class DocumentResource extends Resource
                     ]),
 
                 IconColumn::make('visible')
-                    ->boolean()
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle'),
+                    ->boolean(),
             ])
             ->filters([
                 TernaryFilter::make('visible'),
@@ -172,7 +169,7 @@ class DocumentResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            DocumentStats::class,
+            //
         ];
     }
 
