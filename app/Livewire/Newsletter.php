@@ -2,8 +2,11 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
+use App\Models\User;
+use Filament\Notifications\Notification;
+use Filament\Notifications\Actions\Action;
 use Illuminate\Support\Facades\App;
+use Livewire\Component;
 use Spatie\Newsletter\Facades\Newsletter as Mailchimp;
 
 class Newsletter extends Component
@@ -28,6 +31,29 @@ class Newsletter extends Component
         }
 
         $this->subscribed = true;
+
+        $this->notify();
+    }
+
+    private function notify(): void
+    {
+        $recipients = User::all();
+
+        $notification = Notification::make()
+            ->title('Nuova email!')
+            ->body($this->email . ' si è appena iscritto alla newsletter')
+            ->success()
+            ->icon('heroicon-o-envelope')
+            ->actions([
+                Action::make('open')
+                    ->button()
+                    ->url('https://mailchimp.com/', shouldOpenInNewTab: true)
+                    ->markAsRead(),
+            ]);
+
+        foreach ($recipients as $recipient) {
+            $notification->sendToDatabase($recipient);
+        }
     }
 
     public function render()

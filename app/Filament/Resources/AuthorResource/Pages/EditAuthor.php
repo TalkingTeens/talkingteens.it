@@ -21,7 +21,6 @@ class EditAuthor extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
-            Actions\ViewAction::make(),
             Actions\LocaleSwitcher::make(),
         ];
     }

@@ -33,8 +33,8 @@ function() {
     Route::get('didattica', DocumentController::class)->name('docs');
     Route::get('sostenitori', ContributesController::class)->name('contributes');
     Route::view('dona', 'donate')->name('donate');
-    Route::view('progetto', 'project')->name('project');
-    Route::view('echo', 'echo')->name('echo');
+    // Route::view('progetto', 'project')->name('project');
+    // Route::view('echo', 'echo')->name('echo');
     Route::get('webcall/{monument}', Webcall::class)->name('call');
     Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
     Route::get('statue', Monuments::class)->name('monuments.index');

@@ -18,9 +18,9 @@
                 <input wire:model="email" id="email" type="email" autocomplete="email" required
                        class="border-0 bg-transparent mx-2 w-full"
                        placeholder="Enter your email">
-                <x-button type="submit" class="primary">
+                <x-button.submit type="submit" class="primary">
                     Subscribe
-                </x-button>
+                </x-button.submit>
             </div>
             <x-form.error name="email"/>
         </form>

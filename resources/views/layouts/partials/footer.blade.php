@@ -33,9 +33,11 @@
                     <a wire:navigate href="{{ route('monuments.index') }}" class="link-footer">
                         Statue
                     </a>
-                    <a wire:navigate href="{{ route('project') }}" class="link-footer">
-                        Progetto
-                    </a>
+                    {{--
+                        <a wire:navigate href="{{ route('project') }}" class="link-footer">
+                            Progetto
+                        </a>
+                    --}}
                     <a wire:navigate href="{{ route('docs') }}" class="link-footer">
                         Didattica
                     </a>

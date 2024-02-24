@@ -50,7 +50,7 @@ class AuthorResource extends Resource
                                 TextInput::make('last_name')
                                     ->required()
                                     ->reactive()
-                                    ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
                                 FileUpload::make('picture')
                                     ->image()
@@ -80,12 +80,12 @@ class AuthorResource extends Resource
                     Section::make()
                         ->schema([
                             Placeholder::make('created_at')
-                                ->content(fn (Author $record): ?string => $record->created_at?->diffForHumans()),
+                                ->content(fn(Author $record): ?string => $record->created_at?->diffForHumans()),
 
                             Placeholder::make('updated_at')
-                                ->content(fn (Author $record): ?string => $record->updated_at?->diffForHumans()),
+                                ->content(fn(Author $record): ?string => $record->updated_at?->diffForHumans()),
                         ])
-                        ->hidden(fn (?Author $record) => $record === null),
+                        ->hidden(fn(?Author $record) => $record === null),
 
                     Section::make('Vita')
                         ->schema([
@@ -107,6 +107,7 @@ class AuthorResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('picture'),
+
                 TextColumn::make('full_name')
                     ->sortable()
                     ->searchable(),
@@ -115,8 +116,8 @@ class AuthorResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -135,7 +136,6 @@ class AuthorResource extends Resource
         return [
             'index' => Pages\ListAuthors::route('/'),
             'create' => Pages\CreateAuthor::route('/create'),
-            'view' => Pages\ViewAuthor::route('/{record}'),
             'edit' => Pages\EditAuthor::route('/{record}/edit'),
         ];
     }
