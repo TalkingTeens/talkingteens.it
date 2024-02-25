@@ -2,13 +2,16 @@
 
 namespace App\Filament\Resources\MonumentResource\RelationManagers;
 
+use App\Models\Classe;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Support\Facades\DB;
 
 class ClassesRelationManager extends RelationManager
 {
@@ -62,6 +65,14 @@ class ClassesRelationManager extends RelationManager
                 Forms\Components\FileUpload::make('photo')
                     ->image()
                     ->directory('images/classes'),
+
+                RichEditor::make('description')
+                    ->columnSpan(2)
+                    ->hint('Translatable')
+                    ->hintIcon('heroicon-o-language')
+                    ->disableToolbarButtons([
+                        'codeBlock',
+                    ]),
             ]);
     }
 
@@ -79,7 +90,12 @@ class ClassesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
-                Tables\Actions\AttachAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->recordSelectSearchColumns(['grade', 'section', 'discipline'])
+                    ->recordSelect(function (Select $select) {
+                        return $select
+                            ->multiple();
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

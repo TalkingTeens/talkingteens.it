@@ -4,44 +4,54 @@
 @endpush
 
 @section('content')
-    <section class="max-w-screen-xl w-11/12 mx-auto my-16 space-y-16">
-        <div class="w-11/12 max-w-screen-md mx-auto space-y-4 text-center sm:w-full sm:py-4">
-            {{--            <h1 class="badge">--}}
-            {{--                {{ __('contributes.title') }}--}}
-            {{--            </h1>--}}
-            <h2 class="title-xl">
-                {{ __('contributes.subtitle') }}
-            </h2>
-            <p class="text-sm">
-                {{ __('contributes.text') }}
-            </p>
+    <div class="grid items-start lg:grid-cols-2">
+        <div class="max-lg:hidden sticky top-[--nav-height]">
+            <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-[calc(100svh-var(--nav-height))] object-cover" alt="">
         </div>
-
-        @foreach($schools as $school)
-            {{ $school->name }}
-        @endforeach
-
-{{--        <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full rounded-3xl" alt="">--}}
-
-        {{--        <x-half-section title="Donatori del Crowfunding">--}}
-        {{--            <a--}}
-        {{--                href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html#tab_sostenitori"--}}
-        {{--                class="underline"--}}
-        {{--                target="_blank"--}}
-        {{--            >--}}
-        {{--                www.ideaginger.it--}}
-        {{--            </a>--}}
-        {{--        </x-half-section>--}}
-
-        @foreach($supporters as $type => $group)
-            <div>
-                <h3 class="title-lg">
-                    {{ __("contributes.thanks.{$type}") }}
-                </h3>
+        <div class="section space-y-16 lg:mx-0 lg:w-full lg:px-[calc(100vw/24)] xl:pr-[calc((100vw-80rem)/2)]">
+            <div class="space-y-4">
+                <h1 class="title-xl">
+                    {{ __('contributes.title') }}
+                </h1>
                 <p>
-                    {{ $group->pluck('full_name')->join(', ', ' e ') }}.
+                    {{ __('contributes.text') }}
                 </p>
             </div>
-        @endforeach
-    </section>
+
+            <div>
+                <h3 class="title-lg">
+                    {{ __("contributes.thanks.schools") }}
+                </h3>
+                <p>
+                    {{ $schools->pluck('name')->join(', ', ' e ') }}.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="title-lg">
+                    Donatori del Crowfunding
+                </h3>
+                <p>
+                    <a
+                        href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html#tab_sostenitori"
+                        class="underline"
+                        target="_blank"
+                    >
+                        www.ideaginger.it
+                    </a>
+                </p>
+            </div>
+
+            @foreach($supporters as $type => $group)
+                <div>
+                    <h3 class="title-lg">
+                        {{ __("contributes.thanks.{$type}") }}
+                    </h3>
+                    <p>
+                        {{ $group->pluck('full_name')->join(', ', ' e ') }}.
+                    </p>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
