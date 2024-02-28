@@ -59,7 +59,7 @@ class ClassesRelationManager extends RelationManager
 
                 Select::make('school_miur_code')
                     ->required()
-                    ->searchable()
+                    ->searchable(['miur_code', 'name', 'website'])
                     ->relationship('school', 'name'),
 
                 Forms\Components\FileUpload::make('photo')
@@ -80,10 +80,19 @@ class ClassesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('photo'),
+//                Tables\Columns\ImageColumn::make('photo'),
+
                 Tables\Columns\TextColumn::make('grade'),
+
                 Tables\Columns\TextColumn::make('section'),
+
+                Tables\Columns\TextColumn::make('discipline'),
+
                 Tables\Columns\TextColumn::make('year'),
+
+                Tables\Columns\TextColumn::make('school.type'),
+
+                Tables\Columns\TextColumn::make('school.name'),
             ])
             ->filters([
                 //

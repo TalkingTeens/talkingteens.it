@@ -10,13 +10,29 @@
             {{--                {{ __('contributes.title') }}--}}
             {{--            </h1>--}}
             <h2 class="title-xl">
-                {{ __('contributes.subtitle') }}
+                {{ __('sponsors.title') }}
             </h2>
             <p class="text-sm">
-                {{ __('contributes.text') }}
+                {{ __('sponsors.text') }}
             </p>
         </div>
 
-        <x-slider.logos :collection="$sponsors"/>
+        @unless($sponsors->isEmpty())
+            <div
+                class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                @foreach($sponsors as $sponsor)
+                    <div class="w-2/3 md:w-4/5 xl:w-3/5">
+                        @if(isset($sponsor->resource))
+                            <a href="{{ $sponsor->resource }}" target="_blank"
+                               class="block hover:scale-98 transition-transform">
+                                <img src="{{ asset(Storage::url($sponsor->logo)) }}" alt="">
+                            </a>
+                        @else
+                            <img src="{{ asset(Storage::url($sponsor->logo)) }}" alt="">
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endunless
     </section>
 @endsection

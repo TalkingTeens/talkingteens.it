@@ -6,7 +6,8 @@
 @section('content')
     <div class="grid items-start lg:grid-cols-2">
         <div class="max-lg:hidden sticky top-[--nav-height]">
-            <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-[calc(100svh-var(--nav-height))] object-cover" alt="">
+            <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-[calc(100svh-var(--nav-height))] object-cover"
+                 alt="">
         </div>
         <div class="section space-y-16 lg:mx-0 lg:w-full lg:px-[calc(100vw/24)] xl:pr-[calc((100vw-80rem)/2)]">
             <div class="space-y-4">
@@ -22,9 +23,13 @@
                 <h3 class="title-lg">
                     {{ __("contributes.thanks.schools") }}
                 </h3>
-                <p>
-                    {{ $schools->pluck('name')->join(', ', ' e ') }}.
-                </p>
+                <ul>
+                    @foreach($schools as $school)
+                        <li>
+                            {{ $school->name }}
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
             <div>
@@ -47,9 +52,13 @@
                     <h3 class="title-lg">
                         {{ __("contributes.thanks.{$type}") }}
                     </h3>
-                    <p>
-                        {{ $group->pluck('full_name')->join(', ', ' e ') }}.
-                    </p>
+                    <ul>
+                        @foreach($group as $supporter)
+                            <li>
+                                {{ $supporter->full_name }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             @endforeach
         </div>
