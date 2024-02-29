@@ -126,8 +126,6 @@
                 url = new URL(`storage/${resource}`, "{{ config('app.url') }}");
             }
 
-            console.log('dsada', url);
-
             if (url.host !== window.location.host) {
                 window.open(resource).focus(); // catch if blocked
                 this.started();

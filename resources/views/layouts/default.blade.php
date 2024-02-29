@@ -9,8 +9,7 @@
         </aside>
         <div x-data :class="$store.sidebar.open ? 'lg:w-3/4' : 'w-full'"
              class="transition-all ease-in-out duration-300">
-            @endif
-
+    @endif
             @include('layouts.partials.ads.banner')
             @include('layouts.partials.nav')
 
@@ -27,20 +26,21 @@
                     });
                 </script>
             @endpush
-            @hasSection('sidebar')
+    @hasSection('sidebar')
         </div>
-        @pushonce('scripts')
-            <script>
-                document.addEventListener('alpine:init', () => {
-                    Alpine.store('sidebar', {
-                        open: false,
-
-                        toggle() {
-                            this.open = !this.open
-                        }
-                    })
-                })
-            </script>
-        @endpushonce
     @endif
 @endsection
+
+@pushonce('scripts')
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('sidebar', {
+                open: false,
+
+                toggle() {
+                    this.open = !this.open
+                }
+            })
+        })
+    </script>
+@endpushonce

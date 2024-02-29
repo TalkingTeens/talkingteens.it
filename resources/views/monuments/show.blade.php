@@ -210,7 +210,7 @@
 
     @if($monument->webcall?->resources)
         <div class="sticky bottom-0 z-20">
-            <div x-data="{ show : window.pageYOffset < 10, open : false }"
+            <div x-data="{ show : window.pageYOffset < 10 }"
                  class="absolute right-14 bottom-10 flex flex-col items-end gap-6">
                 <p class="max-w-[180px] hidden md:block text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
                    @scroll.window="show = window.pageYOffset < 10"
@@ -221,15 +221,15 @@
                        class="whitespace-nowrap text-green-500 hover:underline">+39 {{ $monument->phone_number }}</a>,<br>
                     {{ __('monument.call.online') }}
                 </p>
-                <template x-if="open">
+                <template x-if="$store.sidebar.open">
                     <x-button.rounded
-                        @click="open = false; $store.sidebar.open = open"
+                        @click="$store.sidebar.open = false"
                         icon="svg/close.svg"
                     />
                 </template>
-                <template x-if="!open">
+                <template x-if="!$store.sidebar.open">
                     <x-button.rounded
-                        @click="open = true; $store.sidebar.open = open"
+                        @click="$store.sidebar.open = true"
                         icon="svg/call.svg"
                         bg="bg-green-500"
                         :ping="true"

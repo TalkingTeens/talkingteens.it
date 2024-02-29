@@ -63,13 +63,13 @@
         </section>
     </div>
 
-    <section class="bg-st text-nd">
+    <section class="bg-st">
         <div class="section space-y-16">
-            <h2 class="title-xl text-center max-w-2xl mx-auto">
+            <h2 class="title-xl text-center max-w-2xl text-nd mx-auto">
                 Sostieni il progetto
             </h2>
-            <div class="grid gap-8 sm:grid-cols-2">
-                <div class="bg-gray-100 rounded-3xl p-10">
+            <div class="grid gap-8 md:grid-cols-2">
+                <div class="bg-white rounded-3xl p-10">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi
                         voluptate? Maxime.
@@ -78,15 +78,19 @@
                         Dona ora
                     </x-button.arrow>
                 </div>
-                <div class="bg-gray-100 rounded-3xl p-10">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi
-                        voluptate? Maxime.
-                    </p>
-                    <x-button.arrow :href="route('sponsors')" :back="false" class="font-semibold">
-                        Diventa uno sponsor
-                    </x-button.arrow>
-                </div>
+                <a href="{{ route('sponsors') }}" class="rounded-3xl relative overflow-hidden h-96 text-white">
+                    <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-full object-cover"
+                         alt="">
+                    <div class="absolute p-10 inset-0 backdrop-brightness-50">
+                        <h3 class="title-lg">
+                            Diventa uno sponsor
+                        </h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi
+                            voluptate? Maxime.
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -98,9 +102,5 @@
         <x-button.arrow :href="route('supporters')" :back="false" class="mt-6">
             Scopri i sostenitori
         </x-button.arrow>
-        <a href="{{ route('supporters') }}">
-            <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-fill object-cover rounded-3xl mt-16"
-                 alt="">
-        </a>
     </section>
 @endsection
