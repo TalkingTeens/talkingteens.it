@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'back' => 'Torna indietro',
     'share' => 'Condividi',
     'nav' => [
@@ -10,5 +11,9 @@ return [
             'label' => 'Seleziona una città',
             'default' => 'Tutte le statue'
         ]
+    ],
+    'footer' => [
+        'credits' => 'Realizzato da Igor Liutcanov'
     ]
+
 ];

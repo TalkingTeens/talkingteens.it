@@ -8,7 +8,7 @@
         alt=""
     >
 
-    <div class="z-10 group-hover:scale-102 transition-transform duration-300 w-1/2">
+    <div class="z-10 group-hover:scale-102 transition-transform duration-300 w-3/4 sm:w-1/2">
         <h2 class="text-2xl font-extrabold leading-tight">
             {{ $monument->name }}
         </h2>

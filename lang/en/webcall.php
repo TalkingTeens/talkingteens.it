@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title' => 'Webcall',
     'incoming' => 'Incoming call',
     'map' => 'View map',
@@ -12,4 +13,5 @@ return [
         'lis' => 'Italian Sign Language',
         'pr' => 'Parmesan dialect',
     ],
+
 ];

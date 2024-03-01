@@ -1,4 +1,4 @@
-@extends('layouts.legal', ['title' => 'Privacy Policy'])
+@extends('layouts.legal', ['title' => __('privacy.title')])
 
 @push('meta')
 @endpush

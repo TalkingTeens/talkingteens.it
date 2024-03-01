@@ -1,5 +1,7 @@
 <?php
 
 return [
+
     'works' => 'Works',
+
 ];

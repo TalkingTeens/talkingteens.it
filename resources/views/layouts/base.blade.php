@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        {{ isset($title) ? $title . ' | ' : '' }}
+        {{ isset($title) ? $title . ' - ' : '' }}
         {{ config('app.name') }}
     </title>
 

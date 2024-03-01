@@ -1,13 +1,6 @@
+/* Variables */
 :root {
     @apply [--nav-height:4.5rem]
     [--banner-height:2.25rem]
     [--subheader-height:4.2rem]
-}
-
-.h-fill {
-    @apply h-[70vh] sm:h-[calc(100svh-var(--nav-height)-var(--banner-height))]
-}
-
-.section {
-    @apply mx-auto w-11/12 max-w-screen-xl py-16 sm:py-24;
 }

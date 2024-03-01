@@ -7,6 +7,7 @@ use Livewire\Component;
 class Cookie extends Component
 {
     public int $state;
+
     public bool $analytics;
 
     public function mount()

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Monument;
+use Illuminate\Support\Arr;
 
 class Webcall extends Component
 {
@@ -44,7 +45,7 @@ class Webcall extends Component
     public function render()
     {
         return view('livewire.webcall')
-            ->title($this->monument->name . ' Webcall')
+            ->title(Arr::join([__('webcall.title'), $this->monument->name], ' '))
             ->extends('layouts.base')
             ->section('body');
     }

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title' => 'Talking App',
     'subtitle' => 'Scansiona il QR Code e scarica la nostra app.',
     'features' => [
@@ -29,4 +30,5 @@ return [
             'description' => 'Un modo alternativo per ascoltare le telefonate delle statue: utilizza il lettore codice QR integrato per scansionare i QR code sui totem nelle piazze presso le statue',
         ]
     ],
+
 ];

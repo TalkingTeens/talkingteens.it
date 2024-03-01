@@ -1,4 +1,4 @@
-@extends('layouts.default', ['title' => 'Didattica'])
+@extends('layouts.default', ['title' => __('documents.title')])
 
 @push('meta')
 @endpush
@@ -9,27 +9,33 @@
             <h1 class="badge">
                 {{ __('documents.title') }}
             </h1>
+
             <h2 class="title-xl">
                 {{ __('documents.subtitle') }}
             </h2>
+
             <p class="text-sm">
-                {!! __('documents.description', ['name' => 'Maria Chiara Cavazzoni']) !!}
+                {{ __('documents.description') }} <br>
+                {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
             </p>
         </div>
-{{--        <h2 class="font-semibold">
-            Cartelle
-        </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
---}}{{--            <x-document.folder />--}}{{--
-        </div>--}}
+
+        {{--        <h2 class="font-semibold">--}}
+        {{--            Cartelle--}}
+        {{--        </h2>--}}
+        {{--        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">--}}
+        {{--            <x-document.folder />--}}
+        {{--        </div>--}}
+
         <div class="grid gap-y-4">
             @foreach ($categories as $key => $documents)
                 <h2 class="font-semibold">
                     {{ __("documents.categories.{$key}") }}
                 </h2>
+
                 <div class="grid gap-2 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     @foreach ($documents as $document)
-                        <livewire:document.file :document="$document" />
+                        <livewire:document.file :document="$document"/>
                     @endforeach
                 </div>
             @endforeach

@@ -81,6 +81,6 @@ class Monuments extends Component
 
         return view('livewire.monuments',
             compact(['categories'])
-        )->title('Statue');
+        )->title(__('monuments.title'));
     }
 }

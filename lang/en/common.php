@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'back' => 'Back',
     'share' => 'Share',
     'nav' => [
@@ -10,5 +11,9 @@ return [
             'label' => 'Select a city',
             'default' => 'All the statues'
         ]
+    ],
+    'footer' => [
+        'credits' => 'Handcrafted by Igor Liutcanov'
     ]
+
 ];

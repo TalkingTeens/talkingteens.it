@@ -1,28 +1,20 @@
-@extends('layouts.legal', ['title' => 'Cookie Policy'])
+@extends('layouts.legal', ['title' => __('cookie.title')])
 
 @push('meta')
 @endpush
 
-@php
-    $translations = Lang::get('cookie.sections');
-    $sections = is_string($translations) ? [] : $translations;
-@endphp
-
 @section('page')
     <div class="space-y-16 my-16 lg:w-2/3">
-        <button type="button" x-data @click="$dispatch('open-manager')">
-            Cookie Settings
-        </button>
+        <x-button class="primary" x-data @click="$dispatch('open-manager')">
+            {{ __('cookie.settings.title') }}
+        </x-button>
 
-        @foreach($sections as $section)
-            <section>
-                <h2 class="title-lg">
-                    {{ $section["title"] }}
-                </h2>
-                <p>
-                    {{ $section["text"] }}
-                </p>
-            </section>
-        @endforeach
+        {{--        <section>--}}
+        {{--            <h2 class="title-lg">--}}
+        {{--            </h2>--}}
+
+        {{--            <p>--}}
+        {{--            </p>--}}
+        {{--        </section>--}}
     </div>
 @endsection

@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'title' => 'Chiamata',
+
+    'title' => 'Ascolta online',
     'incoming' => 'Chiamata in arrivo',
     'map' => 'Mappa delle Statue',
     'app' => 'Scarica l\'app',
@@ -12,4 +13,5 @@ return [
         'lis' => 'Lingua dei Segni Italiana',
         'pr' => 'Dialetto parmigiano',
     ],
+
 ];

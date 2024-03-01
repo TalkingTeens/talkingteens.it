@@ -1,13 +1,19 @@
 <?php
 
 return [
+
     'authors' => 'Realizzato da',
     'history' => 'Storia del monumento',
-    'place' => 'A',
+    'where' => 'A',
+    'monuments' => 'Vedi tutte',
     'curators' => 'A cura di',
-    'share' => 'testo condivisione',
+    'share' => [
+        'title' => 'testo condivisione',
+        'text' => 'text',
+    ],
     'call' => [
         'traditional' => 'Ascolta la statua chiamando il',
         'online' => 'oppure clicca il bottone qui sotto'
     ]
+
 ];

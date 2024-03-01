@@ -15,6 +15,7 @@
                         <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
                     </a>
                 </div>
+
                 <template x-if="state === 0">
                     <div class="grid gap-2 w-full">
                         @foreach($langs as $language => $resource)
@@ -24,11 +25,12 @@
                         @endforeach
                     </div>
                 </template>
+
                 <template x-if="state === 3">
                     <div class="grid gap-2 w-full"
                          :class="isEmbedded && '[&>a]:hidden'">
                         <x-button.webcall.link :href="route('app')" src="svg/app.svg" alt="">
-                            Scarica l'app
+                            {{ __('webcall.app') }}
                         </x-button.webcall.link>
 
                         <x-button.webcall.link :href="route('monuments.show', ['monument' => $monument])"
@@ -39,14 +41,18 @@
 
                         <x-button.webcall.link :href="route('monuments.index', ['v' =>'map'])" src="svg/pin.svg"
                                                alt="">
-                            Mappa delle Statue
+                            {{ __('webcall.map') }}
                         </x-button.webcall.link>
 
                         <x-button.webcall.action action="replay" src="svg/replay.svg" alt="">
-                            Riascolta
+                            {{ __('webcall.replay') }}
                         </x-button.webcall.action>
                     </div>
                 </template>
+
+                <a href="https://liutcanov.github.io/" class="text-xs" :class="isEmbedded && 'hidden'">
+                    {{ __('common.footer.credits') }}
+                </a>
             </section>
         </template>
 
@@ -57,12 +63,14 @@
                     <h1 class="font-bold text-4xl">
                         {{ $monument->name }}
                     </h1>
+
                     <div class="opacity-70 font-semibold mt-2 text-lg">
                         <template x-if="state === 1">
                             <p class="animate-pulse">
-                                Chiamata in arrivo
+                                {{ __('webcall.incoming') }}
                             </p>
                         </template>
+
                         <template x-if="state === 2">
                             <p x-text="currentTime">
                                 00:00

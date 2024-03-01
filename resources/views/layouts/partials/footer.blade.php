@@ -145,7 +145,7 @@
             </p>
             <div class="flex items-center gap-5">
                 <a href="https://liutcanov.github.io/" target="_blank" class="hover:text-white transition-colors">
-                    Sito web realizzato da Igor Liutcanov
+                    {{ __('common.footer.credits') }}
                 </a>
             </div>
         </div>

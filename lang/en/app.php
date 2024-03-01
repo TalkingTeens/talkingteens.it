@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title' => 'Talking App',
     'subtitle' => 'Scan the QR Code and download our app.',
     'features' => [
@@ -29,4 +30,5 @@ return [
             'description' => 'desc',
         ]
     ],
+
 ];
