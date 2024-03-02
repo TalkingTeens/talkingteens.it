@@ -5,7 +5,7 @@
 
 @section('content')
     <p class="max-w-screen-xl w-11/12 mx-auto mt-10 mb-6 title-xl">
-        Menzioni Legali
+        {{ __('common.footer.legal') }}
     </p>
 
     <x-ui.subheader>

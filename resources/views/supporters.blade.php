@@ -21,7 +21,7 @@
 
             <div>
                 <h3 class="title-lg">
-                    {{ __("contributes.thanks.schools") }}
+                    {{ __("contributes.thanks.school") }}
                 </h3>
                 <ul>
                     @foreach($schools as $school)

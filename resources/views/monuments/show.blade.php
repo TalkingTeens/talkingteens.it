@@ -69,8 +69,8 @@
                             </section>
                         @endunless
 
-                        <section>
-                            <div class="mb-6 flex items-center justify-between">
+                        <section class="space-y-6">
+                            <div class="flex gap-1 flex-col sm:flex-row sm:items-center sm:justify-between">
                                 <h3 class="title-lg mb-0">
                                     {{ __('monument.where') }}
                                     {{ $monument->municipality->getDisplayName() }}
@@ -226,7 +226,7 @@
     {{--    @endunless--}}
 
     @if($monument->webcall?->resources)
-        <div class="sticky bottom-0 z-20">
+        <div class="max-lg:hidden sticky bottom-0 z-20">
             <div x-data="{ show : window.pageYOffset < 10 }"
                  class="absolute right-14 bottom-10 flex flex-col items-end gap-6">
                 <p class="max-w-[180px] hidden md:block text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"

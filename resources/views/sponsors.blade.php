@@ -9,12 +9,18 @@
             {{--            <h1 class="badge">--}}
             {{--                {{ __('contributes.title') }}--}}
             {{--            </h1>--}}
+
             <h2 class="title-xl">
                 {{ __('sponsors.title') }}
             </h2>
+
             <p class="text-sm">
                 {{ __('sponsors.text') }}
             </p>
+
+            <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
+                {{ __('sponsors.cta') }}
+            </x-button.arrow>
         </div>
 
         @unless($sponsors->isEmpty())

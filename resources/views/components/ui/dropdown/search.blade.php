@@ -20,7 +20,7 @@
         class="flex items-center w-full justify-between gap-x-2 rounded-full border p-2 shadow hover:shadow-md cursor-pointer"
     >
         <p @class([
-            'mx-3 text-ellipsis overflow-hidden whitespace-nowrap min-w-0',
+            'mx-3 truncate min-w-0',
             'opacity-50' => !$label,
         ])>
             {{ $label ?? __('common.nav.search.label') }}

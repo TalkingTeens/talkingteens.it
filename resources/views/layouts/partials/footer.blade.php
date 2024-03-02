@@ -11,14 +11,14 @@
             {{--
                 <a wire:navigate href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                     <span class="font-medium">
-                        Un progetto di
+                        {{ __('common.footer.echo') }}
                     </span>
                     <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo" class="group-hover:opacity-75 transition-opacity">
                 </a>
             --}}
             <div class="max-w-sm space-y-1.5">
                 <span class="font-medium">
-                    Un progetto di
+                    {{ __('common.footer.echo') }}
                 </span>
                 <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo">
             </div>
@@ -28,10 +28,10 @@
             <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 grow max-w-xl">
                 <div>
                     <h4 class="text-base pb-1">
-                        Talking Teens
+                        {{ config('app.name') }}
                     </h4>
                     <a wire:navigate href="{{ route('monuments.index') }}" class="link-footer">
-                        Statue
+                        {{ __('monuments.title') }}
                     </a>
                     {{--
                         <a wire:navigate href="{{ route('project') }}" class="link-footer">
@@ -39,7 +39,7 @@
                         </a>
                     --}}
                     <a wire:navigate href="{{ route('docs') }}" class="link-footer">
-                        Didattica
+                        {{ __('documents.title') }}
                     </a>
                 </div>
                 {{--
@@ -54,27 +54,27 @@
                  --}}
                 <div>
                     <h4 class="text-base pb-1">
-                        Contributi
+                        {{ __('common.footer.contributes.title') }}
                     </h4>
                     <a wire:navigate href="{{ route('donate') }}" class="link-footer">
-                        Dona ora
+                        {{ __('common.footer.contributes.donate') }}
                     </a>
                     <a wire:navigate href="{{ route('sponsors') }}" class="link-footer">
-                        Sponsor
+                        {{ __('sponsors.title') }}
                     </a>
                     <a wire:navigate href="{{ route('supporters') }}" class="link-footer">
-                        Sostenitori
+                        {{ __('contributes.title') }}
                     </a>
                 </div>
                 <div>
                     <h4 class="text-base pb-1">
-                        Menzioni Legali
+                        {{ __('common.footer.legal') }}
                     </h4>
                     <a wire:navigate href="{{ route('privacy') }}" class="link-footer">
-                        Privacy Policy
+                        {{ __('privacy.title') }}
                     </a>
                     <a wire:navigate href="{{ route('cookie') }}" class="link-footer">
-                        Cookie
+                        {{ __('cookie.title') }}
                     </a>
                 </div>
             </div>
@@ -141,7 +141,7 @@
         <div
             class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-x-10 gap-y-5 font-extralight text-xs text-white/50">
             <p>
-                &copy; {{ date('Y') . " " . config('app.name') . ". All Rights Reserved." }}
+                &copy; {{ Arr::join([date('Y'), config('app.name') . '.', __('common.footer.copyright')], ' ') }}.
             </p>
             <div class="flex items-center gap-5">
                 <a href="https://liutcanov.github.io/" target="_blank" class="hover:text-white transition-colors">
