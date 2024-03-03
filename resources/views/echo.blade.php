@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'Chi Siamo'])
 
 @push('meta')
 @endpush

@@ -2,7 +2,7 @@
 
 return [
 
-    'title' => 'Informativa sulla privacy',
+    'title' => 'Informativa privacy',
     'introduction' => 'Ai sensi dell’art. 13 del D.lgs.196/03 ed in seguito all’entrata in vigore del Regolamento UE nr. 679/2016 conformemente a quanto disciplinato dall’art. 13 del citato Regolamento Europeo, desideriamo comunicarVi quanto segue:',
     'purposes' => [
         'title' => 'Finalità del trattamento',

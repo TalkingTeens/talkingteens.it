@@ -11,8 +11,9 @@
         <template x-if="[0, 3].includes(state)">
             <section class="flex-col py-11 w-11/12 mx-auto items-center h-full gap-8 flex">
                 <div class="flex-1 flex items-center w-3/5">
-                    <a wire:navigate href="{{ route('home') }}" class="w-full">
-                        <img src="{{ asset("svg/logo/big.svg") }}" alt="{{ config('app.name') }} logo" class="w-full">
+                    <a wire:navigate href="{{ route('home') }}" class="w-full"
+                       :class="isEmbedded && 'pointer-events-none'">
+                        @svg('logo/big', 'w-full')
                     </a>
                 </div>
 
@@ -29,22 +30,20 @@
                 <template x-if="state === 3">
                     <div class="grid gap-2 w-full"
                          :class="isEmbedded && '[&>a]:hidden'">
-                        <x-button.webcall.link :href="route('app')" src="svg/app.svg" alt="">
+                        <x-button.webcall.link :href="route('app')" icon="app">
                             {{ __('webcall.app') }}
                         </x-button.webcall.link>
 
                         <x-button.webcall.link :href="route('monuments.show', ['monument' => $monument])"
-                                               src="svg/info.svg"
-                                               alt="">
+                                               icon="info">
                             {{ $monument->name }}
                         </x-button.webcall.link>
 
-                        <x-button.webcall.link :href="route('monuments.index', ['v' =>'map'])" src="svg/pin.svg"
-                                               alt="">
+                        <x-button.webcall.link :href="route('monuments.index', ['v' =>'map'])" icon="pin">
                             {{ __('webcall.map') }}
                         </x-button.webcall.link>
 
-                        <x-button.webcall.action action="replay" src="svg/replay.svg" alt="">
+                        <x-button.webcall.action action="replay" icon="replay">
                             {{ __('webcall.replay') }}
                         </x-button.webcall.action>
                     </div>

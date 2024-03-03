@@ -10,17 +10,17 @@
     @keydown.escape.prevent.stop="close()"
     @focusin.window="! $refs.panel.contains($event.target) && close()"
     x-id="['dropdown']"
-    class="relative grow max-w-lg"
+    class="relative grow min-w-0 max-w-lg"
 >
     <button
         type="button"
         :aria-expanded="open"
         :aria-controls="$id('dropdown')"
         @click="open = ! open"
-        class="flex items-center w-full justify-between gap-x-2 rounded-full border p-2 shadow hover:shadow-md cursor-pointer"
+        class="flex items-center w-full justify-between rounded-full border p-2 shadow hover:shadow-md cursor-pointer"
     >
         <p @class([
-            'mx-3 truncate min-w-0',
+            'mx-3 truncate',
             'opacity-50' => !$label,
         ])>
             {{ $label ?? __('common.nav.search.label') }}

@@ -18,7 +18,7 @@ return [
             'title' => 'Tieniti aggiornato!',
             'text' => 'Iscriviti alla newsletter per restare informato sui nostri progetti e prossimi sviluppi!',
             'input' => 'Inserisci la tua email',
-            'subscribe' => 'Invia',
+            'subscribe' => 'Iscriviti',
             'confirmation' => 'Grazie :email! Iscrizione avvenuta con successo.',
         ],
         'legal' => 'Menzioni Legali',

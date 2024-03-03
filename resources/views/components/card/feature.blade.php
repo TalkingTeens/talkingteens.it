@@ -1,7 +1,7 @@
 @props(['icon', 'title', 'description'])
 
 <li class="flex flex-col gap-y-1 items-center text-center">
-    <img src="{{ asset("svg/{$icon}.svg") }}" alt="" class="w-12 h-12 text-st">
+    @svg($icon, 'w-12 h-12')
     <h3 class="font-bold mt-1 uppercase">
         {{ $title }}
     </h3>

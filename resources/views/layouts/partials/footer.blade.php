@@ -2,11 +2,7 @@
     <div class="max-w-7xl w-11/12 mx-auto text-sm space-y-16">
         <div class="flex items-center gap-5 pb-12 sm:pb-16 border-b border-white/10">
             <a wire:navigate href="{{ route('home') }}" class="shrink-0 max-sm:hidden">
-                <img
-                    class="h-16 w-16"
-                    src="{{ asset('svg/logo/small.svg') }}"
-                    alt=""
-                >
+                @svg('logo/small', 'size-16')
             </a>
             {{--
                 <a wire:navigate href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">

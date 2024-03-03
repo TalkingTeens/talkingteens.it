@@ -104,6 +104,7 @@
                         @endforeach
                     </div>
                 @endunless
+
                 {{--                @unless($monument->classes->isEmpty() && $monument->treaters->isEmpty())--}}
                 {{--                    <section>--}}
                 {{--                        <p class="title-lg">--}}
@@ -141,16 +142,7 @@
                 <button type="button"
                         @click="navigator.share({ title:`{{ __('monument.share.title') }}`, url:'{{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}'})"
                         class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-5 w-5 sm:h-6 sm:w-6">
-                        <circle cx="128" cy="256" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="32"/>
-                        <circle cx="384" cy="112" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="32"/>
-                        <circle cx="384" cy="400" r="48" fill="none" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="32"/>
-                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="32" d="M169.83 279.53l172.34 96.94M342.17 135.53l-172.34 96.94"/>
-                    </svg>
+                    <x-heroicon-o-share class="size-5 sm:size-6"/>
                 </button>
 
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}"

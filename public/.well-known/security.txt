@@ -1,0 +1,2 @@
+Contact: mailto:team@talkingteens.it
+Policy: https://github.com/TalkingTeens/talkingteens.it/security/policy

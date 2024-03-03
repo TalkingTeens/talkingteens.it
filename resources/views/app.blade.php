@@ -15,6 +15,7 @@
                 {{ __('app.subtitle') }}
             </h2>
         </div>
+
         <div class="flex grow items-center gap-x-6 w-full">
             <div class="flex-1 hidden lg:block">
                 <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/map.jpg') }}" alt=""
@@ -181,7 +182,7 @@
         />
 
         <x-card.feature
-            icon="pin"
+            icon="heroicon-o-map-pin"
             :title="__('app.features.map.subtitle')"
             :description="__('app.features.map.description')"
         />

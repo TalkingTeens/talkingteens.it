@@ -13,16 +13,23 @@
 
             <p class="text-sm">
                 {{ __('cookie.banner.description') }}
+                <a wire:navigate href="{{ route('cookie') }}" class="underline">
+                    {{ __('cookie.title') }}
+                </a>
             </p>
 
             <div class="grid grid-cols-2 gap-2">
+                <x-button wire:click="accept" class="primary w-full">
+                    {{ __('cookie.banner.accept') }}
+                </x-button>
+
                 <x-button wire:click="reject" class="secondary w-full">
                     {{ __('cookie.banner.reject') }}
                 </x-button>
 
-                <x-button wire:click="accept" class="primary w-full">
-                    {{ __('cookie.banner.accept') }}
-                </x-button>
+                <button type="button" @click="state = 2" class="col-span-2 pt-1">
+                    {{ __('cookie.settings.title') }}
+                </button>
             </div>
         </div>
     @endif
@@ -38,7 +45,7 @@
             </h3>
 
             <div @click="state = 0" class="p-1 rounded-full hover:bg-gray-100 cursor-pointer">
-                <img src="{{ asset('svg/close.svg') }}" alt="" class="w-5 h-5">
+                <x-heroicon-o-x-mark class="size-6" />
             </div>
         </div>
 

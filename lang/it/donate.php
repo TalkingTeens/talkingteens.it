@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Sponsor e Sostenitori',
+    'title' => 'Dona ora',
     'previous' => 'Precedente',
     'next' => 'Successivo',
     'steps' => [
