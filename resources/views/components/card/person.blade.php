@@ -4,8 +4,10 @@
     @if(isset($person->picture) && $avatar)
         <x-ui.avatar :src="$person->picture" :alt="$person->full_name" :$size />
     @endif
+
     <div>
         {{ $slot }}
+
         @unless(!isset($person->death_year) && !isset($person->birth_year))
             <p class="text-sm opacity-60 italic">
                 @if(isset($person->death_year) && isset($person->birth_year))

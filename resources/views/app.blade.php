@@ -206,7 +206,7 @@
         />
 
         <x-card.feature
-            icon="qr"
+            icon="heroicon-o-qr-code"
             :title="__('app.features.qr.subtitle')"
             :description="__('app.features.qr.description')"/>
     </ul>

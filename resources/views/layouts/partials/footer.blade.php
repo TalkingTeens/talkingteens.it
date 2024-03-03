@@ -4,6 +4,7 @@
             <a wire:navigate href="{{ route('home') }}" class="shrink-0 max-sm:hidden">
                 @svg('logo/small', 'size-16')
             </a>
+
             {{--
                 <a wire:navigate href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                     <span class="font-medium">
@@ -12,32 +13,40 @@
                     <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo" class="group-hover:opacity-75 transition-opacity">
                 </a>
             --}}
+
             <div class="max-w-sm space-y-1.5">
                 <span class="font-medium">
                     {{ __('common.footer.echo') }}
                 </span>
+
                 <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo">
             </div>
         </div>
+
         <div class="flex flex-col gap-x-10 gap-y-16 justify-between lg:flex-row">
             <livewire:newsletter/>
+
             <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 grow max-w-xl">
                 <div>
                     <h4 class="text-base pb-1">
                         {{ config('app.name') }}
                     </h4>
+
                     <a wire:navigate href="{{ route('monuments.index') }}" class="link-footer">
                         {{ __('monuments.title') }}
                     </a>
+
                     {{--
                         <a wire:navigate href="{{ route('project') }}" class="link-footer">
                             Progetto
                         </a>
                     --}}
+
                     <a wire:navigate href="{{ route('docs') }}" class="link-footer">
                         {{ __('documents.title') }}
                     </a>
                 </div>
+
                 {{--
                     <div>
                         <h4 class="text-base pb-1">
@@ -48,16 +57,20 @@
                         </a>
                     </div>
                  --}}
+
                 <div>
                     <h4 class="text-base pb-1">
                         {{ __('common.footer.contributes.title') }}
                     </h4>
+
                     <a wire:navigate href="{{ route('donate') }}" class="link-footer">
                         {{ __('common.footer.contributes.donate') }}
                     </a>
+
                     <a wire:navigate href="{{ route('sponsors') }}" class="link-footer">
                         {{ __('sponsors.title') }}
                     </a>
+
                     <a wire:navigate href="{{ route('supporters') }}" class="link-footer">
                         {{ __('contributes.title') }}
                     </a>
@@ -66,15 +79,18 @@
                     <h4 class="text-base pb-1">
                         {{ __('common.footer.legal') }}
                     </h4>
+
                     <a wire:navigate href="{{ route('privacy') }}" class="link-footer">
                         {{ __('privacy.title') }}
                     </a>
+
                     <a wire:navigate href="{{ route('cookie') }}" class="link-footer">
                         {{ __('cookie.title') }}
                     </a>
                 </div>
             </div>
         </div>
+
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-10">
             <div class="flex items-center gap-10">
                 <a href="https://www.facebook.com/talkingteensparma/" target="_blank"
@@ -85,6 +101,7 @@
                             fill-rule="evenodd"/>
                     </svg>
                 </a>
+
                 <a href="https://www.instagram.com/talkingteens_parma/" target="_blank"
                    class="hover:text-pink-500 transition-colors">
                     <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -94,6 +111,7 @@
                             d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z"/>
                     </svg>
                 </a>
+
                 <a href="https://youtube.com/@talkingteens" target="_blank"
                    class="hover:text-red-600 transition-colors">
                     <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -101,6 +119,7 @@
                             d="M508.64 148.79c0-45-33.1-81.2-74-81.2C379.24 65 322.74 64 265 64h-18c-57.6 0-114.2 1-169.6 3.6C36.6 67.6 3.5 104 3.5 149 1 184.59-.06 220.19 0 255.79q-.15 53.4 3.4 106.9c0 45 33.1 81.5 73.9 81.5 58.2 2.7 117.9 3.9 178.6 3.8q91.2.3 178.6-3.8c40.9 0 74-36.5 74-81.5 2.4-35.7 3.5-71.3 3.4-107q.34-53.4-3.26-106.9zM207 353.89v-196.5l145 98.2z"/>
                     </svg>
                 </a>
+
                 <a href="mailto:team@talkingteens.it" class="transition-colors group">
                     <svg class="h-5 w-5 group-hover:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <rect x="48" y="96" width="416" height="320" rx="40" ry="40" fill="none" stroke="currentColor"
@@ -122,11 +141,13 @@
                     </svg>
                 </a>
             </div>
+
             <div class="flex items-center gap-4">
                 <a href="https://apps.apple.com/it/app/talking-teens/id1459498571">
                     <img src="{{ asset('svg/download/' . LaravelLocalization::getCurrentLocale() . '/app-store.svg') }}"
                          alt="" class="h-9 sm:h-10">
                 </a>
+
                 <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens">
                     <img
                         src="{{ asset('images/download/' . LaravelLocalization::getCurrentLocale() . '/google-play.png') }}"
@@ -134,11 +155,13 @@
                 </a>
             </div>
         </div>
+
         <div
             class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-x-10 gap-y-5 font-extralight text-xs text-white/50">
             <p>
                 &copy; {{ Arr::join([date('Y'), config('app.name') . '.', __('common.footer.copyright')], ' ') }}.
             </p>
+
             <div class="flex items-center gap-5">
                 <a href="https://liutcanov.github.io/" target="_blank" class="hover:text-white transition-colors">
                     {{ __('common.footer.credits') }}

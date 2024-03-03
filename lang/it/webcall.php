@@ -6,7 +6,7 @@ return [
     'incoming' => 'Chiamata in arrivo',
     'map' => 'Mappa delle Statue',
     'app' => 'Scarica l\'app',
-    'replay' => 'Riascolta',
+    'restart' => 'Ricomincia',
     'translations' => [
         'it' => 'Italiano',
         'en' => 'Inglese',

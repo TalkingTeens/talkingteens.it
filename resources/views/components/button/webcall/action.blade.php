@@ -10,6 +10,7 @@
     @isset($icon)
         @svg($icon, 'size-8')
     @endisset
+
     <span>
         {{ $slot }}
     </span>

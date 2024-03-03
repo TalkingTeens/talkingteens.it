@@ -12,6 +12,7 @@
         <h2 class="text-2xl font-extrabold leading-tight">
             {{ $monument->name }}
         </h2>
+
         <p class="text-white/50">
             {{ $monument->municipality->name }}
         </p>

@@ -21,7 +21,7 @@
                         <span>
                             domanda
                         </span>
-                        <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out'"
+                        <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out"
                                                    ::class="open === 1 ? 'rotate-180' : ''"/>
                     </button>
                     <div x-show="open === 1" x-collapse>
@@ -36,7 +36,7 @@
                         <span>
                             domanda
                         </span>
-                        <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out'"
+                        <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out"
                                                    ::class="open === 2 ? 'rotate-180' : ''"/>
                     </button>
                     <div x-show="open === 2" x-collapse>

@@ -35,16 +35,17 @@
                         </x-button.webcall.link>
 
                         <x-button.webcall.link :href="route('monuments.show', ['monument' => $monument])"
-                                               icon="info">
+                                               icon="heroicon-o-identification">
                             {{ $monument->name }}
                         </x-button.webcall.link>
 
-                        <x-button.webcall.link :href="route('monuments.index', ['v' =>'map'])" icon="pin">
+                        <x-button.webcall.link :href="route('monuments.index', ['v' =>'map'])"
+                                               icon="heroicon-o-map-pin">
                             {{ __('webcall.map') }}
                         </x-button.webcall.link>
 
-                        <x-button.webcall.action action="replay" icon="replay">
-                            {{ __('webcall.replay') }}
+                        <x-button.webcall.action action="replay" icon="heroicon-o-backward">
+                            {{ __('webcall.restart') }}
                         </x-button.webcall.action>
                     </div>
                 </template>

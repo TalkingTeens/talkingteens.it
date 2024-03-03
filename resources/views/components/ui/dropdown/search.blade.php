@@ -29,19 +29,12 @@
         @if($label)
             <div wire:click.stop="$dispatch('change-municipality', { code : '' })" @click="close()"
                  class="bg-st rounded-full p-1.5 shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                     class="h-5 w-5 transition-transform duration-200">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="38" d="M368 368L144 144M368 144L144 368"/>
-                </svg>
+                <x-heroicon-o-x-mark class="size-5 transition-transform duration-200 ease-in-out"/>
             </div>
         @else
             <div class="bg-st rounded-full p-1.5 shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                     class="h-5 w-5 transition-transform duration-200" :class="open ? 'rotate-180' : ''">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="38" d="M112 184l144 144 144-144"/>
-                </svg>
+                <x-heroicon-o-chevron-down class="size-5 transition-transform duration-200 ease-in-out"
+                                           ::class="open ? 'rotate-180' : ''"/>
             </div>
         @endif
     </button>
@@ -60,6 +53,7 @@
                     {{ __('common.nav.search.default') }}
                 </a>
             @endif
+
             @foreach($municipalities as $municipality)
                 <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}"
                    class="btn-result">

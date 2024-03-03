@@ -6,7 +6,7 @@ return [
     'incoming' => 'Incoming call',
     'map' => 'View map',
     'app' => 'Download our App',
-    'replay' => 'Replay',
+    'restart' => 'Restart',
     'translations' => [
         'it' => 'Italian',
         'en' => 'English',

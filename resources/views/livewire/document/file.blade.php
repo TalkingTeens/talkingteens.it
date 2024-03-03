@@ -11,14 +11,17 @@
             src='{{ asset("svg/document/{$type}.svg") }}'
             alt=""
         >
+
         <div class="grow sm:overflow-hidden">
             <h3 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
                 {{ $document->title ?: $document->filename }}
             </h3>
+
             <p class="text-xs">
                 {{ $size }}
             </p>
         </div>
+
         <button type="button" wire:click.stop.prevent="download" class="hover:bg-st p-2 rounded-full">
             <x-heroicon-o-arrow-down-tray class="size-5"/>
         </button>
