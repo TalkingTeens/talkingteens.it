@@ -27,7 +27,7 @@ return [
             'donate' => 'Dona ora',
         ],
         'copyright' => 'Tutti i diritti riservati',
-        'credits' => 'Realizzato da Igor Liutcanov'
+        'credits' => 'Realizzato da :name'
     ]
 
 ];

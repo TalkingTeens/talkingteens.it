@@ -27,7 +27,7 @@ return [
             'donate' => 'Donate now',
         ],
         'copyright' => 'All Rights Reserved',
-        'credits' => 'Handcrafted by Igor Liutcanov',
+        'credits' => 'Handcrafted by :name',
     ]
 
 ];

@@ -163,8 +163,10 @@
             </p>
 
             <div class="flex items-center gap-5">
-                <a href="https://liutcanov.github.io/" target="_blank" class="hover:text-white transition-colors">
-                    {{ __('common.footer.credits') }}
+                <a href="{{ config('constants.credits.url') }}?utm_source=talkingteens.it&utm_medium=footer&utm_campaign=credits"
+                   target="_blank"
+                   class="hover:text-white transition-colors">
+                    {{ __('common.footer.credits', ['name' => config('constants.credits.name')]) }}
                 </a>
             </div>
         </div>

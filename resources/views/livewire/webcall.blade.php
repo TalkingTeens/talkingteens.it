@@ -50,8 +50,9 @@
                     </div>
                 </template>
 
-                <a href="https://liutcanov.github.io/" class="text-xs" :class="isEmbedded && 'hidden'">
-                    {{ __('common.footer.credits') }}
+                <a href="{{ config('constants.credits.url') }}?utm_source=call.talkingteens.it&utm_medium=footer&utm_campaign=credits"
+                   class="text-xs" :class="isEmbedded && 'hidden'">
+                    {{ __('common.footer.credits', ['name' => config('constants.credits.name')]) }}
                 </a>
             </section>
         </template>
