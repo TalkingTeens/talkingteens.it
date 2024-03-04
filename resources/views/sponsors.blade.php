@@ -5,7 +5,7 @@
 
 @section('content')
     <section class="section space-y-16">
-        <div class="w-11/12 max-w-screen-md mx-auto space-y-4 text-center sm:w-full sm:py-4">
+        <div class="space-y-4 max-w-3xl mx-auto md:text-center">
             {{--            <h1 class="badge">--}}
             {{--                {{ __('contributes.title') }}--}}
             {{--            </h1>--}}

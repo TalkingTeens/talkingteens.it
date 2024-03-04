@@ -1,35 +1,38 @@
-<div id="map" class="h-96"></div>
+<gmp-map class="h-96"
+         center="{{ $monument->latitude }},{{ $monument->longitude }}"
+         zoom="15.7"
+         {{--         min-zoom="3"--}}
+         map-id="DEMO_MAP_ID">
+    <gmp-advanced-marker
+        position="{{ $monument->latitude }},{{ $monument->longitude }}"
+        title="{{ $monument->name }}"
+    ></gmp-advanced-marker>
+</gmp-map>
 
-@push('scripts')
+{{--                restriction: {--}}
+{{--                    latLngBounds: {north: 85, south: -85, west: -180, east: 180}--}}
+{{--                },--}}
+{{--                mapTypeId: "roadmap",--}}
+
+@pushonce('scripts')
     <script>
         function initMap() {
-            const mapElem = document.getElementById("map");
+            const advancedMarker = document.querySelector("gmp-advanced-marker");
 
-            const geo = {
-                lat: {{ $monument->latitude }},
-                lng: {{ $monument->longitude }}
-            };
+            customElements.whenDefined(advancedMarker.localName).then(async () => {
+                const pin = document.createElement("div");
+                const img = document.createElement("img");
 
-            const map = new google.maps.Map(mapElem, {
-                zoom: 15.7,
-                center: geo,
-                minZoom: 3,
-                restriction: {
-                    latLngBounds: { north: 85, south: -85, west: -180, east: 180 }
-                },
-                mapTypeId: 'roadmap'
-            });
+                img.src = '{{ asset(Storage::url($monument->background_image)) }}'
+                pin.className = "marker";
+                pin.appendChild(img)
 
-            new google.maps.Marker({
-                position: geo,
-                map,
-                icon: {
-                    url: '{{ asset(Storage::url($monument->pin_image)) }}',
-                    scaledSize: new google.maps.Size(60, 71.8)
-                },
-                title: '{{ $monument->name }}',
+                advancedMarker.content = pin;
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr1D4oqR_NQYcN50-xynP9_-rOnWSa9w&callback=initMap"></script>
-@endpush
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr1D4oqR_NQYcN50-xynP9_-rOnWSa9w&callback=initMap&libraries=marker&v=beta"
+        defer
+    ></script>
+@endpushonce

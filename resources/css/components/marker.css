@@ -1,0 +1,15 @@
+.marker {
+    @apply relative pointer-events-none size-14 rounded-full rounded-br-none bg-st border border-black/15 rotate-45 -translate-y-3;
+}
+
+.glyph {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[70%] rounded-full;
+}
+
+.marker > img {
+    @apply glyph -rotate-45 object-cover;
+}
+
+.marker::after {
+    @apply content-[''] glyph ring-1 ring-black/15 ring-inset;
+}
