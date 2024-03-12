@@ -33,7 +33,3 @@
 
     <div wire:loading.delay class="absolute z-10 inset-0 bg-white/50"></div>
 </section>
-
-@pushOnce('scripts')
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr1D4oqR_NQYcN50-xynP9_-rOnWSa9w"></script>
-@endPushOnce
