@@ -20,6 +20,11 @@ class Treater extends Model
         'description',
     ];
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function monuments(): MorphToMany
     {
         return $this->morphToMany(Monument::class, 'treatable');

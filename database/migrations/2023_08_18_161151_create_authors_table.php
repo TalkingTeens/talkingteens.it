@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('full_name')->virtualAs('concat(first_name, \' \', last_name)');
             $table->string('slug')->unique();
             $table->unsignedInteger('birth_year');
             $table->unsignedInteger('death_year')->nullable();

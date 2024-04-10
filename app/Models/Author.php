@@ -30,6 +30,11 @@ class Author extends Model
         return 'slug';
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function monuments(): BelongsToMany
     {
         return $this->belongsToMany(Monument::class);
