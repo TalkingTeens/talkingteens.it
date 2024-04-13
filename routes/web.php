@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('health', \Spatie\Health\Http\Controllers\SimpleHealthCheckController::class);
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

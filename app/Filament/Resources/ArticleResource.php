@@ -4,16 +4,16 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Models\Article;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -32,15 +32,17 @@ class ArticleResource extends Resource
                 TextInput::make('name')
                     ->required(),
 
-                TextInput::make('resource')
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->collection('logos')
+                    ->required(),
+
+                TextInput::make('link')
                     ->activeUrl()
                     ->placeholder('https://...')
                     ->suffixIcon('heroicon-o-globe-alt'),
 
-                FileUpload::make('logo')
-                    ->directory('images/articles')
-                    ->columnSpan(2)
-                    ->required(),
+                SpatieMediaLibraryFileUpload::make('file')
+                    ->collection('articles'),
 
                 Toggle::make('visible')
                     ->default(true),
@@ -51,7 +53,8 @@ class ArticleResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('logo'),
+                SpatieMediaLibraryImageColumn::make('logo')
+                    ->collection('logos'),
 
                 TextColumn::make('name')
                     ->sortable()

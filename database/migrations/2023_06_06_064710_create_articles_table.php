@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('logo');
-            $table->string('resource')->nullable();
+            $table->string('link')->nullable();
             $table->boolean('visible')->default(1);
             $table->integer('order')->default(0);
             $table->timestamps();
