@@ -2,14 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Article;
 use App\Models\Character;
-use App\Observers\ArticleObserver;
 use App\Observers\CharacterObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Document;
@@ -34,7 +31,6 @@ class EventServiceProvider extends ServiceProvider
         Document::class => [DocumentObserver::class],
         Character::class => [CharacterObserver::class],
         Author::class => [AuthorObserver::class],
-        Article::class => [ArticleObserver::class],
         Category::class => [CategoryObserver::class],
         Monument::class => [MonumentObserver::class],
         Sponsor::class => [SponsorObserver::class],
