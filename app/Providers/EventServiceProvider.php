@@ -11,13 +11,11 @@ use App\Models\Author;
 use App\Models\Category;
 use App\Models\Document;
 use App\Models\Classe;
-use App\Models\Sponsor;
 use App\Models\Monument;
 use App\Observers\AuthorObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\DocumentObserver;
 use App\Observers\ClasseObserver;
-use App\Observers\SponsorObserver;
 use App\Observers\MonumentObserver;
 
 class EventServiceProvider extends ServiceProvider
@@ -33,7 +31,6 @@ class EventServiceProvider extends ServiceProvider
         Author::class => [AuthorObserver::class],
         Category::class => [CategoryObserver::class],
         Monument::class => [MonumentObserver::class],
-        Sponsor::class => [SponsorObserver::class],
         Classe::class => [ClasseObserver::class],
     ];
 

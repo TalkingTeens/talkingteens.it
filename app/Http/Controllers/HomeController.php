@@ -15,8 +15,8 @@ class HomeController extends Controller
         $monuments = Monument::inRandomOrder()->limit(3)->get();
 
         $articles = Article::all()
-            ->map(fn($article) => ArticleData::fromModel($article))
-            ->sortBy('order');
+            ->sortBy('order')
+            ->map(fn($article) => ArticleData::fromModel($article));
 
         $municipalities = Municipality::has('monuments')
             ->pluck('name');

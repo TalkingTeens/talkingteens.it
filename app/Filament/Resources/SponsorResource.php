@@ -4,14 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SponsorResource\Pages;
 use App\Models\Sponsor;
-use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
@@ -39,8 +39,8 @@ class SponsorResource extends Resource
                     ->placeholder('https://...')
                     ->suffixIcon('heroicon-o-globe-alt'),
 
-                FileUpload::make('logo')
-                    ->directory('images/sponsors')
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->collection('logos')
                     ->columnSpan(2)
                     ->required(),
 
@@ -54,7 +54,8 @@ class SponsorResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('logo'),
+                SpatieMediaLibraryImageColumn::make('logo')
+                    ->collection('logos'),
 
                 TextColumn::make('name')
                     ->sortable()

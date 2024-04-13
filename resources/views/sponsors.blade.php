@@ -31,10 +31,10 @@
                         @if(isset($sponsor->resource))
                             <a href="{{ $sponsor->resource }}" target="_blank"
                                class="block hover:scale-98 transition-transform">
-                                <img src="{{ asset(Storage::url($sponsor->logo)) }}" alt="{{ $sponsor->name }}">
+                                <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
                             </a>
                         @else
-                            <img src="{{ asset(Storage::url($sponsor->logo)) }}" alt="{{ $sponsor->name }}">
+                            <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
                         @endif
                     </div>
                 @endforeach

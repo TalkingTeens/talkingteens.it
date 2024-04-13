@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('logo');
             $table->string('resource')->nullable();
             $table->boolean('visible')->default(1);
             $table->integer('order')->default(0);

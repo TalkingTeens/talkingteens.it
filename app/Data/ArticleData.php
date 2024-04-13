@@ -8,9 +8,8 @@ use Spatie\LaravelData\Data;
 class ArticleData extends Data
 {
     public function __construct(
-        public string $name,
-        public string $logo,
-        public bool   $visible,
+        public string  $name,
+        public ?string $logo, // TODO: remove ?
         public ?string $resource,
     )
     {
@@ -20,8 +19,7 @@ class ArticleData extends Data
     {
         return self::from([
             'name' => $article->name,
-            'logo' => $article->getFirstMedia('logos')->getFullUrl(),
-            'visible' => $article->visible,
+            'logo' => $article->getFirstMedia('logos')?->getFullUrl(), // TODO: remove ?
             'resource' => $article->getFirstMedia('articles')?->getFullUrl() ?? $article->link,
         ]);
     }
