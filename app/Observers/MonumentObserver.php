@@ -13,10 +13,6 @@ class MonumentObserver
             Storage::disk('public')->delete($monument->getOriginal('monument_image'));
         }
 
-        if ($monument->isDirty('pin_image') && !is_null($monument->getOriginal('pin_image'))) {
-            Storage::disk('public')->delete($monument->getOriginal('pin_image'));
-        }
-
         if ($monument->isDirty('background_image') && !is_null($monument->getOriginal('background_image'))) {
             Storage::disk('public')->delete($monument->getOriginal('background_image'));
         }
@@ -25,10 +21,6 @@ class MonumentObserver
     public function deleted(Monument $monument): void
     {
         Storage::disk('public')->delete($monument->monument_image);
-
-        if (!is_null($monument->pin_image)) {
-            Storage::disk('public')->delete($monument->pin_image);
-        }
 
         if (!is_null($monument->background_image)) {
             Storage::disk('public')->delete($monument->background_image);

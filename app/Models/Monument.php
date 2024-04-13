@@ -23,7 +23,6 @@ class Monument extends Model
         'description',
         'monument_image',
         'background_image',
-        'pin_image',
         'latitude',
         'longitude',
         'phone_number',

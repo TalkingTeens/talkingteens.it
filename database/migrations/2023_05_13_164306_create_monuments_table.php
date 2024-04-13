@@ -19,7 +19,6 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->string('monument_image');
             $table->string('background_image')->nullable();
-            $table->string('pin_image')->nullable();
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
             $table->string('phone_number')->nullable();

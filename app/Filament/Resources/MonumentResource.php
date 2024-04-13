@@ -132,11 +132,6 @@ class MonumentResource extends Resource
                                         ->padFractionalZeros()
                                     )*/
                                     ->required(),
-                                FileUpload::make('pin_image')
-                                    ->nullable()
-                                    ->columnSpan('full')
-                                    ->image()
-                                    ->directory('images/pins'),
                             ])->columns(2),
                         Tabs\Tab::make('Webcall')
                             ->schema([
