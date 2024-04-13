@@ -34,7 +34,6 @@ class Monuments extends Component
     public function toggleView(): void
     {
         $this->view = $this->view == 'list' ? 'map' : 'list';
-        $this->reloadMap();
     }
 
     public function reloadMap(): void
