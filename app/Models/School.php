@@ -26,6 +26,11 @@ class School extends Model
 
     protected $keyType = 'string';
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->type . ' ' . $this->name;
+    }
+
     public function municipality(): BelongsTo
     {
         return $this->belongsTo(Municipality::class, 'municipality_code', 'code');

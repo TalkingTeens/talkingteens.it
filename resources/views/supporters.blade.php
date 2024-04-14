@@ -29,7 +29,7 @@
                 <ul>
                     @foreach($schools as $school)
                         <li>
-                            {{ $school->name }}
+                            {{ $school->full_name }}
                         </li>
                     @endforeach
                 </ul>

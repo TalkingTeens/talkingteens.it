@@ -4,11 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DocumentResource\Pages;
 use App\Models\Document;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -65,22 +65,13 @@ class DocumentResource extends Resource
                                         'exercises' => 'Exercises',
                                     ]),
 
-                                FileUpload::make('resource')
-                                    ->directory('documents')
+                                SpatieMediaLibraryFileUpload::make('resource')
+                                    ->conversion('preview')
+                                    ->collection('didactics')
                                     ->openable()
                                     ->required(),
                             ])
                             ->columns(2),
-
-                        Section::make('Cover')
-                            ->schema([
-                                FileUpload::make('picture')
-                                    ->image()
-                                    ->directory('images/documents')
-                                    ->nullable()
-                                    ->disableLabel(),
-                            ])
-                            ->collapsible(),
                     ])
                     ->columnSpan(['lg' => 2]),
 

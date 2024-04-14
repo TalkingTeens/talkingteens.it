@@ -9,12 +9,10 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Document;
 use App\Models\Classe;
 use App\Models\Monument;
 use App\Observers\AuthorObserver;
 use App\Observers\CategoryObserver;
-use App\Observers\DocumentObserver;
 use App\Observers\ClasseObserver;
 use App\Observers\MonumentObserver;
 
@@ -26,7 +24,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $observers = [
-        Document::class => [DocumentObserver::class],
         Character::class => [CharacterObserver::class],
         Author::class => [AuthorObserver::class],
         Category::class => [CategoryObserver::class],
