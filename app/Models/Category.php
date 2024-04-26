@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\Tag;
 
-class Category extends Tag
+class Category extends Tag implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -22,7 +24,6 @@ class Category extends Tag
         'slug',
         'type',
         'order_column',
-        'icon',
     ];
 
     public function monuments(): MorphToMany
