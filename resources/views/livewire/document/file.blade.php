@@ -2,7 +2,7 @@
     wire:key="{{ $document->id }}"
     wire:click="open"
     target="_blank"
-    href="{{ asset(Storage::url($document->resource)) }}"
+    href="{{ $media?->getFullUrl()  }}"
     class="p-2 bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
 >
     <div class="flex items-center px-2 py-3 gap-3">
@@ -28,10 +28,10 @@
     </div>
 
     <div class="overflow-hidden rounded-xl md:h-48 relative bg-white">
-        @if(isset($document->picture))
+        @if($media?->getUrl('preview'))
             <img
                 class="hidden md:block aspect-square object-top object-cover w-full h-full"
-                src="{{ asset(Storage::url($document->picture)) }}"
+                src="{{ $media->getUrl('preview') }}"
                 alt=""
             >
         @else

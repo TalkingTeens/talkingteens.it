@@ -49,12 +49,7 @@ class DocumentResource extends Resource
                                 TextInput::make('title')
                                     ->required()
                                     ->hint('Translatable')
-                                    ->hintIcon('heroicon-o-language')
-                                    ->reactive()
-                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('filename', Str::slug($state)) : null),
-
-                                TextInput::make('filename')
-                                    ->required(),
+                                    ->hintIcon('heroicon-o-language'),
 
                                 Select::make('category')
                                     ->required()
@@ -143,11 +138,6 @@ class DocumentResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes();
-    }
-
-    public static function getGloballySearchableAttributes(): array
-    {
-        return ['filename'];
     }
 
     public static function getRelations(): array

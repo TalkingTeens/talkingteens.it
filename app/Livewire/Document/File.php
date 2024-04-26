@@ -3,24 +3,25 @@
 namespace App\Livewire\Document;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class File extends Component
 {
     public $document;
+    public ?Media $media;
 
     public function mount($document)
     {
         $this->document = $document;
+        $this->media = $document->getFirstMedia('didactics');
     }
 
     private function getSize(): string
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
-        $bytes = Storage::disk('public')
-            ->size($this->document->resource);
+        $bytes = $this->media?->size ?? 0;
 
         for ($i = 0; $bytes > 1024; $i++) {
             $bytes /= 1024;
@@ -31,10 +32,7 @@ class File extends Component
 
     private function getType(): string
     {
-        $mime_type = Storage::disk('public')
-            ->mimeType($this->document->resource);
-
-        $type = Str::before($mime_type, '/');
+        $type = Str::before($this->media?->mime_type, '/');
 
         return in_array($type, ['video', 'image']) ? $type : 'file';
     }
@@ -50,11 +48,8 @@ class File extends Component
         $this->document
             ->increment('downloads');
 
-        return Storage::disk('public')
-            ->download(
-                $this->document->resource,
-                $this->document->filename
-            );
+        // TODO: download with title
+        return $this->media;
     }
 
     public function render()

@@ -9,8 +9,7 @@ class DocumentController extends Controller
 {
     public function __invoke(): View
     {
-
-        $categories = Document::all('id', 'title', 'category', 'resource', 'picture', 'filename')
+        $categories = Document::all('id', 'title', 'category')
             ->groupBy('category');
 
         return view('documents',

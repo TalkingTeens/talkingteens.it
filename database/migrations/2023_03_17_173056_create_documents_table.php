@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->json('title');
             $table->enum('category', ['project', 'statues', 'activity', 'exercises']);
-            $table->string('picture')->nullable();
-            $table->string('resource');
-            $table->string('filename');
             $table->boolean('visible')->default(1);
             $table->unsignedBigInteger('opened')->default(0);
             $table->unsignedBigInteger('downloads')->default(0);
