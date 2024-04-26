@@ -34,7 +34,7 @@
                 src="{{ $media->getUrl('preview') }}"
                 alt=""
             >
-        @else
+        @else {{-- TODO: check if still needed --}}
             <img
                 class="hidden md:block h-16 w-16 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 src='{{ asset("svg/document/{$type}.svg") }}'

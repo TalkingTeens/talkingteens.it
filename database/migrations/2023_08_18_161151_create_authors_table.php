@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->unsignedInteger('birth_year');
             $table->unsignedInteger('death_year')->nullable();
-            $table->string('picture')->nullable();
             $table->json('description');
             $table->timestamps();
         });

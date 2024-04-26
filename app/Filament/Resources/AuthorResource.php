@@ -3,25 +3,21 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AuthorResource\Pages;
-use App\Filament\Resources\AuthorResource\RelationManagers;
 use App\Filament\Resources\AuthorResource\RelationManagers\MonumentsRelationManager;
 use App\Models\Author;
-use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\Concerns\Translatable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class AuthorResource extends Resource
@@ -52,9 +48,9 @@ class AuthorResource extends Resource
                                     ->reactive()
                                     ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                FileUpload::make('picture')
+                                SpatieMediaLibraryFileUpload::make('picture')
+                                    ->collection('authors')
                                     ->image()
-                                    ->directory('images/authors')
                                     ->nullable(),
 
                                 TextInput::make('slug')
@@ -106,7 +102,9 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('picture'),
+                SpatieMediaLibraryImageColumn::make('picture')
+                    ->collection('authors')
+                    ->circular(),
 
                 TextColumn::make('full_name')
                     ->sortable()

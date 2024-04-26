@@ -1,8 +1,10 @@
 @props(['person', 'size' => 'w-16', 'avatar' => true, 'reverse' => false])
 
 <div {{ $attributes->class(['flex items-center gap-4', 'flex-row-reverse text-right' => $reverse]) }}>
-    @if(isset($person->picture) && $avatar)
-        <x-ui.avatar :src="$person->picture" :alt="$person->full_name" :$size />
+    @if($avatar && $person->getFirstMedia('authors')?->getFullUrl())
+        <x-ui.avatar :src="$person->getFirstMedia('authors')->getFullUrl()"
+                     :alt="$person->full_name"
+                     :$size/>
     @endif
 
     <div>
