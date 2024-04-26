@@ -1,10 +1,16 @@
 @props(['person', 'size' => 'w-16', 'avatar' => true, 'reverse' => false])
 
+@php
+    $media_collection = match($person::class) {
+        'App\Models\Author' => 'authors',
+        'App\Models\Character' => 'characters',
+    };
+    $src = $person->getFirstMedia($media_collection)?->getFullUrl();
+@endphp
+
 <div {{ $attributes->class(['flex items-center gap-4', 'flex-row-reverse text-right' => $reverse]) }}>
-    @if($avatar && $person->getFirstMedia('authors')?->getFullUrl())
-        <x-ui.avatar :src="$person->getFirstMedia('authors')->getFullUrl()"
-                     :alt="$person->full_name"
-                     :$size/>
+    @if($avatar && $src)
+        <x-ui.avatar :$src :alt="$person->full_name" :$size/>
     @endif
 
     <div>

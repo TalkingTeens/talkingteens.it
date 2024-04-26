@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->json('description')->nullable();
-            $table->string('picture')->nullable();
             $table->unsignedInteger('birth_year')->nullable();
             $table->unsignedInteger('death_year')->nullable();
 

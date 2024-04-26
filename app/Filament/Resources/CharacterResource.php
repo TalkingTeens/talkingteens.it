@@ -5,21 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CharacterResource\Pages;
 use App\Filament\Resources\CharacterResource\RelationManagers;
 use App\Models\Character;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CharacterResource extends Resource
 {
@@ -44,9 +42,9 @@ class CharacterResource extends Resource
                                     ->hint('Translatable')
                                     ->hintIcon('heroicon-o-language'),
 
-                                FileUpload::make('picture')
+                                SpatieMediaLibraryFileUpload::make('picture')
+                                    ->collection('characters')
                                     ->image()
-                                    ->directory('images/characters')
                                     ->nullable(),
                             ])
                             ->columns(2),
@@ -92,7 +90,10 @@ class CharacterResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('picture'),
+                SpatieMediaLibraryImageColumn::make('picture')
+                    ->collection('characters')
+                    ->circular(),
+
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
