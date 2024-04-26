@@ -15,14 +15,13 @@ use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Str;
 
 class DocumentResource extends Resource
 {
@@ -63,6 +62,7 @@ class DocumentResource extends Resource
                                 SpatieMediaLibraryFileUpload::make('resource')
                                     ->conversion('preview')
                                     ->collection('didactics')
+                                    ->maxSize(10240)
                                     ->openable()
                                     ->required(),
                             ])
@@ -97,7 +97,9 @@ class DocumentResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('picture'),
+                SpatieMediaLibraryImageColumn::make('preview')
+                    ->collection('didactics')
+                    ->conversion('preview'),
 
                 TextColumn::make('title')
                     ->sortable()

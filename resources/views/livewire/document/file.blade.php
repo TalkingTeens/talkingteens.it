@@ -14,7 +14,7 @@
 
         <div class="grow sm:overflow-hidden">
             <h3 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
-                {{ $document->title ?: $document->filename }}
+                {{ $document->title ?: $media?->name }}
             </h3>
 
             <p class="text-xs">
