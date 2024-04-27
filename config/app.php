@@ -55,6 +55,8 @@ return [
     |
     */
 
+    'domain' => env('APP_DOMAIN', 'talkingteens.it'),
+
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),

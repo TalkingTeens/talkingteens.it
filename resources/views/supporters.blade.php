@@ -1,4 +1,4 @@
-@extends('layouts.default', ['title' => __('contributes.title')])
+@extends('layouts.default', ['title' => __('supporters.title')])
 
 @push('meta')
 @endpush
@@ -13,31 +13,17 @@
         <div class="section space-y-16 lg:mx-0 lg:w-full lg:px-[calc(100vw/24)] xl:pr-[calc((100vw-80rem)/2)]">
             <section class="space-y-4">
                 <h1 class="title-xl">
-                    {{ __('contributes.title') }}
+                    {{ __('supporters.title') }}
                 </h1>
 
                 <p>
-                    {{ __('contributes.text') }}
+                    {{ __('supporters.text') }}
                 </p>
             </section>
 
             <section>
                 <h2 class="title-lg">
-                    {{ __("contributes.thanks.school") }}
-                </h2>
-
-                <ul>
-                    @foreach($schools as $school)
-                        <li>
-                            {{ $school->full_name }}
-                        </li>
-                    @endforeach
-                </ul>
-            </section>
-
-            <section>
-                <h2 class="title-lg">
-                    Donatori del Crowfunding
+                    {{ __('supporters.thanks.donors') }}
                 </h2>
 
                 <p>
@@ -54,7 +40,7 @@
             @foreach($supporters as $type => $group)
                 <section>
                     <h2 class="title-lg">
-                        {{ __("contributes.thanks.{$type}") }}
+                        {{ __("supporters.thanks.{$type}") }}
                     </h2>
 
                     <ul>

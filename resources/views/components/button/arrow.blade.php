@@ -1,6 +1,6 @@
 @props(['href', 'back' => true, 'transform' => true])
 
-<a wire:navigate
+<a {{ Str::startsWith($href, 'mailto:') ? '' : 'wire:navigate' }}
    href="{{ $href }}" {{ $attributes->class(['group relative flex items-center gap-x-1', 'md:inline-block' => $transform]) }}>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         @class([

@@ -16,17 +16,17 @@
     <div>
         {{ $slot }}
 
-        @unless(!isset($person->death_year) && !isset($person->birth_year))
+        @if(isset($person->death_year) || isset($person->birth_year))
             <p class="text-sm opacity-60 italic">
                 @if(isset($person->death_year) && isset($person->birth_year))
                     {{ $person->birth_year . ' - ' . $person->death_year }}
                 @elseif(isset($person->birth_year))
-                    Nascita: {{ $person->birth_year }}
+                    {{ __('author.birth') . ': ' . $person->birth_year }}
                 @else
-                    Morte: {{ $person->death_year }}
+                    {{ __('author.death') . ': ' .  $person->death_year }}
                 @endif
             </p>
-        @endunless
+        @endif
     </div>
 </div>
 

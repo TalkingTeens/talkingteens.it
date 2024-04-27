@@ -72,7 +72,7 @@
                     </a>
 
                     <a wire:navigate href="{{ route('supporters') }}" class="link-footer">
-                        {{ __('contributes.title') }}
+                        {{ __('supporters.title') }}
                     </a>
                 </div>
                 <div>

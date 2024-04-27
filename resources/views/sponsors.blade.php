@@ -6,12 +6,12 @@
 @section('content')
     <section class="section space-y-16">
         <div class="space-y-4 max-w-3xl mx-auto md:text-center">
-            {{--            <h1 class="badge">--}}
-            {{--                {{ __('contributes.title') }}--}}
-            {{--            </h1>--}}
+            <h1 class="badge">
+                {{ __('sponsors.title') }}
+            </h1>
 
             <h2 class="title-xl">
-                {{ __('sponsors.title') }}
+                {{ __('sponsors.subtitle') }}
             </h2>
 
             <p class="text-sm">
