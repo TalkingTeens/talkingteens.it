@@ -7,27 +7,27 @@ return [
     'features' => [
         'call' => [
             'subtitle' => 'Call',
-            'description' => 'Quando ti avvicini, la STATUA ti TELEFONA direttamente sul tuo CELLULARE',
+            'description' => 'When you get close, the STATUE CALLS you directly on your CELL PHONE',
         ],
         'map' => [
             'subtitle' => 'Map',
-            'description' => 'MAPPA INTERATTIVA personalizzabile per trovare le statue in città',
+            'description' => 'Customizable INTERACTIVE MAP to find statues in the city',
         ],
         'comics' => [
             'subtitle' => 'Comics',
-            'description' => 'Divertiti "sfogliando" le storie delle statue, trasformate in FUMETTI',
+            'description' => 'Have fun “flipping through” the stories of the statues, turned into COMICS',
         ],
         'tours' => [
             'subtitle' => 'Tours',
-            'description' => 'Scegli tra due percorsi guidati alle statue: uno completo e uno più breve nel centro storico cittadino',
+            'description' => 'Choose from two guided routes to the statues: a full one and a shorter one in the historic city center',
         ],
         'games' => [
             'subtitle' => 'Games',
-            'description' => 'Metti alla PROVA la tua cultura e la tua memoria con i QUIZ e un punteggio finale',
+            'description' => 'Test your culture and memory with many QUIZZES and a final score',
         ],
         'qr' => [
-            'subtitle' => 'Qr',
-            'description' => 'Un modo alternativo per ascoltare le telefonate delle statue: utilizza il lettore codice QR integrato per scansionare i QR code sui totem nelle piazze presso le statue',
+            'subtitle' => 'Qr reader',
+            'description' => 'Listen for calls from the statues by scanning the QR codes on the totems at the statues',
         ]
     ],
 

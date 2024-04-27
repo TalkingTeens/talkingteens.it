@@ -27,7 +27,7 @@ return [
         ],
         'qr' => [
             'subtitle' => 'Lettore Qr',
-            'description' => 'Un modo alternativo per ascoltare le telefonate delle statue: utilizza il lettore codice QR integrato per scansionare i QR code sui totem nelle piazze presso le statue',
+            'description' => 'Ascolta le telefonate delle statue scannerizzando i QR code sui totem presso le statue',
         ]
     ],
 

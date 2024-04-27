@@ -4,7 +4,7 @@ return [
 
     'title' => 'Didactics',
     'subtitle' => 'Who is the HERO?',
-    'description' => 'Per dialogare con gli studenti sul perché alcune persone hanno conquistato il diritto di essere celebrate con una statua e su come l’idea di eroe si modifichi con il trasformarsi delle società.',
+    'description' => 'To dialogue with students about why some people have won the right to be celebrated with a statue and how the idea of a hero changes as societies transform.',
     'credits' => 'Curated by :Name',
     'categories' => [
         'project' => 'Educational project',
