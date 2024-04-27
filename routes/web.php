@@ -41,6 +41,10 @@ Route::group(
         Route::get('statue', Monuments::class)->name('monuments.index');
         Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
 
+        Route::domain('call.talkingteens.art')->group(function () {
+            Route::get('{monument}', Webcall::class)->name('webcall');
+        });
+
         // TODO:
         // Route::view('progetto', 'project')->name('project');
         // Route::view('echo', 'echo')->name('echo');
