@@ -49,13 +49,13 @@
             {{ $slot }}
         @else
             @if($municipalities->count() <= 1)
-                <a wire:navigate href="{{ route('monuments.index') }}" class="btn-result">
+                <a href="{{ route('monuments.index') }}" class="btn-result">
                     {{ __('common.nav.search.default') }}
                 </a>
             @endif
 
             @foreach($municipalities as $municipality)
-                <a wire:navigate href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}"
+                <a href="{{ route('monuments.index', ['m' => $municipality->istat_code]) }}"
                    class="btn-result">
                     {{ $municipality->getDisplayName() }}
                 </a>

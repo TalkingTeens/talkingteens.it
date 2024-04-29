@@ -1,12 +1,12 @@
 <footer class="bg-nd text-white py-12 sm:py-16">
     <div class="max-w-7xl w-11/12 mx-auto text-sm space-y-16">
         <div class="flex items-center gap-5 pb-12 sm:pb-16 border-b border-white/10">
-            <a wire:navigate href="{{ route('home') }}" class="shrink-0 max-sm:hidden">
+            <a href="{{ route('home') }}" class="shrink-0 max-sm:hidden">
                 @svg('logo/small', 'size-16')
             </a>
 
             {{--
-                <a wire:navigate href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
+                <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                     <span class="font-medium">
                         {{ __('common.footer.echo') }}
                     </span>
@@ -32,17 +32,17 @@
                         {{ config('app.name') }}
                     </h4>
 
-                    <a wire:navigate href="{{ route('monuments.index') }}" class="link-footer">
+                    <a href="{{ route('monuments.index') }}" class="link-footer">
                         {{ __('monuments.title') }}
                     </a>
 
                     {{--
-                        <a wire:navigate href="{{ route('project') }}" class="link-footer">
+                        <a href="{{ route('project') }}" class="link-footer">
                             Progetto
                         </a>
                     --}}
 
-                    <a wire:navigate href="{{ route('docs') }}" class="link-footer">
+                    <a href="{{ route('docs') }}" class="link-footer">
                         {{ __('documents.title') }}
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                         <h4 class="text-base pb-1">
                             Dietro il vetro
                         </h4>
-                        <a wire:navigate href="#" class="link-footer">
+                        <a href="#" class="link-footer">
                             Tutto
                         </a>
                     </div>
@@ -63,15 +63,15 @@
                         {{ __('common.footer.contributes.title') }}
                     </h4>
 
-                    <a wire:navigate href="{{ route('donate') }}" class="link-footer">
+                    <a href="{{ route('donate') }}" class="link-footer">
                         {{ __('common.footer.contributes.donate') }}
                     </a>
 
-                    <a wire:navigate href="{{ route('sponsors') }}" class="link-footer">
+                    <a href="{{ route('sponsors') }}" class="link-footer">
                         {{ __('sponsors.title') }}
                     </a>
 
-                    <a wire:navigate href="{{ route('supporters') }}" class="link-footer">
+                    <a href="{{ route('supporters') }}" class="link-footer">
                         {{ __('supporters.title') }}
                     </a>
                 </div>
@@ -80,11 +80,11 @@
                         {{ __('common.footer.legal') }}
                     </h4>
 
-                    <a wire:navigate href="{{ route('privacy') }}" class="link-footer">
+                    <a href="{{ route('privacy') }}" class="link-footer">
                         {{ __('privacy.title') }}
                     </a>
 
-                    <a wire:navigate href="{{ route('cookie') }}" class="link-footer">
+                    <a href="{{ route('cookie') }}" class="link-footer">
                         {{ __('cookie.title') }}
                     </a>
                 </div>

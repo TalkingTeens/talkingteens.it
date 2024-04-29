@@ -6,6 +6,7 @@ use App\Filament\Resources\RedirectResource\Pages;
 use App\Filament\Resources\RedirectResource\RelationManagers;
 use App\Models\Redirect;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
@@ -25,10 +26,18 @@ class RedirectResource extends Resource
             ->schema([
                 TextInput::make('from')
                     ->prefix('/')
+                    ->required()
                     ->unique(ignoreRecord: true),
 
                 TextInput::make('to')
+                    ->different('from')
+                    ->required()
                     ->prefix('/'),
+
+                Select::make('subdomain')
+                    ->options([
+                        'call' => 'call',
+                    ])
             ]);
     }
 
@@ -39,6 +48,8 @@ class RedirectResource extends Resource
                 TextColumn::make('from'),
 
                 TextColumn::make('to'),
+
+                TextColumn::make('subdomain'),
             ])
             ->filters([
                 //

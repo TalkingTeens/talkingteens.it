@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('from')->unique();
             $table->string('to');
+            $table->string('subdomain')->nullable();
             $table->timestamps();
         });
     }

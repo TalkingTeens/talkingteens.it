@@ -11,7 +11,7 @@
         <template x-if="[0, 3].includes(state)">
             <section class="flex-col py-11 w-11/12 mx-auto items-center h-full gap-8 flex">
                 <div class="flex-1 flex items-center w-3/5">
-                    <a wire:navigate href="{{ route('home') }}" class="w-full"
+                    <a href="{{ route('home') }}" class="w-full"
                        :class="isEmbedded && 'pointer-events-none'">
                         @svg('logo/big', 'w-full')
                     </a>
@@ -51,6 +51,7 @@
                 </template>
 
                 <a href="{{ config('constants.credits.url') }}?utm_source=call.talkingteens.it&utm_medium=footer&utm_campaign=credits"
+                   target="_blank"
                    class="text-xs" :class="isEmbedded && 'hidden'">
                     {{ __('common.footer.credits', ['name' => config('constants.credits.name')]) }}
                 </a>
@@ -135,7 +136,7 @@
                 url = new URL(`storage/${resource}`, "{{ config('app.url') }}");
             }
 
-            if (url.host !== window.location.host) {
+            if (url.host !== "{{ config('app.domain') }}") {
                 window.open(resource).focus(); // catch if blocked
                 this.started();
                 this.end();
