@@ -24,7 +24,8 @@ class Webcall extends Component
         if (empty($this->webcall?->resources)) abort(404);
 
         $this->langs = collect(array_column($this->webcall->resources, 'data'))
-            ->pluck('resource', 'language');
+            ->pluck('resource', 'language')
+            ->sortKeys();
     }
 
     public function started(): void
@@ -45,6 +46,7 @@ class Webcall extends Component
     public function render()
     {
         return view('livewire.webcall')
+            // TODO: translation variable
             ->title(Arr::join([__('webcall.title'), $this->monument->name], ' '))
             ->extends('layouts.base')
             ->section('body');

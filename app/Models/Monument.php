@@ -22,7 +22,6 @@ class Monument extends Model
         'slug',
         'description',
         'monument_image',
-        'background_image',
         'latitude',
         'longitude',
         'phone_number',

@@ -14,7 +14,7 @@ class TreatersRelationManager extends RelationManager
 {
     protected static string $relationship = 'treaters';
 
-    protected static ?string $recordTitleAttribute = 'full_name';
+    protected static ?string $recordTitleAttribute = 'first_name';
 
     public function form(Form $form): Form
     {

@@ -1,12 +1,12 @@
 @push('meta')
-    <link rel="preload" as="image" href="{{ asset(Storage::url($monument->background_image)) }}">
+    <link rel="preload" as="image" href="{{ $webcall->getFirstMedia('webcalls')->getFullUrl() }}">
 @endpush
 
 <main class="bg-st h-svh">
     <div
         x-data="webcall"
         class="bg-cover bg-center bg-no-repeat mx-auto max-w-md h-full"
-        x-bind:style="[1, 2].includes(state) && 'background-image: url(\'{{ asset(Storage::url($monument->background_image)) }}\' '"
+        x-bind:style="[1, 2].includes(state) && 'background-image: url(\'{{ $webcall->getFirstMedia('webcalls')->getFullUrl() }}\' '"
     >
         <template x-if="[0, 3].includes(state)">
             <section class="flex-col py-11 w-11/12 mx-auto items-center h-full gap-8 flex">
@@ -52,7 +52,8 @@
 
                 <a href="{{ config('constants.credits.url') }}?utm_source=call.talkingteens.it&utm_medium=footer&utm_campaign=credits"
                    target="_blank"
-                   class="text-xs" :class="isEmbedded && 'hidden'">
+                   class="text-xs"
+                   :class="isEmbedded && 'hidden'">
                     {{ __('common.footer.credits', ['name' => config('constants.credits.name')]) }}
                 </a>
             </section>

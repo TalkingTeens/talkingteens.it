@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('monuments', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
-            $table->string('old_slug')->nullable();
             $table->json('name');
             $table->json('description')->nullable();
             $table->string('monument_image');
-            $table->string('background_image')->nullable();
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
             $table->string('phone_number')->nullable();

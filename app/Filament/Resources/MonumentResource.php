@@ -4,12 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MonumentResource\Pages;
 use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
-use App\Filament\Resources\MonumentResource\RelationManagers\TreatersRelationManager;
 use App\Models\Category;
-use App\Models\Character;
 use App\Models\Monument;
-use Filament\Forms;
-use Filament\Forms\Components\Builder as WebcallBuilder;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -26,6 +22,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
@@ -81,7 +78,7 @@ class MonumentResource extends Resource
                                                 Select::make('author_id')
                                                     ->searchable()
                                                     ->multiple()
-                                                    ->relationship('authors', 'full_name'),
+                                                    ->relationship('authors', 'first_name'),
 
                                                 FileUpload::make('monument_image')
                                                     ->image()
@@ -133,63 +130,6 @@ class MonumentResource extends Resource
                                     )*/
                                     ->required(),
                             ])->columns(2),
-                        Tabs\Tab::make('Webcall')
-                            ->schema([
-                                FileUpload::make('background_image')
-                                    ->nullable()
-                                    ->columnSpan('full')
-                                    ->image()
-                                    ->directory('images/monuments/background'),
-                                Group::make()
-                                    ->relationship('webcall')
-                                    ->schema([
-                                        WebcallBuilder::make('resources')
-                                            ->blocks([
-                                                WebcallBuilder\Block::make('audio')->icon('heroicon-o-microphone')
-                                                    ->schema([
-                                                        Select::make('language')
-                                                            ->options([
-                                                                'it' => 'Italiano',
-                                                                'en' => 'Inglese',
-                                                                'pr' => 'Dialetto parmigiano',
-                                                            ])
-                                                            ->reactive()
-                                                            ->required(),
-                                                        FileUpload::make('resource')
-                                                            ->directory('audio/webcalls')
-                                                            ->required()
-                                                            ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
-                                                        Select::make('voice_id')
-                                                            ->multiple()
-                                                            ->relationship('voices', 'full_name')
-                                                            ->createOptionForm([
-                                                                Forms\Components\Grid::make(2)
-                                                                    ->schema([
-                                                                        Forms\Components\TextInput::make('first_name')
-                                                                            ->required(),
-                                                                        Forms\Components\TextInput::make('last_name')
-                                                                            ->required(),
-                                                                    ])
-                                                            ]),
-                                                    ])
-                                                    ->columns(2),
-                                                WebcallBuilder\Block::make('link')->icon('heroicon-o-link')
-                                                    ->schema([
-                                                        Select::make('language')
-                                                            ->options([
-                                                                'lis' => 'Lingua dei Segni Italiana',
-                                                            ])
-                                                            ->required(),
-
-                                                        TextInput::make('resource')
-                                                            ->activeUrl()
-                                                            ->placeholder('https://...')
-                                                            ->suffixIcon('heroicon-o-globe-alt'),
-                                                    ])
-                                                    ->columns(2),
-                                            ]),
-                                    ]),
-                            ]),
                     ])
                     ->columnSpan(['lg' => 2]),
                 Group::make()->schema([
@@ -233,7 +173,8 @@ class MonumentResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                ImageColumn::make('authors.picture')
+                SpatieMediaLibraryImageColumn::make('authors.picture')
+                    ->collection('authors')
                     ->circular()
                     ->stacked()
                     ->limit(2)
