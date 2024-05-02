@@ -6,9 +6,12 @@ use App\Filament\Resources\WebcallResource\Pages;
 use App\Filament\Resources\WebcallResource\RelationManagers;
 use App\Models\Webcall;
 use Filament\Forms;
-use Filament\Forms\Components\Builder as WebcallBuilder;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -33,74 +36,101 @@ class WebcallResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('monument_id')
-                    ->searchable()
-                    ->relationship('monument', 'name')
-                    ->required(),
-
-                SpatieMediaLibraryFileUpload::make('background')
-                    ->collection('webcalls')
-                    ->image()
-                    ->required(),
-
-                WebcallBuilder::make('resources')
-                    ->blocks([
-                        WebcallBuilder\Block::make('audio')->icon('heroicon-o-microphone')
+                Group::make()
+                    ->schema([
+                        Section::make()
                             ->schema([
-                                Select::make('language')
-                                    ->options([
-                                        'it' => 'Italiano',
-                                        'en' => 'Inglese',
-                                        'pr' => 'Dialetto parmigiano',
-                                    ])
-                                    ->reactive()
-                                    ->required(),
-
-                                FileUpload::make('resource')
-                                    ->directory('audio/webcalls')
-                                    ->required()
-                                    ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
-
-                                Select::make('voice_id')
+                                Select::make('monument_id')
                                     ->searchable()
-                                    ->multiple()
-                                    ->relationship('voices', 'last_name')
-                                    ->createOptionForm([
-                                        Forms\Components\Grid::make(2)
-                                            ->schema([
-                                                Forms\Components\TextInput::make('first_name')
-                                                    ->required(),
-
-                                                Forms\Components\TextInput::make('last_name')
-                                                    ->required(),
-                                            ])
-                                    ]),
-                            ])
-                            ->columns(2),
-
-                        WebcallBuilder\Block::make('link')->icon('heroicon-o-link')
-                            ->schema([
-                                Select::make('language')
-                                    ->options([
-                                        'lis' => 'Lingua dei Segni Italiana',
-                                    ])
+                                    ->relationship('monument', 'name')
+                                    ->unique(ignoreRecord: true)
                                     ->required(),
 
-                                TextInput::make('resource')
-                                    ->activeUrl()
-                                    ->placeholder('https://...')
-                                    ->suffixIcon('heroicon-o-globe-alt'),
+                                SpatieMediaLibraryFileUpload::make('background')
+                                    ->collection('webcalls')
+                                    ->image()
+                                    ->required(),
                             ])
                             ->columns(2),
-                    ]),
+
+                        Builder::make('resources')
+                            ->blocks([
+                                Builder\Block::make('audio')
+                                    ->icon('heroicon-o-microphone')
+                                    ->schema([
+                                        Select::make('language')
+                                            ->options([
+                                                'it' => 'Italiano',
+                                                'en' => 'Inglese',
+                                                'pr' => 'Dialetto parmigiano',
+                                            ])
+                                            ->reactive()
+                                            ->required(),
+
+                                        FileUpload::make('resource')
+                                            ->directory('audio/webcalls')
+                                            ->required()
+                                            ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
+
+                                        Select::make('voice_id')
+                                            ->searchable()
+                                            ->multiple()
+                                            ->relationship('voices', 'last_name')
+                                            ->createOptionForm([
+                                                Forms\Components\Grid::make(2)
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('first_name')
+                                                            ->required(),
+
+                                                        Forms\Components\TextInput::make('last_name')
+                                                            ->required(),
+                                                    ])
+                                            ]),
+                                    ])
+                                    ->columns(2),
+
+                                Builder\Block::make('link')->icon('heroicon-o-link')
+                                    ->schema([
+                                        Select::make('language')
+                                            ->options([
+                                                'lis' => 'Lingua dei Segni Italiana',
+                                            ])
+                                            ->required(),
+
+                                        TextInput::make('resource')
+                                            ->activeUrl()
+                                            ->placeholder('https://...')
+                                            ->suffixIcon('heroicon-o-globe-alt'),
+                                    ])
+                                    ->columns(2),
+                            ]),
+                    ])
+                    ->columnSpan(['lg' => 2]),
+
+                Group::make()
+                    ->schema([
+                        Section::make()
+                            ->schema([
+                                Placeholder::make('created_at')
+                                    ->content(fn(Webcall $record): ?string => $record->created_at?->diffForHumans()),
+
+                                Placeholder::make('updated_at')
+                                    ->content(fn(Webcall $record): ?string => $record->updated_at?->diffForHumans()),
+                            ])
+                            ->hidden(fn(?Webcall $record) => $record === null),
+                    ])
+                    ->columnSpan(['lg' => 1]),
             ])
-            ->columns(1);
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                TextColumn::make('monument.name')
+                    ->searchable(),
+
                 SpatieMediaLibraryImageColumn::make('background')
                     ->collection('webcalls'),
 

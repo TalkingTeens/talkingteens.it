@@ -78,28 +78,28 @@
                 const pin = document.createElement("div");
                 const img = document.createElement("img");
 
-                img.src = `/storage/${monument.background_image}`;
+                // img.src = `/storage/${monument.background_image}`;
                 pin.className = "marker";
                 pin.appendChild(img);
 
-                // const marker = new google.maps.Marker({
-                //     position: {
-                //         lat: +monument.latitude,
-                //         lng: +monument.longitude
-                //     },
-                //     map,
-                //     title: monument.name[locale],
-                // });
-
-                const marker = new AdvancedMarkerElement({
-                    map,
+                const marker = new google.maps.Marker({
                     position: {
                         lat: +monument.latitude,
                         lng: +monument.longitude
                     },
-                    content: pin,
+                    map,
                     title: monument.name[locale],
                 });
+
+                // const marker = new AdvancedMarkerElement({
+                //     map,
+                //     position: {
+                //         lat: +monument.latitude,
+                //         lng: +monument.longitude
+                //     },
+                //     content: pin,
+                //     title: monument.name[locale],
+                // });
 
                 marker.addListener('gmp-click', () => {
                     window.location.href = `/${locale}/statue/${monument.slug}`;

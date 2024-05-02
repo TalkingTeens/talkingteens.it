@@ -15,6 +15,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\Summarizers\Count;
 use Illuminate\Database\Eloquent\Builder;
 
 class ArticleResource extends Resource
@@ -61,6 +62,7 @@ class ArticleResource extends Resource
                     ->searchable(),
 
                 IconColumn::make('visible')
+                    ->summarize(Count::make()->icons())
                     ->boolean(),
             ])
             ->filters([

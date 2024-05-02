@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SupporterResource\Pages;
+use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Filters\TernaryFilter;
 use App\Models\Supporter;
 use Filament\Forms\Components\Select;
@@ -55,6 +56,7 @@ class SupporterResource extends Resource
                     ->badge(),
 
                 IconColumn::make('visible')
+                    ->summarize(Count::make()->icons())
                     ->boolean(),
             ])
             ->filters([

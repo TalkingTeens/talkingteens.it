@@ -10,7 +10,8 @@ class SponsorController extends Controller
 {
     public function __invoke(): View
     {
-        $sponsors = Sponsor::all()
+        $sponsors = Sponsor::with('media')
+            ->get()
             ->sortBy('order')
             ->map(fn($sponsor) => SponsorData::fromModel($sponsor));
 

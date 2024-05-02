@@ -10,6 +10,11 @@ class EditWebcall extends EditRecord
 {
     protected static string $resource = WebcallResource::class;
 
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function getHeaderActions(): array
     {
         return [

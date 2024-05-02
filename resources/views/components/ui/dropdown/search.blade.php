@@ -40,7 +40,10 @@
     </button>
 
     <div
-        x-cloak x-transition x-ref="panel" x-show="open"
+        x-cloak
+        x-transition
+        x-ref="panel"
+        x-show="open"
         :id="$id('dropdown')"
         @click.outside="close()"
         class="absolute left-0 mt-2 bg-white w-full rounded-3xl py-2 border shadow-xl overflow-hidden z-50"

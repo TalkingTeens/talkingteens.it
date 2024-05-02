@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\Translatable\HasTranslations;
 
 class Municipality extends Model
 {
@@ -19,9 +18,9 @@ class Municipality extends Model
         'description',
     ];
 
-    public $translatable = [
-        'description',
-    ];
+//    public $translatable = [
+//        'description',
+//    ];
 
     public function province(): BelongsTo
     {

@@ -17,6 +17,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -123,6 +124,7 @@ class DocumentResource extends Resource
                     ]),
 
                 IconColumn::make('visible')
+                    ->summarize(Count::make()->icons())
                     ->boolean(),
             ])
             ->filters([

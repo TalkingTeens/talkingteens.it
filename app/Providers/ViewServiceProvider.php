@@ -23,7 +23,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Facades\View::composer([
-            'components.ui.dropdown.search', 'livewire.search'
+            'layouts.partials.nav'
         ], function (View $view) {
             $view->with('municipalities', Municipality::has('monuments')
                 ->with('province.region')

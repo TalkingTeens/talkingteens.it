@@ -60,9 +60,13 @@ class Monuments extends Component
 
     public function render(): View
     {
-        $categories = Category::has('monuments')->withType('category')->get();
+        $categories = Category::with('media')
+            ->has('monuments')
+            ->withType('category')
+            ->get();
 
         $this->monuments = Monument::query()
+//            ->with('municipality') // TODO: with eager loading
             ->when($this->municipality, function ($q) {
                 return $q->whereHas('municipality', function ($q) {
                     return $q->where('istat_code', $this->municipality);

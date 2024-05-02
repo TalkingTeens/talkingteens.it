@@ -12,11 +12,16 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $monuments = Monument::inRandomOrder()->limit(3)->get();
+        $monuments = Monument::inRandomOrder()
+//            ->with('municipality')  // TODO: with eager loading
+            ->limit(3)
+            ->get();
 
-        $articles = Article::all()
+        $articles = Article::with('media')
+            ->get()
             ->sortBy('order')
             ->map(fn($article) => ArticleData::fromModel($article));
+
 
         $municipalities = Municipality::has('monuments')
             ->pluck('name');

@@ -27,7 +27,7 @@
                 const pin = document.createElement("div");
                 const img = document.createElement("img");
 
-                img.src = '{{ asset(Storage::url($monument->background_image)) }}'
+                img.src = '{{ $pin }}'
                 pin.className = "marker";
                 pin.appendChild(img)
 

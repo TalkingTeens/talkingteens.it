@@ -85,7 +85,7 @@
                                 </x-button.arrow>
                             </div>
 
-                            <x-map.show :$monument/>
+                            <x-map.show :$monument :$pin/>
                         </section>
                     </div>
                 </div>

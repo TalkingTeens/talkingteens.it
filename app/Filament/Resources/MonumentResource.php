@@ -23,6 +23,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
@@ -181,6 +182,7 @@ class MonumentResource extends Resource
                     ->limitedRemainingText(),
 
                 IconColumn::make('visible')
+                    ->summarize(Count::make()->icons())
                     ->boolean(),
             ])
             ->defaultGroup('municipality.name')
