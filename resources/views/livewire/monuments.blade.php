@@ -2,7 +2,9 @@
     <x-ui.subheader>
         <div wire:ignore x-data="{ active : '{{ request('c') }}' }"
              class="h-[var(--subheader-height)] no-scrollbar overflow-x-auto max-w-6xl flex items-center gap-x-5 sm:gap-x-8 lg:gap-x-10">
-            <x-button.monuments.category :title="__('monuments.filters.all')" :icon="asset('svg/grid.svg')" alt="Icona"/>
+            <x-button.monuments.category :title="__('monuments.filters.all')"
+                                         :icon="asset('svg/grid.svg')"
+                                         alt="Icona"/>
 
             @foreach($categories as $category)
                 @continue(!$category->slug || !$category->name)
@@ -42,8 +44,8 @@
             >
                 @if($view === 'list')
                     <span class="text-sm font-medium">
-                    {{ __('monuments.map') }}
-                </span>
+                        {{ __('monuments.map') }}
+                    </span>
 
                     <x-heroicon-o-globe-europe-africa class="size-6"/>
                 @else

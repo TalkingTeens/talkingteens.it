@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title' => 'Dona ora',
     'previous' => 'Precedente',
     'next' => 'Successivo',
@@ -18,4 +19,5 @@ return [
             'description' => ''
         ],
     ],
+
 ];

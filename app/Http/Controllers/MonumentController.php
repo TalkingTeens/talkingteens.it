@@ -25,10 +25,10 @@ class MonumentController extends Controller
             ->sortBy('id')
             ->first();
 
-        $previous = $city_monuments
-            ->where('id', '<', $monument->id)
-            ->sortByDesc('id')
-            ->first();
+//        $previous = $city_monuments
+//            ->where('id', '<', $monument->id)
+//            ->sortByDesc('id')
+//            ->first();
 
         return view('monuments.show', [
             'monument' => $monument,
@@ -36,7 +36,7 @@ class MonumentController extends Controller
             'tags' => $tags,
             'characters' => $characters,
             'next' => $next ?? $city_monuments->first(),
-            'previous' => $previous ?? $city_monuments->last()
+//            'previous' => $previous ?? $city_monuments->last()
         ]);
     }
 }

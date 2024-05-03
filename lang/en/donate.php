@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title' => 'Donate',
     'previous' => 'Previous',
     'next' => 'Next',
@@ -18,4 +19,5 @@ return [
             'description' => ''
         ],
     ],
+
 ];

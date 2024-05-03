@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 border-b bg-white">
+<nav class="sticky top-0 z-40 border-b bg-white">
     <div class="mx-auto h-[var(--nav-height)] max-w-7xl w-11/12 py-3 flex items-center justify-between gap-4">
         <a href="{{ route('home') }}" class="h-10 sm:h-12 shrink-0">
             @svg('logo/medium', 'h-full max-sm:hidden')

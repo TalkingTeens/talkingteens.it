@@ -6,8 +6,8 @@
 @section('content')
     <header class="relative bg-nd h-fill text-white overflow-hidden">
         <div class="absolute top-1/4 left-[10%] z-10 max-w-xs text-white/50">
-            <x-button.arrow :href="URL::previous()">
-                {{ __('common.back') }}
+            <x-button.arrow :href="route('monuments.index', ['m' => $monument->municipality->istat_code])">
+                {{ __('monument.monuments') }}
             </x-button.arrow>
 
             <h1 class="text-4xl font-extrabold text-white my-4">
@@ -25,7 +25,7 @@
         </div>
 
         <img
-            class="absolute h-[95%] object-contain bottom-0 left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
+            class="absolute h-[95%] object-cover overflow-visible bottom-0 left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
             src="{{ asset(Storage::url($monument->monument_image)) }}"
             alt=""
         >
@@ -75,14 +75,6 @@
                                     {{ __('monument.where') }}
                                     {{ $monument->municipality->getDisplayName() }}
                                 </h3>
-
-                                <x-button.arrow
-                                    :back="false"
-                                    :transform="false"
-                                    :href="route('monuments.index', ['m' => $monument->municipality->istat_code])"
-                                >
-                                    {{ __('monument.monuments') }}
-                                </x-button.arrow>
                             </div>
 
                             <x-map.show :$monument :$pin/>
@@ -165,17 +157,11 @@
             </div>
         </div>
 
-        @if(isset($previous) && isset($next))
-            <div>
-                <div class="flex justify-between max-w-6xl mx-auto">
-                    <x-button.arrow :href="route('monuments.show', ['monument' => $previous])">
-                        {{ $previous->name }}
-                    </x-button.arrow>
-
-                    <x-button.arrow :href="route('monuments.show', ['monument' => $next])" :back="false">
-                        {{ $next->name }}
-                    </x-button.arrow>
-                </div>
+        @if(isset($next))
+            <div class="max-sm:hidden">
+                <x-button.arrow :href="route('monuments.show', ['monument' => $next])" :back="false">
+                    {{ $next->name }}
+                </x-button.arrow>
             </div>
         @endif
     </div>
@@ -218,29 +204,33 @@
     {{--    @endunless--}}
 
     @if($monument->webcall?->resources)
-        <div class="max-lg:hidden sticky bottom-0 z-20">
+        <div class="bottom-0 z-30 sticky"
+        >
             <div x-data="{ show : window.pageYOffset < 10 }"
-                 class="absolute right-14 bottom-10 flex flex-col items-end gap-6">
-                <p class="max-w-[180px] hidden md:block text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
+                 class="absolute bottom-10 flex flex-col items-end gap-6 transition-all ease-in-out duration-300"
+                 :class="$store.sidebar.open ? 'right-[calc(100%-6rem)] sm:right-[29rem] lg:right-14' : 'right-4 sm:right-14'"
+            >
+                <p class="max-w-[180px] max-md:hidden text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
                    @scroll.window="show = window.pageYOffset < 10"
-                   x-show="show && !$store.sidebar.open" x-transition
+                   x-show="show && !$store.sidebar.open"
+                   x-transition
                 >
                     {{ __('monument.call.traditional') }}
-                    <a href="tel:+39{{ str_replace(' ', '', $monument->phone_number) }}"
+                    <a href="tel:+39{{ Str::remove(' ', $monument->phone_number) }}"
                        class="whitespace-nowrap text-green-500 hover:underline">+39 {{ $monument->phone_number }}</a>,<br>
                     {{ __('monument.call.online') }}
                 </p>
 
                 <template x-if="$store.sidebar.open">
                     <x-button.rounded
-                        @click="$store.sidebar.open = false"
+                        @click="$store.sidebar.toggle()"
                         icon="svg/close.svg"
                     />
                 </template>
 
                 <template x-if="!$store.sidebar.open">
                     <x-button.rounded
-                        @click="$store.sidebar.open = true"
+                        @click="$store.sidebar.toggle()"
                         icon="svg/call.svg"
                         bg="bg-green-500"
                         :ping="true"

@@ -45,92 +45,85 @@ class MonumentResource extends Resource
     {
         return $form
             ->schema([
-                Tabs::make('Heading')
-                    ->tabs([
-                        Tabs\Tab::make('Data')
+                Group::make()
+                    ->schema([
+                        Section::make()
                             ->schema([
-                                Group::make()
-                                    ->schema([
-                                        Section::make()
-                                            ->schema([
-                                                TextInput::make('name')
-                                                    ->required()
-                                                    ->hint('Translatable')
-                                                    ->hintIcon('heroicon-o-language')
-                                                    ->reactive()
-                                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                TextInput::make('name')
+                                    ->required()
+                                    ->hint('Translatable')
+                                    ->hintIcon('heroicon-o-language')
+                                    ->reactive()
+                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                                TextInput::make('slug')
-                                                    ->disabledOn('edit')
-                                                    ->required()
-                                                    ->helperText('Una volta impostato, questo campo non può essere più modificato.')
-                                                    ->unique(Monument::class, 'slug', ignoreRecord: true),
+                                TextInput::make('slug')
+                                    ->disabledOn('edit')
+                                    ->required()
+                                    ->helperText('Una volta impostato, questo campo non può essere più modificato.')
+                                    ->unique(Monument::class, 'slug', ignoreRecord: true),
 
-                                                TextInput::make('phone_number')
-                                                    ->prefix('+39')
-                                                    ->mask('9999 999 9999')
-                                                    ->tel(),
+                                TextInput::make('phone_number')
+                                    ->prefix('+39')
+                                    ->mask('9999 999 9999')
+                                    ->tel(),
 
-                                                Select::make('municipality_code')
-                                                    ->searchable()
-                                                    ->relationship('municipality', 'name')
-                                                    ->required(),
+                                Select::make('municipality_code')
+                                    ->searchable()
+                                    ->relationship('municipality', 'name')
+                                    ->required(),
 
-                                                Select::make('author_id')
-                                                    ->searchable()
-                                                    ->multiple()
-                                                    ->relationship('authors', 'first_name'),
+                                Select::make('author_id')
+                                    ->searchable()
+                                    ->multiple()
+                                    ->relationship('authors', 'first_name'),
 
-                                                FileUpload::make('monument_image')
-                                                    ->image()
-                                                    ->directory('images/monuments')
-                                                    ->required(),
+                                FileUpload::make('monument_image')
+                                    ->image()
+                                    ->directory('images/monuments')
+                                    ->required(),
 
-                                                Select::make('character_id')
-                                                    ->searchable()
-                                                    ->multiple()
-                                                    ->relationship('characters', 'name')
+                                Select::make('character_id')
+                                    ->searchable()
+                                    ->multiple()
+                                    ->relationship('characters', 'name')
 //                                                    ->getOptionLabelFromRecordUsing(fn (Character $record) => $record->name)
 //                                                    ->getSearchResultsUsing(fn (string $search): array => Character::where('name->it', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
-                                            ])
-                                            ->columns(2),
+                            ])
+                            ->columns(2)
+                            ->columnSpan(2),
 
-                                        RichEditor::make('description')
-                                            ->columnSpan(2)
-                                            ->hint('Translatable')
-                                            ->hintIcon('heroicon-o-language')
-                                            ->disableToolbarButtons([
-                                                'codeBlock',
-                                            ]),
-                                    ])
+                        TextInput::make('latitude')
+                            ->numeric()
+                            /*->mask(fn (TextInput\Mask $mask) => $mask
+                                ->numeric()
+                                ->decimalSeparator(',')
+                                ->decimalPlaces(6)
+                                ->mapToDecimalSeparator(['.'])
+                                ->minValue(-90)
+                                ->maxValue(90)
+                                ->padFractionalZeros()
+                            )*/
+                            ->required(),
+                        TextInput::make('longitude')
+                            ->numeric()
+                            /*->mask(fn (TextInput\Mask $mask) => $mask
+                                ->numeric()
+                                ->decimalPlaces(6)
+                                ->decimalSeparator(',')
+                                ->mapToDecimalSeparator(['.'])
+                                ->minValue(-180)
+                                ->maxValue(180)
+                                ->padFractionalZeros()
+                            )*/
+                            ->required(),
+
+                        RichEditor::make('description')
+                            ->columnSpan(2)
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language')
+                            ->disableToolbarButtons([
+                                'codeBlock',
                             ]),
-                        Tabs\Tab::make('Map')
-                            ->schema([
-                                TextInput::make('latitude')
-                                    ->numeric()
-                                    /*->mask(fn (TextInput\Mask $mask) => $mask
-                                        ->numeric()
-                                        ->decimalSeparator(',')
-                                        ->decimalPlaces(6)
-                                        ->mapToDecimalSeparator(['.'])
-                                        ->minValue(-90)
-                                        ->maxValue(90)
-                                        ->padFractionalZeros()
-                                    )*/
-                                    ->required(),
-                                TextInput::make('longitude')
-                                    ->numeric()
-                                    /*->mask(fn (TextInput\Mask $mask) => $mask
-                                        ->numeric()
-                                        ->decimalPlaces(6)
-                                        ->decimalSeparator(',')
-                                        ->mapToDecimalSeparator(['.'])
-                                        ->minValue(-180)
-                                        ->maxValue(180)
-                                        ->padFractionalZeros()
-                                    )*/
-                                    ->required(),
-                            ])->columns(2),
                     ])
                     ->columnSpan(['lg' => 2]),
                 Group::make()->schema([
@@ -208,7 +201,7 @@ class MonumentResource extends Resource
     public static function getRelations(): array
     {
         return [
-             ClassesRelationManager::class,
+            ClassesRelationManager::class,
             // TreatersRelationManager::class,
         ];
     }

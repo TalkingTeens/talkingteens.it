@@ -73,9 +73,7 @@ class Monuments extends Component
                 });
             })
             ->when($this->category, function ($q) {
-                return $q->whereHas('categories', function ($q) {
-                    return $q->withType('category')->containing($this->category);
-                });
+                return $q->withAnyTags([$this->category], 'category');
             })
             ->orderBy('slug')
             ->get();
