@@ -1,6 +1,6 @@
 <a wire:navigate
    class="group z-0 p-14 bg-nd h-72 text-white rounded-3xl hover:scale-98 transition-transform duration-300 relative overflow-hidden text-right flex items-center justify-end"
-   href="{{ route('monuments.show', ['monument' => $monument]) }}"
+   href="{{ route('monuments.show', ['monument' => $monument->slug]) }}"
 >
     <img
         class="absolute bottom-0 left-1/4 h-full -translate-x-1/3"
@@ -14,7 +14,7 @@
         </h2>
 
         <p class="text-white/50">
-            {{ $monument->municipality->name }}
+            {{ $monument->municipality_name }}
         </p>
     </div>
 </a>

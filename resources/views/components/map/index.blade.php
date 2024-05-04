@@ -41,13 +41,15 @@
 
         markers: {},
 
-        setup() {
+        async setup() {
             $wire.$on('reload-map', async (event) => {
                 this.monuments = event.monuments;
                 this.city = event.city;
-                await this.initMap();
+
+                await this.populateMap();
             });
 
+            await this.initMap();
             $wire.reloadMap();
         },
 
@@ -63,7 +65,9 @@
                 mapTypeId: 'roadmap',
                 mapId: "9074f1de391fa472", // "DEMO_MAP_ID"
             });
+        },
 
+        async populateMap() {
             await this.drawMarkers();
             this.setCenter();
         },
@@ -71,38 +75,33 @@
         async drawMarkers() {
             const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
-            const map = this.map;
-            const locale = document.documentElement.lang;
+            // Remove alpines property proxy
+            const map = Alpine.raw(this.map);
+
+            // TODO: refactor
+            Object.values(this.markers).map(marker => marker.setMap(null));
+            this.markers = {}
 
             this.monuments.forEach((monument) => {
                 const pin = document.createElement("div");
                 const img = document.createElement("img");
 
-                // img.src = `/storage/${monument.background_image}`;
+                img.src = monument.pin_image;
                 pin.className = "marker";
                 pin.appendChild(img);
 
-                const marker = new google.maps.Marker({
-                    position: {
-                        lat: +monument.latitude,
-                        lng: +monument.longitude
-                    },
+                const marker = new AdvancedMarkerElement({
                     map,
-                    title: monument.name[locale],
+                    position: {
+                        lat: monument.latitude,
+                        lng: monument.longitude
+                    },
+                    content: pin,
+                    title: monument.name,
                 });
 
-                // const marker = new AdvancedMarkerElement({
-                //     map,
-                //     position: {
-                //         lat: +monument.latitude,
-                //         lng: +monument.longitude
-                //     },
-                //     content: pin,
-                //     title: monument.name[locale],
-                // });
-
                 marker.addListener('gmp-click', () => {
-                    window.location.href = `/${locale}/statue/${monument.slug}`;
+                    window.location.href = `/statue/${monument.slug}`;
                 });
                 this.markers[monument.id] = marker;
             });

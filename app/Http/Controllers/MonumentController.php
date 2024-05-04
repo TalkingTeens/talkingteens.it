@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Monument;
+use Illuminate\Support\Str;
 
 class MonumentController extends Controller
 {
@@ -30,9 +31,12 @@ class MonumentController extends Controller
 //            ->sortByDesc('id')
 //            ->first();
 
+        $phone_number = '+39' . Str::remove(' ', $monument->phone_number);
+
         return view('monuments.show', [
             'monument' => $monument,
             'pin' => $monument->webcall?->getFirstMedia('webcalls')?->getFullUrl(),
+            'phone_number' => $phone_number,
             'tags' => $tags,
             'characters' => $characters,
             'next' => $next ?? $city_monuments->first(),

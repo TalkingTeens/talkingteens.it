@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Data\MonumentData;
 use App\Models\Category;
 use App\Models\Monument;
 use App\Models\Municipality;
@@ -21,9 +22,9 @@ class Monuments extends Component
     #[Url(as: 'm')]
     public ?string $municipality = '';
 
-    public $monuments;
+    private $monuments;
 
-    public $city;
+    private $city;
 
     public function mount(): void
     {
@@ -40,10 +41,12 @@ class Monuments extends Component
     {
         if ($this->view !== 'map') return;
 
-        if(!$this->monuments->count() && $this->municipality)
+        $monuments = $this->getMonuments();
+
+        if (!$monuments->count() && $this->municipality)
             $this->city = Municipality::where('istat_code', $this->municipality)->first();
 
-        $this->dispatch('reload-map', monuments: $this->monuments, city: $this->city);
+        $this->dispatch('reload-map', monuments: $monuments, city: $this->city);
     }
 
     #[On('change-category')]
@@ -56,6 +59,10 @@ class Monuments extends Component
     public function changeMunicipality($code)
     {
         $this->municipality = $code;
+    }
+
+    private function getMonuments() {
+        return $this->monuments?->map(fn($monument) => MonumentData::fromModel($monument)) ?? collect();
     }
 
     public function render(): View
@@ -78,10 +85,12 @@ class Monuments extends Component
             ->orderBy('slug')
             ->get();
 
+        $monuments = $this->getMonuments();
+
         $this->reloadMap();
 
         return view('livewire.monuments',
-            compact(['categories'])
+            compact(['categories', 'monuments'])
         )->title(__('monuments.title'));
     }
 }

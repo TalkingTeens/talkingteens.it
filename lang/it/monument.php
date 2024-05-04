@@ -4,8 +4,8 @@ return [
 
     'authors' => 'Realizzato da',
     'history' => 'Storia del monumento',
-    'where' => 'A',
-    'monuments' => 'Vedi tutte',
+    'where' => 'A :municipality',
+    'back' => 'Torna a :municipality',
     'curators' => 'A cura di',
     'share' => [
         'title' => 'testo condivisione',

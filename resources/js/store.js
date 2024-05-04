@@ -1,5 +1,6 @@
-import Alpine from "alpinejs";
-
-Alpine.store('global', {
-    playingWebcall: false
-})
+// TODO:
+// import Alpine from "../../vendor/livewire/livewire/dist/livewire.esm.js";
+//
+// Alpine.store('global', {
+//     playingWebcall: false
+// })

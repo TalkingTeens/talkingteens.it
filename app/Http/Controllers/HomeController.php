@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\ArticleData;
+use App\Data\MonumentData;
 use App\Models\Article;
 use App\Models\Monument;
 use App\Models\Municipality;
@@ -15,7 +16,8 @@ class HomeController extends Controller
         $monuments = Monument::inRandomOrder()
 //            ->with('municipality')  // TODO: with eager loading
             ->limit(3)
-            ->get();
+            ->get()
+            ->map(fn ($monument) => MonumentData::fromModel($monument));
 
         $articles = Article::with('media')
             ->get()

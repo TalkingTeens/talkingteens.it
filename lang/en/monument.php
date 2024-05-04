@@ -4,8 +4,8 @@ return [
 
     'authors' => 'Realized by',
     'history' => 'Monument history',
-    'where' => 'In',
-    'monuments' => 'Vedi tutte',
+    'where' => 'In :municipality',
+    'back' => 'Back to :municipality',
     'curators' => 'Curated by',
     'share' => [
         'title' => 'title',

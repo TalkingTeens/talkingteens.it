@@ -7,7 +7,7 @@
     <header class="relative bg-nd h-fill text-white overflow-hidden">
         <div class="absolute top-1/4 left-[10%] z-10 max-w-xs text-white/50">
             <x-button.arrow :href="route('monuments.index', ['m' => $monument->municipality->istat_code])">
-                {{ __('monument.monuments') }}
+                {{ __('monument.back', ['municipality' => $monument->municipality->name]) }}
             </x-button.arrow>
 
             <h1 class="text-4xl font-extrabold text-white my-4">
@@ -72,8 +72,7 @@
                         <section class="space-y-6">
                             <div class="flex gap-1 flex-col sm:flex-row sm:items-center sm:justify-between">
                                 <h3 class="title-lg mb-0">
-                                    {{ __('monument.where') }}
-                                    {{ $monument->municipality->getDisplayName() }}
+                                    {{ __('monument.where', ['municipality' => $monument->municipality->getDisplayName()]) }}
                                 </h3>
                             </div>
 
@@ -204,11 +203,10 @@
     {{--    @endunless--}}
 
     @if($monument->webcall?->resources)
-        <div class="bottom-0 z-30 sticky"
-        >
+        <div class="sticky bottom-0 z-30">
             <div x-data="{ show : window.pageYOffset < 10 }"
                  class="absolute bottom-10 flex flex-col items-end gap-6 transition-all ease-in-out duration-300"
-                 :class="$store.sidebar.open ? 'right-[calc(100%-6rem)] sm:right-[29rem] lg:right-14' : 'right-4 sm:right-14'"
+                 :class="$store.sidebar.open ? 'right-4 sm:right-[29rem] lg:right-14' : 'right-4 sm:right-14'"
             >
                 <p class="max-w-[180px] max-md:hidden text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
                    @scroll.window="show = window.pageYOffset < 10"
@@ -216,21 +214,21 @@
                    x-transition
                 >
                     {{ __('monument.call.traditional') }}
-                    <a href="tel:+39{{ Str::remove(' ', $monument->phone_number) }}"
+                    <a href="tel:{{ $phone_number }}"
                        class="whitespace-nowrap text-green-500 hover:underline">+39 {{ $monument->phone_number }}</a>,<br>
                     {{ __('monument.call.online') }}
                 </p>
 
-                <template x-if="$store.sidebar.open">
+                <template x-if="$store.sidebar.open && window.innerWidth >= 640">
                     <x-button.rounded
                         @click="$store.sidebar.toggle()"
                         icon="svg/close.svg"
                     />
                 </template>
 
-                <template x-if="!$store.sidebar.open">
+                <template x-if="!$store.sidebar.open || window.innerWidth < 640">
                     <x-button.rounded
-                        @click="$store.sidebar.toggle()"
+                        @click="window.innerWidth >= 640 ? $store.sidebar.toggle() : window.location.href='tel:{{ $phone_number }}'"
                         icon="svg/call.svg"
                         bg="bg-green-500"
                         :ping="true"
