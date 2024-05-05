@@ -10,12 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
-class Monument extends Model
+class Monument extends Model implements HasMedia
 {
-    use HasFactory, HasTranslations, HasTags;
+    use HasFactory, HasTranslations, HasTags, InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -37,6 +40,15 @@ class Monument extends Model
     protected static function booted(): void
     {
         static::addGlobalScope(new ActiveScope);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('pin')
+            ->format('webp')
+            ->performOnCollections('map')
+            ->nonQueued()
+            ->width(100);
     }
 
     public function getRouteKeyName(): string

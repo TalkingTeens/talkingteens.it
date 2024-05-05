@@ -24,16 +24,17 @@ class Document extends Model implements HasMedia
         'title',
     ];
 
-    public function registerMediaConversions(?Media $media = null): void
-    {
-        $this->addMediaConversion('preview')
-            ->performOnCollections('didactics')
-            ->nonQueued()
-            ->width(500);
-    }
-
     protected static function booted(): void
     {
         static::addGlobalScope(new ActiveScope);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('preview')
+            ->format('webp')
+            ->performOnCollections('didactics')
+            ->nonQueued()
+            ->width(500);
     }
 }

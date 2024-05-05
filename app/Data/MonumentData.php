@@ -8,14 +8,14 @@ use Spatie\LaravelData\Data;
 class MonumentData extends Data
 {
     public function __construct(
-        public int    $id,
-        public string $slug,
-        public string $name,
-        public float $latitude,
-        public float $longitude,
-        public string $monument_image,
-        public string $pin_image,
-        public string $municipality_name,
+        public int     $id,
+        public string  $slug,
+        public string  $name,
+        public float   $latitude,
+        public float   $longitude,
+        public string  $monument_image,
+        public ?string $pin_image, // TODO: remove ?
+        public string  $municipality_name,
     )
     {
     }
@@ -29,7 +29,7 @@ class MonumentData extends Data
             'latitude' => $monument->latitude,
             'longitude' => $monument->longitude,
             'monument_image' => $monument->monument_image,
-            'pin_image' => $monument->webcall?->getFirstMedia('webcalls')->getFullUrl(),
+            'pin_image' => $monument->getFirstMedia('map')?->getUrl('pin'),
             'municipality_name' => $monument->municipality->name,
         ]);
     }

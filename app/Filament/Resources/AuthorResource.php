@@ -51,6 +51,9 @@ class AuthorResource extends Resource
                                 SpatieMediaLibraryFileUpload::make('picture')
                                     ->collection('authors')
                                     ->image()
+                                    ->avatar()
+                                    ->imageEditor()
+                                    ->circleCropper()
                                     ->nullable(),
 
                                 TextInput::make('slug')

@@ -49,6 +49,11 @@ class WebcallResource extends Resource
                                 SpatieMediaLibraryFileUpload::make('background')
                                     ->collection('webcalls')
                                     ->image()
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        '9:16',
+                                        '3:4',
+                                    ])
                                     ->required(),
                             ])
                             ->columns(2),

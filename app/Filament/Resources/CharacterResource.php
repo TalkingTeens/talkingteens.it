@@ -45,6 +45,9 @@ class CharacterResource extends Resource
                                 SpatieMediaLibraryFileUpload::make('picture')
                                     ->collection('characters')
                                     ->image()
+                                    ->avatar()
+                                    ->imageEditor()
+                                    ->circleCropper()
                                     ->nullable(),
                             ])
                             ->columns(2),
