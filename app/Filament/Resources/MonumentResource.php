@@ -72,16 +72,16 @@ class MonumentResource extends Resource
                                     ->relationship('municipality', 'name')
                                     ->required(),
 
+                                FileUpload::make('monument_image')
+                                    ->image()
+                                    ->directory('images/monuments')
+                                    ->required(),
+
                                 SpatieMediaLibraryFileUpload::make('photo')
                                     ->collection('map')
                                     ->required()
                                     ->image()
                                     ->imageEditor(),
-
-                                FileUpload::make('monument_image')
-                                    ->image()
-                                    ->directory('images/monuments')
-                                    ->required(),
 
                                 Select::make('author_id')
                                     ->searchable()

@@ -35,7 +35,7 @@ class MonumentController extends Controller
 
         return view('monuments.show', [
             'monument' => $monument,
-            'pin' => $monument->webcall?->getFirstMedia('webcalls')?->getFullUrl(),
+            'pin' => $monument->getFirstMedia('map')?->getUrl('pin'),
             'phone_number' => $phone_number,
             'tags' => $tags,
             'characters' => $characters,

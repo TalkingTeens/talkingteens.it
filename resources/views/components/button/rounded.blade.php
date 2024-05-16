@@ -4,9 +4,6 @@
     @if($ping)
         <span @class(['animate-ping absolute h-4/5 w-4/5 rounded-full -z-10 pointer-events-none', $bg])></span>
     @endif
-    <img
-        class="w-2/5"
-        src="{{ asset($icon) }}"
-        alt=""
-    >
+
+    @svg($icon, 'w-2/5')
 </button>

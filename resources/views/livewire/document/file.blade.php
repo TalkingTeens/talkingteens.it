@@ -6,11 +6,7 @@
     class="p-2 bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
 >
     <div class="flex items-center px-2 py-3 gap-3">
-        <img
-            class="h-6 w-6"
-            src='{{ asset("svg/document/{$type}.svg") }}'
-            alt=""
-        >
+        @svg("document/$type", 'size-6')
 
         <div class="grow sm:overflow-hidden">
             <h3 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
@@ -35,11 +31,7 @@
                 alt=""
             >
         @else {{-- TODO: check if still needed --}}
-            <img
-                class="hidden md:block h-16 w-16 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                src='{{ asset("svg/document/{$type}.svg") }}'
-                alt=""
-            >
+            @svg("document/$type", 'hidden md:block size-16 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2')
         @endif
     </div>
 </a>

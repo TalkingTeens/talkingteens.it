@@ -138,20 +138,12 @@
 
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}"
                    target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    <svg viewBox="0 0 13 27" xmlns="http://www.w3.org/2000/svg"
-                         class="h-5 w-5 sm:h-6 sm:w-6 fill-[#4267b2]">
-                        <path
-                            d="M8.10155 26.1115V13.0542H11.7059L12.1836 8.5546H8.10155L8.10768 6.30251C8.10768 5.12894 8.21918 4.50012 9.90476 4.50012H12.1581V0H8.55319C4.22314 0 2.69907 2.18279 2.69907 5.85357V8.55511H0V13.0547H2.69907V26.1115H8.10155Z"/>
-                    </svg>
+                    @svg('facebook', 'size-5 sm:size-6 fill-[#4267b2]')
                 </a>
 
                 <a href="https://twitter.com/intent/tweet?text={{ __('monument.share.text') }}&url={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}"
                    target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    <svg viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg"
-                         class="h-5 w-5 sm:h-6 sm:w-6 fill-black">
-                        <path
-                            d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
-                    </svg>
+                    @svg('twitter', 'size-5 sm:size-6')
                 </a>
             </div>
         </div>
@@ -222,14 +214,14 @@
                 <template x-if="$store.sidebar.open && window.innerWidth >= 640">
                     <x-button.rounded
                         @click="$store.sidebar.toggle()"
-                        icon="svg/close.svg"
+                        icon="close"
                     />
                 </template>
 
                 <template x-if="!$store.sidebar.open || window.innerWidth < 640">
                     <x-button.rounded
                         @click="window.innerWidth >= 640 ? $store.sidebar.toggle() : window.location.href='tel:{{ $phone_number }}'"
-                        icon="svg/call.svg"
+                        icon="call"
                         bg="bg-green-500"
                         :ping="true"
                     />

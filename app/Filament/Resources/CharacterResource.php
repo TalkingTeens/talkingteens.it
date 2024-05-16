@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\CharacterResource\RelationManagers\MonumentsRelationManager;
 use App\Filament\Resources\CharacterResource\Pages;
-use App\Filament\Resources\CharacterResource\RelationManagers;
 use App\Models\Character;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
@@ -18,6 +18,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 
 class CharacterResource extends Resource
 {
@@ -37,11 +38,6 @@ class CharacterResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
-                                TextInput::make('name')
-                                    ->required()
-                                    ->hint('Translatable')
-                                    ->hintIcon('heroicon-o-language'),
-
                                 SpatieMediaLibraryFileUpload::make('picture')
                                     ->collection('characters')
                                     ->image()
@@ -49,6 +45,11 @@ class CharacterResource extends Resource
                                     ->imageEditor()
                                     ->circleCropper()
                                     ->nullable(),
+
+                                TextInput::make('name')
+                                    ->required()
+                                    ->hint('Translatable')
+                                    ->hintIcon('heroicon-o-language'),
                             ])
                             ->columns(2),
 
@@ -100,6 +101,10 @@ class CharacterResource extends Resource
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
+
+                ImageColumn::make('monuments.monument_image')
+                    ->limit(3)
+                    ->limitedRemainingText(isSeparate: true),
             ])
             ->filters([
                 //
@@ -116,7 +121,7 @@ class CharacterResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            MonumentsRelationManager::class,
         ];
     }
 

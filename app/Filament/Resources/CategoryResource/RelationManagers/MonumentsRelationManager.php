@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\AuthorResource\RelationManagers;
+namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use App\Filament\Resources\MonumentResource;
 use App\Models\Monument;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Tables\Table;
 
 class MonumentsRelationManager extends RelationManager
 {

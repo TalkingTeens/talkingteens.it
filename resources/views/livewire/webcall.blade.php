@@ -86,14 +86,14 @@
                      :class='{ "justify-between": state === 1, "justify-center": state === 2 }'>
                     <x-button.rounded
                         @click="close"
-                        icon="svg/hang-up.svg"
+                        icon="hang-up"
                         bg="bg-red-500"
                     />
 
                     <template x-if="state === 1">
                         <x-button.rounded
                             @click="answer"
-                            icon="svg/call.svg"
+                            icon="call"
                             bg="bg-green-500"
                             :ping="true"
                         />

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Cookie as CookieFacade;
 
 class Cookie extends Component
 {
@@ -12,7 +13,7 @@ class Cookie extends Component
 
     public function mount()
     {
-        $cookies = \Cookie::get('cookie_consent');
+        $cookies = CookieFacade::get('cookie_consent');
 
         $this->analytics = $cookies ?? false;
         $this->state = is_null($cookies);
@@ -34,14 +35,14 @@ class Cookie extends Component
 
         if (!$this->analytics)
         {
-            \Cookie::expire('_ga_3GJ7WZTD6J');
-            \Cookie::expire('_ga');
+            CookieFacade::expire('_ga_3GJ7WZTD6J');
+            CookieFacade::expire('_ga');
         }
     }
 
     public function store($value): void
     {
-        \Cookie::queue('cookie_consent', $value, 60 * 60 * 24 * 365);
+        CookieFacade::queue('cookie_consent', $value, 60 * 60 * 24 * 365);
         $this->state = 0;
     }
 

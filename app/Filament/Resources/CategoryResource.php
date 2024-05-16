@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers\MonumentsRelationManager;
 use App\Models\Category;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -62,6 +63,13 @@ class CategoryResource extends Resource
             ])
             ->defaultSort('order_column')
             ->reorderable('order_column');
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            MonumentsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
