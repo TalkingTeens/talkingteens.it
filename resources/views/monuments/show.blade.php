@@ -172,7 +172,7 @@
         </div>
 
         @if(isset($next))
-            <div class="max-sm:hidden">
+            <div>
                 <x-button.arrow :href="route('monuments.show', ['monument' => $next])" :back="false">
                     {{ $next->name }}
                 </x-button.arrow>

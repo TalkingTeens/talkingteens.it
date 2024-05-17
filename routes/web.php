@@ -7,9 +7,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MonumentController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\SupporterController;
-use App\Http\Controllers\ProjectController;
 use App\Livewire\Monuments;
 use App\Livewire\Webcall;
+use Spatie\Health\Http\Controllers\SimpleHealthCheckController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('health', \Spatie\Health\Http\Controllers\SimpleHealthCheckController::class);
+Route::get('health', SimpleHealthCheckController::class);
 
 Route::group(
     [
@@ -46,9 +47,9 @@ Route::group(
             Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');
             Route::get('statue', Monuments::class)->name('monuments.index');
             Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
-            Route::get('progetto', ProjectController::class)->name('project');
 
             // TODO:
+            // Route::get('progetto', ProjectController::class)->name('project');
             // Route::view('echo', 'echo')->name('echo');
 
             // Legal
