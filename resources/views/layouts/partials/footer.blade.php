@@ -93,19 +93,16 @@
 
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-10">
             <div class="flex items-center gap-10">
-                <a href="https://www.facebook.com/talkingteensparma/" target="_blank"
-                   class="hover:text-[#4267b2] transition-colors">
-                    @svg('facebook', 'size-5 fill-current')
+                <a href="https://www.facebook.com/talkingteensparma/" target="_blank">
+                    @svg('facebook', 'size-5 hover:text-[#0866ff] transition-colors')
                 </a>
 
-                <a href="https://www.instagram.com/talkingteens_parma/" target="_blank"
-                   class="hover:text-pink-500 transition-colors">
-                    @svg('instagram', 'size-5 fill-current')
+                <a href="https://www.instagram.com/talkingteens_parma/" target="_blank">
+                    @svg('instagram', 'size-5 hover:text-[#ff0069] transition-colors')
                 </a>
 
-                <a href="https://youtube.com/@talkingteens" target="_blank"
-                   class="hover:text-red-600 transition-colors">
-                    @svg('youtube', 'size-5 fill-current')
+                <a href="https://youtube.com/@talkingteens" target="_blank">
+                    @svg('youtube', 'size-5 hover:text-[red] transition-colors')
                 </a>
 
                 <a href="mailto:team@talkingteens.it" class="transition-colors group">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Monument;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 
 class MonumentController extends Controller
@@ -39,6 +40,15 @@ class MonumentController extends Controller
             'phone_number' => $phone_number,
             'tags' => $tags,
             'characters' => $characters,
+            'share' => [
+                'url' => rawurlencode(Request::url()),
+                'text' => rawurlencode(
+                    __('monument.share.text', [
+                        'monument' => $monument->name,
+                        'municipality' => $monument->municipality->name
+                    ])
+                ),
+            ],
             'next' => $next ?? $city_monuments->first(),
 //            'previous' => $previous ?? $city_monuments->last()
         ]);

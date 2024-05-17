@@ -13,12 +13,15 @@ class Newsletter extends Component
 {
     public string $email = '';
 
+    public bool $consent = false;
+
     public bool $subscribed = false;
 
     public function rules(): array
     {
         return [
             'email' => 'required|email:rfc,dns',
+            'consent' => 'boolean',
         ];
     }
 
@@ -27,6 +30,9 @@ class Newsletter extends Component
         $this->validate();
 
         if (App::environment('production')) {
+            // Mailchimp::hasMember($this->email);
+            // Mailchimp::isSubscribed($this->email);
+
             Mailchimp::subscribe($this->email);
         }
 

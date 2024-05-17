@@ -3,7 +3,7 @@
 return [
 
     'back' => 'Back',
-    'share' => 'Share',
+    'loading' => 'Loading',
     'nav' => [
         'donate' => 'Support the project with a small donation',
         'app' => 'Download app',
@@ -15,8 +15,8 @@ return [
     'footer' => [
         'echo' => 'A project by',
         'newsletter' => [
-            'title' => 'Tieniti aggiornato!',
-            'text' => 'Iscriviti alla newsletter per restare informato sui nostri progetti e prossimi sviluppi!',
+            'title' => 'Keep yourself updated!',
+            'text' => 'Don\'t miss out on any of our projects or upcoming developments. Subscribe to our newsletter now!',
             'input' => 'Enter your email',
             'subscribe' => 'Subscribe',
             'confirmation' => 'Thanks :email! Iscrizione avvenuta con successo.',

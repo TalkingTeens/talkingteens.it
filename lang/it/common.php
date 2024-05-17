@@ -3,7 +3,7 @@
 return [
 
     'back' => 'Torna indietro',
-    'share' => 'Condividi',
+    'loading' => 'Caricamento',
     'nav' => [
         'donate' => 'Sostieni il progetto con una semplice donazione',
         'app' => 'Scarica l\'app',

@@ -8,8 +8,8 @@ return [
     'back' => 'Torna a :municipality',
     'curators' => 'A cura di',
     'share' => [
-        'title' => 'testo condivisione',
-        'text' => 'text',
+        'cta' => 'Condividi',
+        'text' => ':monument a :municipality! Dai un\'occhiata ora!',
     ],
     'call' => [
         'traditional' => 'Ascolta la statua chiamando il',

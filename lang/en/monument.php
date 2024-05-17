@@ -8,8 +8,8 @@ return [
     'back' => 'Back to :municipality',
     'curators' => 'Curated by',
     'share' => [
-        'title' => 'title',
-        'text' => 'text',
+        'cta' => 'Share',
+        'text' => ':monument in :municipality! Take a look now!',
     ],
     'call' => [
         'traditional' => 'Listen to the statue by calling',

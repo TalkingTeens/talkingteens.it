@@ -127,23 +127,46 @@
             <div
                 class="flex items-center w-full sm:sticky sm:z-10 sm:top-[calc(var(--nav-height)+var(--subheader-height))] sm:w-auto sm:gap-3 sm:flex-col">
                 <p class="text-xs pr-3 sm:pr-0">
-                    {{ __('common.share') }}
+                    {{ __('monument.share.cta') }}
                 </p>
 
-                <button type="button"
-                        @click="navigator.share({ title:`{{ __('monument.share.title') }}`, url:'{{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}'})"
-                        class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    <x-heroicon-o-share class="size-5 sm:size-6"/>
-                </button>
+                <template x-if="typeof navigator.share === 'function'">
+                    <button type="button"
+                            class="p-3 hover:bg-gray-100 rounded-full sm:border"
+                            @click="navigator.share({
+                                url: '{{ URL::current() }}',
+                                title: document.title,
+                                text: `{{ __('monument.share.text', ['monument' => $monument->name, 'municipality' => $monument->municipality->name]) }}`
+                            })">
+                        <x-heroicon-o-share class="size-5 sm:size-6"/>
+                    </button>
+                </template>
 
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}"
+                <a aria-label="Whatsapp"
+                   href="https://api.whatsapp.com/send?text={{ $share['text'] }}%20{{ $share['url'] }}"
                    target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    @svg('facebook', 'size-5 sm:size-6 fill-[#4267b2]')
+                    @svg('whatsapp', 'size-5 sm:size-6 text-[#25D366]')
                 </a>
 
-                <a href="https://twitter.com/intent/tweet?text={{ __('monument.share.text') }}&url={{ LaravelLocalization::getNonLocalizedURL(URL::current()) }}"
+                <a aria-label="Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ $share['url'] }}"
                    target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
-                    @svg('twitter', 'size-5 sm:size-6')
+                    @svg('facebook', 'size-5 sm:size-6 fill-[#0866ff]')
+                </a>
+
+                <a aria-label="LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $share['url'] }}"
+                   target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
+                    @svg('linkedin', 'size-5 sm:size-6 text-[#0a66c2]')
+                </a>
+
+                <a aria-label="X"
+                   href="https://twitter.com/intent/tweet?url={{ $share['url'] }}&text={{ $share['text'] }}"
+                   target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
+                    @svg('x', 'size-5 sm:size-6')
+                </a>
+
+                <a aria-label="Telegram" href="https://t.me/share/url?url={{ $share['url'] }}&text={{ $share['text'] }}"
+                   target="_blank" class="p-3 hover:bg-gray-100 rounded-full sm:border">
+                    @svg('telegram', 'size-5 sm:size-6 text-[#2AABEE]')
                 </a>
             </div>
         </div>
