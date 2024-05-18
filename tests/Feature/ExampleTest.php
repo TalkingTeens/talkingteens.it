@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -12,10 +11,8 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
-//        $this->withoutExceptionHandling();
+        $this->refreshApplicationWithLocale('it');
 
-        $response = $this->get('/' . LaravelLocalization::getCurrentLocale());
-
-        $response->assertStatus(200);
+        $this->get('/it')->assertOk();
     }
 }
