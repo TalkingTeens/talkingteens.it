@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
 
         putenv(LaravelLocalization::ENV_ROUTE_KEY . '=' . $locale);
 
-        self::setUp();
+        parent::setUp();
     }
 
     protected function tearDown(): void
@@ -25,10 +25,10 @@ abstract class TestCase extends BaseTestCase
         parent::tearDown();
     }
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->withoutVite();
-    }
+//    protected function setUp(): void
+//    {
+//        parent::setUp();
+//
+//        $this->withoutVite();
+//    }
 }
