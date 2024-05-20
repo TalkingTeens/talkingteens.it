@@ -15,10 +15,10 @@ jobs:
         with:
           php-version: '8.2'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: 20
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -26,11 +26,11 @@ jobs:
       - name: Install Composer dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Install NPM dependencies
-        run: npm ci
+#      - name: Install NPM dependencies
+#        run: npm ci
 
-      - name: Compile assets
-        run: npm run build
+#      - name: Compile assets
+#        run: npm run build
 
       - name: Generate key
         run: php artisan key:generate
