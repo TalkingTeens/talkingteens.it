@@ -54,7 +54,11 @@ class MonumentResource extends Resource
                                     ->hint('Translatable')
                                     ->hintIcon('heroicon-o-language')
                                     ->reactive()
-                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->afterStateUpdated(fn(
+                                        string $context,
+                                        $state,
+                                        callable $set
+                                    ) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
                                 TextInput::make('slug')
                                     ->disabledOn('edit')

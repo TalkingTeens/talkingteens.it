@@ -12,12 +12,12 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Resources\Concerns\Translatable;
+use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
 class AuthorResource extends Resource
@@ -46,7 +46,11 @@ class AuthorResource extends Resource
                                 TextInput::make('last_name')
                                     ->required()
                                     ->reactive()
-                                    ->afterStateUpdated(fn(string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->afterStateUpdated(fn(
+                                        string $context,
+                                        $state,
+                                        callable $set
+                                    ) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
                                 SpatieMediaLibraryFileUpload::make('picture')
                                     ->collection('authors')
@@ -62,7 +66,7 @@ class AuthorResource extends Resource
                                     ->helperText('Una volta impostato, questo campo non può essere più modificato.')
                                     ->unique(Author::class, 'slug', ignoreRecord: true),
                             ])
-                            ->columns(2),
+                            ->columns(),
 
                         RichEditor::make('description')
                             ->columnSpan(2)

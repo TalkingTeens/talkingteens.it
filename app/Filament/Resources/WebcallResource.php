@@ -8,19 +8,18 @@ use App\Models\Webcall;
 use Filament\Forms;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\Summarizers\Average;
 use Filament\Tables\Columns\Summarizers\Range;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -46,6 +45,7 @@ class WebcallResource extends Resource
                                     ->unique(ignoreRecord: true)
                                     ->required(),
 
+
                                 SpatieMediaLibraryFileUpload::make('background')
                                     ->collection('webcalls')
                                     ->image()
@@ -55,60 +55,67 @@ class WebcallResource extends Resource
                                         '3:4',
                                     ])
                                     ->required(),
-                            ])
-                            ->columns(2),
-
-                        Builder::make('resources')
-                            ->blocks([
-                                Builder\Block::make('audio')
-                                    ->icon('heroicon-o-microphone')
-                                    ->schema([
-                                        Select::make('language')
-                                            ->options([
-                                                'it' => 'Italiano',
-                                                'en' => 'Inglese',
-                                                'pr' => 'Dialetto parmigiano',
-                                            ])
-                                            ->reactive()
-                                            ->required(),
-
-                                        FileUpload::make('resource')
-                                            ->directory('audio/webcalls')
-                                            ->required()
-                                            ->acceptedFileTypes(['audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave', 'audio/wav']),
-
-                                        Select::make('voice_id')
-                                            ->searchable()
-                                            ->multiple()
-                                            ->relationship('voices', 'last_name')
-                                            ->createOptionForm([
-                                                Forms\Components\Grid::make(2)
-                                                    ->schema([
-                                                        Forms\Components\TextInput::make('first_name')
-                                                            ->required(),
-
-                                                        Forms\Components\TextInput::make('last_name')
-                                                            ->required(),
-                                                    ])
-                                            ]),
-                                    ])
-                                    ->columns(2),
-
-                                Builder\Block::make('link')->icon('heroicon-o-link')
-                                    ->schema([
-                                        Select::make('language')
-                                            ->options([
-                                                'lis' => 'Lingua dei Segni Italiana',
-                                            ])
-                                            ->required(),
-
-                                        TextInput::make('resource')
-                                            ->activeUrl()
-                                            ->placeholder('https://...')
-                                            ->suffixIcon('heroicon-o-globe-alt'),
-                                    ])
-                                    ->columns(2),
                             ]),
+
+                        Section::make('Resources')
+                            ->schema([
+                                Builder::make('resources')
+                                    ->blocks([
+                                        Builder\Block::make('audio')
+                                            ->icon('heroicon-o-microphone')
+                                            ->schema([
+                                                Select::make('language')
+                                                    ->options([
+                                                        'it' => 'Italiano',
+                                                        'en' => 'Inglese',
+                                                        'pr' => 'Dialetto parmigiano',
+                                                    ])
+                                                    ->reactive()
+                                                    ->required(),
+
+                                                FileUpload::make('resource')
+                                                    ->directory('audio/webcalls')
+                                                    ->required()
+                                                    ->acceptedFileTypes([
+                                                        'audio/mpeg', 'audio/webm', 'audio/ogg', 'audio/wave',
+                                                        'audio/wav'
+                                                    ]),
+
+                                                Select::make('voice_id')
+                                                    ->searchable()
+                                                    ->multiple()
+                                                    ->relationship('voices', 'last_name')
+                                                    ->createOptionForm([
+                                                        Forms\Components\Grid::make(2)
+                                                            ->schema([
+                                                                Forms\Components\TextInput::make('first_name')
+                                                                    ->required(),
+
+                                                                Forms\Components\TextInput::make('last_name')
+                                                                    ->required(),
+                                                            ])
+                                                    ]),
+                                            ])
+                                            ->columns(),
+
+                                        Builder\Block::make('link')->icon('heroicon-o-link')
+                                            ->schema([
+                                                Select::make('language')
+                                                    ->options([
+                                                        'lis' => 'Lingua dei Segni Italiana',
+                                                    ])
+                                                    ->required(),
+
+                                                TextInput::make('resource')
+                                                    ->activeUrl()
+                                                    ->placeholder('https://...')
+                                                    ->suffixIcon('heroicon-o-globe-alt'),
+                                            ])
+                                            ->columns(),
+                                    ])
+                                    ->hiddenLabel()
+                                    ->minItems(1),
+                            ])
                     ])
                     ->columnSpan(['lg' => 2]),
 
@@ -135,9 +142,6 @@ class WebcallResource extends Resource
             ->columns([
                 TextColumn::make('monument.name')
                     ->searchable(),
-
-                SpatieMediaLibraryImageColumn::make('background')
-                    ->collection('webcalls'),
 
                 TextColumn::make('started')
                     ->sortable()

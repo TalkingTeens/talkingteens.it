@@ -15,8 +15,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
@@ -59,15 +59,19 @@ class DocumentResource extends Resource
                                         'activity' => 'Activity',
                                         'exercises' => 'Exercises',
                                     ]),
+                            ])
+                            ->columns(),
 
+                        Section::make('Resource')
+                            ->schema([
                                 SpatieMediaLibraryFileUpload::make('resource')
                                     ->conversion('preview')
+                                    ->hiddenLabel()
                                     ->collection('didactics')
                                     ->maxSize(10240)
                                     ->openable()
                                     ->required(),
-                            ])
-                            ->columns(2),
+                            ]),
                     ])
                     ->columnSpan(['lg' => 2]),
 
@@ -107,7 +111,13 @@ class DocumentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('category')
-                    ->badge(),
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'project' => 'warning',
+                        'activity' => 'success',
+                        'statues' => 'danger',
+                        'exercises' => 'info',
+                    }),
 
                 TextColumn::make('opened')
                     ->sortable()

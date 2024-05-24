@@ -10,10 +10,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class CategoryResource extends Resource
 {
@@ -48,8 +48,8 @@ class CategoryResource extends Resource
                     ->collection('categories'),
 
                 TextColumn::make('name')
-                    ->sortable()
-                    ->searchable(),
+//                    ->searchable() // TODO:
+                    ->sortable(),
             ])
             ->filters([
                 //

@@ -2,23 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CharacterResource\RelationManagers\MonumentsRelationManager;
 use App\Filament\Resources\CharacterResource\Pages;
+use App\Filament\Resources\CharacterResource\RelationManagers\MonumentsRelationManager;
 use App\Models\Character;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class CharacterResource extends Resource
 {
@@ -34,27 +34,22 @@ class CharacterResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()
+                Section::make()
                     ->schema([
-                        Section::make()
-                            ->schema([
-                                SpatieMediaLibraryFileUpload::make('picture')
-                                    ->collection('characters')
-                                    ->image()
-                                    ->avatar()
-                                    ->imageEditor()
-                                    ->circleCropper()
-                                    ->nullable(),
+                        SpatieMediaLibraryFileUpload::make('picture')
+                            ->collection('characters')
+                            ->image()
+                            ->avatar()
+                            ->imageEditor()
+                            ->circleCropper()
+                            ->nullable(),
 
-                                TextInput::make('name')
-                                    ->required()
-                                    ->hint('Translatable')
-                                    ->hintIcon('heroicon-o-language'),
-                            ])
-                            ->columns(2),
+                        TextInput::make('name')
+                            ->required()
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language'),
 
                         RichEditor::make('description')
-                            ->columnSpan(2)
                             ->hint('Translatable')
                             ->hintIcon('heroicon-o-language')
                             ->disableToolbarButtons([
@@ -63,29 +58,31 @@ class CharacterResource extends Resource
                     ])
                     ->columnSpan(['lg' => 2]),
 
-                Group::make()->schema([
-                    Section::make()
-                        ->schema([
-                            Placeholder::make('created_at')
-                                ->content(fn (Character $record): ?string => $record->created_at?->diffForHumans()),
 
-                            Placeholder::make('updated_at')
-                                ->content(fn (Character $record): ?string => $record->updated_at?->diffForHumans()),
-                        ])
-                        ->hidden(fn (?Character $record) => $record === null),
+                Group::make()
+                    ->schema([
+                        Section::make()
+                            ->schema([
+                                Placeholder::make('created_at')
+                                    ->content(fn(Character $record): ?string => $record->created_at?->diffForHumans()),
 
-                    Section::make('Vita')
-                        ->schema([
-                            TextInput::make('birth_year')
-                                ->numeric()
-                                ->minValue(0),
+                                Placeholder::make('updated_at')
+                                    ->content(fn(Character $record): ?string => $record->updated_at?->diffForHumans()),
+                            ])
+                            ->hidden(fn(?Character $record) => $record === null),
 
-                            TextInput::make('death_year')
-                                ->numeric()
-                                ->minValue(0),
-                        ])
-                ])
-                ->columnSpan(['lg' => 1]),
+                        Section::make('Vita')
+                            ->schema([
+                                TextInput::make('birth_year')
+                                    ->numeric()
+                                    ->minValue(0),
+
+                                TextInput::make('death_year')
+                                    ->numeric()
+                                    ->minValue(0),
+                            ])
+                    ])
+                    ->columnSpan(['lg' => 1]),
             ])
             ->columns(3);
     }

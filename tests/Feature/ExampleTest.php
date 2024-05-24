@@ -16,6 +16,6 @@ class ExampleTest extends TestCase
     {
         $this->refreshApplicationWithLocale('it');
 
-        $this->withoutExceptionHandling()->get('/it')->assertOk();
+        $this->get('/it')->assertOk();
     }
 }
