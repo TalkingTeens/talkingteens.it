@@ -15,7 +15,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -37,6 +36,7 @@ class CharacterResource extends Resource
                 Section::make()
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('picture')
+                            ->columnSpanFull()
                             ->collection('characters')
                             ->image()
                             ->avatar()
@@ -46,16 +46,27 @@ class CharacterResource extends Resource
 
                         TextInput::make('name')
                             ->required()
+                            ->columnSpanFull()
                             ->hint('Translatable')
                             ->hintIcon('heroicon-o-language'),
 
+                        TextInput::make('birth_year')
+                            ->numeric()
+                            ->minValue(0),
+
+                        TextInput::make('death_year')
+                            ->numeric()
+                            ->minValue(0),
+
                         RichEditor::make('description')
+                            ->columnSpanFull()
                             ->hint('Translatable')
                             ->hintIcon('heroicon-o-language')
                             ->disableToolbarButtons([
                                 'codeBlock',
                             ]),
                     ])
+                    ->columns()
                     ->columnSpan(['lg' => 2]),
 
 
@@ -70,17 +81,6 @@ class CharacterResource extends Resource
                                     ->content(fn(Character $record): ?string => $record->updated_at?->diffForHumans()),
                             ])
                             ->hidden(fn(?Character $record) => $record === null),
-
-                        Section::make('Vita')
-                            ->schema([
-                                TextInput::make('birth_year')
-                                    ->numeric()
-                                    ->minValue(0),
-
-                                TextInput::make('death_year')
-                                    ->numeric()
-                                    ->minValue(0),
-                            ])
                     ])
                     ->columnSpan(['lg' => 1]),
             ])
@@ -99,8 +99,9 @@ class CharacterResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                ImageColumn::make('monuments.monument_image')
-                    ->limit(3)
+                SpatieMediaLibraryImageColumn::make('monuments.monument_image')
+                    ->collection('monuments')
+                    ->limit()
                     ->limitedRemainingText(isSeparate: true),
             ])
             ->filters([

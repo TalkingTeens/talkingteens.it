@@ -6,6 +6,7 @@ use App\Filament\Resources\MonumentResource;
 use App\Models\Monument;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 
 class MonumentsRelationManager extends RelationManager
@@ -17,7 +18,8 @@ class MonumentsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('slug')
             ->columns([
-                Tables\Columns\ImageColumn::make('monument_image'),
+                SpatieMediaLibraryImageColumn::make('monument_image')
+                    ->collection('monuments'),
 
                 Tables\Columns\TextColumn::make('name'),
 

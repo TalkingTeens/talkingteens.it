@@ -26,8 +26,8 @@
 
         <img
             class="absolute h-[95%] object-cover overflow-visible bottom-0 left-2/3 md:left-[60%] lg:left-1/2 -translate-x-1/2"
-            src="{{ asset(Storage::url($monument->monument_image)) }}"
-            alt=""
+            src="{{ $monument->getFirstMedia('monuments')?->getFullUrl() }}"
+            alt="{{ $monument->name }}"
         >
     </header>
 

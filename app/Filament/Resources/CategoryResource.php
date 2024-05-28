@@ -50,6 +50,11 @@ class CategoryResource extends Resource
                 TextColumn::make('name')
 //                    ->searchable() // TODO:
                     ->sortable(),
+
+                SpatieMediaLibraryImageColumn::make('monuments.monument_image')
+                    ->collection('monuments')
+                    ->limit()
+                    ->limitedRemainingText(isSeparate: true),
             ])
             ->filters([
                 //

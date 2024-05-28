@@ -40,6 +40,15 @@ class AuthorResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
+                                SpatieMediaLibraryFileUpload::make('picture')
+                                    ->collection('authors')
+                                    ->image()
+                                    ->avatar()
+                                    ->imageEditor()
+                                    ->circleCropper()
+                                    ->columnSpanFull()
+                                    ->nullable(),
+
                                 TextInput::make('first_name')
                                     ->required(),
 
@@ -52,30 +61,23 @@ class AuthorResource extends Resource
                                         callable $set
                                     ) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                SpatieMediaLibraryFileUpload::make('picture')
-                                    ->collection('authors')
-                                    ->image()
-                                    ->avatar()
-                                    ->imageEditor()
-                                    ->circleCropper()
-                                    ->nullable(),
-
-                                TextInput::make('slug')
-                                    ->disabledOn('edit')
+                                TextInput::make('birth_year')
                                     ->required()
-                                    ->helperText('Una volta impostato, questo campo non può essere più modificato.')
-                                    ->unique(Author::class, 'slug', ignoreRecord: true),
+                                    ->numeric(),
+
+                                TextInput::make('death_year')
+                                    ->numeric(),
+
+                                RichEditor::make('description')
+                                    ->columnSpanFull()
+                                    ->required()
+                                    ->hint('Translatable')
+                                    ->hintIcon('heroicon-o-language')
+                                    ->disableToolbarButtons([
+                                        'codeBlock',
+                                    ]),
                             ])
                             ->columns(),
-
-                        RichEditor::make('description')
-                            ->columnSpan(2)
-                            ->required()
-                            ->hint('Translatable')
-                            ->hintIcon('heroicon-o-language')
-                            ->disableToolbarButtons([
-                                'codeBlock',
-                            ]),
                     ])
                     ->columnSpan(['lg' => 2]),
 
@@ -89,16 +91,6 @@ class AuthorResource extends Resource
                                 ->content(fn(Author $record): ?string => $record->updated_at?->diffForHumans()),
                         ])
                         ->hidden(fn(?Author $record) => $record === null),
-
-                    Section::make('Vita')
-                        ->schema([
-                            TextInput::make('birth_year')
-                                ->required()
-                                ->numeric(),
-
-                            TextInput::make('death_year')
-                                ->numeric(),
-                        ])
                 ])
                     ->columnSpan(['lg' => 1]),
             ])
@@ -113,7 +105,11 @@ class AuthorResource extends Resource
                     ->collection('authors')
                     ->circular(),
 
-                TextColumn::make('full_name')
+                TextColumn::make('first_name')
+                    ->sortable()
+                    ->searchable(),
+
+                TextColumn::make('last_name')
                     ->sortable()
                     ->searchable(),
             ])

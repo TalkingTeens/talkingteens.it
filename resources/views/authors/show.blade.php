@@ -50,14 +50,14 @@
                 </div>
             @endunless
 
-            @unless($author->monuments->isEmpty())
+            @unless($monuments->isEmpty())
                 <section>
                     <h2 class="title-lg">
                         {{ __('author.works') }}
                     </h2>
 
                     <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        @foreach($author->monuments as $monument)
+                        @foreach($monuments as $monument)
                             <x-card.monument :$monument/>
                         @endforeach
                     </div>

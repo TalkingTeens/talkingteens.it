@@ -6,7 +6,6 @@ use App\Filament\Resources\MonumentResource\Pages;
 use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
 use App\Models\Category;
 use App\Models\Monument;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\RichEditor;
@@ -21,7 +20,6 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Columns\TextColumn;
@@ -76,10 +74,11 @@ class MonumentResource extends Resource
                                     ->relationship('municipality', 'name')
                                     ->required(),
 
-                                FileUpload::make('monument_image')
+                                SpatieMediaLibraryFileUpload::make('monument_image')
+                                    ->collection('monuments')
+                                    ->required()
                                     ->image()
-                                    ->directory('images/monuments')
-                                    ->required(),
+                                    ->imageEditor(),
 
                                 SpatieMediaLibraryFileUpload::make('photo')
                                     ->collection('map')
@@ -99,36 +98,40 @@ class MonumentResource extends Resource
 //                                                    ->getOptionLabelFromRecordUsing(fn (Character $record) => $record->name)
 //                                                    ->getSearchResultsUsing(fn (string $search): array => Character::where('name->it', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
                             ])
-                            ->columns(2)
-                            ->columnSpan(2),
+                            ->columns()
+                            ->columnSpanFull(),
 
-                        TextInput::make('latitude')
-                            ->numeric()
-                            /*->mask(fn (TextInput\Mask $mask) => $mask
-                                ->numeric()
-                                ->decimalSeparator(',')
-                                ->decimalPlaces(6)
-                                ->mapToDecimalSeparator(['.'])
-                                ->minValue(-90)
-                                ->maxValue(90)
-                                ->padFractionalZeros()
-                            )*/
-                            ->required(),
-                        TextInput::make('longitude')
-                            ->numeric()
-                            /*->mask(fn (TextInput\Mask $mask) => $mask
-                                ->numeric()
-                                ->decimalPlaces(6)
-                                ->decimalSeparator(',')
-                                ->mapToDecimalSeparator(['.'])
-                                ->minValue(-180)
-                                ->maxValue(180)
-                                ->padFractionalZeros()
-                            )*/
-                            ->required(),
+                        Section::make('Map')
+                            ->schema([
+                                TextInput::make('latitude')
+                                    ->numeric()
+                                    /*->mask(fn (TextInput\Mask $mask) => $mask
+                                        ->numeric()
+                                        ->decimalSeparator(',')
+                                        ->decimalPlaces(6)
+                                        ->mapToDecimalSeparator(['.'])
+                                        ->minValue(-90)
+                                        ->maxValue(90)
+                                        ->padFractionalZeros()
+                                    )*/
+                                    ->required(),
+
+                                TextInput::make('longitude')
+                                    ->numeric()
+                                    /*->mask(fn (TextInput\Mask $mask) => $mask
+                                        ->numeric()
+                                        ->decimalPlaces(6)
+                                        ->decimalSeparator(',')
+                                        ->mapToDecimalSeparator(['.'])
+                                        ->minValue(-180)
+                                        ->maxValue(180)
+                                        ->padFractionalZeros()
+                                    )*/
+                                    ->required(),
+                            ])
+                            ->columns(),
 
                         RichEditor::make('description')
-                            ->columnSpan(2)
                             ->hint('Translatable')
                             ->hintIcon('heroicon-o-language')
                             ->disableToolbarButtons([
@@ -168,7 +171,8 @@ class MonumentResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('monument_image'),
+                SpatieMediaLibraryImageColumn::make('monument_image')
+                    ->collection('monuments'),
 
                 TextColumn::make('name')
                     ->searchable(),

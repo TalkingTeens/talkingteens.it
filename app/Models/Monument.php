@@ -20,11 +20,14 @@ class Monument extends Model implements HasMedia
 {
     use HasFactory, HasTranslations, HasTags, InteractsWithMedia;
 
+    public $translatable = [
+        'name',
+        'description',
+    ];
     protected $fillable = [
         'name',
         'slug',
         'description',
-        'monument_image',
         'latitude',
         'longitude',
         'phone_number',
@@ -32,15 +35,18 @@ class Monument extends Model implements HasMedia
         'visible',
     ];
 
-    public $translatable = [
-        'name',
-        'description',
-    ];
-
     protected static function booted(): void
     {
         static::addGlobalScope(new ActiveScope);
     }
+
+//    public function getSlugOptions(): SlugOptions
+//    {
+//        return SlugOptions::create()
+//            ->generateSlugsFrom('name')
+//            ->saveSlugsTo('slug')
+//            ->usingLanguage('it');
+//    }
 
     public function registerMediaConversions(?Media $media = null): void
     {
@@ -54,11 +60,6 @@ class Monument extends Model implements HasMedia
     public function getRouteKeyName(): string
     {
         return 'slug';
-    }
-
-    public static function getTagClassName(): string
-    {
-        return Category::class;
     }
 
     public function municipality(): BelongsTo
@@ -87,6 +88,11 @@ class Monument extends Model implements HasMedia
         return $this
             ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
             ->orderBy('order_column');
+    }
+
+    public static function getTagClassName(): string
+    {
+        return Category::class;
     }
 
     public function categories(): MorphToMany

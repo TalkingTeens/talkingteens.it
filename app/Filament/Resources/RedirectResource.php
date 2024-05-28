@@ -3,14 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RedirectResource\Pages;
-use App\Filament\Resources\RedirectResource\RelationManagers;
 use App\Models\Redirect;
-use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 
 class RedirectResource extends Resource
 {
@@ -45,14 +45,21 @@ class RedirectResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('from'),
+                TextColumn::make('from')
+                    ->sortable(),
 
-                TextColumn::make('to'),
+                TextColumn::make('to')
+                    ->sortable(),
 
-                TextColumn::make('subdomain'),
+                TextColumn::make('subdomain')
+                    ->sortable()
+                    ->badge(),
             ])
             ->filters([
-                //
+                SelectFilter::make('subdomain')
+                    ->options([
+                        'call' => 'call',
+                    ])
             ])
             ->actions([
                 //

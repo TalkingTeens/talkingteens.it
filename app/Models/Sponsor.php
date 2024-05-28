@@ -12,7 +12,6 @@ class Sponsor extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-
     protected $fillable = [
         'name',
         'logo',
@@ -25,5 +24,4 @@ class Sponsor extends Model implements HasMedia
     {
         static::addGlobalScope(new ActiveScope);
     }
-
 }

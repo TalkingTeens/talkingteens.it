@@ -7,24 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class Author extends Model implements HasMedia
 {
-    use HasFactory, HasTranslations, InteractsWithMedia;
+    use HasFactory, HasTranslations, InteractsWithMedia, HasSlug;
+
+    public $translatable = [
+        'description',
+    ];
 
     protected $fillable = [
-        'last_name',
         'first_name',
-        'slug',
+        'last_name',
         'description',
         'birth_year',
         'death_year',
     ];
 
-    public $translatable = [
-        'description',
-    ];
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(['first_name', 'last_name'])
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
 
     public function getRouteKeyName(): string
     {
@@ -33,7 +42,7 @@ class Author extends Model implements HasMedia
 
     public function getFullNameAttribute(): string
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 
     public function monuments(): BelongsToMany

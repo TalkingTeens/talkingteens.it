@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,7 +15,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->json('name');
             $table->json('description')->nullable();
-            $table->string('monument_image');
             $table->decimal('latitude', $precision = 9, $scale = 6);
             $table->decimal('longitude', $precision = 9, $scale = 6);
             $table->string('phone_number')->nullable();

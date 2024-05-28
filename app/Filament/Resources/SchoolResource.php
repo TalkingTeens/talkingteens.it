@@ -3,19 +3,17 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SchoolResource\Pages;
-use App\Filament\Resources\SchoolResource\RelationManagers;
 use App\Models\School;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class SchoolResource extends Resource
 {
@@ -29,57 +27,51 @@ class SchoolResource extends Resource
     {
         return $form
             ->schema([
-                Group::make()
+                Section::make()
                     ->schema([
-                        Section::make()
-                            ->schema([
-                                TextInput::make('miur_code')
-                                    ->required()
-                                    ->disabled(),
+                        TextInput::make('miur_code')
+                            ->required()
+                            ->disabled(),
 
-                                TextInput::make('website')
-                                    ->activeUrl()
-                                    ->placeholder('https://...')
-                                    ->suffixIcon('heroicon-o-globe-alt'),
+                        TextInput::make('website')
+                            ->activeUrl()
+                            ->placeholder('https://...')
+                            ->suffixIcon('heroicon-o-globe-alt'),
 
-                                TextInput::make('type')
-                                    ->required(),
+                        TextInput::make('type')
+                            ->required(),
 
-                                TextInput::make('name')
-                                    ->required(),
+                        TextInput::make('name')
+                            ->required(),
 
-                                TextInput::make('email')
-                                    ->email()
-                                    ->nullable(),
+                        TextInput::make('email')
+                            ->email()
+                            ->nullable(),
 
-                                TextInput::make('pec')
-                                    ->email()
-                                    ->nullable(),
-                            ])
-                            ->columns(2),
+                        TextInput::make('pec')
+                            ->email()
+                            ->nullable(),
                     ])
-                    ->columnSpan(['lg' => 2]),
+                    ->columns(),
 
-                Group::make()->schema([
-                    Section::make('Address')
-                        ->schema([
-                            Select::make('municipality_code')
-                                ->searchable()
-                                ->relationship('municipality', 'name')
-                                ->required(),
+                Section::make('Address')
+                    ->schema([
+                        Select::make('municipality_code')
+                            ->searchable()
+                            ->relationship('municipality', 'name')
+                            ->required(),
 
-                            TextInput::make('cap')
-                                ->numeric()
-                                ->mask('99999')
-                                ->required(),
+                        TextInput::make('cap')
+                            ->numeric()
+                            ->mask('99999')
+                            ->required(),
 
-                            TextInput::make('address')
-                                ->nullable(),
-                        ])
-                ])
-                ->columnSpan(['lg' => 1]),
-            ])
-            ->columns(3);
+                        TextInput::make('address')
+                            ->nullable()
+                            ->columnSpanFull()
+                    ])
+                    ->columns(),
+            ]);
     }
 
     public static function table(Table $table): Table

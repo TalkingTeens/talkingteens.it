@@ -4,7 +4,7 @@
 >
     <img
         class="absolute bottom-0 left-1/4 h-full -translate-x-1/3"
-        src="{{ asset(Storage::url($monument->monument_image)) }}"
+        src="{{ $monument->monument_image }}"
         alt=""
     >
 

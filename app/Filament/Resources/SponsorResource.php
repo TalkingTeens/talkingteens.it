@@ -42,7 +42,7 @@ class SponsorResource extends Resource
 
                 SpatieMediaLibraryFileUpload::make('logo')
                     ->collection('logos')
-                    ->columnSpan(2)
+                    ->columnSpanFull()
                     ->required(),
 
                 Toggle::make('visible')

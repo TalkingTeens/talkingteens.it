@@ -2,13 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Classe;
+use App\Observers\ClasseObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use App\Models\Classe;
-use App\Models\Monument;
-use App\Observers\ClasseObserver;
-use App\Observers\MonumentObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,7 +16,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $observers = [
-        Monument::class => [MonumentObserver::class],
         Classe::class => [ClasseObserver::class],
     ];
 
