@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SchoolResource\Pages;
+use App\Filament\Resources\SchoolResource\RelationManagers;
 use App\Models\School;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -56,9 +57,9 @@ class SchoolResource extends Resource
 
                 Section::make('Address')
                     ->schema([
-                        Select::make('municipality_code')
+                        Select::make('municipality')
                             ->searchable()
-                            ->relationship('municipality', 'name')
+                            ->relationship(titleAttribute: 'name')
                             ->required(),
 
                         TextInput::make('cap')
@@ -80,14 +81,18 @@ class SchoolResource extends Resource
             ->columns([
                 TextColumn::make('miur_code')
                     ->searchable(),
+
                 TextColumn::make('type')
                     ->searchable(),
+
                 TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
+
                 TextColumn::make('municipality.name')
                     ->sortable()
                     ->searchable(),
+
                 TextColumn::make('website')
                     ->copyable()
                     ->copyMessage('Website copied')
@@ -110,7 +115,7 @@ class SchoolResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // RelationManagers\ClassesRelationManager::class,
+            RelationManagers\ClassesRelationManager::class,
         ];
     }
 

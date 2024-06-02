@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers\MonumentsRelationManager;
 use App\Models\Category;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -29,14 +30,18 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->hint('Translatable')
-                    ->hintIcon('heroicon-o-language')
-                    ->required(),
+                Section::make()
+                    ->schema([
+                        TextInput::make('name')
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language')
+                            ->required(),
 
-                SpatieMediaLibraryFileUpload::make('icon')
-                    ->collection('categories')
-                    ->image(),
+                        SpatieMediaLibraryFileUpload::make('icon')
+                            ->collection('categories')
+                            ->image(),
+                    ])
+                    ->columns()
             ]);
     }
 
@@ -61,7 +66,6 @@ class CategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

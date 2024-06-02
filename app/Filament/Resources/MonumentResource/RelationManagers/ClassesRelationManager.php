@@ -2,53 +2,68 @@
 
 namespace App\Filament\Resources\MonumentResource\RelationManagers;
 
-use App\Models\Classe;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\Concerns\Translatable;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\DB;
 
 class ClassesRelationManager extends RelationManager
 {
+    use Translatable;
+
     protected static string $relationship = 'classes';
 
     protected static ?string $recordTitleAttribute = 'grade';
+
+//    #[Reactive]
+//    public ?string $activeLocale = null;
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('grade')
+                Split::make([
+                    Select::make('grade')
+                        ->required()
+                        ->options([
+                            1 => '1',
+                            2 => '2',
+                            3 => '3',
+                            4 => '4',
+                            5 => '5',
+                        ]),
+
+                    TextInput::make('section')
+                        ->length(1)
+                        ->nullable(),
+
+                    TextInput::make('discipline')
+                        ->nullable(),
+
+                    TextInput::make('year')
+                        ->length(7)
+                        ->required()
+                        ->placeholder('2023/24'),
+                ])
+                    ->columnSpanFull(),
+
+                Select::make('school_miur_code')
                     ->required()
-                    ->options([ //
-                        1 => '1',
-                        2 => '2',
-                        3 => '3',
-                        4 => '4',
-                        5 => '5',
-                    ]),
+                    ->searchable(['miur_code', 'name', 'website'])
+                    ->relationship('school', 'name'),
 
-                TextInput::make('section')
-                    ->length(1)
-                    ->nullable(),
-
-                TextInput::make('discipline')
-                    ->nullable(),
-
-                TextInput::make('year')
-                    ->length(7)
-                    ->placeholder('2023/24'),
-
-                Select::make('teacher_id')
+                Select::make('teachers')
                     ->multiple()
-                    ->relationship('teachers', 'full_name')
+                    ->relationship(titleAttribute: 'first_name')
                     ->createOptionForm([
-                        Forms\Components\Grid::make(2)
+                        Forms\Components\Grid::make()
                             ->schema([
                                 Forms\Components\TextInput::make('first_name')
                                     ->required(),
@@ -57,22 +72,23 @@ class ClassesRelationManager extends RelationManager
                             ])
                     ]),
 
-                Select::make('school_miur_code')
-                    ->required()
-                    ->searchable(['miur_code', 'name', 'website'])
-                    ->relationship('school', 'name'),
+                Fieldset::make('Statua')
+                    ->schema([
+//                        SpatieMediaLibraryFileUpload::make('photo')
+//                            ->collection('classes')
+//                            ->columnSpanFull()
+//                            ->required()
+//                            ->image()
+//                            ->imageEditor(),
 
-                Forms\Components\FileUpload::make('photo')
-                    ->image()
-                    ->directory('images/classes'),
-
-                RichEditor::make('description')
-                    ->columnSpan(2)
-                    ->hint('Translatable')
-                    ->hintIcon('heroicon-o-language')
-                    ->disableToolbarButtons([
-                        'codeBlock',
-                    ]),
+                        RichEditor::make('description')
+                            ->columnSpan(2)
+                            ->hint('Translatable')
+                            ->hintIcon('heroicon-o-language')
+                            ->disableToolbarButtons([
+                                'codeBlock',
+                            ]),
+                    ])
             ]);
     }
 

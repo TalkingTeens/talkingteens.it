@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MonumentResource\Pages;
-use App\Filament\Resources\MonumentResource\RelationManagers\ClassesRelationManager;
+use App\Filament\Resources\MonumentResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Monument;
 use Filament\Forms\Components\Group;
@@ -64,45 +64,33 @@ class MonumentResource extends Resource
                                     ->helperText('Una volta impostato, questo campo non può essere più modificato.')
                                     ->unique(Monument::class, 'slug', ignoreRecord: true),
 
+                                SpatieMediaLibraryFileUpload::make('monument_image')
+                                    ->collection('monuments')
+                                    ->columnSpanFull()
+                                    ->required()
+                                    ->image()
+                                    ->imageEditor(),
+
                                 TextInput::make('phone_number')
                                     ->prefix('+39')
                                     ->mask('9999 999 9999')
                                     ->tel(),
 
-                                Select::make('municipality_code')
-                                    ->searchable()
-                                    ->relationship('municipality', 'name')
-                                    ->required(),
-
-                                SpatieMediaLibraryFileUpload::make('monument_image')
-                                    ->collection('monuments')
-                                    ->required()
-                                    ->image()
-                                    ->imageEditor(),
-
-                                SpatieMediaLibraryFileUpload::make('photo')
-                                    ->collection('map')
-                                    ->required()
-                                    ->image()
-                                    ->imageEditor(),
-
-                                Select::make('author_id')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->relationship('authors', 'first_name'),
-
-                                Select::make('character_id')
-                                    ->searchable()
-                                    ->multiple()
-                                    ->relationship('characters', 'name')
-//                                                    ->getOptionLabelFromRecordUsing(fn (Character $record) => $record->name)
-//                                                    ->getSearchResultsUsing(fn (string $search): array => Character::where('name->it', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
+                                SpatieTagsInput::make('tags')
+                                    ->suggestions(Category::getWithType('category')->pluck('name'))
+                                    ->type('category'),
+//                                    ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->getTranslation('name', $livewire->activeLocale)),
                             ])
                             ->columns()
                             ->columnSpanFull(),
 
                         Section::make('Map')
                             ->schema([
+                                Select::make('municipality')
+                                    ->searchable()
+                                    ->relationship(titleAttribute: 'name')
+                                    ->required(),
+
                                 TextInput::make('latitude')
                                     ->numeric()
                                     /*->mask(fn (TextInput\Mask $mask) => $mask
@@ -128,17 +116,42 @@ class MonumentResource extends Resource
                                         ->padFractionalZeros()
                                     )*/
                                     ->required(),
-                            ])
-                            ->columns(),
 
-                        RichEditor::make('description')
-                            ->hint('Translatable')
-                            ->hintIcon('heroicon-o-language')
-                            ->disableToolbarButtons([
-                                'codeBlock',
-                            ]),
+                                SpatieMediaLibraryFileUpload::make('photo')
+                                    ->collection('map')
+                                    ->columnSpanFull()
+                                    ->required()
+                                    ->image()
+                                    ->imageEditor(),
+                            ])
+                            ->columns(3),
+
+                        Section::make()
+                            ->schema([
+                                Select::make('authors')
+                                    ->multiple()
+                                    ->searchable(['first_name', 'last_name'])
+                                    ->relationship(titleAttribute: 'first_name'),
+
+                                Select::make('characters')
+                                    ->searchable()
+                                    ->multiple()
+                                    ->relationship(titleAttribute: 'name'),
+//                                                    ->getOptionLabelFromRecordUsing(fn (Character $record) => $record->name)
+//                                                    ->getSearchResultsUsing(fn (string $search): array => Character::where('name->it', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
+
+                                RichEditor::make('description')
+                                    ->columnSpanFull()
+                                    ->hint('Translatable')
+                                    ->hintIcon('heroicon-o-language')
+                                    ->disableToolbarButtons([
+                                        'codeBlock',
+                                    ]),
+                            ])
+                            ->columns()
                     ])
                     ->columnSpan(['lg' => 2]),
+
                 Group::make()->schema([
                     Section::make()
                         ->schema([
@@ -152,11 +165,6 @@ class MonumentResource extends Resource
 
                     Section::make('Status')
                         ->schema([
-                            SpatieTagsInput::make('tags')
-                                ->suggestions(Category::getWithType('category')->pluck('name'))
-                                ->type('category'),
-//                                    ->getOptionLabelFromRecordUsing(fn($record, $livewire) => $record->getTranslation('name', $livewire->activeLocale)),
-
                             Toggle::make('visible')
                                 ->helperText('This statue will be hidden.')
                                 ->default(true),
@@ -174,12 +182,11 @@ class MonumentResource extends Resource
                 SpatieMediaLibraryImageColumn::make('monument_image')
                     ->collection('monuments'),
 
-                TextColumn::make('name')
-                    ->searchable(),
+                TextColumn::make('name'),
+//                    ->searchable() // TODO:
 
                 TextColumn::make('municipality.name')
-                    ->sortable()
-                    ->searchable(),
+                    ->sortable(),
 
                 SpatieMediaLibraryImageColumn::make('authors.picture')
                     ->collection('authors')
@@ -197,6 +204,7 @@ class MonumentResource extends Resource
                 SelectFilter::make('municipality')
                     ->searchable()
                     ->relationship('municipality', 'name'),
+
                 TernaryFilter::make('visible'),
             ])
             ->actions([
@@ -215,8 +223,8 @@ class MonumentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ClassesRelationManager::class,
-            // TreatersRelationManager::class,
+            RelationManagers\ClassesRelationManager::class,
+            RelationManagers\TreatersRelationManager::class,
         ];
     }
 

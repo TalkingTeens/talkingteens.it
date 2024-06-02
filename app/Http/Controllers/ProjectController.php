@@ -11,7 +11,7 @@ class ProjectController extends Controller
     public function __invoke(): View
     {
         $schools = School::has('classes.monuments')->get()
-            ->map(fn ($school) => SchoolData::fromModel($school));
+            ->map(fn($school) => SchoolData::fromModel($school));
 
         return view('project',
             compact('schools')

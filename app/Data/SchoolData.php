@@ -9,8 +9,7 @@ class SchoolData extends Data
 {
     public function __construct(
         public string $full_name,
-    )
-    {
+    ) {
     }
 
     public static function fromModel(School $school): self

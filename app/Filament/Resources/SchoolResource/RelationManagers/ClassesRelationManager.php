@@ -3,12 +3,12 @@
 namespace App\Filament\Resources\SchoolResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Table;
 
 class ClassesRelationManager extends RelationManager
 {
@@ -20,9 +20,41 @@ class ClassesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('grade')
+                Select::make('grade')
                     ->required()
-                    ->maxLength(255),
+                    ->options([
+                        1 => '1',
+                        2 => '2',
+                        3 => '3',
+                        4 => '4',
+                        5 => '5',
+                    ]),
+
+                TextInput::make('section')
+                    ->length(1)
+                    ->nullable(),
+
+                TextInput::make('discipline')
+                    ->nullable(),
+
+                TextInput::make('year')
+                    ->length(7)
+                    ->required()
+                    ->placeholder('2023/24'),
+
+                Select::make('teachers')
+                    ->multiple()
+                    ->relationship(titleAttribute: 'first_name')
+                    ->createOptionForm([
+                        Forms\Components\Grid::make()
+                            ->schema([
+                                Forms\Components\TextInput::make('first_name')
+                                    ->required(),
+                                Forms\Components\TextInput::make('last_name')
+                                    ->required(),
+                            ])
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,6 +63,12 @@ class ClassesRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('grade'),
+
+                Tables\Columns\TextColumn::make('section'),
+
+                Tables\Columns\TextColumn::make('discipline'),
+
+                Tables\Columns\TextColumn::make('year'),
             ])
             ->filters([
                 //
@@ -45,5 +83,5 @@ class ClassesRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    }
 }

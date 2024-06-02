@@ -32,7 +32,9 @@ class MonumentController extends Controller
 //            ->sortByDesc('id')
 //            ->first();
 
-        $phone_number = '+39' . Str::remove(' ', $monument->phone_number);
+        $phone_number = '+39'.Str::remove(' ', $monument->phone_number);
+
+        // dd($monument->classes);
 
         return view('monuments.show', [
             'monument' => $monument,

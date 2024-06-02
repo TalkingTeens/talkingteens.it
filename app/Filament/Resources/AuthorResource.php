@@ -112,13 +112,17 @@ class AuthorResource extends Resource
                 TextColumn::make('last_name')
                     ->sortable()
                     ->searchable(),
+
+                SpatieMediaLibraryImageColumn::make('monuments.monument_image')
+                    ->collection('monuments')
+                    ->limit()
+                    ->limitedRemainingText(isSeparate: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

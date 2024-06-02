@@ -9,9 +9,9 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\SupporterController;
 use App\Livewire\Monuments;
 use App\Livewire\Webcall;
-use Spatie\Health\Http\Controllers\SimpleHealthCheckController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Spatie\Health\Http\Controllers\SimpleHealthCheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +33,12 @@ Route::group(
     ],
     function () {
         //
-        Route::domain('call.' . config('app.domain'))->group(function () {
+        Route::domain('call.'.config('app.domain'))->group(function () {
             Route::get('{monument}', Webcall::class)->name('call');
         });
 
         Route::domain(config('app.domain'))->group(function () {
-            Route::get('/', HomeController::class) ->name('home');
+            Route::get('/', HomeController::class)->name('home');
             Route::get('app', AppController::class)->name('app');
             Route::get('didattica', DocumentController::class)->name('docs');
             Route::get('sostenitori', SupporterController::class)->name('supporters');

@@ -17,13 +17,12 @@ class HomeController extends Controller
 //            ->with('municipality')  // TODO: with eager loading
             ->limit(3)
             ->get()
-            ->map(fn ($monument) => MonumentData::fromModel($monument));
+            ->map(fn($monument) => MonumentData::fromModel($monument));
 
         $articles = Article::with('media')
             ->get()
             ->sortBy('order')
             ->map(fn($article) => ArticleData::fromModel($article));
-
 
         $municipalities = Municipality::has('monuments')
             ->pluck('name');

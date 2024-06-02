@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Document;
 
-use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Component;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class File extends Component
@@ -15,26 +15,6 @@ class File extends Component
     {
         $this->document = $document;
         $this->media = $document->getFirstMedia('didactics');
-    }
-
-    private function getSize(): string
-    {
-        $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
-
-        $bytes = $this->media?->size ?? 0;
-
-        for ($i = 0; $bytes > 1024; $i++) {
-            $bytes /= 1024;
-        }
-
-        return round($bytes, 2) . ' ' . $units[$i];
-    }
-
-    private function getType(): string
-    {
-        $type = Str::before($this->media?->mime_type, '/');
-
-        return in_array($type, ['video', 'image']) ? $type : 'file';
     }
 
     public function open()
@@ -58,5 +38,25 @@ class File extends Component
             'size' => $this->getSize(),
             'type' => $this->getType()
         ]);
+    }
+
+    private function getSize(): string
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+
+        $bytes = $this->media?->size ?? 0;
+
+        for ($i = 0; $bytes > 1024; $i++) {
+            $bytes /= 1024;
+        }
+
+        return round($bytes, 2).' '.$units[$i];
+    }
+
+    private function getType(): string
+    {
+        $type = Str::before($this->media?->mime_type, '/');
+
+        return in_array($type, ['video', 'image']) ? $type : 'file';
     }
 }

@@ -39,9 +39,9 @@ class WebcallResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
-                                Select::make('monument_id')
+                                Select::make('monument')
                                     ->searchable()
-                                    ->relationship('monument', 'name')
+                                    ->relationship(titleAttribute: 'name')
                                     ->unique(ignoreRecord: true)
                                     ->required(),
 
@@ -81,10 +81,10 @@ class WebcallResource extends Resource
                                                         'audio/wav'
                                                     ]),
 
-                                                Select::make('voice_id')
+                                                Select::make('voices')
                                                     ->searchable()
                                                     ->multiple()
-                                                    ->relationship('voices', 'last_name')
+                                                    ->relationship(titleAttribute: 'last_name')
                                                     ->createOptionForm([
                                                         Forms\Components\Grid::make(2)
                                                             ->schema([
