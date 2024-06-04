@@ -100,16 +100,18 @@ class Monument extends Model implements HasMedia
         return $this->morphToMany(Category::class, 'taggable', 'taggables', null, 'tag_id');
     }
 
-    public function classes()
+    public function classes(): MorphToMany
     {
         return $this->morphedByMany(Classe::class, 'treatable')
-            ->withPivot('photo', 'description');
+            ->withPivot('description')
+            ->using(Treatable::class);
     }
 
-    public function treaters()
+    public function treaters(): MorphToMany
     {
         return $this->morphedByMany(Treater::class, 'treatable')
-            ->withPivot('photo', 'description');
+            ->withPivot('description')
+            ->using(Treatable::class);
     }
 
     public function scopeOfMunicipality(Builder $query, string $code): void

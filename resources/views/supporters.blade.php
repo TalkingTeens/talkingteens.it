@@ -7,7 +7,7 @@
     <div class="grid items-start lg:grid-cols-2">
         <div class="max-lg:hidden sticky top-[--nav-height]">
             <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-[calc(100svh-var(--nav-height))] object-cover"
-                 alt="">
+                 alt="{{ __('supporters.alt') }}">
         </div>
 
         <div class="section space-y-16 lg:mx-0 lg:w-full lg:px-[calc(100vw/24)] xl:pr-[calc((100vw-80rem)/2)]">

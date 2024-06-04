@@ -18,12 +18,14 @@
 
         <div class="flex grow items-center gap-x-6 w-full">
             <div class="flex-1 hidden lg:block">
-                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/map.jpg') }}" alt=""
+                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/map.jpg') }}"
+                     alt="{{ __('app.screens.map.alt') }}"
                      class="rounded-xl shadow-xl opacity-50">
             </div>
 
             <div class="flex-1 hidden sm:block">
-                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/quiz.jpg') }}" alt=""
+                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/quiz.jpg') }}"
+                     alt="{{ __('app.screens.quiz.alt') }}"
                      class="rounded-xl shadow-xl opacity-50">
             </div>
 
@@ -163,12 +165,14 @@
             </div>
 
             <div class="flex-1 hidden sm:block">
-                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/comics.jpg') }}" alt=""
+                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/comics.jpg') }}"
+                     alt="{{ __('app.screens.comics.alt') }}"
                      class="rounded-xl shadow-xl opacity-50">
             </div>
 
             <div class="flex-1 hidden lg:block">
-                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/monuments.jpg') }}" alt=""
+                <img src="{{ asset('images/app/'.LaravelLocalization::getCurrentLocale().'/monuments.jpg') }}"
+                     alt="{{ __('app.screens.monuments.alt') }}"
                      class="rounded-xl shadow-xl opacity-50">
             </div>
         </div>

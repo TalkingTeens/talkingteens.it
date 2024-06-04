@@ -3,8 +3,6 @@
 namespace App\Filament\Resources\MonumentResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
@@ -72,14 +70,15 @@ class ClassesRelationManager extends RelationManager
                             ])
                     ]),
 
+                /*
                 Fieldset::make('Statua')
                     ->schema([
-//                        SpatieMediaLibraryFileUpload::make('photo')
-//                            ->collection('classes')
-//                            ->columnSpanFull()
-//                            ->required()
-//                            ->image()
-//                            ->imageEditor(),
+                        SpatieMediaLibraryFileUpload::make('photo')
+                            ->collection('classes')
+                            ->columnSpanFull()
+                            ->required()
+                            ->image()
+                            ->imageEditor(),
 
                         RichEditor::make('description')
                             ->columnSpan(2)
@@ -89,6 +88,7 @@ class ClassesRelationManager extends RelationManager
                                 'codeBlock',
                             ]),
                     ])
+                */
             ]);
     }
 

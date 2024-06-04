@@ -172,7 +172,10 @@
         </div>
 
         @if(isset($next))
-            <div>
+            <div class="flex gap-3 max-sm:flex-col sm:items-center">
+                <p class="title-lg mb-0">
+                    {{ __('monument.next') }}:
+                </p>
                 <x-button.arrow :href="route('monuments.show', ['monument' => $next])" :back="false">
                     {{ $next->name }}
                 </x-button.arrow>

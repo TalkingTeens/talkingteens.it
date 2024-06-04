@@ -11,22 +11,23 @@ class Treater extends Model
 {
     use HasFactory, HasTranslations;
 
+    public $translatable = [
+        'description',
+    ];
     protected $fillable = [
         'last_name',
         'first_name',
     ];
 
-    public $translatable = [
-        'description',
-    ];
-
     public function getFullNameAttribute(): string
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 
     public function monuments(): MorphToMany
     {
-        return $this->morphToMany(Monument::class, 'treatable');
+        return $this->morphToMany(Monument::class, 'treatable')
+            ->withPivot('description')
+            ->using(Treatable::class);
     }
 }

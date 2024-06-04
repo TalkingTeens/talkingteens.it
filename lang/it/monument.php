@@ -2,6 +2,7 @@
 
 return [
 
+    'alt' => ':monument',
     'authors' => 'Realizzato da',
     'history' => 'Storia del monumento',
     'where' => 'A :municipality',
@@ -14,6 +15,7 @@ return [
     'call' => [
         'traditional' => 'Ascolta la statua chiamando il',
         'online' => 'oppure clicca il bottone qui sotto'
-    ]
+    ],
+    'next' => 'Scopri anche',
 
 ];

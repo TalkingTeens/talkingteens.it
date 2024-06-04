@@ -26,6 +26,10 @@ use Spatie\Health\Http\Controllers\SimpleHealthCheckController;
 
 Route::get('health', SimpleHealthCheckController::class);
 
+Route::prefix('webhooks')->group(function () {
+    Route::webhooks('mailchimp');
+});
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

@@ -5,7 +5,7 @@
     <img
         class="absolute bottom-0 left-1/4 h-full -translate-x-1/3"
         src="{{ $monument->monument_image }}"
-        alt=""
+        alt="{{ __('monument.alt', ['monument' => $monument->name]) }}"
     >
 
     <div class="z-10 group-hover:scale-102 transition-transform duration-300 w-3/4 sm:w-1/2">

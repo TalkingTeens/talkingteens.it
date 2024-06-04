@@ -32,7 +32,9 @@ class Classe extends Model
 
     public function monuments(): MorphToMany
     {
-        return $this->morphToMany(Monument::class, 'treatable');
+        return $this->morphToMany(Monument::class, 'treatable')
+            ->withPivot('description')
+            ->using(Treatable::class);
     }
 
     public function getDisplayName(): string

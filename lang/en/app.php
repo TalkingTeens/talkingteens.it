@@ -4,6 +4,20 @@ return [
 
     'title' => 'Talking App',
     'subtitle' => 'Scan the QR Code and download our app.',
+    'screens' => [
+        'map' => [
+            'alt' => ''
+        ],
+        'quiz' => [
+            'alt' => ''
+        ],
+        'comics' => [
+            'alt' => ''
+        ],
+        'monuments' => [
+            'alt' => ''
+        ],
+    ],
     'features' => [
         'call' => [
             'subtitle' => 'Call',

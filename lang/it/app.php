@@ -4,6 +4,20 @@ return [
 
     'title' => 'Talking App',
     'subtitle' => 'Scansiona il QR Code e scarica la nostra app.',
+    'screens' => [
+        'map' => [
+            'alt' => ''
+        ],
+        'quiz' => [
+            'alt' => ''
+        ],
+        'comics' => [
+            'alt' => ''
+        ],
+        'monuments' => [
+            'alt' => ''
+        ],
+    ],
     'features' => [
         'call' => [
             'subtitle' => 'Telefonata',
