@@ -7,10 +7,10 @@
         {{ __('common.footer.newsletter.text') }}
     </p>
 
-    @if($subscribed)
+    @if($submitted)
         <div class="flex items-center gap-x-4">
             <div class="bg-st text-nd size-12 shrink-0 flex items-center justify-center rounded-full">
-                <x-heroicon-o-shield-check class="size-7/12" />
+                <x-heroicon-o-shield-check class="size-7/12"/>
             </div>
 
             <p class="text-st">

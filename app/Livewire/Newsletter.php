@@ -2,9 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
-use Filament\Notifications\Actions\Action;
-use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Spatie\Newsletter\Facades\Newsletter as Mailchimp;
@@ -15,7 +12,7 @@ class Newsletter extends Component
 
     public bool $consent = false;
 
-    public bool $subscribed = false;
+    public bool $submitted = false;
 
     public function rules(): array
     {
@@ -29,43 +26,13 @@ class Newsletter extends Component
     {
         $this->validate();
 
-        if (!App::environment('production')) {
-//            $a = Mailchimp::hasMember($this->email);
-//            $b = Mailchimp::isSubscribed($this->email);
-
-            $member = Mailchimp::subscribe(email: $this->email, options: [
-                'status' => 'pending'
+        if (App::environment('production')) {
+            Mailchimp::subscribe(email: $this->email, options: [
+                'status' => 'pending' // Needed for double opt-in
             ]);
-
-            if ($member) {
-                $this->notify($member["contact_id"]);
-            }
         }
 
-        $this->subscribed = true;
-    }
-
-    private function notify($contact_id): void
-    {
-        $recipients = User::all();
-
-        $url = "https://us19.admin.mailchimp.com/audience/contact-profile?contact_id={$contact_id}";
-
-        $notification = Notification::make()
-            ->title('Nuova email!')
-            ->body($this->email.' si è appena iscritto alla newsletter')
-            ->success()
-            ->icon('heroicon-o-envelope')
-            ->actions([
-                Action::make('open')
-                    ->button()
-                    ->url($url, shouldOpenInNewTab: true)
-                    ->markAsRead(),
-            ]);
-
-        foreach ($recipients as $recipient) {
-            $notification->sendToDatabase($recipient);
-        }
+        $this->submitted = true;
     }
 
     public function render()
