@@ -19,7 +19,7 @@ return [
             'text' => 'Iscriviti alla newsletter per restare informato sui nostri progetti e prossimi sviluppi!',
             'input' => 'Inserisci la tua email',
             'subscribe' => 'Iscriviti',
-            'confirmation' => 'Grazie :email! Iscrizione avvenuta con successo.',
+            'confirmation' => 'Abbiamo inviato un\'email a :email, controlla anche lo spam, e clicca sul bottone per confermare l\'iscrizione.',
         ],
         'legal' => 'Menzioni Legali',
         'contributes' => [

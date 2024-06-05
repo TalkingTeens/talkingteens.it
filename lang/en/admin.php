@@ -6,11 +6,11 @@ return [
         'newsletter' => [
             'subscribe' => [
                 'title' => 'New newsletter subscription!',
-                'body' => ':email is now subscribed to the newsletter.',
+                'body' => ':email is now subscribed to the newsletter',
             ],
             'unsubscribe' => [
-                'title' => '',
-                'body' => '',
+                'title' => 'Newsletter unsubscription',
+                'body' => 'Oh no! :email unsubscribed from the newsletter',
             ]
         ]
     ]

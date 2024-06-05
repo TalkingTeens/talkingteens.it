@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\App;
 use Livewire\Component;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Newsletter\Facades\Newsletter as Mailchimp;
 
 class Newsletter extends Component
@@ -28,7 +29,8 @@ class Newsletter extends Component
 
         if (App::environment('production')) {
             Mailchimp::subscribe(email: $this->email, options: [
-                'status' => 'pending' // Needed for double opt-in
+                'status' => 'pending', // Needed for double opt-in
+                'language' => LaravelLocalization::getCurrentLocale()
             ]);
         }
 
