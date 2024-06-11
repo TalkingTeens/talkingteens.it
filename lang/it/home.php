@@ -3,7 +3,7 @@
 return [
 
     'title' => 'Le statue parlano!',
-    'description' => 'Visualizza facilmente la posizione delle principali statue della città',
+    'description' => 'Fai un viaggio nel tempo! Ascolta le statue parlare sul tuo cellulare!',
     'cta' => 'Cos\'è Talking Teens'
 
 ];

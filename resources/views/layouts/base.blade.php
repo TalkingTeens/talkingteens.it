@@ -30,12 +30,29 @@
 </head>
 <body class="dark:bg-neutral-950 select-none font-poppins antialiased">
 
-    @yield('body')
+@yield('body')
 
-    <livewire:cookie />
+@production
+    <x-legal.cookie/>
 
-    @vite(['resources/js/app.js'])
-    @stack('scripts')
-    @livewireScripts
+    @pushonce('scripts')
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'G-3GJ7WZTD6J');
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GJ7WZTD6J"></script>
+    @endpushonce
+@endproduction
+
+
+@vite(['resources/js/app.js'])
+@stack('scripts')
+@livewireScripts
 </body>
 </html>

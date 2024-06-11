@@ -5,7 +5,8 @@
 
 @section('content')
     <header class="h-fill relative">
-        <video autoplay muted playsinline loop poster="{{ asset('images/welcome.jpg') }}" class="h-full w-full object-cover">
+        <video autoplay muted playsinline loop poster="{{ asset('images/welcome.jpg') }}"
+               class="h-full w-full object-cover">
             <source src="{{ asset('videos/welcome.mp4') }}" type="video/mp4">
             Your browser does not support this video
         </video>
@@ -24,7 +25,6 @@
 
                 <p class="max-w-2xl text-sm sm:text-base pb-1">
                     {{ __('home.description') }}
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quam?
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -32,9 +32,9 @@
                         Scopri le statue
                     </x-button>
 
-                    {{--                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold max-sm:text-sm">--}}
-                    {{--                        {{ __('home.cta') }}--}}
-                    {{--                    </x-button.arrow>--}}
+                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold max-sm:text-sm">
+                        {{ __('home.cta') }}
+                    </x-button.arrow>
                 </div>
             </div>
         </div>

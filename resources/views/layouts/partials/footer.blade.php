@@ -36,11 +36,9 @@
                         {{ __('monuments.title') }}
                     </a>
 
-                    {{--
-                        <a href="{{ route('project') }}" class="link-footer">
-                            Progetto
-                        </a>
-                    --}}
+                    <a href="{{ route('project') }}" class="link-footer">
+                        Progetto
+                    </a>
 
                     <a href="{{ route('docs') }}" class="link-footer">
                         {{ __('documents.title') }}
@@ -87,6 +85,10 @@
                     <a href="{{ route('cookie') }}" class="link-footer">
                         {{ __('cookie.title') }}
                     </a>
+
+                    <a href="#" class="link-footer iubenda-cs-preferences-link">
+                        ddsda
+                    </a>
                 </div>
             </div>
         </div>
@@ -106,9 +108,9 @@
                 </a>
 
                 <a href="mailto:team@talkingteens.it" class="transition-colors group">
-                    <x-heroicon-o-envelope class="size-5 group-hover:hidden" />
+                    <x-heroicon-o-envelope class="size-5 group-hover:hidden"/>
 
-                    <x-heroicon-o-envelope-open class="size-5 hidden group-hover:block" />
+                    <x-heroicon-o-envelope-open class="size-5 hidden group-hover:block"/>
                 </a>
             </div>
 
