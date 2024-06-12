@@ -16,7 +16,7 @@
 
             <div class="flex gap-2 max-w-xs w-11/12 flex-wrap">
                 @foreach($tags as $category)
-                    <a wire:navigate href="{{ route('monuments.index', ['c' => $category->slug]) }}"
+                    <a href="{{ route('monuments.index', ['c' => $category->slug]) }}"
                        class="text-sm bg-white/20 rounded-lg py-0.5 px-2 hover:text-white hover:bg-white/30 transition-colors">
                         {{ $category->name }}
                     </a>
@@ -45,7 +45,7 @@
                                 </p>
 
                                 @foreach($monument->authors as $author)
-                                    <a wire:navigate href="{{ route('authors.show', ['author' => $author]) }}"
+                                    <a href="{{ route('authors.show', ['author' => $author]) }}"
                                        class="group flex gap-3 rounded-2xl">
                                         <x-card.person :person="$author">
                                             <h3 class="group-hover:underline">
@@ -96,33 +96,33 @@
                     </div>
                 @endunless
 
-                {{--                @unless($monument->classes->isEmpty() && $monument->treaters->isEmpty())--}}
-                {{--                    <section>--}}
-                {{--                        <p class="title-lg">--}}
-                {{--                            {{ __('monument.curators') }}--}}
-                {{--                        </p>--}}
-                {{--                        <ul x-data="{ open : 0 }" class="space-y-5">--}}
-                {{--                            @foreach($monument->classes as $class)--}}
-                {{--                                <li>--}}
-                {{--                                    <button type="button" class="w-full flex justify-between items-center"--}}
-                {{--                                            @click="open = (open !== 1 ? 1 : null)">--}}
-                {{--                                                        <span>--}}
-                {{--                                                            {{ $class->getDisplayName() }}, {{ $class->school->name }}--}}
-                {{--                                                        </span>--}}
-                {{--                                        <img src="{{ asset('svg/chevron-down.svg') }}" alt=""--}}
-                {{--                                             class="h-5 w-5 transition-transform duration-500 ease-in-out"--}}
-                {{--                                             :class="open === 1 ? 'rotate-180' : ''">--}}
-                {{--                                    </button>--}}
-                {{--                                    <div x-show="open === 1" x-collapse.duration.500ms>--}}
-                {{--                                        <div class="overflow-hidden">--}}
-                {{--                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aut--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                </li>--}}
-                {{--                            @endforeach--}}
-                {{--                        </ul>--}}
-                {{--                    </section>--}}
-                {{--                @endunless--}}
+                @unless($monument->classes->isEmpty() && $monument->treaters->isEmpty())
+                    <section>
+                        <p class="title-lg">
+                            {{ __('monument.curators') }}
+                        </p>
+                        <ul x-data="{ open : 0 }" class="space-y-5">
+                            @foreach($monument->classes as $class)
+                                <li>
+                                    <button type="button" class="w-full flex justify-between items-center"
+                                            @click="open = (open !== 1 ? 1 : null)">
+                                        <span>
+                                            {{ $class->getDisplayName() }}, {{ $class->school->name }}
+                                        </span>
+                                        <img src="{{ asset('svg/chevron-down.svg') }}" alt=""
+                                             class="h-5 w-5 transition-transform duration-500 ease-in-out"
+                                             :class="open === 1 ? 'rotate-180' : ''">
+                                    </button>
+                                    <div x-show="open === 1" x-collapse.duration.500ms>
+                                        <div class="overflow-hidden">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aut
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </section>
+                @endunless
             </div>
             <div
                 class="flex items-center w-full sm:sticky sm:z-10 sm:top-[calc(var(--nav-height)+var(--subheader-height))] sm:w-auto sm:gap-3 sm:flex-col">

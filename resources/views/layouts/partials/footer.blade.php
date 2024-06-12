@@ -75,7 +75,7 @@
                 </div>
                 <div>
                     <h4 class="text-base pb-1">
-                        {{ __('common.footer.legal') }}
+                        {{ __('common.footer.legal.title') }}
                     </h4>
 
                     <a href="{{ route('privacy') }}" class="link-footer">
@@ -87,7 +87,7 @@
                     </a>
 
                     <a href="#" class="link-footer iubenda-cs-preferences-link">
-                        ddsda
+                        {{ __('common.footer.legal.manage') }}
                     </a>
                 </div>
             </div>

@@ -50,7 +50,6 @@
     @endpushonce
 @endproduction
 
-
 @vite(['resources/js/app.js'])
 @stack('scripts')
 @livewireScripts

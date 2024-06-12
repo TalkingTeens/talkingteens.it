@@ -11,15 +11,12 @@ class Newsletter extends Component
 {
     public string $email = '';
 
-    public bool $consent = false;
-
     public bool $submitted = false;
 
     public function rules(): array
     {
         return [
             'email' => 'required|email:rfc,dns',
-            'consent' => 'boolean',
         ];
     }
 

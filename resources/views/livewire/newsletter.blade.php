@@ -32,12 +32,12 @@
                 </x-button.submit>
             </div>
 
-            <div class="flex items-baseline gap-x-1 mt-4">
-                <input wire:model="consent" type="checkbox" id="newsletter_consent">
-                <label for="newsletter_consent">consent</label>
-            </div>
-
             <x-form.error name="email"/>
+
+            <p class="text-white/50 font-light mt-8">
+                {{ __('common.footer.newsletter.consent') }}
+                <a href="{{ route('privacy') }}" class="underline hover:text-white">{{ __('privacy.title') }}</a>.
+            </p>
         </form>
     @endif
 </div>

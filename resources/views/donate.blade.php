@@ -4,15 +4,43 @@
 @endpush
 
 @section('content')
+    <div x-data="{ method : 'card' }">
+        <div class="relative">
+            <div class="max-w-3xl mx-auto text-white text-center space-y-4 py-36">
+                <h1 class="badge">
+                    {{ __('donate.title') }}
+                </h1>
+
+                <h2 class="title-xl">
+                    {{ __('donate.subtitle') }}
+                </h2>
+            </div>
+
+            <div class="flex items-end justify-center">
+                <x-donate.tab method="card"/>
+
+                <x-donate.tab method="bank"/>
+            </div>
+
+            <img src="{{ asset('/images/sponsor.jpg') }}" class="absolute -z-10 inset-0 h-full w-full object-cover"
+                 alt="">
+        </div>
+
+        <div x-show="method === 'card'">
+            card
+        </div>
+
+        <div x-show="method === 'bank'" x-cloak>
+            bank
+        </div>
+    </div>
+
+    {{--    @click="navigator.clipboard.writeText('{{ $value }}')"--}}
+
     <div class="section space-y-16">
-        <section class="text-center">
-            <h2 class="badge">
-                How to donate
-            </h2>
-        </section>
         <section class="grid gap-8 sm:grid-cols-2">
             <h2 class="title-xl">
-                Frequently Asked Questions
+                {{ __('donate.faq.title') }}
             </h2>
             <ul x-data="{ open : 0 }" class="space-y-5 [&>*:not(:first-child)]:pt-5 divide-y">
                 <li>
@@ -24,7 +52,7 @@
                         <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out"
                                                    ::class="open === 1 ? 'rotate-180' : ''"/>
                     </button>
-                    <div x-show="open === 1" x-collapse>
+                    <div x-show="open === 1" x-cloak x-collapse>
                         <div class="overflow-hidden">
                             risposta
                         </div>
@@ -39,7 +67,7 @@
                         <x-heroicon-o-chevron-down class="size-5 transition-transform duration-500 ease-in-out"
                                                    ::class="open === 2 ? 'rotate-180' : ''"/>
                     </button>
-                    <div x-show="open === 2" x-collapse>
+                    <div x-show="open === 2" x-cloak x-collapse>
                         <div class="overflow-hidden">
                             risposta
                         </div>
@@ -111,8 +139,8 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, velit.
                             </p>
                             <div class="max-w-lg space-y-2 py-4">
-                                <x-button.payment method="card" label="Credit Card"/>
-                                <x-button.payment method="bank" label="Bank transfer"/>
+                                <x-button.payment method="card" label="/>
+                                <x-button.payment method="bank" label=""/>
                             </div>
                         </div>
                     </div>

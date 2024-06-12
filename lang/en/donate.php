@@ -3,21 +3,17 @@
 return [
 
     'title' => 'Donate',
-    'previous' => 'Previous',
-    'next' => 'Next',
-    'steps' => [
-        'intro' => [
-            'title' => 'Intro',
-            'description' => ''
+    'subtitle' => 'Your help is important!',
+    'methods' => [
+        'card' => [
+            'title' => 'Credit Card',
         ],
-        'method' => [
-            'title' => 'Method',
-            'description' => 'select your favourite'
-        ],
-        'checkout' => [
-            'title' => 'Checkout',
-            'description' => ''
+        'bank' => [
+            'title' => 'Bank transfer',
         ],
     ],
+    'faq' => [
+        'title' => 'Frequently Asked Questions',
+    ]
 
 ];

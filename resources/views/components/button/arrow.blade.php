@@ -1,7 +1,6 @@
 @props(['href', 'back' => true, 'transform' => true])
 
-<a {{ Str::startsWith($href, 'mailto:') ? '' : 'wire:navigate' }}
-   href="{{ $href }}" {{ $attributes->class(['group relative flex items-center gap-x-1', 'md:inline-block' => $transform]) }}>
+<a href="{{ $href }}" {{ $attributes->class(['group relative flex items-center gap-x-1', 'md:inline-block' => $transform]) }}>
     <x-heroicon-o-arrow-small-right
         @class([
             "md:transition-transform md:absolute md:top-1/2 md:-translate-y-1/2" => $transform,

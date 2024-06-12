@@ -1,0 +1,96 @@
+#iubenda-cs-banner {
+    @apply fixed flex z-50 inset-0 transition-opacity;
+}
+
+#iubenda-cs-banner.iubenda-cs-visible {
+    @apply opacity-100;
+}
+
+#iubenda-cs-banner.iubenda-cs-overlay {
+    @apply bg-black/40 backdrop-blur;
+}
+
+#iubenda-cs-banner.iubenda-cs-bottom {
+    @apply items-end;
+}
+
+#iubenda-cs-banner .iubenda-cs-container {
+    @apply bg-white w-full;
+}
+
+#iubenda-cs-banner.iubenda-cs-default-floating .iubenda-cs-container {
+    @apply sm:mr-5 sm:mb-5 lg:mr-8 lg:mb-8 bg-transparent;
+}
+
+#iubenda-cs-banner .iubenda-cs-content {
+    @apply bg-white mx-auto flex w-11/12 max-w-7xl flex-col text-sm gap-2 py-9;
+}
+
+#iubenda-cs-banner.iubenda-cs-default-floating .iubenda-cs-content {
+    @apply w-full overflow-clip sm:px-9 sm:rounded-3xl;
+}
+
+#iubenda-cs-banner.iubenda-cs-right .iubenda-cs-content {
+    @apply sm:max-w-xl mr-0;
+}
+
+#iubenda-cs-banner #iubenda-cs-title {
+    @apply font-semibold text-lg;
+}
+
+#iubenda-cs-banner .iubenda-cs-rationale {
+    @apply flex gap-y-4 max-lg:flex-col lg:flex-wrap lg:justify-between;
+}
+
+#iubenda-cs-banner.iubenda-cs-right .iubenda-cs-rationale {
+    @apply flex-col mx-auto max-sm:w-11/12;
+}
+
+#iubenda-cs-banner .iubenda-banner-content {
+    @apply space-y-4;
+}
+
+#iubenda-cs-banner .iubenda-banner-content a {
+    @apply underline hover:text-black;
+}
+
+#iubenda-cs-banner .iubenda-cs-opt-group {
+    @apply grid items-center gap-4 sm:grid-cols-3;
+}
+
+#iubenda-cs-banner.iubenda-cs-right .iubenda-cs-opt-group {
+    @apply grid-cols-1;
+}
+
+#iubenda-cs-banner .iubenda-cs-opt-group-consent {
+    @apply flex gap-x-4 sm:col-span-2;
+}
+
+#iubenda-cs-banner.iubenda-cs-right .iubenda-cs-opt-group-consent {
+    @apply col-span-1;
+}
+
+#iubenda-cs-banner .iubenda-cs-opt-group-custom {
+    @apply flex order-1;
+}
+
+#iubenda-cs-banner .iubenda-cs-accept-btn,
+#iubenda-cs-banner .iubenda-cs-reject-btn {
+    @apply btn flex-grow;
+}
+
+#iubenda-cs-banner .iubenda-cs-customize-btn {
+    @apply flex-grow;
+}
+
+#iubenda-cs-banner .iubenda-cs-customize-btn {
+    @apply border-0 bg-white hover:underline;
+}
+
+#iubenda-cs-banner .iubenda-cs-accept-btn {
+    @apply bg-st text-nd focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-st;
+}
+
+#iubenda-cs-banner .iubenda-cs-reject-btn {
+    @apply hover:bg-gray-100 border;
+}

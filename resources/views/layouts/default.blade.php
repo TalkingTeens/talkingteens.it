@@ -11,7 +11,7 @@
         <div x-data
              :class="$store.sidebar.open ? 'lg:w-3/4' : 'w-full'"
              class="transition-all ease-in-out duration-300 overflow-x-clip">
-    @endif
+            @endif
             @include('layouts.partials.ads.banner')
             @include('layouts.partials.nav')
 
@@ -20,15 +20,7 @@
             </main>
 
             @include('layouts.partials.footer')
-
-            @push('scripts')
-                <script>
-                    window.addEventListener('livewire:navigated', () => {
-                        window.scrollTo({top: 0, behavior: 'instant'});
-                    });
-                </script>
-            @endpush
-    @hasSection('sidebar')
+            @hasSection('sidebar')
         </div>
     @endif
 @endsection

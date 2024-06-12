@@ -3,21 +3,16 @@
 return [
 
     'title' => 'Dona ora',
-    'previous' => 'Precedente',
-    'next' => 'Successivo',
-    'steps' => [
-        'intro' => [
-            'title' => 'Intro',
-            'description' => ''
+    'subtitle' => 'Il tuo aiuto è importante!',
+    'methods' => [
+        'card' => [
+            'title' => 'Carta di credito',
         ],
-        'method' => [
-            'title' => 'Method',
-            'description' => 'select your favourite'
-        ],
-        'checkout' => [
-            'title' => 'Checkout',
-            'description' => ''
+        'bank' => [
+            'title' => 'Bonifico bancario',
         ],
     ],
-
+    'faq' => [
+        'title' => 'Domande frequenti',
+    ]
 ];
