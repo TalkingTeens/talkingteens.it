@@ -37,7 +37,7 @@
                     </a>
 
                     <a href="{{ route('project') }}" class="link-footer">
-                        Progetto
+                        {{ __('project.title') }}
                     </a>
 
                     <a href="{{ route('docs') }}" class="link-footer">

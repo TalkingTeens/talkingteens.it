@@ -1,4 +1,4 @@
-@extends('layouts.default', ['title' => 'Progetto'])
+@extends('layouts.default', ['title' => __('project.title')])
 
 @push('meta')
 @endpush
@@ -6,7 +6,7 @@
 @section('content')
     <section>
         <h2 class="title-lg">
-            {{ __("project.schools") }}
+            {{ __('project.schools') }}
         </h2>
 
         <ul>

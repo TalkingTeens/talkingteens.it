@@ -43,7 +43,9 @@
     <div class="section space-y-16 sm:space-y-24">
         @unless($articles->isEmpty())
             <section>
-                <h2 class="sr-only">Dicono di noi</h2>
+                <h2 class="text-center title-lg">
+                    Dicono di noi
+                </h2>
 
                 <div
                     class="w-full inline-flex flex-nowrap overflow-hidden group [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
@@ -73,6 +75,10 @@
                 </div>
             </section>
         @endunless
+
+        <div class="bg-gray-50 rounded-3xl h-96">
+            cds
+        </div>
 
         <section class="space-y-8">
             <div class="flex items-center justify-between">

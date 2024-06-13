@@ -6,7 +6,7 @@ return [
     'subtitle' => 'Your help is important!',
     'methods' => [
         'card' => [
-            'title' => 'Credit Card',
+            'title' => 'Card',
         ],
         'bank' => [
             'title' => 'Bank transfer',
@@ -14,6 +14,13 @@ return [
     ],
     'faq' => [
         'title' => 'Frequently Asked Questions',
+        'support' => 'Still haven\'t found the answer you were looking for? Send us an email and we\'ll get back to you as soon as possible.',
+        'questions' => [
+            [
+                'question' => 'question',
+                'answer' => 'answer',
+            ]
+        ]
     ]
 
 ];
