@@ -131,7 +131,8 @@
         <div
             class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-x-10 gap-y-5 font-extralight text-xs text-white/50">
             <p>
-                &copy; {{ Arr::join([date('Y'), config('app.name') . '.', __('common.footer.copyright')], ' ') }}.
+                &copy; 2018 - {{ Arr::join([date('Y'), config('app.name') . '.', __('common.footer.copyright')], ' ') }}
+                .
             </p>
 
             <div class="flex items-center gap-5">

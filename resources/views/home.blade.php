@@ -99,42 +99,51 @@
         </section>
     </div>
 
-    <section class="bg-st">
-        <div class="section space-y-16">
-            <h2 class="title-xl text-center max-w-2xl text-nd mx-auto">
-                Sostieni il progetto
+    <div class="bg-[url('/public/images/pattern.svg')] bg-fixed bg-no-repeat bg-cover">
+        <section class="text-center section space-y-16 mx-auto !max-w-3xl">
+            <p>
+                {{ __('home.donate.text') }}
+            </p>
+
+            <h2>
+                <span class="font-bold text-6xl sm:text-7xl lg:text-8xl">
+                    100,000+
+                </span><br>
+                {{ __('home.donate.calls') }}
             </h2>
 
-            <div class="grid gap-8 md:grid-cols-2">
-                <div class="bg-white rounded-3xl p-10">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi
-                        voluptate? Maxime.
-                    </p>
+            <x-button.arrow :href="route('donate')" :back="false" class="font-semibold w-fit mx-auto">
+                {{ __('home.donate.cta') }}
+            </x-button.arrow>
+        </section>
+    </div>
 
-                    <x-button.arrow :href="route('donate')" :back="false" class="font-semibold">
-                        Dona ora
-                    </x-button.arrow>
-                </div>
+    {{--    <section class="bg-st">--}}
+    {{--        <div class="section space-y-16">--}}
+    {{--            <h2 class="title-xl text-center max-w-2xl text-nd mx-auto">--}}
+    {{--                Sostieni il progetto--}}
+    {{--            </h2>--}}
 
-                <a href="{{ route('sponsors') }}" class="rounded-3xl relative overflow-hidden h-96 text-white">
-                    <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-full object-cover"
-                         alt="">
+    {{--            <div class="grid gap-8 md:grid-cols-2">--}}
 
-                    <div class="absolute p-10 inset-0 backdrop-brightness-50">
-                        <h3 class="title-lg">
-                            Diventa uno sponsor
-                        </h3>
+    {{--                <a href="{{ route('sponsors') }}" class="rounded-3xl relative overflow-hidden h-96 text-white">--}}
+    {{--                    <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-full object-cover"--}}
+    {{--                         alt="">--}}
 
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi
-                            voluptate? Maxime.
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+    {{--                    <div class="absolute p-10 inset-0 backdrop-brightness-50">--}}
+    {{--                        <h3 class="title-lg">--}}
+    {{--                            Diventa uno sponsor--}}
+    {{--                        </h3>--}}
+
+    {{--                        <p>--}}
+    {{--                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi--}}
+    {{--                            voluptate? Maxime.--}}
+    {{--                        </p>--}}
+    {{--                    </div>--}}
+    {{--                </a>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 
     <section class="section space-y-6">
         <h2 class="title-xl max-w-5xl">

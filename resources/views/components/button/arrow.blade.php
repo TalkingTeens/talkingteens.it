@@ -8,7 +8,7 @@
             "md:translate-x-6 md:group-hover:translate-x-7 lg:translate-x-8 lg:group-hover:translate-x-10" => $transform && !$back,
             "rotate-180" => $back,
             "md:right-0 order-1" => !$back,
-            "w-5 h-5"
+            "size-5"
         ])
     />
     <span>

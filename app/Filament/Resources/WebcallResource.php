@@ -22,6 +22,7 @@ use Filament\Tables\Columns\Summarizers\Range;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\App;
 
 class WebcallResource extends Resource
 {
@@ -30,6 +31,11 @@ class WebcallResource extends Resource
     protected static ?string $navigationGroup = 'Statues';
 
     protected static ?string $navigationIcon = 'heroicon-o-phone';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return !App::isProduction(); // TODO: remove
+    }
 
     public static function form(Form $form): Form
     {

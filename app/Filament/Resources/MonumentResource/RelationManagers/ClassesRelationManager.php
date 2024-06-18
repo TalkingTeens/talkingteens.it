@@ -70,17 +70,16 @@ class ClassesRelationManager extends RelationManager
                             ])
                     ]),
 
-                /*
-                Fieldset::make('Statua')
+                Forms\Components\Fieldset::make('Statua')
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make('photo')
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('photo')
                             ->collection('classes')
                             ->columnSpanFull()
                             ->required()
                             ->image()
                             ->imageEditor(),
 
-                        RichEditor::make('description')
+                        Forms\Components\RichEditor::make('description')
                             ->columnSpan(2)
                             ->hint('Translatable')
                             ->hintIcon('heroicon-o-language')
@@ -88,7 +87,6 @@ class ClassesRelationManager extends RelationManager
                                 'codeBlock',
                             ]),
                     ])
-                */
             ]);
     }
 

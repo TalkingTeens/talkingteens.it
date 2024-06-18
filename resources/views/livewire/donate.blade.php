@@ -1,4 +1,4 @@
-<div x-data="{ method : 'bank' }">
+<div x-data="{ method : '{{ $method }}' }">
     <div class="relative">
         <div class="max-w-3xl mx-auto text-white text-center space-y-4 py-36">
             <h1 class="badge">
@@ -35,11 +35,15 @@
             </p>
 
             <dl class="divide-y">
+                <x-donate.bank-detail title="Intestatario"
+                                      value="Associazione Culturale ECHO - Education Culture Human Oxygen"/>
+
+                <x-donate.bank-detail title="Banca" value="Banca Intesa Sanpaolo, Milano, Italia"/>
+
                 <x-donate.bank-detail title="IBAN" value="IT36P0306909606100000150735"/>
 
-                <x-donate.bank-detail title="Causale" value="erogazione liberale"/>
-
-                <x-donate.bank-detail :title="__('donate.next')" :value="__('donate.next')"/>
+                <x-donate.bank-detail title="Causale"
+                                      value='"erogazione liberale", specificando nome e cognome del donatore'/>
             </dl>
         </div>
     </div>
@@ -57,9 +61,9 @@
                     </p>
                 </div>
 
-                <dl x-data="{ open : 0 }" class="space-y-5 [&>*:not(:first-child)]:pt-5 divide-y">
+                <dl x-data="{ open : 0 }" class="space-y-5 divide-y">
                     @foreach($faqs as $faq)
-                        <div x-id="['faq']">
+                        <div x-id="['faq']" class="pt-5 first:pt-0">
                             <dt>
                                 <button
                                     type="button"
@@ -68,7 +72,7 @@
                                     :aria-controls="$id('faq')"
                                     class="w-full flex justify-between items-center"
                                 >
-                                    <span>{{ $faq['question'] }}</span>
+                                    <span class="font-semibold">{{ $faq['question'] }}</span>
 
                                     <x-heroicon-o-chevron-down
                                         class="size-5 transition-transform duration-500 ease-in-out"
@@ -77,7 +81,7 @@
                             </dt>
 
                             <dd x-show="open === {{ $loop->iteration }}" x-cloak x-collapse>
-                                <p :id="$id('faq')" class="overflow-hidden">{{ $faq['answer'] }}</p>
+                                <p :id="$id('faq')" class="overflow-hidden pt-5">{{ $faq['answer'] }}</p>
                             </dd>
                         </div>
                     @endforeach
