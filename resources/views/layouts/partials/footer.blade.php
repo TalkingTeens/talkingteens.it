@@ -5,28 +5,20 @@
                 @svg('logo/small', 'size-16')
             </a>
 
-            {{--
-                <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
-                    <span class="font-medium">
-                        {{ __('common.footer.echo') }}
-                    </span>
-                    <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo" class="group-hover:opacity-75 transition-opacity">
-                </a>
-            --}}
-
-            <div class="max-w-sm space-y-1.5">
+            <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
                 <span class="font-medium">
                     {{ __('common.footer.echo') }}
                 </span>
 
-                <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo">
-            </div>
+                <img src="{{ asset('images/echo.png') }}" alt="ECHO - Education Culture Human Oxygen Logo"
+                     class="group-hover:opacity-75 transition-opacity">
+            </a>
         </div>
 
-        <div class="flex flex-col gap-x-10 gap-y-16 justify-between lg:flex-row">
+        <div class="flex gap-x-10 gap-y-16 justify-between max-xl:flex-col">
             <livewire:newsletter/>
 
-            <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 grow max-w-xl">
+            <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 grow lg:max-w-2xl">
                 <div>
                     <h4 class="text-base pb-1">
                         {{ config('app.name') }}
@@ -40,21 +32,20 @@
                         {{ __('project.title') }}
                     </a>
 
+                    <a href="{{ route('echo') }}" class="link-footer">
+                        {{ __('echo.title') }}
+                    </a>
+                </div>
+
+                <div>
+                    <h4 class="text-base pb-1">
+                        {{ __('common.footer.education.title') }}
+                    </h4>
+
                     <a href="{{ route('docs') }}" class="link-footer">
                         {{ __('documents.title') }}
                     </a>
                 </div>
-
-                {{--
-                    <div>
-                        <h4 class="text-base pb-1">
-                            Dietro il vetro
-                        </h4>
-                        <a href="#" class="link-footer">
-                            Tutto
-                        </a>
-                    </div>
-                 --}}
 
                 <div>
                     <h4 class="text-base pb-1">
@@ -62,17 +53,14 @@
                     </h4>
 
                     <a href="{{ route('donate') }}" class="link-footer">
-                        {{ __('common.footer.contributes.donate') }}
-                    </a>
-
-                    <a href="{{ route('sponsors') }}" class="link-footer">
-                        {{ __('sponsors.title') }}
+                        {{ __('donate.title') }}
                     </a>
 
                     <a href="{{ route('supporters') }}" class="link-footer">
                         {{ __('supporters.title') }}
                     </a>
                 </div>
+
                 <div>
                     <h4 class="text-base pb-1">
                         {{ __('common.footer.legal.title') }}

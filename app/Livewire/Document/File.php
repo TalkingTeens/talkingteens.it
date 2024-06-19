@@ -19,14 +19,12 @@ class File extends Component
 
     public function open()
     {
-        $this->document
-            ->increment('opened');
+        $this->document->increment('opened');
     }
 
     public function download()
     {
-        $this->document
-            ->increment('downloads');
+        $this->document->increment('downloads');
 
         // TODO: download with title
         return $this->media;
@@ -35,22 +33,8 @@ class File extends Component
     public function render()
     {
         return view('livewire.document.file', [
-            'size' => $this->getSize(),
             'type' => $this->getType()
         ]);
-    }
-
-    private function getSize(): string
-    {
-        $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
-
-        $bytes = $this->media?->size ?? 0;
-
-        for ($i = 0; $bytes > 1024; $i++) {
-            $bytes /= 1024;
-        }
-
-        return round($bytes, 2).' '.$units[$i];
     }
 
     private function getType(): string

@@ -9,5 +9,12 @@ return [
         'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, similique? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!',
         'calls' => 'telefonate gratuite ascoltate dal 2019',
         'cta' => 'Donate now',
+    ],
+    'sponsors' => [
+        'title' => 'Sponsor',
+        'subtitle' => 'titolo da scrivere',
+        'text' => 'testo sponsor x paola',
+        'cta' => 'Vorresti apparire qui sotto? Contattaci!'
     ]
+
 ];

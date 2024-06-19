@@ -22,13 +22,15 @@ return [
             'consent' => 'Cancella la tua iscrizione quando vuoi. Per maggiori infomazioni, consulta la nostra',
             'confirmation' => 'Abbiamo inviato un\'email a :email, controlla anche lo spam, e clicca sul bottone per confermare l\'iscrizione.',
         ],
-        'legal' => [
-            'title' => 'Menzioni Legali',
-            'manage' => 'Gestisci preferenze'
+        'education' => [
+            'title' => 'Scuole',
         ],
         'contributes' => [
             'title' => 'Contributi',
-            'donate' => 'Dona ora',
+        ],
+        'legal' => [
+            'title' => 'Menzioni Legali',
+            'manage' => 'Gestisci preferenze'
         ],
         'copyright' => 'Tutti i diritti riservati',
         'credits' => 'Realizzato da :name'

@@ -77,7 +77,7 @@
         @endunless
 
         <div class="bg-gray-50 rounded-3xl h-96">
-            cds
+            Modalità
         </div>
 
         <section class="space-y-8">
@@ -107,7 +107,7 @@
 
             <h2>
                 <span class="font-bold text-6xl sm:text-7xl lg:text-8xl">
-                    100,000+
+                    {{ Number::format(100000) }}+
                 </span><br>
                 {{ __('home.donate.calls') }}
             </h2>
@@ -154,4 +154,43 @@
             Scopri i sostenitori
         </x-button.arrow>
     </section>
+
+    <section class="section space-y-16">
+        <div class="space-y-4 max-w-3xl mx-auto md:text-center">
+            <h2 class="badge">
+                {{ __('home.sponsors.title') }}
+            </h2>
+
+            <h3 class="title-xl">
+                {{ __('home.sponsors.subtitle') }}
+            </h3>
+
+            <p class="text-sm">
+                {{ __('home.sponsors.text') }}
+            </p>
+
+            <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
+                {{ __('home.sponsors.cta') }}
+            </x-button.arrow>
+        </div>
+
+        @unless($sponsors->isEmpty())
+            <div
+                class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                @foreach($sponsors as $sponsor)
+                    <div class="w-2/3 md:w-4/5 xl:w-3/5">
+                        @if(isset($sponsor->resource))
+                            <a href="{{ $sponsor->resource }}" target="_blank"
+                               class="block hover:scale-98 transition-transform">
+                                <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
+                            </a>
+                        @else
+                            <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endunless
+    </section>
+
 @endsection

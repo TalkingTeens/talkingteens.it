@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Number;
 use Illuminate\Support\ServiceProvider;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $locale = LaravelLocalization::getCurrentLocale();
+
+        Number::useLocale($locale);
     }
 }

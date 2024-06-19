@@ -22,13 +22,15 @@ return [
             'consent' => 'Cancel your subscription at any time. For more details, see our',
             'confirmation' => 'We\'ve sent an email to :email, also check your spam, and click on the button to confirm your subscription.',
         ],
-        'legal' => [
-            'title' => 'Legal',
-            'manage' => 'Manage preferences'
+        'education' => [
+            'title' => 'Education',
         ],
         'contributes' => [
             'title' => 'Contributes',
-            'donate' => 'Donate now',
+        ],
+        'legal' => [
+            'title' => 'Legal',
+            'manage' => 'Manage preferences'
         ],
         'copyright' => 'All Rights Reserved',
         'credits' => 'Handcrafted by :name',

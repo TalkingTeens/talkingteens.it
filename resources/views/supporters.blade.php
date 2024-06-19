@@ -23,17 +23,21 @@
 
             <section>
                 <h2 class="title-lg">
-                    {{ __('supporters.thanks.donors') }}
+                    {{ __('supporters.thanks.crowdfunding.title') }}
                 </h2>
 
                 <p>
+                    {{ __('supporters.thanks.crowdfunding.text') }}
+
                     <a
-                        href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html#tab_sostenitori"
+                        href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html"
                         class="underline"
                         target="_blank"
-                    >
-                        www.ideaginger.it
-                    </a>
+                    >ideaginger.it</a>.
+
+                    <br> <br>
+
+                    {{ __('supporters.thanks.crowdfunding.thanks') }}
                 </p>
             </section>
 

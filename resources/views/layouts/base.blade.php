@@ -8,10 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>
-        {{ isset($title) ? $title . ' - ' : '' }}
-        {{ config('app.name') }}
-    </title>
+    <title>{{ isset($title) ? Arr::join([$title, config('app.name')], ' - ') : config('app.name') }}</title>
 
     {{-- <link rel="canonical" href="{{ $canonical ?? Request::url() }}" /> --}}
 

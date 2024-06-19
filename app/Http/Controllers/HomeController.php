@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Data\ArticleData;
 use App\Data\MonumentData;
+use App\Data\SponsorData;
 use App\Models\Article;
 use App\Models\Monument;
 use App\Models\Municipality;
+use App\Models\Sponsor;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -27,8 +29,13 @@ class HomeController extends Controller
         $municipalities = Municipality::has('monuments')
             ->pluck('name');
 
+        $sponsors = Sponsor::with('media')
+            ->get()
+            ->sortBy('order')
+            ->map(fn($sponsor) => SponsorData::fromModel($sponsor));
+
         return view('home',
-            compact(['monuments', 'articles', 'municipalities'])
+            compact(['monuments', 'articles', 'municipalities', 'sponsors'])
         );
     }
 }

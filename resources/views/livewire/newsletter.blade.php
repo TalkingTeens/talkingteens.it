@@ -27,7 +27,7 @@
                        class="bg-transparent px-2 py-1.5 w-full rounded-lg"
                        placeholder="{{ __('common.footer.newsletter.input') }}">
 
-                <x-button.submit type="submit" class="primary">
+                <x-button.submit class="primary">
                     {{ __('common.footer.newsletter.subscribe') }}
                 </x-button.submit>
             </div>
