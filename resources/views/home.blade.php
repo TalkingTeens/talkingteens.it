@@ -29,11 +29,11 @@
 
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                     <x-button :href="route('monuments.index')" class="primary text-nd">
-                        Scopri le statue
+                        {{ __('home.cta.monuments') }}
                     </x-button>
 
                     <x-button.arrow :href="route('project')" :back="false" class="font-semibold max-sm:text-sm">
-                        {{ __('home.cta') }}
+                        {{ __('home.cta.project') }}
                     </x-button.arrow>
                 </div>
             </div>
@@ -144,16 +144,6 @@
     {{--            </div>--}}
     {{--        </div>--}}
     {{--    </section>--}}
-
-    <section class="section space-y-6">
-        <h2 class="title-xl max-w-5xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, id?
-        </h2>
-
-        <x-button.arrow :href="route('supporters')" :back="false">
-            Scopri i sostenitori
-        </x-button.arrow>
-    </section>
 
     <section class="section space-y-16">
         <div class="space-y-4 max-w-3xl mx-auto md:text-center">

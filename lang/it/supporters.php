@@ -8,8 +8,9 @@ return [
     'thanks' => [
         'crowdfunding' => [
             'title' => 'Donatori del Crowfunding',
-            'text' => 'La comunità è stata invitata a sostenere il progetto con il crowdfunding',
-            'thanks' => 'Grazie alla grande generosità di oltre 100 donatori e al nostro testimonial Lino Guanciale, la raccolta si è conclusa con successo!',
+            'text' => 'La comunità è stata invitata a sostenere il progetto con il crowdfunding su',
+            'thanks' => 'Grazie alla grande generosità di oltre 100 donatori e al nostro testimonial',
+            'success' => 'la raccolta si è conclusa con successo!',
         ],
         'student' => 'Un ringraziamento speciale al gruppo di lavoro volontario degli studenti e stagisti',
         'other' => 'E per il tempo, la professionalità e l’ospitalità donati a'

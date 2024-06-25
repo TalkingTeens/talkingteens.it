@@ -35,9 +35,15 @@
                         target="_blank"
                     >ideaginger.it</a>.
 
-                    <br> <br>
-
                     {{ __('supporters.thanks.crowdfunding.thanks') }}
+
+                    <a
+                        href="https://youtu.be/aj-E4-l4Ofs"
+                        class="underline"
+                        target="_blank"
+                    >Lino Guanciale</a>,
+
+                    {{ __('supporters.thanks.crowdfunding.success') }}
                 </p>
             </section>
 

@@ -4,5 +4,9 @@
 @endpush
 
 @section('content')
-    echo
+    <section class="section">
+        <h1 class="title-xl">
+            ECHO
+        </h1>
+    </section>
 @endsection

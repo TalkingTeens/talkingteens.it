@@ -8,8 +8,9 @@ return [
     'thanks' => [
         'crowdfunding' => [
             'title' => 'Crowfunding donors',
-            'text' => 'The community was invited to support the project by crowdfunding',
-            'thanks' => 'Thanks to the great generosity of over 100 donors and our testimonial Lino Guanciale, the collection was a success!',
+            'text' => 'The community was invited to support the project with the crowdfunding',
+            'thanks' => 'Thanks to the great generosity of over 100 donors and our testimonial',
+            'success' => 'the collection was a success!',
         ],
         'student' => 'Special thanks to the volunteer work group of students and interns',
         'other' => 'And for the time, professionalism and hospitality given to'
