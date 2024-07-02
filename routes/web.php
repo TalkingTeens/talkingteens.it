@@ -61,6 +61,7 @@ Route::group(
             // Legal
             Route::get('privacy-policy', LegalController::class)->name('privacy');
             Route::get('cookie-policy', LegalController::class)->name('cookie');
+            Route::get('termini-e-condizioni', LegalController::class)->name('terms');
         });
 
         // Livewire

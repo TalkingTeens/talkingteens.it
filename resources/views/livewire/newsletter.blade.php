@@ -36,7 +36,7 @@
 
             <p class="text-white/50 font-light mt-8">
                 {{ __('common.footer.newsletter.consent') }}
-                <a href="{{ route('privacy') }}" class="underline hover:text-white">{{ __('privacy.title') }}</a>.
+                <a href="{{ route('privacy') }}" class="underline hover:text-white">{{ __('legal.privacy') }}</a>.
             </p>
         </form>
     @endif

@@ -1,4 +1,4 @@
-@extends('layouts.default', ['title' => __('privacy.title')])
+@extends('layouts.default', ['title' => __("legal.{$type}")])
 
 @push('meta')
 @endpush
@@ -13,6 +13,8 @@
             <x-legal.tab :$type route="privacy"/>
 
             <x-legal.tab :$type route="cookie"/>
+
+            <x-legal.tab :$type route="terms"/>
         </div>
     </x-ui.subheader>
 

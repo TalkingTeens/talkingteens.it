@@ -39,11 +39,15 @@
 }
 
 #iubenda-cs-banner .iubenda-cs-rationale {
-    @apply flex gap-y-4 max-lg:flex-col lg:flex-wrap lg:justify-between;
+    @apply relative flex gap-y-4 max-lg:flex-col lg:flex-wrap lg:justify-between;
 }
 
 #iubenda-cs-banner.iubenda-cs-right .iubenda-cs-rationale {
     @apply flex-col mx-auto max-sm:w-11/12;
+}
+
+#iubenda-cs-banner .iubenda-cs-close-btn {
+    @apply absolute right-0 text-2xl;
 }
 
 #iubenda-cs-banner .iubenda-banner-content {

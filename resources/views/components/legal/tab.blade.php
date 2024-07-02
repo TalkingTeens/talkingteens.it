@@ -3,5 +3,5 @@
     "border-black font-semibold" => $route === $type,
     "border-transparent" => $route !== $type,
 ])>
-    {{ __("{$route}.title") }}
+    {{ __("legal.{$route}") }}
 </a>
