@@ -67,11 +67,15 @@
                     </h4>
 
                     <a href="{{ route('privacy') }}" class="link-footer">
-                        {{ __('privacy.title') }}
+                        {{ __('legal.privacy') }}
                     </a>
 
                     <a href="{{ route('cookie') }}" class="link-footer">
-                        {{ __('cookie.title') }}
+                        {{ __('legal.cookie') }}
+                    </a>
+
+                    <a href="{{ route('cookie') }}" class="link-footer">
+                        {{ __('legal.terms') }}
                     </a>
 
                     <a href="#" class="link-footer iubenda-cs-preferences-link">

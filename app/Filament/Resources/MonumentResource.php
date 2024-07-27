@@ -40,10 +40,10 @@ class MonumentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return !App::isProduction(); // TODO: remove
-    }
+//    public static function shouldRegisterNavigation(): bool
+//    {
+//        return !App::isProduction(); // TODO: remove
+//    }
 
     public static function form(Form $form): Form
     {
