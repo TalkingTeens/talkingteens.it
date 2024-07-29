@@ -5,7 +5,7 @@
                 @svg('logo/small', 'size-16')
             </a>
 
-            <a href="{{ route('echo') }}" class="group max-w-sm space-y-1.5">
+            <a href="{{ route('about') }}" class="group max-w-sm space-y-1.5">
                 <span class="font-medium">
                     {{ __('common.footer.echo') }}
                 </span>
@@ -32,8 +32,8 @@
                         {{ __('project.title') }}
                     </a>
 
-                    <a href="{{ route('echo') }}" class="link-footer">
-                        {{ __('echo.title') }}
+                    <a href="{{ route('about') }}" class="link-footer">
+                        {{ __('about.title') }}
                     </a>
                 </div>
 
@@ -55,10 +55,6 @@
                     <a href="{{ route('donate') }}" class="link-footer">
                         {{ __('donate.title') }}
                     </a>
-
-                    <a href="{{ route('supporters') }}" class="link-footer">
-                        {{ __('supporters.title') }}
-                    </a>
                 </div>
 
                 <div>
@@ -74,7 +70,7 @@
                         {{ __('legal.cookie') }}
                     </a>
 
-                    <a href="{{ route('cookie') }}" class="link-footer">
+                    <a href="{{ route('terms') }}" class="link-footer">
                         {{ __('legal.terms') }}
                     </a>
 

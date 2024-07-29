@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\MonumentController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\SupporterController;
+use App\Http\Controllers\AboutController;
 use App\Livewire\Donate;
 use App\Livewire\Monuments;
 use App\Livewire\Webcall;
@@ -48,11 +48,10 @@ Route::group(
             Route::get('/', HomeController::class)->name('home');
             Route::get('app', AppController::class)->name('app');
             Route::get('didattica', DocumentController::class)->name('docs');
-            Route::get('sostenitori', SupporterController::class)->name('supporters');
             Route::get('dona', Donate::class)->name('donate');
             Route::get('autori/{author}', [AuthorController::class, 'show'])->name('authors.show');
             Route::get('progetto', ProjectController::class)->name('project');
-            Route::view('echo', 'echo')->name('echo');
+            Route::get('chi-siamo', AboutController::class)->name('about');
 
             // Monuments
             Route::get('statue/{monument}', [MonumentController::class, 'show'])->name('monuments.show');

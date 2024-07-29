@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\SchoolData;
+use App\Models\School;
 use App\Models\Supporter;
 use Illuminate\View\View;
 
-class SupporterController extends Controller
+class AboutController extends Controller
 {
     public function __invoke(): View
     {
@@ -15,8 +17,11 @@ class SupporterController extends Controller
             ->groupBy('type')
             ->sortKeysDesc();
 
-        return view('supporters',
-            compact('supporters')
+        $schools = School::has('classes.monuments')->get()
+            ->map(fn($school) => SchoolData::fromModel($school));
+
+        return view('about',
+            compact('supporters', 'schools')
         );
     }
 }

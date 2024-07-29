@@ -19,7 +19,7 @@
                     </p>
                 @endif
 
-                <h1 class="title-xl font-black">
+                <h1 class="title-xl xl:text-6xl font-black">
                     {{ __('home.title') }}
                 </h1>
 
@@ -40,47 +40,61 @@
         </div>
     </header>
 
-    <div class="section space-y-16 sm:space-y-24">
-        @unless($articles->isEmpty())
-            <section>
-                <h2 class="text-center title-lg">
-                    Dicono di noi
-                </h2>
+    @unless($articles->isEmpty())
+        <section class="section">
+            <h2 class="text-center title-lg">
+                Dicono di noi
+            </h2>
 
-                <div
-                    class="w-full inline-flex flex-nowrap overflow-hidden group [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                    @for ($i = 0; $i < 2; $i++)
-                        <ul
-                            class="flex items-center justify-center md:justify-start animate-marquee group-hover:[animation-play-state:paused]"
-                            aria-hidden="{{ $i ? 'true' : 'false' }}"
-                        >
-                            @foreach($articles as $article)
-                                <li class="w-20 md:w-28 mx-4 md:mx-8">
-                                    @if(isset($article->resource))
-                                        <a href="{{ $article->resource }}" target="_blank"
-                                           class="block hover:scale-98 transition-transform">
-                                            <img src="{{ $article->logo }}"
-                                                 alt="{{ $article->name }} logo"
-                                                 class="w-full"/>
-                                        </a>
-                                    @else
+            <div
+                class="w-full inline-flex flex-nowrap overflow-hidden group [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                @for ($i = 0; $i < 2; $i++)
+                    <ul
+                        class="flex items-center justify-center md:justify-start animate-marquee group-hover:[animation-play-state:paused]"
+                        aria-hidden="{{ $i ? 'true' : 'false' }}"
+                    >
+                        @foreach($articles as $article)
+                            <li class="w-20 md:w-28 mx-4 md:mx-8">
+                                @if(isset($article->resource))
+                                    <a href="{{ $article->resource }}" target="_blank"
+                                       class="block hover:scale-98 transition-transform">
                                         <img src="{{ $article->logo }}"
                                              alt="{{ $article->name }} logo"
                                              class="w-full"/>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endfor
-                </div>
-            </section>
-        @endunless
+                                    </a>
+                                @else
+                                    <img src="{{ $article->logo }}"
+                                         alt="{{ $article->name }} logo"
+                                         class="w-full"/>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                @endfor
+            </div>
+        </section>
+    @endunless
 
-        <div class="bg-gray-50 rounded-3xl h-96">
-            Modalità
-        </div>
+    <div class="bg-gray-50">
+        <section class="section space-y-16">
+            <h2 class="title-xl">
+                Come funziona
+            </h2>
 
-        <section class="space-y-8">
+            <iframe src="https://www.youtube-nocookie.com/embed/Dw-Wwh8WEwo?si=6RConI4cCShtAChA"
+                    class="aspect-video w-full"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <div>
+
+            </div>
+        </section>
+    </div>
+
+    @unless($monuments->isEmpty())
+        <section class="section space-y-8">
             <div class="flex items-center justify-between">
                 <h2 class="title-xl">
                     Le statue
@@ -97,7 +111,7 @@
                 @endforeach
             </div>
         </section>
-    </div>
+    @endunless
 
     <div class="bg-[url('/public/images/pattern.svg')] bg-fixed bg-no-repeat bg-cover">
         <section class="text-center section space-y-16 mx-auto !max-w-3xl">
@@ -118,49 +132,38 @@
         </section>
     </div>
 
-    {{--    <section class="bg-st">--}}
-    {{--        <div class="section space-y-16">--}}
-    {{--            <h2 class="title-xl text-center max-w-2xl text-nd mx-auto">--}}
-    {{--                Sostieni il progetto--}}
-    {{--            </h2>--}}
-
-    {{--            <div class="grid gap-8 md:grid-cols-2">--}}
-
-    {{--                <a href="{{ route('sponsors') }}" class="rounded-3xl relative overflow-hidden h-96 text-white">--}}
-    {{--                    <img src="{{ asset('/images/sponsor.jpg') }}" class="w-full h-full object-cover"--}}
-    {{--                         alt="">--}}
-
-    {{--                    <div class="absolute p-10 inset-0 backdrop-brightness-50">--}}
-    {{--                        <h3 class="title-lg">--}}
-    {{--                            Diventa uno sponsor--}}
-    {{--                        </h3>--}}
-
-    {{--                        <p>--}}
-    {{--                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos expedita nihil quasi--}}
-    {{--                            voluptate? Maxime.--}}
-    {{--                        </p>--}}
-    {{--                    </div>--}}
-    {{--                </a>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
     <section class="section space-y-16">
         <div class="space-y-4 max-w-3xl mx-auto md:text-center">
             <h2 class="badge">
-                {{ __('home.sponsors.title') }}
+                {{ __('home.supporters.title') }}
             </h2>
 
             <h3 class="title-xl">
-                {{ __('home.sponsors.subtitle') }}
+                {{ __('home.supporters.subtitle') }}
             </h3>
 
             <p class="text-sm">
-                {{ __('home.sponsors.text') }}
+                {{ __('home.supporters.thanks.crowdfunding') }}
+
+                <a
+                    href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html"
+                    class="underline"
+                    target="_blank"
+                >ideaginger.it</a>,
+
+                {{ __('home.supporters.thanks.lino') }}
+
+                <a
+                    href="https://youtu.be/qO7-l_kNvgY"
+                    class="underline"
+                    target="_blank"
+                >Lino Guanciale</a>
+
+                {{ __('home.supporters.thanks.donors') }}.
             </p>
 
             <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
-                {{ __('home.sponsors.cta') }}
+                {{ __('home.supporters.cta') }}
             </x-button.arrow>
         </div>
 
@@ -182,5 +185,4 @@
             </div>
         @endunless
     </section>
-
 @endsection

@@ -13,11 +13,15 @@ return [
         'calls' => 'telefonate gratuite ascoltate dal 2019',
         'cta' => 'Dona ora',
     ],
-    'sponsors' => [
-        'title' => 'Sponsors',
-        'subtitle' => 'titolo da scrivere',
-        'text' => 'testo sponsor x paola',
-        'cta' => 'You\'d like to appear here? Contact us!'
+    'supporters' => [
+        'title' => 'Supporters',
+        'subtitle' => 'Thanks!',
+        'thanks' => [
+            'crowdfunding' => 'To our sponsors, to the more than 100 crowdfunding donors on',
+            'lino' => 'to our testimonial',
+            'donors' => 'and to all those who continue to donate to help us keep the statues alive over time',
+        ],
+        'cta' => 'Would you like to appear here? Contact us!'
     ]
 
 ];
