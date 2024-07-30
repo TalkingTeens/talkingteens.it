@@ -19,20 +19,20 @@
                     </p>
                 @endif
 
-                <h1 class="title-xl xl:text-6xl font-black">
+                <h1 class="text-5xl xl:text-6xl font-extrabold">
                     {{ __('home.title') }}
                 </h1>
 
-                <p class="max-w-2xl text-sm sm:text-base pb-1">
+                <p class="max-w-2xl pb-1">
                     {{ __('home.description') }}
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="flex flex-wrap items-center gap-4">
                     <x-button :href="route('monuments.index')" class="primary text-nd">
                         {{ __('home.cta.monuments') }}
                     </x-button>
 
-                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold max-sm:text-sm">
+                    <x-button.arrow :href="route('project')" :back="false" class="font-semibold">
                         {{ __('home.cta.project') }}
                     </x-button.arrow>
                 </div>
@@ -76,42 +76,89 @@
     @endunless
 
     <div class="bg-gray-50">
-        <section class="section space-y-16">
-            <h2 class="title-xl">
-                Come funziona
-            </h2>
+        <section class="section space-y-12">
+            <div class="space-y-4">
+                <h2 class="badge">
+                    Come funziona
+                </h2>
 
-            <iframe src="https://www.youtube-nocookie.com/embed/Dw-Wwh8WEwo?si=6RConI4cCShtAChA"
-                    class="aspect-video w-full"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-            <div>
-
+                <h2 class="title-xl max-w-xl">
+                    Ascoltare le statue è gratuito e per tutti.
+                </h2>
             </div>
+
+            <div class="grid gap-8 sm:grid-cols-3">
+                <div class="space-y-2">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('heroicon-o-phone-arrow-up-right', 'size-8')
+                    </div>
+
+                    <h3 class="title-lg">
+                        Chiama
+                    </h3>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('heroicon-o-qr-code', 'size-8')
+                    </div>
+
+                    <h3 class="title-lg">
+                        Scansiona il QR Code
+                    </h3>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('app', 'size-8')
+                    </div>
+
+                    <h3 class="title-lg">
+                        Scarica l'app
+                    </h3>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-xs">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, magni?
+            </p>
         </section>
     </div>
 
-    @unless($monuments->isEmpty())
-        <section class="section space-y-8">
-            <div class="flex items-center justify-between">
-                <h2 class="title-xl">
-                    Le statue
-                </h2>
 
-                <x-button.arrow :href="route('monuments.index')" :back="false" :transform="false">
-                    Vedi tutte
-                </x-button.arrow>
-            </div>
+    <div class="section">
+        @unless($monuments->isEmpty())
+            <section class="space-y-8">
+                <div class="flex items-center justify-between">
+                    <h2 class="title-xl">
+                        Le statue
+                    </h2>
 
-            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                @foreach($monuments as $monument)
-                    <x-card.monument :$monument/>
-                @endforeach
-            </div>
-        </section>
-    @endunless
+                    <x-button.arrow :href="route('monuments.index')" :back="false" :transform="false">
+                        Vedi tutte
+                    </x-button.arrow>
+                </div>
+
+                <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    @foreach($monuments as $monument)
+                        <x-card.monument :$monument/>
+                    @endforeach
+                </div>
+            </section>
+        @endunless
+    </div>
 
     <div class="bg-[url('/public/images/pattern.svg')] bg-fixed bg-no-repeat bg-cover">
         <section class="text-center section space-y-16 mx-auto !max-w-3xl">
@@ -132,8 +179,15 @@
         </section>
     </div>
 
-    <section class="section space-y-16">
-        <div class="space-y-4 max-w-3xl mx-auto md:text-center">
+    <div class="section space-y-16">
+        <section>
+            <h2 class="title-xl max-w-screen-md">
+                Ascoltare le statue è gratuito e per tutti.
+            </h2>
+
+        </section>
+
+        <section class="space-y-4 max-w-3xl mx-auto md:text-center">
             <h2 class="badge">
                 {{ __('home.supporters.title') }}
             </h2>
@@ -142,7 +196,7 @@
                 {{ __('home.supporters.subtitle') }}
             </h3>
 
-            <p class="text-sm">
+            <p>
                 {{ __('home.supporters.thanks.crowdfunding') }}
 
                 <a
@@ -165,7 +219,7 @@
             <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
                 {{ __('home.supporters.cta') }}
             </x-button.arrow>
-        </div>
+        </section>
 
         @unless($sponsors->isEmpty())
             <div
@@ -184,5 +238,5 @@
                 @endforeach
             </div>
         @endunless
-    </section>
+    </div>
 @endsection

@@ -53,6 +53,18 @@
                     </ul>
                 </section>
             @endforeach
+
+            <section>
+                <h2 class="title-lg">
+                    {{ __("about.committee.title") }}
+                </h2>
+
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </section>
         </div>
     </div>
 @endsection

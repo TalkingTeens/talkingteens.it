@@ -247,7 +247,7 @@
                 <template x-if="!$store.sidebar.open || window.innerWidth < 640">
                     <x-button.rounded
                         @click="window.innerWidth >= 640 ? $store.sidebar.toggle() : window.location.href='tel:{{ $phone_number }}'"
-                        icon="call"
+                        icon="phone"
                         bg="bg-green-500"
                         :ping="true"
                     />

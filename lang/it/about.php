@@ -9,5 +9,8 @@ return [
         'other' => 'E per il tempo, la professionalità e l’ospitalità donati a'
     ],
     'schools' => 'Project partners',
+    'committee' => [
+        'title' => 'Comitato scientifico',
+    ]
 
 ];

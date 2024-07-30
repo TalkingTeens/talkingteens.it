@@ -9,5 +9,8 @@ return [
         'other' => 'And for the time, professionalism and hospitality given to'
     ],
     'schools' => 'Partner di progetto',
+    'committee' => [
+        'title' => 'Scientific committee',
+    ]
 
 ];

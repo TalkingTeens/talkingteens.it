@@ -93,7 +93,7 @@
                     <template x-if="state === 1">
                         <x-button.rounded
                             @click="answer"
-                            icon="call"
+                            icon="phone"
                             bg="bg-green-500"
                             :ping="true"
                         />
