@@ -27,7 +27,6 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 class MonumentResource extends Resource
@@ -39,11 +38,6 @@ class MonumentResource extends Resource
     protected static ?string $navigationGroup = 'Statues';
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
-
-//    public static function shouldRegisterNavigation(): bool
-//    {
-//        return !App::isProduction(); // TODO: remove
-//    }
 
     public static function form(Form $form): Form
     {

@@ -18,7 +18,7 @@
         <div class="flex gap-x-10 gap-y-16 justify-between max-xl:flex-col">
             <livewire:newsletter/>
 
-            <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 grow lg:max-w-2xl">
+            <div class="gap-10 grid grid-cols-2 sm:grid-cols-3 grow lg:max-w-2xl">
                 <div>
                     <h4 class="text-base pb-1">
                         {{ config('app.name') }}
@@ -35,6 +35,10 @@
                     <a href="{{ route('about') }}" class="link-footer">
                         {{ __('about.title') }}
                     </a>
+
+                    <a href="{{ route('donate') }}" class="link-footer">
+                        {{ __('donate.title') }}
+                    </a>
                 </div>
 
                 <div>
@@ -44,16 +48,6 @@
 
                     <a href="{{ route('docs') }}" class="link-footer">
                         {{ __('documents.title') }}
-                    </a>
-                </div>
-
-                <div>
-                    <h4 class="text-base pb-1">
-                        {{ __('common.footer.contributes.title') }}
-                    </h4>
-
-                    <a href="{{ route('donate') }}" class="link-footer">
-                        {{ __('donate.title') }}
                     </a>
                 </div>
 

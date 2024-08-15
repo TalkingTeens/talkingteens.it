@@ -75,68 +75,7 @@
         </section>
     @endunless
 
-    <div class="bg-gray-50">
-        <section class="section space-y-12">
-            <div class="space-y-4">
-                <h2 class="badge">
-                    Come funziona
-                </h2>
-
-                <h2 class="title-xl max-w-xl">
-                    Ascoltare le statue è gratuito e per tutti.
-                </h2>
-            </div>
-
-            <div class="grid gap-8 sm:grid-cols-3">
-                <div class="space-y-2">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('heroicon-o-phone-arrow-up-right', 'size-8')
-                    </div>
-
-                    <h3 class="title-lg">
-                        Chiama
-                    </h3>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('heroicon-o-qr-code', 'size-8')
-                    </div>
-
-                    <h3 class="title-lg">
-                        Scansiona il QR Code
-                    </h3>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('app', 'size-8')
-                    </div>
-
-                    <h3 class="title-lg">
-                        Scarica l'app
-                    </h3>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, perspiciatis!
-                    </p>
-                </div>
-            </div>
-
-            <p class="text-xs">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, magni?
-            </p>
-        </section>
-    </div>
-
+    <x-modalities/>
 
     <div class="section">
         @unless($monuments->isEmpty())
@@ -179,6 +118,7 @@
         </section>
     </div>
 
+
     <div class="section space-y-16">
         <section>
             <h2 class="title-xl max-w-screen-md">
@@ -220,7 +160,6 @@
                 {{ __('home.supporters.cta') }}
             </x-button.arrow>
         </section>
-
         @unless($sponsors->isEmpty())
             <div
                 class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

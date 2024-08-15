@@ -1,24 +1,15 @@
 <div x-data="{ method : '{{ $method }}' }">
-    <div class="relative">
-        <div class="max-w-3xl mx-auto text-white text-center space-y-4 py-36">
-            <h1 class="badge">
-                {{ __('donate.title') }}
-            </h1>
-
-            <h2 class="title-xl">
-                {{ __('donate.subtitle') }}
-            </h2>
-        </div>
-
+    <x-ui.hero
+        :title="__('donate.title')"
+        :subtitle="__('donate.subtitle')"
+        src="/images/sponsor.jpg"
+    >
         <div class="flex items-end justify-center gap-1 sm:gap-2 w-11/12 mx-auto">
             <x-donate.tab method="card"/>
 
             <x-donate.tab method="bank"/>
         </div>
-
-        <img src="{{ asset('/images/sponsor.jpg') }}" class="absolute -z-10 inset-0 h-full w-full object-cover"
-             alt="">
-    </div>
+    </x-ui.hero>
 
     <div class="section">
         <div x-show="method === 'card'">

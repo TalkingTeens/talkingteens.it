@@ -11,6 +11,12 @@ return [
     'schools' => 'Project partners',
     'committee' => [
         'title' => 'Comitato scientifico',
+        'members' => [
+            'mario' => ':name - Fondazione Merz',
+            'federica' => ':name - Artstories',
+            'carlotta' => ':name - Storica',
+            'vanja' => ':name - Critica d\'arte',
+        ]
     ]
 
 ];

@@ -178,38 +178,38 @@
         </div>
     </section>
 
-    <ul class="hidden max-w-screen-xl w-11/12 mx-auto grid-cols-3 gap-x-4 gap-y-8 pt-8 pb-16 sm:grid lg:grid-cols-6">
-        <x-card.feature
+    <ul class="hidden max-w-screen-xl w-11/12 mx-auto lg:grid-cols-3 gap-10 pt-8 pb-16 sm:grid sm:grid-cols-2">
+        <x-card
             icon="locate"
             :title="__('app.features.call.subtitle')"
             :description="__('app.features.call.description')"
         />
 
-        <x-card.feature
+        <x-card
             icon="heroicon-o-map-pin"
             :title="__('app.features.map.subtitle')"
             :description="__('app.features.map.description')"
         />
 
-        <x-card.feature
+        <x-card
             icon="images"
             :title="__('app.features.comics.subtitle')"
             :description="__('app.features.comics.description')"
         />
 
-        <x-card.feature
+        <x-card
             icon="app"
             :title="__('app.features.tours.subtitle')"
             :description="__('app.features.tours.description')"
         />
 
-        <x-card.feature
+        <x-card
             icon="controller"
             :title="__('app.features.games.subtitle')"
             :description="__('app.features.games.description')"
         />
 
-        <x-card.feature
+        <x-card
             icon="heroicon-o-qr-code"
             :title="__('app.features.qr.subtitle')"
             :description="__('app.features.qr.description')"/>

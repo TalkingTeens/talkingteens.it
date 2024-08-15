@@ -25,9 +25,6 @@ return [
         'education' => [
             'title' => 'Scuole',
         ],
-        'contributes' => [
-            'title' => 'Contributi',
-        ],
         'legal' => [
             'title' => 'Menzioni Legali',
             'manage' => 'Gestisci preferenze'

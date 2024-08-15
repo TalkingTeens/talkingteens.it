@@ -25,9 +25,6 @@ return [
         'education' => [
             'title' => 'Education',
         ],
-        'contributes' => [
-            'title' => 'Contributes',
-        ],
         'legal' => [
             'title' => 'Legal',
             'manage' => 'Manage preferences'

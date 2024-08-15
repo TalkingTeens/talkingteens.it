@@ -61,7 +61,19 @@
 
                 <ul>
                     <li>
+                        {{ __('about.committee.members.federica', ['name' => 'Federica Pascotto']) }}
+                    </li>
 
+                    <li>
+                        {{ __('about.committee.members.mario', ['name' => 'Mario Petriccione']) }}
+                    </li>
+
+                    <li>
+                        {{ __('about.committee.members.carlotta', ['name' => 'Carlotta Sorba']) }}
+                    </li>
+
+                    <li>
+                        {{ __('about.committee.members.vanja', ['name' => 'Vanja Strukelj']) }}
                     </li>
                 </ul>
             </section>

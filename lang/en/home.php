@@ -9,9 +9,9 @@ return [
         'project' => 'What is Talking Teens',
     ],
     'donate' => [
-        'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, similique? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!',
+        'text' => 'Talking Teens lives on thanks to generous donors, institutions and private citizens who love culture and care about young people and their city.',
         'calls' => 'telefonate gratuite ascoltate dal 2019',
-        'cta' => 'Dona ora',
+        'cta' => 'Donate now',
     ],
     'supporters' => [
         'title' => 'Supporters',
