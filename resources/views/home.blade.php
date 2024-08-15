@@ -75,7 +75,70 @@
         </section>
     @endunless
 
-    <x-modalities/>
+    <div class="bg-gray-50">
+        <section class="section space-y-16">
+            <div class="space-y-4">
+                <h2 class="badge">
+                    {{ __('project.modalities.title') }}
+                </h2>
+
+                <h3 class="title-xl max-w-xl">
+                    {{ __('project.modalities.subtitle') }}
+                </h3>
+            </div>
+
+            <ul class="space-y-12">
+                <li class="flex items-start gap-x-6 md:gap-x-12">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('heroicon-o-phone-arrow-up-right', 'size-8')
+                    </div>
+
+                    <div>
+                        <h4 class="title-lg mb-2">
+                            {{ __('project.modalities.call.title') }}
+                        </h4>
+
+                        <p>
+                            {{ __('project.modalities.call.text') }}
+                        </p>
+                    </div>
+                </li>
+
+                <li class="flex items-start gap-x-6 md:gap-x-12">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('heroicon-o-qr-code', 'size-8')
+                    </div>
+
+                    <div>
+                        <h4 class="title-lg mb-2">
+                            {{ __('project.modalities.qr.title') }}
+                        </h4>
+
+                        <p>
+                            {{ __('project.modalities.qr.text') }}
+                        </p>
+                    </div>
+                </li>
+
+                <li class="flex items-start gap-x-6 md:gap-x-12">
+                    <div class="p-4 inline-block bg-white rounded-full">
+                        @svg('app', 'size-8')
+                    </div>
+
+                    <div>
+                        <h4 class="title-lg mb-2">
+                            {{ __('project.modalities.app.title') }}
+                        </h4>
+
+                        <p>
+                            {{ __('project.modalities.app.text') }}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
 
     <div class="section">
         @unless($monuments->isEmpty())
@@ -118,13 +181,16 @@
         </section>
     </div>
 
-
     <div class="section space-y-16">
         <section>
             <h2 class="title-xl max-w-screen-md">
                 Ascoltare le statue è gratuito e per tutti.
             </h2>
 
+            <audio controls>
+                <source src="{{ asset('/audio/alice.mp3') }}" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
         </section>
 
         <section class="space-y-4 max-w-3xl mx-auto md:text-center">
@@ -160,6 +226,7 @@
                 {{ __('home.supporters.cta') }}
             </x-button.arrow>
         </section>
+
         @unless($sponsors->isEmpty())
             <div
                 class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

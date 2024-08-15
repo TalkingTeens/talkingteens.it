@@ -66,7 +66,9 @@ class PostResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('order')
+            ->reorderable('order');
     }
 
     public static function getEloquentQuery(): Builder

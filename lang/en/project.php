@@ -3,6 +3,7 @@
 return [
 
     'title' => 'Project',
+    'subtitle' => 'un progetto partecipato di ben-essere sociale',
     'about' => [
         'title' => 'Talking Teens is ...',
         'teenagers' => [
@@ -22,7 +23,7 @@ return [
             'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
         ],
         'accessible' => [
-            'title' => '4 all”',
+            'title' => '4 all',
             'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
         ],
         'alive' => [
@@ -45,6 +46,28 @@ return [
             'title' => 'Download our app',
             'text' => 'Get the call directly to your cell phone when you approach the statues.'
         ],
+    ],
+    'goals' => [
+        'title' => 'Goals',
+        'subtitle' => 'Listening to statues is free and for everyone.',
+        'items' => [
+            [
+                'title' => 'education',
+                'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
+            ],
+            [
+                'title' => 'aggregation',
+                'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
+            ],
+            [
+                'title' => 'regeneration',
+                'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
+            ],
+            [
+                'title' => 'attraction',
+                'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
+            ],
+        ]
     ]
 
 ];

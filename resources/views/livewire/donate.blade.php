@@ -52,31 +52,7 @@
                     </p>
                 </div>
 
-                <dl x-data="{ open : 0 }" class="space-y-5 divide-y">
-                    @foreach($faqs as $faq)
-                        <div x-id="['faq']" class="pt-5 first:pt-0">
-                            <dt>
-                                <button
-                                    type="button"
-                                    @click="open = (open !== {{ $loop->iteration }} ? {{ $loop->iteration }} : null)"
-                                    :aria-expanded="open === {{ $loop->iteration }}"
-                                    :aria-controls="$id('faq')"
-                                    class="w-full flex justify-between items-center"
-                                >
-                                    <span class="font-semibold">{{ $faq['question'] }}</span>
-
-                                    <x-heroicon-o-chevron-down
-                                        class="size-5 transition-transform duration-500 ease-in-out"
-                                        ::class="open === {{ $loop->iteration }} ? 'rotate-180' : ''"/>
-                                </button>
-                            </dt>
-
-                            <dd x-show="open === {{ $loop->iteration }}" x-cloak x-collapse>
-                                <p :id="$id('faq')" class="overflow-hidden pt-5">{{ $faq['answer'] }}</p>
-                            </dd>
-                        </div>
-                    @endforeach
-                </dl>
+                <x-ui.accordion :items="$faqs"/>
             </section>
         </div>
     @endif
