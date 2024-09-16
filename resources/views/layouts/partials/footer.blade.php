@@ -97,12 +97,12 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="https://apps.apple.com/it/app/talking-teens/id1459498571">
+                <a href="https://apps.apple.com/it/app/talking-teens/id1459498571" target="_blank">
                     <img src="{{ asset('svg/download/' . LaravelLocalization::getCurrentLocale() . '/app-store.svg') }}"
                          alt="" class="h-9 sm:h-10">
                 </a>
 
-                <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens">
+                <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens" target="_blank">
                     <img
                         src="{{ asset('images/download/' . LaravelLocalization::getCurrentLocale() . '/google-play.png') }}"
                         alt="Disponibile su Google Play" class="h-9 sm:h-10">

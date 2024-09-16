@@ -32,11 +32,6 @@ class WebcallResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-phone';
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return !App::isProduction(); // TODO: remove
-    }
-
     public static function form(Form $form): Form
     {
         return $form

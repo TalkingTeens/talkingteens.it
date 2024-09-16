@@ -31,40 +31,24 @@ return [
             'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
         ],
     ],
-    'modalities' => [
-        'title' => 'How it works',
-        'subtitle' => 'Listening to statues is free and for everyone.',
-        'call' => [
-            'title' => 'Call',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'qr' => [
-            'title' => 'Scan the QR Code',
-            'text' => 'The statues tell their stories in Italian, English, Parma dialect and LIS by scanning the QR Code on our Totems.'
-        ],
-        'app' => [
-            'title' => 'Download our app',
-            'text' => 'Get the call directly to your cell phone when you approach the statues.'
-        ],
-    ],
     'goals' => [
         'title' => 'Goals',
         'subtitle' => 'Listening to statues is free and for everyone.',
         'items' => [
             [
-                'title' => 'education',
+                'title' => 'Education and Innovation',
                 'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
             ],
             [
-                'title' => 'aggregation',
+                'title' => 'Aggregation',
                 'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
             ],
             [
-                'title' => 'regeneration',
+                'title' => 'Regeneration',
                 'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
             ],
             [
-                'title' => 'attraction',
+                'title' => 'Attraction',
                 'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
             ],
         ]

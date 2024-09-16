@@ -58,11 +58,11 @@
         <section class="space-y-16">
             <div class="space-y-4 max-w-3xl mx-auto md:text-center">
                 <h2 class="badge">
-                    {{ __('project.modalities.title') }}
+                    {{ __('home.modalities.title') }}
                 </h2>
 
                 <h3 class="title-xl">
-                    {{ __('project.modalities.subtitle') }}
+                    {{ __('home.modalities.subtitle') }}
                 </h3>
             </div>
 
@@ -121,8 +121,7 @@
 
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque esse in maiores, minus officia
-                    quae
-                    quod reiciendis saepe sunt veritatis.
+                    quae quod reiciendis saepe sunt veritatis.
                 </p>
             </div>
 

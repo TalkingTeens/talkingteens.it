@@ -43,7 +43,7 @@
     @unless($articles->isEmpty())
         <section class="section">
             <h2 class="text-center title-lg">
-                Dicono di noi
+                {{ __('home.press') }}
             </h2>
 
             <div
@@ -79,12 +79,16 @@
         <section class="section space-y-16">
             <div class="space-y-4">
                 <h2 class="badge">
-                    {{ __('project.modalities.title') }}
+                    {{ __('home.modalities.title') }}
                 </h2>
 
                 <h3 class="title-xl max-w-xl">
-                    {{ __('project.modalities.subtitle') }}
+                    {{ __('home.modalities.subtitle') }}
                 </h3>
+
+                <p class="max-w-3xl">
+                    {{ __('home.modalities.text') }}
+                </p>
             </div>
 
             <ul class="space-y-12">
@@ -95,11 +99,11 @@
 
                     <div>
                         <h4 class="title-lg mb-2">
-                            {{ __('project.modalities.call.title') }}
+                            {{ __('home.modalities.call.title') }}
                         </h4>
 
                         <p>
-                            {{ __('project.modalities.call.text') }}
+                            {{ __('home.modalities.call.text') }}
                         </p>
                     </div>
                 </li>
@@ -111,11 +115,11 @@
 
                     <div>
                         <h4 class="title-lg mb-2">
-                            {{ __('project.modalities.qr.title') }}
+                            {{ __('home.modalities.qr.title') }}
                         </h4>
 
                         <p>
-                            {{ __('project.modalities.qr.text') }}
+                            {{ __('home.modalities.qr.text') }}
                         </p>
                     </div>
                 </li>
@@ -127,11 +131,11 @@
 
                     <div>
                         <h4 class="title-lg mb-2">
-                            {{ __('project.modalities.app.title') }}
+                            {{ __('home.modalities.app.title') }}
                         </h4>
 
                         <p>
-                            {{ __('project.modalities.app.text') }}
+                            {{ __('home.modalities.app.text') }}
                         </p>
                     </div>
                 </li>
@@ -139,17 +143,16 @@
         </section>
     </div>
 
-
     <div class="section">
         @unless($monuments->isEmpty())
             <section class="space-y-8">
                 <div class="flex items-center justify-between">
                     <h2 class="title-xl">
-                        Le statue
+                        {{ __('home.monuments.title') }}
                     </h2>
 
                     <x-button.arrow :href="route('monuments.index')" :back="false" :transform="false">
-                        Vedi tutte
+                        {{ __('home.monuments.cta') }}
                     </x-button.arrow>
                 </div>
 
