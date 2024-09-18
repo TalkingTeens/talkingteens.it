@@ -3,8 +3,10 @@
 return [
 
     'title' => 'Progetto',
-    'subtitle' => 'Talking Teens è ...?',
+    'subtitle' => 'Talking Teens è ...',
+    'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
     'about' => [
+        'title' => 'Talking Teens è ...',
         'teenagers' => [
             'title' => 'Fatto dagli adolescenti per ... tutti!',
             'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
@@ -51,6 +53,10 @@ return [
                 'description' => 'Rendere Parma un luogo più curato e accogliente per i visitatori e per i turisti!',
             ],
         ]
+    ],
+    'students' => [
+        'title' => 'Il cuore pulsante del progetto: gli studenti.',
+        'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque esse in maiores, minus officia quae quod reiciendis saepe sunt veritatis.',
     ]
 
 ];

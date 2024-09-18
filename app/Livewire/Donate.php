@@ -9,7 +9,7 @@ use Livewire\Component;
 class Donate extends Component
 {
     #[Url(as: 'm')]
-    public string $method = 'card';
+    public string $method = 'bank';
 
     public function render()
     {

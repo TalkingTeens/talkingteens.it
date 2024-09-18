@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-    <div class="max-w-7xl w-11/12 mx-auto my-16 space-y-16">
+    <div class="section space-y-16">
         <section class="max-w-3xl mx-auto space-y-4 text-center sm:w-full sm:py-4">
             <h1 class="badge">
                 {{ __('documents.title') }}

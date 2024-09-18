@@ -4,8 +4,8 @@
 @endpush
 
 @section('content')
-    <section class="section space-y-16">
-        <div class="max-w-screen-md space-y-4">
+    <div class="section">
+        <section class="max-w-screen-md mx-auto text-center space-y-4">
             <h1 class="badge">
                 {{ __('project.title') }}
             </h1>
@@ -15,11 +15,17 @@
             </h2>
 
             <p class="pt-4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique
-                temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut
-                veniam?
+                {{ __('project.text') }}
             </p>
-        </div>
+        </section>
+    </div>
+
+    <img src="{{ asset('/images/sponsor.jpg') }}" alt="" class="h-screen w-full object-cover">
+
+    <section class="section space-y-16">
+        <h2 class="title-xl">
+            {{ __('project.about.title') }}
+        </h2>
 
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             <x-card
@@ -122,12 +128,11 @@
         <section class="section space-y-16">
             <div class="space-y-4 max-w-3xl mx-auto md:text-center">
                 <h2 class="title-xl">
-                    Il cuore pulsante del progetto: gli studenti.
+                    {{ __('project.students.title') }}
                 </h2>
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque esse in maiores, minus officia
-                    quae quod reiciendis saepe sunt veritatis.
+                    {{ __('project.students.text') }}
                 </p>
             </div>
 

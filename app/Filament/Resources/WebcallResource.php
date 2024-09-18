@@ -39,10 +39,10 @@ class WebcallResource extends Resource
                     ->schema([
                         Section::make()
                             ->schema([
-                                Select::make('monument')
+                                Select::make('monument_id')
                                     ->searchable()
-                                    ->relationship(titleAttribute: 'name')
-                                    ->unique(ignoreRecord: true)
+                                    ->relationship(name: 'monument', titleAttribute: 'name')
+//                                    ->unique(ignoreRecord: true)
                                     ->required(),
 
                                 SpatieMediaLibraryFileUpload::make('background')
