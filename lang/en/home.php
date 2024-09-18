@@ -7,10 +7,10 @@ return [
     'modalities' => [
         'title' => 'How it works',
         'subtitle' => 'Listening to statues is free and for everyone.',
-        'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus ducimus impedit numquam, porro quo sit tenetur totam voluptatem voluptates!',
+        'text' => 'Choose the mode that suits you best: listen to stories, watch videos and discover interesting facts about our statues.',
         'call' => [
             'title' => 'Call',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+            'text' => 'Dial the phone numbers you find on the Totems, also in Braille, next to the statues. At the cost of a local phone call, depending on your rate plan.'
         ],
         'qr' => [
             'title' => 'Scan the QR Code',
@@ -32,7 +32,7 @@ return [
     ],
     'donate' => [
         'text' => 'Talking Teens lives on thanks to generous donors, institutions and private citizens who love culture and care about young people and their city.',
-        'calls' => 'telefonate gratuite ascoltate dal 2019',
+        'calls' => 'free phone calls heard since 2019',
         'cta' => 'Donate now',
     ],
     'supporters' => [

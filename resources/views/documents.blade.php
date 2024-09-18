@@ -14,7 +14,7 @@
                 {{ __('documents.subtitle') }}
             </h2>
 
-            <p class="text-sm">
+            <p>
                 {{ __('documents.description') }} <br>
                 {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
             </p>

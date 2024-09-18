@@ -3,9 +3,8 @@
 return [
 
     'title' => 'Project',
-    'subtitle' => 'un progetto partecipato di ben-essere sociale',
+    'subtitle' => 'Talking Teens is ...',
     'about' => [
-        'title' => 'Talking Teens is ...',
         'teenagers' => [
             'title' => 'Dagli adolescenti per gli adolescenti',
             'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'

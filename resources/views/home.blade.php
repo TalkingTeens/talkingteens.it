@@ -86,7 +86,7 @@
                     {{ __('home.modalities.subtitle') }}
                 </h3>
 
-                <p class="max-w-3xl">
+                <p class="max-w-3xl pt-4">
                     {{ __('home.modalities.text') }}
                 </p>
             </div>

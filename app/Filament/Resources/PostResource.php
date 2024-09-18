@@ -52,7 +52,7 @@ class PostResource extends Resource
                 SpatieMediaLibraryImageColumn::make('image')
                     ->collection('feed'),
 
-                TextColumn::make('name')
+                TextColumn::make('description')
                     ->searchable(),
             ])
             ->filters([

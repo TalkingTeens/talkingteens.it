@@ -10,7 +10,7 @@
         <dd class="sm:col-span-4">{{ $value }}</dd>
     </div>
 
-    <button type="button">
-        ic
-    </button>
+{{--    <button type="button">--}}
+{{--        copy--}}
+{{--    </button>--}}
 </div>

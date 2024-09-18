@@ -22,7 +22,6 @@ use Filament\Tables\Columns\Summarizers\Range;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\App;
 
 class WebcallResource extends Resource
 {
@@ -45,7 +44,6 @@ class WebcallResource extends Resource
                                     ->relationship(titleAttribute: 'name')
                                     ->unique(ignoreRecord: true)
                                     ->required(),
-
 
                                 SpatieMediaLibraryFileUpload::make('background')
                                     ->collection('webcalls')

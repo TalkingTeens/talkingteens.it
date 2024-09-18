@@ -7,10 +7,10 @@ return [
     'modalities' => [
         'title' => 'Come funziona',
         'subtitle' => 'Ascoltare le statue è gratuito e per tutti.',
-        'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus ducimus impedit numquam, porro quo sit tenetur totam voluptatem voluptates!',
+        'text' => 'Scegli la modalità più adatta a te: ascolta storie, guarda video e scopri curiosità sulle nostre statue.',
         'call' => [
             'title' => 'Chiama',
-            'text' => 'Componi i numeri di telefono tradizionale che trovi sui Totem, anche in Braille, accanto alle statue.',
+            'text' => 'Componi i numeri di telefono che trovi sui Totem, anche in Braille, accanto alle statue. Al costo di una telefonata urbana, a seconda del proprio piano tariffario.',
         ],
         'qr' => [
             'title' => 'Scansiona il QR Code',
