@@ -14,7 +14,7 @@
                 {{ __('project.subtitle') }}
             </h2>
 
-            <p class="pt-4">
+            <p class="pt-2">
                 {{ __('project.text') }}
             </p>
         </section>

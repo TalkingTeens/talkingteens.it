@@ -4,8 +4,8 @@
 @endpush
 
 @section('content')
-    <div class="section space-y-16">
-        <section class="max-w-3xl mx-auto space-y-4 text-center sm:w-full sm:py-4">
+    <div class="section space-y-16 sm:space-y-24">
+        <section class="max-w-3xl mx-auto space-y-4 text-center sm:w-full">
             <h1 class="badge">
                 {{ __('documents.title') }}
             </h1>
@@ -14,7 +14,7 @@
                 {{ __('documents.subtitle') }}
             </h2>
 
-            <p>
+            <p class="pt-2">
                 {{ __('documents.description') }} <br>
                 {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
             </p>
@@ -35,7 +35,7 @@
                     {{ __("documents.categories.{$key}") }}
                 </h3>
 
-                <div class="grid gap-2 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div class="grid gap-2 sm:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     @foreach ($documents as $document)
                         <livewire:document.file :document="$document"/>
                     @endforeach

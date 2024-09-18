@@ -26,8 +26,10 @@ class File extends Component
     {
         $this->document->increment('downloads');
 
-        // TODO: download with title
-        return $this->media;
+        $file_name = $this->document->title ?: $this->media->name;
+        $extension = Str::afterLast($this->media->file_name, '.');
+
+        return response()->download($this->media->getPath(), "{$file_name}.{$extension}");
     }
 
     public function render()

@@ -3,17 +3,17 @@
     wire:click="open"
     target="_blank"
     href="{{ $media->getFullUrl() }}"
-    class="p-2 bg-gray-100 sm:hover:bg-st/40 rounded-2xl items-center"
+    class="max-md:aspect-square p-2 bg-gray-100 items-center rounded-2xl sm:hover:bg-st/40"
 >
     <div class="flex items-center px-2 py-3 gap-3">
         @svg("document/{$type}", 'size-6 shrink-0')
 
-        <div class="grow sm:overflow-hidden">
-            <h4 class="text-sm font-medium sm:text-ellipsis sm:overflow-hidden sm:whitespace-nowrap">
+        <div class="grow">
+            <h4 class="max-sm:line-clamp-2 text-sm font-medium line-clamp-1">
                 {{ $document->title ?: $media->name }}
             </h4>
 
-            <p class="text-xs">
+            <p class="max-sm:hidden text-xs">
                 {{ Number::fileSize($media->size ?? 0) }}
             </p>
         </div>
@@ -27,10 +27,10 @@
         </div>
     </div>
 
-    <div class="overflow-hidden rounded-xl md:h-48 relative bg-white">
+    <div class="max-md:h-[calc(100%-60px)] overflow-hidden rounded-xl md:h-48 relative bg-white">
         @if($media->hasGeneratedConversion('preview'))
             <img
-                class="hidden md:block aspect-square object-top object-cover w-full h-full"
+                class="md:aspect-square object-top object-cover w-full h-full"
                 src="{{ $media->getUrl('preview') }}"
                 alt=""
             >
