@@ -3,7 +3,7 @@
 return [
 
     'title' => 'Progetto',
-    'subtitle' => 'Talking Teens è ...',
+    'subtitle' => 'Titolo da scrivere x paola',
     'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
     'about' => [
         'title' => 'Talking Teens è ...',
@@ -34,7 +34,7 @@ return [
     ],
     'goals' => [
         'title' => 'Obiettivi',
-        'subtitle' => 'Listening to statues is free and for everyone.',
+        'subtitle' => 'Lorem ipsum dolor sit amet',
         'items' => [
             [
                 'title' => 'Educazione e Innovazione',

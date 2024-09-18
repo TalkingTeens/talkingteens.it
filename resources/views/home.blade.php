@@ -184,10 +184,10 @@
         </section>
     </div>
 
-    <div class="section space-y-16">
-        <section>
+    <div class="section space-y-16 sm:space-y-24">
+        <section class="bg-gray-50 space-y-10 rounded-3xl p-8 sm:p-16 md:p-24">
             <h2 class="title-xl max-w-screen-md">
-                Ascoltare le statue è gratuito e per tutti.
+                {{ __('home.alice') }}
             </h2>
 
             <audio controls>
@@ -196,56 +196,58 @@
             </audio>
         </section>
 
-        <section class="space-y-4 max-w-3xl mx-auto md:text-center">
-            <h2 class="badge">
-                {{ __('home.supporters.title') }}
-            </h2>
+        <div class="space-y-16">
+            <section class="space-y-4 max-w-3xl mx-auto md:text-center">
+                <h2 class="badge">
+                    {{ __('home.supporters.title') }}
+                </h2>
 
-            <h3 class="title-xl">
-                {{ __('home.supporters.subtitle') }}
-            </h3>
+                <h3 class="title-xl">
+                    {{ __('home.supporters.subtitle') }}
+                </h3>
 
-            <p>
-                {{ __('home.supporters.thanks.crowdfunding') }}
+                <p>
+                    {{ __('home.supporters.thanks.crowdfunding') }}
 
-                <a
-                    href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html"
-                    class="underline"
-                    target="_blank"
-                >ideaginger.it</a>,
+                    <a
+                        href="https://www.ideaginger.it/progetti/prenditi-cura-di-me.html"
+                        class="underline"
+                        target="_blank"
+                    >ideaginger.it</a>,
 
-                {{ __('home.supporters.thanks.lino') }}
+                    {{ __('home.supporters.thanks.lino') }}
 
-                <a
-                    href="https://youtu.be/qO7-l_kNvgY"
-                    class="underline"
-                    target="_blank"
-                >Lino Guanciale</a>
+                    <a
+                        href="https://youtu.be/qO7-l_kNvgY"
+                        class="underline"
+                        target="_blank"
+                    >Lino Guanciale</a>
 
-                {{ __('home.supporters.thanks.donors') }}.
-            </p>
+                    {{ __('home.supporters.thanks.donors') }}.
+                </p>
 
-            <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
-                {{ __('home.supporters.cta') }}
-            </x-button.arrow>
-        </section>
+                <x-button.arrow href="mailto:team@talkingteens.it" :back="false" class="font-semibold">
+                    {{ __('home.supporters.cta') }}
+                </x-button.arrow>
+            </section>
 
-        @unless($sponsors->isEmpty())
-            <div
-                class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                @foreach($sponsors as $sponsor)
-                    <div class="w-2/3 md:w-4/5 xl:w-3/5">
-                        @if(isset($sponsor->resource))
-                            <a href="{{ $sponsor->resource }}" target="_blank"
-                               class="block hover:scale-98 transition-transform">
+            @unless($sponsors->isEmpty())
+                <div
+                    class="grid place-items-center grid-cols-2 gap-8 sm:gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                    @foreach($sponsors as $sponsor)
+                        <div class="w-2/3 md:w-4/5 xl:w-3/5">
+                            @if(isset($sponsor->resource))
+                                <a href="{{ $sponsor->resource }}" target="_blank"
+                                   class="block hover:scale-98 transition-transform">
+                                    <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
+                                </a>
+                            @else
                                 <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
-                            </a>
-                        @else
-                            <img src="{{ $sponsor->logo }}" alt="{{ $sponsor->name }}">
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        @endunless
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endunless
+        </div>
     </div>
 @endsection

@@ -35,6 +35,7 @@ return [
         'calls' => 'telefonate gratuite ascoltate dal 2019',
         'cta' => 'Dona ora',
     ],
+    'alice' => 'Ascolta cosa ne pensa Alice, studentessa dell\'Università di Parma.',
     'supporters' => [
         'title' => 'Sostenitori',
         'subtitle' => 'Grazie!',
