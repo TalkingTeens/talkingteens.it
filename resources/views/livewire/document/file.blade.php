@@ -6,7 +6,7 @@
     class="max-md:aspect-square p-2 bg-gray-100 items-center rounded-2xl sm:hover:bg-st/40"
 >
     <div class="h-[60px] flex items-center px-2 gap-3">
-        @svg("document/{$type}", 'size-6 shrink-0')
+        @svg("document/{$type}", 'size-7 shrink-0')
 
         <div class="grow overflow-hidden">
             <h4 class="max-sm:line-clamp-2 text-sm font-medium line-clamp-1">

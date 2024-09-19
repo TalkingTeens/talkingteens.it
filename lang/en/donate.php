@@ -22,7 +22,7 @@ return [
             ],
             [
                 'title' => 'Can I get a receipt?',
-                'description' => '',
+                'description' => 'Yes, just write an email to team@talkingteens.it.',
             ],
         ]
     ]

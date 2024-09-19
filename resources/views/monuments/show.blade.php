@@ -229,6 +229,7 @@
                 <p class="max-w-[180px] max-md:hidden text-right text-sm text-white/50 italic font-extralight ease-in-out duration-200"
                    @scroll.window="show = window.pageYOffset < 10"
                    x-show="show && !$store.sidebar.open"
+                   x-cloak
                    x-transition
                 >
                     {{ __('monument.call.traditional') }}

@@ -97,7 +97,8 @@ class WebcallResource extends Resource
                                             ])
                                             ->columns(),
 
-                                        Builder\Block::make('link')->icon('heroicon-o-link')
+                                        Builder\Block::make('link')
+                                            ->icon('heroicon-o-link')
                                             ->schema([
                                                 Select::make('language')
                                                     ->options([
@@ -112,6 +113,8 @@ class WebcallResource extends Resource
                                             ])
                                             ->columns(),
                                     ])
+                                    ->reorderable(false)
+                                    ->collapsible()
                                     ->hiddenLabel()
                                     ->minItems(1),
                             ])

@@ -101,6 +101,7 @@ class SchoolResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('municipality')
+                    ->default('G337')
                     ->searchable()
                     ->relationship('municipality', 'name')
             ])

@@ -22,7 +22,7 @@ return [
             ],
             [
                 'title' => 'Posso ottenere una ricevuta?',
-                'description' => '',
+                'description' => 'Si, è sufficiente scrivere una mail a team@talkingteens.it.',
             ],
         ]
     ]
