@@ -5,10 +5,10 @@
     href="{{ $media->getFullUrl() }}"
     class="max-md:aspect-square p-2 bg-gray-100 items-center rounded-2xl sm:hover:bg-st/40"
 >
-    <div class="flex items-center px-2 py-3 gap-3">
+    <div class="h-[60px] flex items-center px-2 gap-3">
         @svg("document/{$type}", 'size-6 shrink-0')
 
-        <div class="grow">
+        <div class="grow overflow-hidden">
             <h4 class="max-sm:line-clamp-2 text-sm font-medium line-clamp-1">
                 {{ $document->title ?: $media->name }}
             </h4>
@@ -21,7 +21,7 @@
         <div
             role="button"
             wire:click.stop.prevent="download"
-            class="hover:bg-st p-2 rounded-full"
+            class="max-sm:hidden p-2 rounded-full hover:bg-st"
         >
             <x-heroicon-o-arrow-down-tray class="size-5"/>
         </div>
