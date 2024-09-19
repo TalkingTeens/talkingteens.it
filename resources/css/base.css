@@ -2,5 +2,5 @@
 :root {
     @apply [--nav-height:4.5rem]
     [--banner-height:2.25rem]
-    [--subheader-height:4.2rem]
+    [--subheader-height:4.5rem]
 }
