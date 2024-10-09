@@ -1,5 +1,5 @@
 .link-footer {
-    @apply block text-white/50 font-light pt-3 hover:text-white transition-colors;
+    @apply block text-white/50 font-light mt-3 hover:text-white transition-colors;
 }
 
 .btn-result {

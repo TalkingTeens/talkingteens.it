@@ -1,6 +1,7 @@
 @props(['title', 'alt', 'category' => '', 'icon' => null])
 
-<div
+<button
+    type="button"
     @click="$dispatch('change-category', { category: '{{ $category }}'});
             window.scrollTo({ top: 0 });
             active = '{{ $category }}'"
@@ -9,7 +10,7 @@
 >
     <img class="w-7 h-7 mx-auto" src="{{ $icon ?? asset('svg/collection.svg') }}" alt="{{ $alt }}">
 
-    <p class="text-xs font-medium">
+    <span class="text-xs font-medium">
         {{ $title }}
-    </p>
-</div>
+    </span>
+</button>

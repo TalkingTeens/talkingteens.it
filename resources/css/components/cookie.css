@@ -98,3 +98,9 @@
 #iubenda-cs-banner .iubenda-cs-reject-btn {
     @apply hover:bg-gray-100 border;
 }
+
+/* Youtube Iframe */
+
+/*._iub_cs_activate:not(._iub_cs_activate-activated) {*/
+/*    @apply bg-red-700;*/
+/*}*/

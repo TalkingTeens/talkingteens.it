@@ -68,9 +68,11 @@
                         {{ __('legal.terms') }}
                     </a>
 
-                    <a href="#" class="link-footer iubenda-cs-preferences-link">
-                        {{ __('common.footer.legal.manage') }}
-                    </a>
+                    @production
+                        <a href="#" class="link-footer iubenda-cs-preferences-link">
+                            {{ __('common.footer.legal.manage') }}
+                        </a>
+                    @endproduction
                 </div>
             </div>
         </div>
@@ -102,7 +104,8 @@
                          alt="" class="h-9 sm:h-10">
                 </a>
 
-                <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens" target="_blank">
+                <a href="https://play.google.com/store/apps/details?id=digital.diapason.echo.talkingteens"
+                   target="_blank">
                     <img
                         src="{{ asset('images/download/' . LaravelLocalization::getCurrentLocale() . '/google-play.png') }}"
                         alt="Disponibile su Google Play" class="h-9 sm:h-10">

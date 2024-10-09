@@ -12,7 +12,7 @@
             <x-ui.dropdown.search :$municipalities/>
         @endif
 
-        <div class="flex items-center max-sm:hidden gap-x-2">
+        <div class="flex items-center gap-x-2">
             <x-ui.dropdown.lang/>
 
             <a href="{{ route('app') }}" class="max-lg:hidden btn secondary text-sm rounded-full py-3">
