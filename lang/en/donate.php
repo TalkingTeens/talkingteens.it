@@ -14,7 +14,7 @@ return [
     ],
     'faq' => [
         'title' => 'Frequently Asked Questions',
-        'support' => 'Still haven\'t found the answer you were looking for? Contact us and we\'ll get back to you as soon as possible.',
+        'support' => 'Didn\'t find the answer you were looking for? Contact us and we\'ll get back to you as soon as possible.',
         'questions' => [
             [
                 'title' => 'How is donated money spent?',
@@ -22,7 +22,7 @@ return [
             ],
             [
                 'title' => 'Can I get a receipt?',
-                'description' => 'Yes, just write an email to team@talkingteens.it.',
+                'description' => 'Yes, just write an email to team@talkingteens.it',
             ],
         ]
     ]

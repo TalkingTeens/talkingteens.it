@@ -3,38 +3,37 @@
 return [
 
     'title' => 'Project',
-    'subtitle' => 'Titolo da scrivere x paola',
+    'subtitle' => 'Talking Teens - Statues Speak!',
     'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
     'about' => [
         'title' => 'Talking Teens is ...',
-        'teenagers' => [
-            'title' => 'Dagli adolescenti per gli adolescenti',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'time' => [
-            'title' => 'Call',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'culture' => [
-            'title' => 'Call',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
         'innovation' => [
             'title' => 'Innovative',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+            'text' => 'An innovative social-welfare project in line with the WHO principle.'
+        ],
+        'culture' => [
+            'title' => 'Cultural Enhancement',
+            'text' => 'A project to enhance the city\'s statues.'
+        ],
+        'time' => [
+            'title' => 'A journey in time',
+            'text' => 'Talking statues lead us inside the memory of the city and inside Italian history.'
+        ],
+        'teenagers' => [
+            'title' => 'Dagli adolescenti per gli adolescenti',
+            'text' => 'Talking Teens: the teenagers who talk, or rather make the statues talk.'
+        ],
+        'community' => [
+            'title' => 'Networking with the community and institutions',
+            'text' => 'The community and institutions are involved in its implementation.'
         ],
         'accessible' => [
             'title' => '4 all',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'alive' => [
-            'title' => 'Alive',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+            'text' => 'Also to people with disabilities.'
         ],
     ],
     'goals' => [
         'title' => 'Goals',
-        'subtitle' => 'Lorem ipsum dolor sit amet',
         'items' => [
             [
                 'title' => 'Education and Innovation',

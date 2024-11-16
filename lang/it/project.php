@@ -3,41 +3,40 @@
 return [
 
     'title' => 'Progetto',
-    'subtitle' => 'Titolo da scrivere x paola',
+    'subtitle' => 'Talking Teens – Le Statue Parlano!',
     'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
     'about' => [
         'title' => 'Talking Teens è ...',
-        'teenagers' => [
-            'title' => 'Fatto dagli adolescenti per ... tutti!',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'time' => [
-            'title' => 'Un viaggio nel tempo',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+        'innovation' => [
+            'title' => 'Innovativo',
+            'text' => 'Un progetto innovativo di ben-essere sociale in linea con il principio dell\'OMS.'
         ],
         'culture' => [
             'title' => 'Valorizzazione culturale',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+            'text' => 'Un progetto di valorizzazione delle statue della città.'
         ],
-        'innovation' => [
-            'title' => 'Innovativo',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+        'time' => [
+            'title' => 'Un viaggio nel tempo',
+            'text' => 'Le statue parlanti ci conducono dentro la memoria della città e dentro la storia italiana.'
+        ],
+        'teenagers' => [
+            'title' => 'Fatto dagli adolescenti per ... tutti!',
+            'text' => 'Talking Teens: sono i teenagers che parlano, anzi fanno parlare le statue.'
+        ],
+        'community' => [
+            'title' => 'In rete con la comunità e le Istituzioni',
+            'text' => 'La comunità e le Istituzioni sono coinvolte nella sua realizzazione.'
         ],
         'accessible' => [
             'title' => 'Accessibile a tutti',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
-        ],
-        'alive' => [
-            'title' => 'Vivo',
-            'text' => 'Dial the traditional phone numbers you find on the Totems, also in Braille, next to the statues.'
+            'text' => 'Anche alle persone con disabilità.'
         ],
     ],
     'goals' => [
         'title' => 'Obiettivi',
-        'subtitle' => 'Lorem ipsum dolor sit amet',
         'items' => [
             [
-                'title' => 'Educazione e Innovazione',
+                'title' => 'Formazione e Innovazione',
                 'description' => 'Da utilizzatori passivi ad adolescenti che parlano: far sperimentare agli adolescenti -attraverso un approccio didattico esperienziale- un utilizzo virtuoso delle nuove tecnologie e “connetterli” al patrimonio culturale della città.',
             ],
             [

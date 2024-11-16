@@ -57,36 +57,36 @@ class ClassesRelationManager extends RelationManager
                     ->searchable(['miur_code', 'name', 'website'])
                     ->relationship('school', 'name'),
 
-                Select::make('teachers')
-                    ->multiple()
-                    ->relationship(titleAttribute: 'first_name')
-                    ->createOptionForm([
-                        Forms\Components\Grid::make()
-                            ->schema([
-                                Forms\Components\TextInput::make('first_name')
-                                    ->required(),
-                                Forms\Components\TextInput::make('last_name')
-                                    ->required(),
-                            ])
-                    ]),
+//                Select::make('teachers')
+//                    ->multiple()
+//                    ->relationship(titleAttribute: 'first_name')
+//                    ->createOptionForm([
+//                        Forms\Components\Grid::make()
+//                            ->schema([
+//                                Forms\Components\TextInput::make('first_name')
+//                                    ->required(),
+//                                Forms\Components\TextInput::make('last_name')
+//                                    ->required(),
+//                            ])
+//                    ]),
 
-                Forms\Components\Fieldset::make('Statua')
-                    ->schema([
-                        Forms\Components\SpatieMediaLibraryFileUpload::make('photo')
-                            ->collection('classes')
-                            ->columnSpanFull()
-                            ->required()
-                            ->image()
-                            ->imageEditor(),
-
-                        Forms\Components\RichEditor::make('description')
-                            ->columnSpan(2)
-                            ->hint('Translatable')
-                            ->hintIcon('heroicon-o-language')
-                            ->disableToolbarButtons([
-                                'codeBlock',
-                            ]),
-                    ])
+//                Forms\Components\Fieldset::make('Statua')
+//                    ->schema([
+//                        Forms\Components\SpatieMediaLibraryFileUpload::make('photo')
+//                            ->collection('classes')
+//                            ->columnSpanFull()
+//                            ->required()
+//                            ->image()
+//                            ->imageEditor(),
+//
+//                        Forms\Components\RichEditor::make('description')
+//                            ->columnSpan(2)
+//                            ->hint('Translatable')
+//                            ->hintIcon('heroicon-o-language')
+//                            ->disableToolbarButtons([
+//                                'codeBlock',
+//                            ]),
+//                    ])
             ]);
     }
 

@@ -24,6 +24,7 @@ class Monument extends Model implements HasMedia
         'name',
         'description',
     ];
+
     protected $fillable = [
         'name',
         'slug',

@@ -14,7 +14,7 @@ return [
     ],
     'faq' => [
         'title' => 'Domande frequenti',
-        'support' => 'Non hai ancora trovato la risposta che cercavi? Contattaci e ti risponderemo il prima possibile.',
+        'support' => 'Non hai trovato la risposta che stavi cercando? Contattaci e ti risponderemo il prima possibile.',
         'questions' => [
             [
                 'title' => 'Come vengono spesi i soldi donati?',
@@ -22,7 +22,7 @@ return [
             ],
             [
                 'title' => 'Posso ottenere una ricevuta?',
-                'description' => 'Si, è sufficiente scrivere una mail a team@talkingteens.it.',
+                'description' => 'Si, è sufficiente scrivere una mail a team@talkingteens.it',
             ],
         ]
     ]

@@ -35,6 +35,12 @@
             />
 
             <x-card
+                icon="heroicon-o-building-library"
+                :title="__('project.about.culture.title')"
+                :description="__('project.about.culture.text')"
+            />
+
+            <x-card
                 icon="heroicon-o-clock"
                 :title="__('project.about.time.title')"
                 :description="__('project.about.time.text')"
@@ -47,21 +53,15 @@
             />
 
             <x-card
+                icon="heroicon-o-heart"
+                :title="__('project.about.community.title')"
+                :description="__('project.about.community.text')"
+            />
+
+            <x-card
                 icon="deaf"
                 :title="__('project.about.accessible.title')"
                 :description="__('project.about.accessible.text')"
-            />
-
-            <x-card
-                icon="heroicon-o-building-library"
-                :title="__('project.about.culture.title')"
-                :description="__('project.about.culture.text')"
-            />
-
-            <x-card
-                icon="heroicon-o-heart"
-                :title="__('project.about.alive.title')"
-                :description="__('project.about.alive.text')"
             />
         </div>
     </section>
@@ -90,15 +90,9 @@
 
             @if(is_array($goals))
                 <section class="space-y-16">
-                    <div class="space-y-4">
-                        <h2 class="badge">
-                            {{ __('project.goals.title') }}
-                        </h2>
-
-                        <h3 class="title-xl max-w-xl">
-                            {{ __('project.goals.subtitle') }}
-                        </h3>
-                    </div>
+                    <h2 class="title-xl max-w-xl">
+                        {{ __('project.goals.title') }}
+                    </h2>
 
                     <ol class="space-y-12">
                         @foreach($goals as $goal)
@@ -144,4 +138,95 @@
             </div>
         </section>
     @endunless
+
+    <div class="section space-y-16">
+        <section>
+            <h2 class="title-lg">
+
+                {{ __("about.partners") }}
+            </h2>
+
+            <ul>
+                <li>Itis Leonardo Da VINCI</li>
+
+                <li>Liceo artistico Paola TOSCHI</li>
+
+                <li>FAI - Fondo per l'Ambiente italiano</li>
+            </ul>
+        </section>
+
+        @unless($schools->isEmpty())
+            <section>
+                <h2 class="title-lg">
+                    {{ __('about.schools') }}
+                </h2>
+
+                <ul>
+                    @foreach($schools as $school)
+                        <li>
+                            {{ $school->full_name }}
+                        </li>
+                    @endforeach
+                </ul>
+            </section>
+        @endunless
+
+        <section>
+            <h2 class="title-lg">
+                {{ __("about.associations") }}
+            </h2>
+
+            <ul>
+                <li>ENS - Ente Nazionale Sordi</li>
+
+                <li>UICI - Unione Italiana Ciechi e Ipovedenti</li>
+
+                <li>Anmic Parma</li>
+
+                <li>Consulta per il dialetto parmigiano</li>
+
+                <li>Maurizio Trapelli - Al Dsèvod (mashera parmigiana) - Famja Pramzana</li>
+            </ul>
+        </section>
+
+        @foreach($supporters as $type => $group)
+            <section>
+                <h2 class="title-lg">
+                    {{ __("about.thanks.{$type}") }}
+                </h2>
+
+                <ul>
+                    @foreach($group as $supporter)
+                        <li>
+                            {{ $supporter->full_name }}
+                        </li>
+                    @endforeach
+                </ul>
+            </section>
+        @endforeach
+
+        <section>
+            <h2 class="title-lg">
+                {{ __("about.committee.title") }}
+            </h2>
+
+            <ul>
+                <li>
+                    {{ __('about.committee.members.federica', ['name' => 'Federica Pascotto']) }}
+                </li>
+
+                <li>
+                    {{ __('about.committee.members.mario', ['name' => 'Mario Petriccione']) }}
+                </li>
+
+                <li>
+                    {{ __('about.committee.members.carlotta', ['name' => 'Carlotta Sorba']) }}
+                </li>
+
+                <li>
+                    {{ __('about.committee.members.vanja', ['name' => 'Vanja Strukelj']) }}
+                </li>
+            </ul>
+        </section>
+    </div>
 @endsection
