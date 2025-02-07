@@ -32,22 +32,16 @@
                         {{ __('project.title') }}
                     </a>
 
+                    <a href="{{ route('docs') }}" class="link-footer">
+                        {{ __('documents.title') }}
+                    </a>
+
                     <a href="{{ route('about') }}" class="link-footer">
                         {{ __('about.title') }}
                     </a>
 
                     <a href="{{ route('donate') }}" class="link-footer">
                         {{ __('donate.title') }}
-                    </a>
-                </div>
-
-                <div>
-                    <h4 class="text-base pb-1">
-                        {{ __('common.footer.education.title') }}
-                    </h4>
-
-                    <a href="{{ route('docs') }}" class="link-footer">
-                        {{ __('documents.title') }}
                     </a>
                 </div>
 
@@ -74,6 +68,17 @@
                         </a>
                     @endproduction
                 </div>
+
+
+                <div>
+                    <h4 class="text-base pb-1">
+                        {{ __('common.footer.contacts.title') }}
+                    </h4>
+
+                    <a href="mailto:team@talkingteens.it" class="link-footer">
+                        team@talkingteens.it
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -89,12 +94,6 @@
 
                 <a href="https://youtube.com/@talkingteens" target="_blank">
                     @svg('youtube', 'size-5 hover:text-[red] transition-colors')
-                </a>
-
-                <a href="mailto:team@talkingteens.it" class="transition-colors group">
-                    <x-heroicon-o-envelope class="size-5 group-hover:hidden"/>
-
-                    <x-heroicon-o-envelope-open class="size-5 hidden group-hover:block"/>
                 </a>
             </div>
 

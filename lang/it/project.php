@@ -4,7 +4,7 @@ return [
 
     'title' => 'Progetto',
     'subtitle' => 'Talking Teens – Le Statue Parlano!',
-    'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
+    'text' => 'Studenti. Comunità. Istituzioni. Insieme per prendersi cura del patrimonio cittadino!',
     'about' => [
         'title' => 'Talking Teens è ...',
         'innovation' => [
@@ -41,7 +41,7 @@ return [
             ],
             [
                 'title' => 'Aggregazione',
-                'description' => 'Avvicinare tutta la comunita’ al patrimonio attraverso la condivisione di un progetto coinvolgente e una maggiore conoscenza della città e della storia italiana, favorendo l’acquisizione di una più ampia consapevolezza sociale e culturale.',
+                'description' => 'Avvicinare tutta la comunità al patrimonio culturale attraverso la condivisione di un progetto coinvolgente favorendo una maggiore conoscenza della città e della storia italiana e l\'acquisizione di una più ampia consapevolezza sociale e culturale.',
             ],
             [
                 'title' => 'Rigenerazione',

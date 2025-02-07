@@ -4,29 +4,28 @@
 @endpush
 
 @section('content')
-    <div class="grid items-start lg:grid-cols-2">
-        <div class="max-lg:hidden sticky top-[--nav-height]">
-            <img src="{{ asset('/images/sponsor.jpg') }}"
-                 class="w-full h-[calc(100svh-var(--nav-height))] object-cover"
-                 alt="{{ __('about.alt') }}">
-        </div>
+    <section class="section space-y-6">
+        <h1 class="title-xl text-center">
+            {{ __('about.title') }}
+        </h1>
 
-        <div class="section space-y-16 lg:mx-0 lg:w-full lg:px-[calc(100vw/24)] xl:pr-[calc((100vw-80rem)/2)]">
-            <section class="space-y-6">
-                <h1 class="title-xl">
-                    {{ __('about.title') }}
-                </h1>
+        <img src="{{ asset('/images/sponsor.jpg') }}" alt="{{ __('about.alt') }}" class="w-full">
 
-                <p>
-                    {{ __('about.description') }}
-                </p>
-
+        <div class="grid sm:grid-cols-2">
+            <div>
                 <img src="{{ asset('images/echo-full.png') }}" alt="ECHO - Education Culture Human Oxygen Logo">
 
                 <p>
-                    {{ __('about.echo') }}
+                    C.F. 9290290343 <br>
+                    P.IVA 03061460345
                 </p>
-            </section>
+            </div>
+
+            <div>
+                <p>
+                    {{ __('about.description') }}
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
 @endsection

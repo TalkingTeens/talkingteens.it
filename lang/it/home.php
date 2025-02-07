@@ -14,11 +14,11 @@ return [
         ],
         'qr' => [
             'title' => 'Scansiona il QR Code',
-            'text' => 'Le statue si raccontano in italiano, inglese, dialetto parmigiano e LIS, scansionando il QR Code sui nostri Totem.',
+            'text' => 'Le statue si raccontano anche il LIS, la lingua dei Segni Italiana, scansionando il QR code sui nostri totem.',
         ],
         'app' => [
             'title' => 'Scarica l\'app',
-            'text' => 'Ricevi la telefonata direttamente sul tuo cellulare quando ti avvicini alle statue.',
+            'text' => 'Ricevi la telefonata direttamente sul tuo cellulare quando ti avvicini alle statue e divertiti con fumetti e i quiz.',
         ],
     ],
     'cta' => [

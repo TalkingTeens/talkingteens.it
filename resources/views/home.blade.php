@@ -91,55 +91,66 @@
                 </p>
             </div>
 
-            <ul class="space-y-12">
-                <li class="flex items-start gap-x-6 md:gap-x-12">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('heroicon-o-phone-arrow-up-right', 'size-8')
-                    </div>
+            <div class="flex gap-10">
+                <ul class="space-y-12">
+                    <li class="flex items-start gap-x-6 md:gap-x-12">
+                        <div class="p-4 inline-block bg-white rounded-full">
+                            @svg('heroicon-o-phone-arrow-up-right', 'size-8')
+                        </div>
 
-                    <div>
-                        <h4 class="title-lg mb-2">
-                            {{ __('home.modalities.call.title') }}
-                        </h4>
+                        <div>
+                            <h4 class="title-lg mb-2">
+                                {{ __('home.modalities.call.title') }}
+                            </h4>
 
-                        <p>
-                            {{ __('home.modalities.call.text') }}
-                        </p>
-                    </div>
-                </li>
+                            <p>
+                                {{ __('home.modalities.call.text') }}
+                            </p>
+                        </div>
+                    </li>
 
-                <li class="flex items-start gap-x-6 md:gap-x-12">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('heroicon-o-qr-code', 'size-8')
-                    </div>
+                    <li class="flex items-start gap-x-6 md:gap-x-12">
+                        <div class="p-4 inline-block bg-white rounded-full">
+                            @svg('heroicon-o-qr-code', 'size-8')
+                        </div>
 
-                    <div>
-                        <h4 class="title-lg mb-2">
-                            {{ __('home.modalities.qr.title') }}
-                        </h4>
+                        <div>
+                            <h4 class="title-lg mb-2">
+                                {{ __('home.modalities.qr.title') }}
+                            </h4>
 
-                        <p>
-                            {{ __('home.modalities.qr.text') }}
-                        </p>
-                    </div>
-                </li>
+                            <p>
+                                {{ __('home.modalities.qr.text') }}
+                            </p>
+                        </div>
+                    </li>
 
-                <li class="flex items-start gap-x-6 md:gap-x-12">
-                    <div class="p-4 inline-block bg-white rounded-full">
-                        @svg('app', 'size-8')
-                    </div>
+                    <li class="flex items-start gap-x-6 md:gap-x-12">
+                        <div class="p-4 inline-block bg-white rounded-full">
+                            @svg('app', 'size-8')
+                        </div>
 
-                    <div>
-                        <h4 class="title-lg mb-2">
-                            {{ __('home.modalities.app.title') }}
-                        </h4>
+                        <div>
+                            <h4 class="title-lg mb-2">
+                                {{ __('home.modalities.app.title') }}
+                            </h4>
 
-                        <p>
-                            {{ __('home.modalities.app.text') }}
-                        </p>
-                    </div>
-                </li>
-            </ul>
+                            <p>
+                                {{ __('home.modalities.app.text') }}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
+                <iframe class="aspect-video shrink-0"
+                        src="https://www.youtube.com/embed/Dw-Wwh8WEwo?si=u5AAtcms3jIdxmcu"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                ></iframe>
+            </div>
+
         </section>
     </div>
 

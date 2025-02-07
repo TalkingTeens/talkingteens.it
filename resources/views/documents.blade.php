@@ -16,7 +16,7 @@
 
             <p class="pt-2">
                 {{ __('documents.description') }} <br>
-                {{ __('documents.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
+                {{ __('common.credits', ['name' => 'Maria Chiara Cavazzoni']) }}
             </p>
         </section>
 

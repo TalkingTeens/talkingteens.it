@@ -14,11 +14,11 @@ return [
         ],
         'qr' => [
             'title' => 'Scan the QR Code',
-            'text' => 'The statues tell their stories in Italian, English, Parma dialect and LIS by scanning the QR Code on our Totems.'
+            'text' => 'The statues also tell their stories in LIS, the Italian sign language, by scanning the QR code on our totems.'
         ],
         'app' => [
             'title' => 'Download our app',
-            'text' => 'Get the call directly to your cell phone when you approach the statues.'
+            'text' => 'Get the call directly to your cell phone when you approach the statues and have fun with comics and quizzes.'
         ],
     ],
     'cta' => [

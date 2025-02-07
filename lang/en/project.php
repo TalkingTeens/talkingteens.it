@@ -4,7 +4,7 @@ return [
 
     'title' => 'Project',
     'subtitle' => 'Talking Teens - Statues Speak!',
-    'text' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugit labore magni, qui similique temporibus veniam voluptatem. Ad, aliquam aliquid amet beatae culpa earum, harum magni rem sequi ut veniam?',
+    'text' => 'Students. Communities. Institutions. Together to care for the city\'s heritage!',
     'about' => [
         'title' => 'Talking Teens is ...',
         'innovation' => [
@@ -41,7 +41,7 @@ return [
             ],
             [
                 'title' => 'Aggregation',
-                'description' => 'Financial support is needed to replace the plaques on totem poles in the city that are often vandalised or damaged by the weather, to maintain the app, which needs to be constantly monitored and often republished, to update the website, which is ageing, like all of us!',
+                'description' => 'To bring the whole community closer to the cultural heritage through the sharing of an engaging project fostering greater knowledge of the city and Italian history and the acquisition of a broader social and cultural awareness.',
             ],
             [
                 'title' => 'Regeneration',

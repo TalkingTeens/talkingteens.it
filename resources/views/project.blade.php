@@ -15,7 +15,8 @@
             </h2>
 
             <p class="pt-2">
-                {{ __('project.text') }}
+                {{ __('project.text') }} <br>
+                {{ __('common.credits', ['name' => 'Paola Greci']) }}
             </p>
         </section>
     </div>
@@ -68,26 +69,6 @@
 
     <div class="bg-gray-50">
         <div class="section space-y-24 sm:space-y-32">
-            <section class="space-y-16">
-                <div class="space-y-4 max-w-3xl mx-auto md:text-center">
-                    <h2 class="badge">
-                        {{ __('home.modalities.title') }}
-                    </h2>
-
-                    <h3 class="title-xl">
-                        {{ __('home.modalities.subtitle') }}
-                    </h3>
-                </div>
-
-                <iframe class="w-full aspect-video"
-                        src="https://www.youtube.com/embed/Dw-Wwh8WEwo?si=u5AAtcms3jIdxmcu"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                ></iframe>
-            </section>
-
             @if(is_array($goals))
                 <section class="space-y-16">
                     <h2 class="title-xl max-w-xl">

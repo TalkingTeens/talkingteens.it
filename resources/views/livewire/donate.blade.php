@@ -5,21 +5,18 @@
         src="/images/sponsor.jpg"
     >
         <div class="flex items-end justify-center gap-1 sm:gap-2 w-11/12 mx-auto">
-            {{--
-            <x-donate.tab method="card"/>
-            --}}
-            
+            @env('local')
+                <x-donate.tab method="card"/>
+            @endenv
+
             <x-donate.tab method="bank"/>
         </div>
     </x-ui.hero>
 
     <div class="section">
-        {{--
         <div x-show="method === 'card'">
             card
         </div>
-        --}}
-
 
         <div
             x-cloak

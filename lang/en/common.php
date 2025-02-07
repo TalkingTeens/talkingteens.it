@@ -12,6 +12,7 @@ return [
             'default' => 'All the statues'
         ]
     ],
+    'credits' => 'Curated by :Name.',
     'footer' => [
         'echo' => 'A project by',
         'newsletter' => [
@@ -22,8 +23,8 @@ return [
             'consent' => 'Cancel your subscription at any time. For more details, see our',
             'confirmation' => 'We\'ve sent an email to :email, also check your spam, and click on the button to confirm your subscription.',
         ],
-        'education' => [
-            'title' => 'Education',
+        'contacts' => [
+            'title' => 'Contacts',
         ],
         'legal' => [
             'title' => 'Legal',
